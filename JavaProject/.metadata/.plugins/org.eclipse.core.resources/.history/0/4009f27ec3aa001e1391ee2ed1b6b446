@@ -1,0 +1,28 @@
+package day0104;
+
+import java.util.Scanner;
+
+public class book69_05 {
+
+	public static void main(String[] args) {
+		// 교재 69페이지 PrintEx 문제
+		Scanner sc = new Scanner (System.in);
+		
+		System.out.println("x값 입력: ");
+		String str_x = sc.nextLine();
+		
+		System.out.println("y값 입력: ");
+		String str_y = sc.nextLine();
+		
+		int x = Integer.parseInt(str_x);
+		int y = Integer.parseInt(str_y);
+		
+		int result = x + y;
+		
+		System.out.println("x + y = "+result);
+		
+		
+
+	}
+
+}

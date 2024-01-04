@@ -1,0 +1,11 @@
+package day0104;
+
+public class DataType_09 {
+
+	public static void main(String[] args) {
+		// args를 이용한 연산
+		
+
+	}
+
+}

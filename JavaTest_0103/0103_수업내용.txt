@@ -1,0 +1,46 @@
+스프링프레임워크까지 배우면 모델2프젝가능
+이력서 포폴 하고 대세인 Nodejs...등 가르쳐줌
+Docker젠킨스...18,19주차 사이에 배우기 가능
+CI/CD(자동 배포) 자동으로 올리고 자동으로 배포한다
+위의 상황에서 사용하는 
+배포 자동화 프로그램:젠킨스
+
+DevOps:개발자의 일종: 개발+관리-->완전 개발자는 
+아니지만, 관리까지 책임지는(신입은 거의 안뽑는다.)
+지금 회사에서 제일 많이 쓰는 젠킨스
+도커: 깔아서 서버 구축해보기
+
+
+웹은 앱과 다르게 복잡하다.(배울게 많아!)
+전체의 연결/구조 파악용 큰그림 필요하다.
+
+
+jdk11설치(구글로 검색)
+.exe(bin)으로 설치(.zip말고)
+가입/로그인 후 다운로드(경로 C:\sist0103\util)에 bin파일 넣기.
+bin파일 더블클릭후, 설치
+환경 변수 설정 
+
+cmd : cd(change directory)
+java.class 폴더는 메모장으로 열어보면 깨져있다.
+컴파일 된 컴퓨터 언어이므로.
+
+Exception: 예외
+Index 0 out of bounds: 배열의 범위 벗어남.
+
+워크스페이스 : 작업 저장 공간
+
+IDE : 통합개발환경
+
+가운데 네모 빨강: 에디터
+나머지 네모 빨강 : 뷰
+여러개의 뷰들로 이루어진 화면구조 : Perspective
+
+자바는 프로젝트 주고받기를 archaive zip파일로 주고받는다.
+
+File> Export> General> Archaive File> JAVA프로젝트 통으로선택 후 Finish
+(기존 프로젝트와 중복되면 Import불가하므로 ,기존 프로젝트 통으로 Delete)
+File>Import> General> Existing Projects into Workspace> select archaive file: 위에서 압축한 zip파일 선택후 Finish
+
+자료형,변수선언,형변환...
+
