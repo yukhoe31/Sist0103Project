@@ -6,7 +6,7 @@ public class DataType_09 {
 		//args를 이용한 연산
 		
 		//변수선언
-	    int java=Integer.parseInt(args[0]); //String인 args[0] --> 정수
+	    int java=Integer.parseInt(args[0]);
 	    int jsp = Integer.parseInt(args[1]);
 	    int spring = Integer.parseInt(args[2]);
 	    
