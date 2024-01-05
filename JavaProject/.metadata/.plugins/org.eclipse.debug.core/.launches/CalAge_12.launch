@@ -12,6 +12,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="day0104.CalAge_12"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="SistJavaProject"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="이민영 1997"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="홍길동 1998"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="SistJavaProject"/>
 </launchConfiguration>
