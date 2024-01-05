@@ -3,8 +3,7 @@ package day0104;
 import java.util.Calendar;//Calendar 클래스를 이식
 
 public class CalAge_12 {
-	
-	
+
 	public static void main(String[] args) {
 		//실행단계에서 변수 입력하여 이름,출생년도 를 입력하여 나이를 출력
 		
