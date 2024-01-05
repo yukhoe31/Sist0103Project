@@ -1,0 +1,26 @@
+package day0105;
+
+public class QuizOper_14 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		/*
+		 * (점수에 대하 조건은 90점 이상: 매우잘함
+		 * 80점이상: 잘함 70점이상:좀더 노력할것
+		 * 이름을 입력해주세요
+		 * 김민아
+		 * 자바시험점수를 입력해주세요
+		 * 88
+		 * 
+		 * --------------------------------
+		 * 김민아님의 시험평가는 잘함 입니다.
+		 */
+		
+		Scanner sc= new Scanner(System.in);
+		
+		
+		System.out.println("이름을 입력하세요");
+	}
+
+}

@@ -1,0 +1,16 @@
+package day0105;
+
+public class OperTest_06 {
+
+	public static void main(String[] args) {
+		
+		//대입연산자 : +=, -=, *=, /=, %=
+		
+		int a,b,c,d,e;
+		
+		a = a++;
+		
+
+	}
+
+}

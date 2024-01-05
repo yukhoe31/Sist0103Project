@@ -1,0 +1,17 @@
+package day0105;
+
+public class IfOperTest_11 {
+
+	public static void main(String[] args) {
+		// if문과 삼항연산자 비교
+		int score = 50;
+		String grade; //학점
+		
+		if 
+		
+		
+		
+
+	}
+
+}

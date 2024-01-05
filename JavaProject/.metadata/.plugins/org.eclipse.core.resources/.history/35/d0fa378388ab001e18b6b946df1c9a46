@@ -1,0 +1,25 @@
+package day0105;
+
+import java.util.Scanner;
+
+public class IfOperTest_12 {
+
+	public static void main(String[] args) {
+		
+		// 삼항(조건)연산자
+		// 형식조건식? 참일때의 값:거짓일 때의 값
+		
+		Scanner sc = new Scanner(System.in);
+		int x, y;
+		
+		System.out.println("**두개의 숫자를 입력하세요**");
+		x = sc.nextInt();
+		y = sc.nextInt();
+		
+		System.out.println("입력한 두 수는 " + x + ", " + y );
+		
+		
+		
+	}
+
+}
