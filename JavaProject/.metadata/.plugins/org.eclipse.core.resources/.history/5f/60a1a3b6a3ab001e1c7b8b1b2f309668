@@ -24,20 +24,5 @@ public class book123_22 {
 			score1 = 60;	
 		}
 		System.out.println("score1: " + score1);
-		
-		/*
-		//Java 12부터 가능-->여기선 오류가 난다.
-		int score2 = switch(grade) {
-		case "A" -> 100
-		case "B" -> {
-			int result = 100 -20;
-			//Java13부터 가능
-			yield result;
-		}
-		default -> 60;
-		};
-		System.out.println("score2: " +score2);
-		*/
-		
 	}
 }
