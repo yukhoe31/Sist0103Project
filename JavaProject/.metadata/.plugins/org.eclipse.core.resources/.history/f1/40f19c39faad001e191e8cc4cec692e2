@@ -1,0 +1,31 @@
+package day0108;
+
+public class L18_Quiz {
+	
+	public static void main(String[] args) {
+		
+		
+		
+	}
+	
+	public static void quiz_1() {
+		
+		//Q. 반복해서 숫자를 입력하여 
+		//양수의 갯수와 음수의 갯수를 구하시오.(0입력시 종료)
+		
+		
+		
+		
+	}
+	
+	public static void quiz_2() {
+		
+	}
+	
+	public static void quiz_3() {
+		
+	}
+	
+
+
+}

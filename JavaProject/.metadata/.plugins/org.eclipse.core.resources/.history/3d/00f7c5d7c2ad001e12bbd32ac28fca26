@@ -1,0 +1,15 @@
+package day0108;
+
+public class L03_YoonYear {
+
+	public static void main(String[] args) {
+		// **윤년의 조건
+		/*
+		4로 나누어 떨어지고
+		100으로 나누어 떨어지나,
+		400으로 나누어 떨어지지 않으면 윤년입니다.
+		*/
+
+	}
+
+}

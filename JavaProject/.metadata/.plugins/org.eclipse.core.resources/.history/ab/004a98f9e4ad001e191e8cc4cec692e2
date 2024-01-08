@@ -1,0 +1,21 @@
+package day0108;
+
+public class L12_QuizFor {
+
+	public static void main(String[] args) {
+		
+		System.out.println("#1. 1  2  4  5  7  8  10 (continue 활용할 것!!");
+		for(int i=1; i<=10; i++) {
+			if(i%3==0) {
+				continue;
+			}
+			System.out.print(i + " ");
+		}
+		System.out.println();
+		
+		
+		System.out.println("#2. 홀수값:1 홀수값:3 홀수값:5 홀수값:7 홀수값:9");
+
+	}
+
+}

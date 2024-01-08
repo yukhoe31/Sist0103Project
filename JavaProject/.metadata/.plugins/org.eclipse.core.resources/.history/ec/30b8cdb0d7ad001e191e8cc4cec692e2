@@ -1,0 +1,25 @@
+package day0108;
+
+public class L11_Sum {
+
+	public static void main(String[] args) {
+		// 반복문에서 합계구하기
+		
+		int sum=0;
+		for(int i=1; i<=10; i++) {
+			
+			sum += i; //sum = sum + i;//누적		
+		}
+		System.out.println("1~10까지의 합: "+ sum +"입니다.");
+		
+		//while
+		int n=1;
+		int tot=0;
+		while(n<=10) {
+			tot += n;//tot = tot + n;
+			
+		}
+		
+	}
+
+}

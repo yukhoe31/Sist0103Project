@@ -1,0 +1,18 @@
+package day0108;
+
+import java.util.Scanner;
+
+public class L01_OperReview {
+
+	public static void main(String[] args) {
+		// import,선언,입력,계산,출력
+		Scanner sc = new Scanner(System.in);
+		
+		String name;
+		int kor,eng,mat;
+		
+		
+
+	}
+
+}
