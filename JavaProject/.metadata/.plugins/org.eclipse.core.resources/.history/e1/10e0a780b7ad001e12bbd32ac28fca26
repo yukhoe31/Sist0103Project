@@ -30,7 +30,7 @@ public class SwitchMonth_18 {
 				break;
 			default:
 				System.out.println("존재하지 않는 달입니다.");
-	
+		
 		}
 
 	}
