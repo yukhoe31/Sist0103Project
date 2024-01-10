@@ -1,0 +1,20 @@
+package day0110;
+
+public class L01_ArraySearchNum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//배열중에서 숫자찾기
+		//있는지 찾기, 없으면 없다고 있으면 몇번째 있는지
+
+		//0입력시 종료
+		
+		int [] data = {2,12,99,65,47,87,32,55,66,49,91,120,259};
+		
+		boolean flag;
+		
+		
+	}
+
+}
