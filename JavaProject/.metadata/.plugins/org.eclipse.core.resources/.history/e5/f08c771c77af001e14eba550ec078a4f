@@ -1,0 +1,9 @@
+package day0110;
+
+public class Student {
+
+	String stuName;//학생명
+	int stuAge;//학생나이
+	
+	
+}

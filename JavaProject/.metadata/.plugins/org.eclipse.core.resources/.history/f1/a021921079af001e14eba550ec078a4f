@@ -1,0 +1,32 @@
+package day0110;
+
+//public class 두개 안됨.
+class Numb{
+	
+	int num; //0
+	
+	//디폴트 생성자
+	public Numb() {
+		this.num = num;
+	}
+	
+	//인자'있는' 생성자
+	public Numb(int num) {
+		this.num = num;//this뜻: 나 자신
+	}
+	
+}
+
+//public class명으로 무조건 하나 존재해야.
+public class L11_CostNum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//디폴트 생성자 호출
+		Numb n1 = new Numu();
+		
+
+	}
+
+}

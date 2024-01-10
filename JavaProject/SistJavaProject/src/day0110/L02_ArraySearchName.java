@@ -38,12 +38,7 @@ public class L02_ArraySearchName {
 			
 			if(!flag) {//flag == false
 				System.out.println(name +"는 데이터에 없습니다.");
-			}
-			
-			
-		}
-		
-		
+			}		
+		}	
 	}
-
 }

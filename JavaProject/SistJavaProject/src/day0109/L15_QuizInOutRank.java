@@ -36,11 +36,11 @@ public class L15_QuizInOutRank {
 
 		// 2. 등수
 		for(int i=0; i<name.length; i++) {
-			rank[i]=1;
+			rank[i]=1;//랭크는 1에서 시작
 
 			for(int j=0; j<name.length; j++) {
 				if(avg[i]<avg[j]) {
-					rank[i]++;
+					rank[i]++;//i보다 더 큰 j가 있다면 순위+1
 				}
 			}
 		}

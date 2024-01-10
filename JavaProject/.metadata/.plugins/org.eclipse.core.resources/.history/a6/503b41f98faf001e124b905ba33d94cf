@@ -1,0 +1,33 @@
+package day0110;
+
+//실행결과
+/*
+ * 포르쉐가 달립니다. (시속:100km/h)
+ * 벤츠가 달립니다. (시속:100km/h) 
+ */
+
+class Car{
+	String name;
+	int speed;
+	
+	//setter
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	//getter
+}
+
+///////////////////////////
+public class L17_Book243 {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

@@ -1,0 +1,17 @@
+package day0110;
+
+//static변수는 메모리에 한번 할당되면 프로그램이 종료될 때 해제되는 변수이다.
+//메모리에 한번 할당이므로 여러객체가 해당메모리를 공유..효율이 좋아진다.
+
+
+public class L09_StaticInstance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+
+	}
+
+}
