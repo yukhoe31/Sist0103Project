@@ -1,0 +1,14 @@
+package day0110;
+
+public class L02_ArraySearchName {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String [] names = {"홍길동","김길동","최길동","고길동","이길동","박길동","유길동","조길동","부길동","신길동"};
+
+		
+		
+	}
+
+}
