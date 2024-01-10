@@ -1,0 +1,28 @@
+package day0110;
+
+class Info{
+	
+	//인스턴스 변수 만들기
+	private String stuName;
+	private int stuAge;
+	
+	//setter메서드
+	
+	
+	
+}
+
+public class L12_WorkerMethod {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		Info in1 = new Info();
+		//in1.stuName = "홍길동";
+		//인스턴스변수에 private이 붙으면 변수접근이 안된다.(생성을 하더라도)
+		//in1.stuAge = 33;
+
+	}
+
+}

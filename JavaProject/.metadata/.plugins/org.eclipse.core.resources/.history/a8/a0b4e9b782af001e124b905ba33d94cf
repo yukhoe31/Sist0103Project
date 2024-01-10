@@ -1,0 +1,30 @@
+package day0110;
+
+class MyDate{
+	
+	private int year;
+	private int month;
+	private int day;
+	
+	//디폴트 생성자
+	
+	//setter
+	public void setYear(int y) {
+		this.year = y;
+	}
+	public void setMear(int m) {
+		this.year = m;
+	}
+	public void setDear(int d) {
+		this.year = d;
+	}
+}
+
+public class L14_MyDate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
