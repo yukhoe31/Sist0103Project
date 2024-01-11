@@ -71,7 +71,7 @@ public class L14_MyDate {
 		int m = m2.getMonth();
 		int d = m2.getDay();
 		
-		System.out.println(y+"년"+m+"월"+d+"일");
+		System.out.println(y +"년"+ m +"월"+ d +"일");
 		
 	}
 
