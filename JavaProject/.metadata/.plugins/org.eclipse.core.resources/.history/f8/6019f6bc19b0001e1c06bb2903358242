@@ -1,0 +1,31 @@
+package day0111;
+
+class Apple{
+
+	//디폴트 생성자
+	public Apple() {
+		System.out.println("Apple 디폴트 생성자");
+
+	}
+}
+
+class Banana{
+	//디폴트 생성자
+	public Banana() {
+		System.out.println("생성자 호출: " +str);
+
+	}
+}
+
+class Orange{
+	
+}
+
+public class L02_ConstTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

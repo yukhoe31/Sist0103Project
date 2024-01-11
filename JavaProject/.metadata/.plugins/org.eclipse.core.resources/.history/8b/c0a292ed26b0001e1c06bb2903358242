@@ -1,0 +1,21 @@
+package day0111;
+
+class MyTest{
+	
+	private String name;
+	
+	
+}
+
+
+/////////////////////////
+
+
+public class L07_ObTest {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

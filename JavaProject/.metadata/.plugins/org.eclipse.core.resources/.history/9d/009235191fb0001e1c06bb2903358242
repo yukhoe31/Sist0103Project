@@ -1,0 +1,40 @@
+package day0111;
+
+class MyCar{
+	
+	private String carName;
+	private String carColor;
+	private int carPrice;
+	
+	//getter and setter
+	public String getCarName() {
+		return carName;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+	public String getCarColor() {
+		return carColor;
+	}
+	public void setCarColor(String carColor) {
+		this.carColor = carColor;
+	}
+	public int getCarPrice() {
+		return carPrice;
+	}
+	public void setCarPrice(int carPrice) {
+		this.carPrice = carPrice;
+	}
+	
+	
+}
+
+
+public class L04_ObTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

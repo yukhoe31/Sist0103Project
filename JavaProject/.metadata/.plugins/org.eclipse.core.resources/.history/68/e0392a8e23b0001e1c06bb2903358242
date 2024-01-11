@@ -1,0 +1,35 @@
+package day0111;
+
+class Artist{
+	
+	//변수명
+	private String groupName;
+	private String groupSong;
+	
+	static String company = "하이브";
+	static int count = 0;
+	
+	//명시적 생성자(디폴트 생성자 필요x)
+	public void Artist(String name, String song) {
+		this.groupName = name;
+		this.groupSong = song;
+	}
+	
+	//출력메서드 한번에 만들기
+	public void writeArtistInfo() {
+		count++;
+		System.out.println("***아티스트 정보_"+count+"***");
+		System.out.println("소속기획사: "+ company);
+		System.out.println("그룹명: "+this.groupName);
+		System.out.println("대표곡: "+this.groupSong);
+	}
+	
+}
+public class L06_QuizInstance {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

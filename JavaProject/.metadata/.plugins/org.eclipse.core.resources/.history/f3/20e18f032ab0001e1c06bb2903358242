@@ -1,0 +1,75 @@
+package day0111;
+
+class Score{
+	
+	private String stuName;
+	private int java;
+	private int oracle;
+	
+	public static final String TITLE = "2023년도 기말고사";
+
+	//getter and setter
+	public String getStuName() {
+		return stuName;
+	}
+
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+
+	public int getJava() {
+		return java;
+	}
+
+	public void setJava(int java) {
+		this.java = java;
+	}
+
+	public int getOracle() {
+		return oracle;
+	}
+
+	public void setOracle(int oracle) {
+		this.oracle = oracle;
+	}
+	
+	
+	
+	//추가할 메서드
+	//합계 메서드
+	public int getTot() {
+		
+		int total = java + oracle;
+		return total;
+	}
+	//평균 메서드
+	public double getAvg() {
+		
+		double avg = getTot()/2.0;
+		return avg;
+	}
+	
+
+
+}
+/////////////////////
+public class L08_ObTest {
+
+	public static void main(String[] args) {
+		
+		Score s1 = new Score();
+		s1.setStuName("박지선");
+		s1.setJava(90);
+		s1.setOracle(88);
+		
+		int tot = s1.getTot();
+		double avg = s1.getAvg();
+		
+		System.out.println("**Score클래스**");
+		
+		System.out.println(Score.TITLE$);
+		
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package day0111;
+
+//객체의 속성: 인스턴스 변수	객체의 동작: 클래스의 메서드
+//Object: 객체, 실제로 존재하는 사물
+
+
+public class L01_ObjectReview {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
