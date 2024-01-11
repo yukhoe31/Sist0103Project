@@ -1,0 +1,38 @@
+package day0111;
+
+/*
+회사이름
+쌍용
+
+총사원수 입력
+2
+사원명
+손흥민
+월급여
+2500000
+월수당
+500000
+
+[쌍용_1월 급여내역]
+사원명	기본급	수당	실수령액
+===========================
+손흥민	2500000	500000	2700000
+황희찬	1500000	500000	1800000
+
+*/
+
+class Sawon{
+	private String name;
+	private int basicPay;
+	private int sudang;
+	
+}
+
+public class L16_QuizSawon {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
