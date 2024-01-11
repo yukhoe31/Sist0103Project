@@ -1,0 +1,63 @@
+package day0111;
+
+class MyTest{
+	
+	private String name;
+	private String addr;
+	private int age;
+	
+	//각각의 setter,getter
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	//3번의 멤버변수를 한꺼번에 변경하는 메서드
+	public void setMembers(String name, String addr, int age) {
+		
+		this.name = name;
+		this.addr = addr;
+		this.age = age;
+		
+		this.setName(name);
+		setAddr(addr);
+		setAge(age);
+		
+	}
+	
+	//3개의 멤버변수 출력을 해서 한꺼번에 문자열로 리턴
+	public String getMembers() {
+		
+		String s = "이름: " + name +"\n주소: " +addr+ "\n나이: "+ age;
+		
+		return null;
+	}
+	
+}
+
+
+/////////////////////////
+
+
+public class L07_ObTest {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

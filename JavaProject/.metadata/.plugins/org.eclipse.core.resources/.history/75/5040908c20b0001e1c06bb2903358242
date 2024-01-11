@@ -1,0 +1,23 @@
+package day0111;
+
+class Member{
+	
+	private String stuName;
+	private String stuGender;
+	private String stuAddr;
+	
+	static String ban;//반 이름은 고정
+	static int cnt=0;//
+	
+	//멤버메서드
+	public void setMemberData()
+}
+
+public class L05_StaticObTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

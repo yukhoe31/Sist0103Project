@@ -1,0 +1,24 @@
+package day0111;
+
+class MyTest{
+	
+	private String name;
+	private String addr;
+	private int age;
+	
+	
+	
+}
+
+
+/////////////////////////
+
+
+public class L07_ObTest {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package day0111;
+
+class Score{
+	
+	private String stuName;
+	private int java;
+	private int oracle;
+	
+	public static String TITLE = "2023년도 기말고사";
+	
+}
+
+/////////////////////
+public class L08_ObTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

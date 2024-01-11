@@ -1,0 +1,42 @@
+package day0111;
+
+class Apple{
+
+	//디폴트 생성자
+	public Apple() {
+		System.out.println("Apple 디폴트 생성자");
+
+	}
+}
+
+class Banana{
+
+	public Banana(String str) {
+		System.out.println("생성자 호출: " +str);
+
+	}
+}
+
+class Orange{
+	
+	//생성자 오버로딩이 가능하다.
+	public Orange() {
+		System.out.println("Orange의 디폴트 생성자호출");
+		
+	}
+	public Orange(String str) {
+		System.out.println("Orange의 두번째 생성자: "+str);
+	}
+	public Orange(int n) {
+		
+	}
+}
+
+public class L02_ConstTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

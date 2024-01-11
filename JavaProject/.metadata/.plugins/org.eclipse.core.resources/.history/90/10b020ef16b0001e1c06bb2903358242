@@ -1,0 +1,29 @@
+package day0111;
+
+//객체의 속성: 인스턴스 변수	객체의 동작: 클래스의 메서드
+//Object: 객체, 실제로 존재하는 사물(핸드폰, 자동차...)
+//class: 객체를 정의, 객체를 생성하기 위해 존재(설계도...)
+//Instance: 클래스에서 만들어진 객체를 그 클래스의 인스턴스
+
+class Person{
+	
+	String name;
+	int age;
+	String hp;
+	String addr;
+	
+}
+
+
+
+public class L01_ObjectReview {
+
+	Person p1 = new Person();
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

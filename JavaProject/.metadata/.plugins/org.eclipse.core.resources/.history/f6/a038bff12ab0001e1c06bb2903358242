@@ -1,0 +1,22 @@
+package day0111;
+
+class Manggo{
+	
+	private String writer;
+	private String subject;
+	
+	private static String mes = "Happy Day!!";
+	
+	
+	//setter, getter
+	
+}
+
+public class L09_ObTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

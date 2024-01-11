@@ -1,0 +1,19 @@
+package day0111;
+
+class Artist{
+	
+	//변수명
+	
+	
+	//명시적 생성자(디폴트 생성자 필요x)
+	
+	
+}
+public class L06_QuizInstance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
