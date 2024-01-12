@@ -1,0 +1,33 @@
+package day0112;
+
+//추상부모클래스
+abstract class Board{
+	
+	public abstract void play();
+	
+}
+//////////////////////
+class Insert{
+	
+}
+/////////////////////
+class Select{
+	
+}
+/////////////////////
+class Update{
+	
+}
+/////////////////////
+class Delete{
+	
+}
+
+public class L12_Abstract {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,21 @@
+package day0112;
+
+interface InterA{
+	
+}
+//////////////////
+interface InterB{
+	
+}
+//////////////////
+
+
+
+public class L14_InterImpl {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

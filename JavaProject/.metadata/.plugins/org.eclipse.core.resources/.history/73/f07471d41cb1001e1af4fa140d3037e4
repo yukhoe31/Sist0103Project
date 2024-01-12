@@ -1,0 +1,36 @@
+package day0112;
+
+//interface는 상수와 추상메서드만 가질 수 있다.
+interface FoodShop{
+	String SHOPNAME = "남소관"; //상수? final잿얅
+	
+	public void order(); //추상메서드들이다 ...abstract()생략
+	public void bedal();
+}
+
+/////////////////////
+class Food2 implements FoodShop{
+	@Override
+	public void order() {
+		
+		//SHOPNAME = "왕돈까스";
+		
+		System.out.println("음식을 주문합니다.");		
+	}
+	@Override
+	public void bedal() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+/////////////////////
+ 
+
+public class L13_Implement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

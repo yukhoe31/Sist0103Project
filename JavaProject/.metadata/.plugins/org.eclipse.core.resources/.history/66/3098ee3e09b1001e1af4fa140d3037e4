@@ -1,0 +1,31 @@
+package day0112;
+
+//부모클래스
+class Car{
+	
+	private String carCompany; //제조회사
+	private String car;
+	
+}
+
+//////////////////////////
+//자식클래스
+class MyCar extends Car{
+	
+	private String carName;
+	private String carColor;
+	private int carPrice;
+	
+	
+}
+
+
+//////////////////////////
+public class L08_Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -47,8 +47,8 @@ class School{
 	
 	//메서드
 	public void writeData() {
-		System.out.println("학교주소: "+this.schoolAddr);
-		System.out.println("학교수: "+this.countStu +", 선생님수:" + this.countTeacher);
+		System.out.println("학교주소: "+ this.schoolAddr);
+		System.out.println("학교수: "+ this.countStu +", 선생님수:" + this.countTeacher);
 	}
 	
 }
@@ -100,7 +100,6 @@ class Student extends School{
 		System.out.println("학생명: " + stuName);
 		System.out.println("학년: " + grade + " 학년");
 	}
-	
 	
 }
 
