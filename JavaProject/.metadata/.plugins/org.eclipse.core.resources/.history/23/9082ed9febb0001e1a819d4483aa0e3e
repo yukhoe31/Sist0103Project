@@ -1,0 +1,13 @@
+package day0112;
+
+						//부모로부터 상속받기
+public class L03_SubObj extends L03_SuperObj{
+
+	public L03_SubObj(String name, int age) {
+		super(name, age);
+		// TODO Auto-generated constructor stub
+	}
+
+	String addr;
+	
+}

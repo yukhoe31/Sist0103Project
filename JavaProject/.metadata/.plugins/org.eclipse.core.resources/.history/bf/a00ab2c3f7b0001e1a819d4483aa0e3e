@@ -1,0 +1,26 @@
+package day0112;
+
+class School{
+	
+	public static final String SCHOOLNAME ="쌍용고등학교";
+	private String schoolAddr;
+	private int countStu;
+	private int countTeacher;
+	
+	public School() {
+		
+	}
+	
+	public School(String saddr) {
+		
+	}
+}
+
+///////////////////
+
+public class L07_Inherit {
+
+	public static void main(String[] args) {
+		
+	}
+}

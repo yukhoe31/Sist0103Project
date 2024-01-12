@@ -1,0 +1,12 @@
+package day0112;
+
+public class L03_MainObj {
+
+	public static void main(String[] args) {
+		
+		//부모,자식 중에서는 자식을 생성해야 한다.
+		
+
+	}
+
+}

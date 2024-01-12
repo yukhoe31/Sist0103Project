@@ -1,0 +1,12 @@
+package day0112;
+
+class School{
+	
+}
+
+public class L07_Inherit {
+
+	public static void main(String[] args) {
+		
+	}
+}

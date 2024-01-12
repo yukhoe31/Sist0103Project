@@ -1,5 +1,9 @@
 package day0111;
 
+import java.util.Scanner;
+
+//"디폴트 생성자"를 사용해서 할것.
+
 /*
 회사이름
 쌍용
@@ -62,9 +66,10 @@ class Sawon{
 	}
 
 	//화면출력 메서드
-	public static void show() {
+	//제목출력
+	public static void showTitle() {
 
-		System.out.println("***쌍용 01월 직원 급여현황***");
+		System.out.println("[쌍용 01월 직원 급여현황]");
 		System.out.println();
 		System.out.println("사원명\t기본급\t추가수당\t실수령액");
 		System.out.println("========================================");
@@ -74,10 +79,53 @@ class Sawon{
 }
 
 public class L16_QuizSawon {
+	
+	public static void writeAll(Sawon[] sa) {
+		Sawon.showTitle();
+		
+		for(Sawon s:sa) {
+			System.out.println(s.getName()+"\t"
+			+ s.getBasicPay()+"\t"+s.getSudang() 
+			+ "\t"  + s.payCal());
+			
+		}
+		
+	}
+	
 
 	public static void main(String[] args) {
 		
-		Sawon.show();
+		int inwon;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("총사원수 입력:");
+		inwon = Integer.parseInt(sc.nextLine());
+		
+		
+		Sawon [] sa = new Sawon[inwon];
+		
+		
+		for(int i=0;i<inwon;i++) {
+			
+			sa[i] = new Sawon();
+			System.out.print("사원명 입력:");
+			String name = sc.nextLine();
+			System.out.print("기본급 입력:");
+			int basic = Integer.parseInt(sc.nextLine());
+			System.out.print("추가수당 입력:");
+			int plus = Integer.parseInt(sc.nextLine());
+
+			sa[i].setName(name);
+			sa[i].setBasicPay(basic);
+			sa[i].setSudang(plus);
+			//sa[i].payCal();
+			
+			sa[i].getName();
+			sa[i].getBasicPay();
+			sa[i].getSudang();
+			
+		}
+				
+		writeAll(sa);	
 
 	}
 

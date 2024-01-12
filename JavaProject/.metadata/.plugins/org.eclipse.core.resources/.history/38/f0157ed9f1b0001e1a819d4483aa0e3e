@@ -1,0 +1,7 @@
+package day0112;
+
+public class L05_Sawon {
+	
+	protected String name;
+	
+}

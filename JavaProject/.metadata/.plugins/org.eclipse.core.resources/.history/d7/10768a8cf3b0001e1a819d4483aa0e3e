@@ -1,0 +1,8 @@
+package day0112;
+
+public class L06_Inherit {
+
+	public static void main(String[] args) {
+		
+	}
+}

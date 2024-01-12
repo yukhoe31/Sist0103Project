@@ -1,0 +1,84 @@
+package day0112;
+
+class School{
+	
+	public static final String SCHOOLNAME ="쌍용고등학교";
+	private String schoolAddr;
+	private int countStu;
+	private int countTeacher;
+	
+	//setter getter	
+	public String getSchoolAddr() {
+		return schoolAddr;
+	}
+
+	public void setSchoolAddr(String schoolAddr) {
+		this.schoolAddr = schoolAddr;
+	}
+
+	public int getCountStu() {
+		return countStu;
+	}
+
+	public void setCountStu(int countStu) {
+		this.countStu = countStu;
+	}
+
+	public int getCountTeacher() {
+		return countTeacher;
+	}
+
+	public void setCountTeacher(int countTeacher) {
+		this.countTeacher = countTeacher;
+	}
+
+	
+	//생성자
+	public School() {
+		this("강남구 역삼동", 120, 10);
+		
+	}
+	
+	public School(String saddr, int cntstu, int cntteacher) {
+		this.schoolAddr = saddr;
+		this.countStu = cntstu;
+		this.countTeacher = cntteacher;
+	}
+	
+	//메서드
+	public void writeData() {
+		System.out.println("학교주소: "+this.schoolAddr);
+		System.out.println("학교수: "+this.countStu +", 선생님수:" + this.countTeacher);
+	}
+	
+}
+
+///////////////////
+class Student extends School{
+	
+	private String stuName;
+	private int grade;
+	
+	
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Student(String sAddr, int cntStu, int cntTea, String stuname, int gra) {
+		super(sAddr,cntStu,cntTea);
+		this.stuName = stuname;
+		this.grade = grade;
+	}
+	
+	
+	
+}
+
+
+//////////////////
+public class L07_Inherit {
+
+	public static void main(String[] args) {
+		
+	}
+}

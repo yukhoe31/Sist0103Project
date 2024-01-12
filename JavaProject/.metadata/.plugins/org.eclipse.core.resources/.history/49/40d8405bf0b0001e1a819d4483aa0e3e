@@ -1,0 +1,15 @@
+package day0112;
+
+public class L04_Manager extends L04_Employee{
+	
+	String depart;
+	
+	public L04_Manager(String name, int sal, String d) {
+		super(name, sal);
+		depart=d;
+	}
+
+	@Override
+	public 
+	
+}
