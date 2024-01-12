@@ -1,0 +1,15 @@
+package day0112;
+
+public class L03_MainObj {
+
+	public static void main(String[] args) {
+		
+		//부모,자식 중에서는 자식을 생성해야 한다.
+		//왜냐하면, 자식이 더 크니까!
+		
+		L03_SubObj sub = new L03_SubObj("김선호",22,"강남구");
+		sub.writeData();
+		
+		
+	}
+}

@@ -1,0 +1,23 @@
+package day0112;
+
+import day0112.L05_Sawon;
+
+class My extends L05_Sawon{
+	
+	int age;
+	
+	public My(String name, String buseo, int age) {
+		this.name = name;
+		this.
+	}
+	
+}
+
+public class L05_MainSawon {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,72 @@
+package day0112;
+
+import java.util.Scanner;
+
+class Menu{
+	//
+	private String name;
+	private int price;
+	
+	private int count=0;
+
+	//명시적 생성자(2개)
+	public Menu(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+	
+	//setter getter
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	//화면show
+	public void showTitle() {
+		count++;
+		System.out.println("[메뉴_"+count+"]");
+		System.out.println("음식명: " + name);
+		System.out.println("가격: " +price);
+		System.out.println("--------------------------");
+		
+	}
+	
+	
+}
+
+
+public class L01 {
+	
+	public static void showMenu() {
+		System.out.println("메뉴명: ");
+		System.out.println("가격:");
+	}
+
+	public static void main(String[] args) {
+		
+		//방법1: 배열없이 사용
+		Menu m1 = new Menu("마르게리타 피자",12000);
+		Menu m2 = new Menu("까르보나라 스파게티",15000);
+		Menu m3 = new Menu("마르게리타 피자",12000);
+		
+		
+		//Menu [] me = new Menu [3];
+		
+		
+		
+		System.out.println();
+	}
+
+}

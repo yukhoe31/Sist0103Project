@@ -1,6 +1,8 @@
 package day0111;
 
 import java.util.Scanner;
+//현재 작동하는걸로는 "명시적 생성자"이용한다.
+//"디폴트생성자" 부분은 주석처리됨.
 
 /*
 class Emp
@@ -36,6 +38,16 @@ class Emp{
 	private int gPay;//기본급
 	private int fSu;//자녀수
 	private int tSu;//초과근무시간
+	
+	//명시적 생성자
+	public Emp(String name, int pay, int fs, int ts) {
+		
+		this.sName = name;
+		this.gPay = pay;
+		this.fSu = fs;
+		this.tSu = ts;
+		
+	}
 	
 	//getter setter
 	public String getsName() {
@@ -142,7 +154,7 @@ public class L15_SawonInstanceScanner {
 		//(위에서 입력한 '직원수(inwon)만큼 for문으로 뺑뺑이 돌림)
 		for(int i=0;i<inwon ;i++) {
 			
-			emp[i] = new Emp();
+			//emp[i] = new Emp();
 			System.out.print("이름: ");
 			String name = sc.nextLine();
 			System.out.print("기본급: ");
@@ -152,15 +164,19 @@ public class L15_SawonInstanceScanner {
 			System.out.print("초과시간: ");
 			int ts = Integer.parseInt(sc.nextLine());
 			
+			emp[i] = new Emp(name, pay, fs, ts);
+			
+			
 			//setter로 emp클래스에 데이터 넣기
-			emp[i].setsName(name);
-			emp[i].setgPay(pay);
-			emp[i].setfSu(fs);
-			emp[i].settSu(ts);
+			//emp[i].setsName(name);
+			//emp[i].setgPay(pay);
+			//emp[i].setfSu(fs);
+			//emp[i].settSu(ts);
 					
 			System.out.println();
 			
 		}	
+		
 		//출력
 		writeEmp(emp);
 		

@@ -1,0 +1,6 @@
+package day0112;
+
+public class L03_SubObj {
+
+	String name;
+}
