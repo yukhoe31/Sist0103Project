@@ -7,9 +7,13 @@
     <fullyQualifiedTypeName name="javax.net.ssl.StandardConstants"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="day0111.Shop"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="day0112.Ipgo"/>
     <fullyQualifiedTypeName name="day0112.L03_SuperObj"/>
     <fullyQualifiedTypeName name="day0112.Emart"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="day0112.Red"/>
+    <fullyQualifiedTypeName name="java.lang.Process"/>
+    <fullyQualifiedTypeName name="day0112.Orange"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="day0112.L15_QuizMain"/>
 </qualifiedTypeNameHistroy>
