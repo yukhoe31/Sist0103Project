@@ -1,0 +1,25 @@
+package day0112;
+
+//부모클래스
+class Car{
+	
+	
+}
+
+//////////////////////////
+//자식클래스
+class MyCar{
+	
+	
+}
+
+
+//////////////////////////
+public class L08_Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,41 @@
+package day0112;
+
+//부모
+class Work{
+	public void process() {
+		System.out.println("아무것도 안하고 있음!!!");
+	}
+	
+}
+//////////////////////////자식들
+class Food1 extends Work{
+	
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		//super.process();
+		System.out.println("***음식담당***");
+		
+	}
+}
+///////////////////////////
+class Clean extends Work{
+	
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		//super.process();
+		System.out.println("***청소담당***");
+		
+	}
+}
+
+/////////////////////////////
+public class L10_Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,103 @@
+package day0112;
+
+//부모클래스
+class Car{
+	
+	private String carCompany; //제조회사
+	private String car;//종류
+	
+	//setter getter
+	public String getCarCompany() {
+		return carCompany;
+	}
+
+
+	public void setCarCompany(String carCompany) {
+		this.carCompany = carCompany;
+	}
+
+
+	public String getCar() {
+		return car;
+	}
+
+
+	public void setCar(String car) {
+		this.car = car;
+	}
+
+	
+	
+	//디폴트 생성자
+	public Car() {
+		this("현대", "전기차 트럭");
+	}
+	
+	
+	//명시적 생성자
+	public Car(String company, String jong) {
+		// TODO Auto-generated constructor stub
+		this.carCompany = company;
+		this.car = jong;	
+		
+}
+}
+
+
+//////////////////////////
+//자식클래스
+class MyCar extends Car{
+	
+	private String carName;
+	private String carColor;
+	private int carPrice;
+	
+
+	
+	//setter getter
+	public String getCarName() {
+		return carName;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+	public String getCarColor() {
+		return carColor;
+	}
+	public void setCarColor(String carColor) {
+		this.carColor = carColor;
+	}
+	public int getCarPrice() {
+		return carPrice;
+	}
+	public void setCarPrice(int carPrice) {
+		this.carPrice = carPrice;
+	}
+	
+	
+	//디폴트 생성자
+	public MyCar() {
+		carName = "아이오닉5";
+		carColor = "블랙";
+		carPrice = 35000000;
+	}
+
+
+	//명시적 생성자
+	public MyCar(String company, String jong, String name,String color, int price) {
+		super(company,jong);
+		this.carName = jong;
+		this.carColor = color;
+		this.carPrice = price;
+	}
+	
+	
+}
+
+
+//////////////////////////
+public class L08_Inherit{
+	public static void main(String[] args) {
+		
+	}
+}

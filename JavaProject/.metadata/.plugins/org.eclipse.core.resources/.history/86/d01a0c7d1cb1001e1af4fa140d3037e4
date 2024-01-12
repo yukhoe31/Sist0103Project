@@ -1,0 +1,16 @@
+package day0112;
+
+//interface는 상수와 추상메서드만 가질 수 있다.
+interface FoodShop{
+	
+}
+
+
+public class L13_Implement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
