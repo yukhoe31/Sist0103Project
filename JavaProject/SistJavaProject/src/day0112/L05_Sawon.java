@@ -1,5 +1,6 @@
 package day0112;
 
+//부모클래스
 public class L05_Sawon {
 	
 	protected String name;
