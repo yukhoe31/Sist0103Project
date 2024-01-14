@@ -1,16 +1,16 @@
 package day0112;
-
+//자식클래스
 			//자식 				//부모
 public class L04_Manager extends L04_Employee{
 	
-	String depart;
+	String depart;//자식만 가진
 	
 	public L04_Manager(String name, int sal, String d) {
 		super(name, sal);//부모생성자 호출
 		depart=d;//초기화
 	}
  
-	//재정의된 메서드_하위클래스에서 부모클래스의 메서드를 수정해서 사용하는것
+	//재정의된 메서드_하위클래스에서 부모클래스의 메서드를 "수정"해서 사용하는것
 	//Overrriding은 
 	//1.상속이 전제조건
 	//2.메서드명이 동일해야
@@ -19,7 +19,7 @@ public class L04_Manager extends L04_Employee{
 	//그런데, 자식클래스에서 depart에 관한 내용까지 추가한것.
 	@Override 
 	public String getEmployee() {
-		return super.getEmployee()+","+depart;
+		return super.getEmployee()+" | "+depart;
 	}
 	
 }
