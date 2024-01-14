@@ -86,12 +86,22 @@ class Quiz{
 	
 	public double getAverage() {
 		int total = getTotal();
-		double avg = total/3.0;
+		double avg = Math.round(total/3.0);
 		return avg;
 	}
 	
-	public void getPyungga() {
+	public String getPyungga() {
+		double avg = getAverage();
+		String result = "불합격";
 		
+		if(avg>=90) {
+			result =  "장학생";
+		}else if(avg>=80){
+			result = "합격";
+		}else {
+			result = "불합격";
+		}
+		return result;
 	}
 	
 	//제목출력 메서드
@@ -155,7 +165,10 @@ public class L15_QuizMain {
 		q.showTitle();
 		//나머지 내용 출력
 		for(int i=0;i<inwon;i++) {
-			
+			System.out.println(q1[i].getName()+"\t"+q1[i].getJava()
+					+"\t"+q1[i].getOracle()+"\t"+q1[i].getHtml()
+					+"\t"+q1[i].getTotal()+"\t"+q1[i].getAverage()
+					+"\t"+q1[i].getPyungga());
 		}
 
 	}
