@@ -86,8 +86,7 @@ class Quiz{
 	
 	public double getAverage() {
 		int total = getTotal();
-		double avg = Math.round((total/3.0)*10)/10;
-		//*10하고 /10하는 이유: 소수점 1자리수까지 얻기 위함.
+		double avg = Math.round(total/3.0);
 		return avg;
 	}
 	
