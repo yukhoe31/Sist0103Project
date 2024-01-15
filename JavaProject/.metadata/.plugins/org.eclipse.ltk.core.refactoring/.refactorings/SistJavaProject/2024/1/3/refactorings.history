@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;day0115.L09__Board&apos; to &apos;L09_Board&apos;&#x0D;&#x0A;- Original project: &apos;SistJavaProject&apos;&#x0D;&#x0A;- Original element: &apos;day0115.L09__Board&apos;&#x0D;&#x0A;- Renamed element: &apos;day0115.L09_Board&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;L09__Board&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;day0115{L09__Board.java[L09__Board" matchStrategy="1" name="L09_Board" qualified="false" references="true" similarDeclarations="false" stamp="1705289020299" textual="false" version="1.0"/>
+</session>

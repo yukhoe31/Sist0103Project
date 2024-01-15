@@ -54,10 +54,6 @@ public class L01_InheritReview {
 		InterBB bb = new InterImple();
 		bb.draw();
 		bb.play();
-		
-		
-		
 
 	}
-
 }

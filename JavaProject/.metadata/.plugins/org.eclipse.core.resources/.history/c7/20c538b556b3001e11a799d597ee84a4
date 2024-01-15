@@ -1,0 +1,30 @@
+package day0115;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.Vector;
+
+public class L09_VectorBoard {
+	
+	List<L09_Board> list = new Vector<L09_Board>();
+	//제네릭 유형을 클래스로 지정했으므로 데이터를 꺼내고 받을때도 클래스
+	
+	//입력메서드
+	public void inputData() {
+		Scanner sc = new Scanner(System.in);
+		String writer, subject, content;
+		
+		System.out.println("작성자명?");
+		writer = sc.nextLine();
+		System.out.println("제목?");
+	}
+	
+	//출력메서드
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

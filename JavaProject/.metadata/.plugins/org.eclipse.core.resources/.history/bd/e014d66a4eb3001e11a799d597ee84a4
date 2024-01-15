@@ -1,0 +1,12 @@
+package day0115;
+
+public class L07_ListEx {
+
+	public static void main(String[] args) {
+		// 1.순차적으로 데이터 들어간다.
+		// 2.중복데이터도 허용한다.
+		//3. 처음생성시 일정한 갯수로 생성되는데 
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package day0115;
+
+public class L06_SetRandom {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Set,random을 이용해서 1~45의 서로다른난수 6개
+
+	}
+
+}

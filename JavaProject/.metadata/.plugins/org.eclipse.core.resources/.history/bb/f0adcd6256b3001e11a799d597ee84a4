@@ -1,0 +1,16 @@
+package day0115;
+
+public class L09_VectorBoard {
+	
+	List<L09_Board> list = new Vector<L09_Board>();
+	//입력메서드
+	
+	//출력메서드
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

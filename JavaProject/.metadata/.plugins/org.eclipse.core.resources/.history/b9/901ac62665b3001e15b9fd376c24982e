@@ -1,0 +1,70 @@
+package day0115;
+
+/*
+멤버클래스 Shop
+
+sangName: 상품명(문자열)
+su,dan: 수량, 가격(정수형 숫자)
+
+///////////////////////
+
+1.ipgo 메서드입력
+
+
+2.jego 메서드출력
+
+
+//////////////////////
+1.상품입고   2.상품재고   9.종료
+
+상품명?
+  갤럭시 폴드
+가격
+ 9800000
+수량
+ 2
+
+1개의 상품을 입고했어요!
+상품명?
+ 갤럭시 s7
+가격
+ 800000
+수량
+ 4
+
+2개의 상품을 입고했어요!!
+
+2번을 쓰면 출력이 됩니다
+
+No.		상품명		가격		수량		총액
+1
+2
+ */
+
+
+class Shop{
+	private String sangName;
+	private int su;
+	private int dan;
+
+
+	public void ShopArrayList(){
+
+
+	}
+}	
+
+
+/////////////////
+
+
+
+/////////////////
+public class L10_ShopArrayList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
