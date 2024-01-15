@@ -1,0 +1,14 @@
+package day0115;
+
+
+public class L10_Book678_Queue {
+
+	public static void main(String[] args) {
+		
+		//Queue 컬렉션 생성
+		Queue<Message> messageQueue = new LinkedList<>();
+		
+
+	}
+
+}

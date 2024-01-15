@@ -1,0 +1,8 @@
+package day0115;
+
+public class L13_NullPointException {
+
+	public static void main(String[] args) {
+		
+	}
+}
