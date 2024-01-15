@@ -1,0 +1,12 @@
+package day0115;
+
+//throws - 호출한 영역으로 예외처리를 던짐
+//throw - 강제로 예외를 발생시킬때
+public class L15_Throws {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

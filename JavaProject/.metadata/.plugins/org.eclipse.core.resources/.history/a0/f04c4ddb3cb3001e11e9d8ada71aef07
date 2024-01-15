@@ -1,0 +1,19 @@
+package day0115;
+
+class ClassA{
+	
+}
+
+
+
+
+
+////////////////////////
+public class L01_InheritReview {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,24 @@
+package day0115;
+
+import java.util.Date;
+
+public class L13_NullPointException {
+
+	Date date;//선언o,생성x
+	
+	public void write() {
+		int y,m,d;
+		
+		y = date.getYear() - 1900;
+		m = date.getMonth() + 1;
+		d = date.getDate();
+		
+		System.out.println(y+"년"+m+"월"+d+"일 입니다.");
+	
+	
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,27 @@
+package day0115;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Message{
+	public String command;
+	public String to;
+	
+	public Message(String command, String to) {
+		// TODO Auto-generated constructor stub
+		this.command = command;
+		this.to = to;
+	}
+}
+
+public class L10_Book678_Queue {
+
+	public static void main(String[] args) {
+		
+		//Queue 컬렉션 생성
+		Queue<Message> messageQueue = new LinkedList<>();
+		
+
+	}
+
+}

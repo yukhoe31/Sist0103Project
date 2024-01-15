@@ -1,0 +1,17 @@
+package day0115;
+
+abstract class Game{
+	abstract public void play();
+	abstract public void stop();
+	
+}
+
+
+public class L02_AbstractReview {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

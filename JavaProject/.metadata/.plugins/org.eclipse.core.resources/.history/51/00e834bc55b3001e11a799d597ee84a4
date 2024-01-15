@@ -1,0 +1,10 @@
+package day0115;
+
+public class L09_Board {
+
+	private String writer;
+	private String subject;
+	private String content;
+}
+
+

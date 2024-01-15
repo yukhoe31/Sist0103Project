@@ -1,0 +1,59 @@
+package day0115;
+
+import java.util.Scanner;
+
+interface Command{
+	public void write();
+}
+/////////////////
+class Insert{
+	
+}
+/////////////////
+class List implements Command{
+
+	@Override
+	public void write() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 게시물을 출력합니다.");
+	}
+	
+}
+////////////////
+class Modify implements Command{
+
+	@Override
+	public void write() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 게시물을 수정합니다.");
+	}
+	
+}
+////////////////
+class Delete implements Command{
+
+	@Override
+	public void write() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 게시물을 삭제합니다.");
+	}
+	
+}
+/////////////////
+public class L03_InheritBoard {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		Command comm = null;
+		
+		int n;
+		
+		while(true) {
+			System.out.println("1.추가   2.출력   3.수정   4.삭제   5.(그 이외숫자)종료");
+			System.out.println("===========>");
+		}
+
+	}
+
+}

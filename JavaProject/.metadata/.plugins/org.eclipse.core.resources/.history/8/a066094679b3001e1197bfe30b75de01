@@ -1,0 +1,23 @@
+package day0115;
+
+import java.util.Scanner;
+
+//throws - 호출한 영역으로 예외처리를 던짐
+//throw - 강제로 예외를 발생시킬때
+public class L15_Throws {
+	
+	public static void scoreInput() {
+		Scanner sc = new Scanner(System.in);
+		int score;
+		
+		//점수가 1~100사이가 아니면 익셉션을 강제발생
+		System.out.println("점수를 입력하세요");
+		score = sc.nextInt();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
