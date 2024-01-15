@@ -39,7 +39,7 @@ class Shop{
 	
 	
 }
-///////////////////////
+/////////////////////////
 public class L10_ShopArrayList {
 
 	List<Shop> list=new ArrayList<Shop>();
