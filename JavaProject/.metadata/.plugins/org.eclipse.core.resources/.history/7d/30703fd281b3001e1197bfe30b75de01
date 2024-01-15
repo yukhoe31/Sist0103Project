@@ -20,8 +20,6 @@ public class L04_HashSet {
 		//컬렉션 생성
 		//Set인터페이스 내에 HashSet클래스가 존재.
 		//인터페이스<데이터타입> *특정이름* = new 인터페이스내의클래스<데이터타입>();
-		//new가 있으면 99프로 "클래스 객체 생성"
-		//앞(Set=인터페이스): 컬렉션 생성  뒤(new 포함): HashSet 클래스 객체 생성
 		Set<String> set1 = new HashSet<String>();
 		//set1안에 String만을 담겠다_
 		//Set은 인터페이스 이므로 생성이 안됨.
@@ -45,8 +43,7 @@ public class L04_HashSet {
 		
 		//-------
 		System.out.println("[출력_#2]");
-		//Iterator 사용하기
-		Iterator<String> iter= set1.iterator();
+		Iterator<String> iter = set1.iterator();
 		
 		while(iter.hasNext()) {//데이터가 더이상 없으면 false반환
 			String s = iter.next();
