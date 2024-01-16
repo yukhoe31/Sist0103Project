@@ -1,0 +1,14 @@
+package day0116;
+
+public class L14_FileTokenException {
+	
+	fileRead(){
+		String fName = "C:\\sist0103\\file\\info.txt";
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

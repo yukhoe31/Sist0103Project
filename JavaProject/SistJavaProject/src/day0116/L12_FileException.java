@@ -7,54 +7,50 @@ import java.io.IOException;
 
 public class L12_FileException {
 
-	//점수의 총개수, 합계, 평균
-	public static void scoreRead() throws IOException{
-
-		String fileName ="C:\\sist0103\\file\\score.txt";
-		FileReader fr = null;
-		BufferedReader br = null;
-		int cnt = 0;
-		int total = 0;
-		double avg = 0;
-
+	//점수의 총개수,합계,평균
+	public static void scoreRead() throws FileNotFoundException,IOException
+	{
+		String fileName="C:\\sist0103\\file\\score.txt";
+		FileReader fr=null;
+		BufferedReader br=null;
+		int cnt=0; //개수
+		int total=0;
+		double avg=0;
+		
 		//파일읽기
-		fr = new FileReader(fileName);
-		System.out.println("파일 정상적으로 읽음!!!");
-
-		br = new BufferedReader(fr);
-
-		while(true) {
-
-			String s = br.readLine();
-
-			if(s==null) {
+		fr=new FileReader(fileName);
+		System.out.println("파일 정상적으로 읽음!!");
+		
+		br=new BufferedReader(fr);
+		
+		while(true)
+		{
+			String s=br.readLine();
+			
+			if(s==null)
 				break;
-			}
+			
 			//문자열점수를 int로 변환해서 합계랑 갯수 구하기
 			cnt++;
-			total += Integer.parseInt(s);//합계
+			total+=Integer.parseInt(s); //합계
 		}
 		
 		//평균구하기
-		avg = (double)total/cnt;
+		avg=(double)total/cnt;
 		
-		System.out.println("총갯수: "+ cnt);
+		System.out.println("총갯수: "+cnt);
 		System.out.println("총점: "+total);
-		System.out.printf("평균: %.2f",avg);
-
+		System.out.printf("평균: %.2f\n",avg);
+		
 		//자원들닫기
-		try {
-			br.close();
-			fr.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		br.close();
+		fr.close();
 		
 	}
-
+	
 	public static void main(String[] args) {
-		
+		// TODO Auto-generated method stub
+
 		try {
 			scoreRead();
 		} catch (FileNotFoundException e) {
@@ -64,6 +60,8 @@ public class L12_FileException {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		System.out.println("**정상종료**");
 	}
+
 }
