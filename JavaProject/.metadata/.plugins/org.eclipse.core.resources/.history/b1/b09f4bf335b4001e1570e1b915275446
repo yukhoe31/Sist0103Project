@@ -1,0 +1,8 @@
+package day0116;
+
+public class L12_FileException {
+
+	public static void main(String[] args) {
+		
+	}
+}

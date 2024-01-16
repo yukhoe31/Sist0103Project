@@ -1,0 +1,24 @@
+package day0116;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class L12_FileException {
+	
+	//점수의 총개수, 합계, 평균
+	public static void scoreRead() throws FileNotFoundException{
+		
+		String fileName ="C:\\sist0103\\file\\score.txt";
+		FileReader fr = null;
+		BufferedReader br = null;
+		int cnt = 0;
+		int total = 0;
+		double avg = 0;
+		
+	}
+
+	public static void main(String[] args) {
+		
+	}
+}
