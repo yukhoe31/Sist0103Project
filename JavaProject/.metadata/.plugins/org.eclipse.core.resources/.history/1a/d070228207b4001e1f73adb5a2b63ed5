@@ -1,0 +1,13 @@
+package day0116;
+
+/*
+ *  throws는 메서드에서 발생할 수 있는 예외를 선언하는 것이고,
+ *  throw는 실제로 예외를 발생시키는 것입니다.
+ */
+public class L03_ThrowException {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

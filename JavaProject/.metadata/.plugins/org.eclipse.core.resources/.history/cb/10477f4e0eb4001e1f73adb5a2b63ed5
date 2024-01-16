@@ -1,0 +1,22 @@
+package day0116;
+
+class Outer{
+	
+	class Inner1{
+		
+	}
+	
+	class Inner2{
+		
+	}
+	
+}
+
+public class L05_InnerObj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

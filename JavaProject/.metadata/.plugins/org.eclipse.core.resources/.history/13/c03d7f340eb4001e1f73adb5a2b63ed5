@@ -1,0 +1,10 @@
+package day0116;
+
+public class L05_InnerObj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

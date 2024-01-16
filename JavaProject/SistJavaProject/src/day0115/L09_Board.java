@@ -19,6 +19,7 @@ public class L09_Board {
 		this.content = content;
 	}
 	
+	//getter setter
 	public String getWriter() {
 		return writer;
 	}

@@ -28,7 +28,6 @@ class Coin{
 		this.value = value;
 	}
 	
-	
 }
 
 
@@ -49,7 +48,7 @@ public class L10_Book679_Stack {
 		//동전을 하나씩 꺼내기
 		while(!coinBox.isEmpty()) {
 			Coin coin = coinBox.pop();
-			System.out.println("꺼내온동전: "+coin.getValue() + "원");
+			System.out.println("꺼내온 동전: "+coin.getValue() + "원");
 		}
 	}
 

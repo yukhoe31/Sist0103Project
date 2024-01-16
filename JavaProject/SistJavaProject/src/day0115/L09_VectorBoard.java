@@ -6,9 +6,11 @@ import java.util.Vector;
 
 public class L09_VectorBoard {
 
+	//List컬렉션...변수list  = Vector클래스<L09_Board클래스>생성
 	List<L09_Board> list = new Vector<L09_Board>();
 	//제네릭 유형을 클래스로 지정했으므로 데이터를 꺼내고 받을때도 클래스
-
+	//*제네릭 유형이란? < >안에 들어갈 데이터타입.위의 경우는 class
+	
 	//입력메서드
 	public void inputData() {
 		Scanner sc = new Scanner(System.in);

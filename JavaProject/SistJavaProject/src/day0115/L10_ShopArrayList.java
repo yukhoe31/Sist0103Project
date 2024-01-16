@@ -42,6 +42,8 @@ class Shop{
 ///////////////////////
 public class L10_ShopArrayList {
 
+	//List컬렉션 생성 <Shop클래스>를 가지고 list변수 선언
+	//ArrayList클래스로 만들기.
 	List<Shop> list=new ArrayList<Shop>();
 	
 	public void ipgo() {
@@ -57,12 +59,12 @@ public class L10_ShopArrayList {
 		System.out.println("수량은?");
 		su=Integer.parseInt(sc.nextLine());
 		
-		Shop shop=new Shop();
+		Shop shop=new Shop();//Shop 변수 생성
 		shop.setSangName(sang);
 		shop.setDan(dan);
 		shop.setSu(su);
 		
-		list.add(shop);
+		list.add(shop);//shop을 list에 추가
 		
 		System.out.println("현재입고된 상품개수: "+list.size()+"개 입니다");
 		
@@ -87,6 +89,8 @@ public class L10_ShopArrayList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+		
 		L10_ShopArrayList sa=new L10_ShopArrayList();
 		
 		Scanner sc=new Scanner(System.in);

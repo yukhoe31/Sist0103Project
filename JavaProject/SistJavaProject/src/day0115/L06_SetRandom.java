@@ -11,10 +11,11 @@ public class L06_SetRandom {
 		
 		// Set,random을 이용해서 1~45의 서로다른난수 6개	
 		Random r = new Random();
+		//Set컬렉션 ==>  HashSet 클래스생성
 		Set<Integer> set = new HashSet<Integer>();
 		
 		while(true) {
-			int n = r.nextInt(45) + 1;
+			int n = r.nextInt(45) + 1;//1~45
 			set.add(n);
 			
 			if(set.size()==6) {
@@ -31,6 +32,7 @@ public class L06_SetRandom {
 		
 		System.out.println("[출력_#2]");
 		Iterator<Integer> iter = set.iterator();
+		
 		while(iter.hasNext()) {//다음 내용이 있는 경우만 while문 반복
 			System.out.printf("%5d", iter.next());
 		}

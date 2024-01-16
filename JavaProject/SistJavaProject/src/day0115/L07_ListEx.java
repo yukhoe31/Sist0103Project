@@ -47,6 +47,16 @@ public class L07_ListEx {
 		System.out.println();
 		
 		System.out.println("[출력_#3]");
+		
+		/*
+		 * iterator(): Set 인터페이스를 구현한 구체적인 Set 클래스의 인스턴스에서 
+		 * iterator 메서드를 호출하여, 해당 Set에 대한 Iterator를 얻습니다. 
+		 * Iterator를 통해 컬렉션의 요소에 접근할 수 있게 됩니다.
+		 * 
+		 * Iterator<Integer> iter: 얻어진 Iterator를 저장하기 위한 변수 iter를 
+		 * 선언하고 있습니다. 이후에는 iter를 사용하여 Set의 요소를 순회하고 접근할 수 있습니다.
+		 */
+
 		Iterator<String> iter = list.iterator();
 		while(iter.hasNext()) {
 			System.out.print(iter.next()+" ");
