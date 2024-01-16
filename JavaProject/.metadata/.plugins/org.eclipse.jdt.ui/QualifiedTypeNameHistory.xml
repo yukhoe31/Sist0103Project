@@ -10,7 +10,6 @@
     <fullyQualifiedTypeName name="day0112.Emart"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="day0112.Red"/>
-    <fullyQualifiedTypeName name="java.lang.Process"/>
     <fullyQualifiedTypeName name="day0112.Orange"/>
     <fullyQualifiedTypeName name="day0112.L15_QuizMain"/>
     <fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.Iterator"/>
@@ -18,15 +17,24 @@
     <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.Stack"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="java.util.Queue"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.lang.Process"/>
+    <fullyQualifiedTypeName name="day0116.OuterObj"/>
+    <fullyQualifiedTypeName name="day0116.OuterObj.InnerObj"/>
+    <fullyQualifiedTypeName name="day0116.Outer.Inner1"/>
+    <fullyQualifiedTypeName name="day0116.Outer.Inner2"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="day0116.OuterObject.InnerObject"/>
+    <fullyQualifiedTypeName name="day0116.OuterObject"/>
+    <fullyQualifiedTypeName name="day0116.AbEx"/>
+    <fullyQualifiedTypeName name="javax.swing.event.ListDataListener"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

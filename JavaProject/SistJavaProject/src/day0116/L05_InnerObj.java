@@ -31,8 +31,7 @@ class Outer{
 		
 		Inner2 in2 = new Inner2();
 		in2.disp2();
-		
-		
+	
 	}
 	
 }

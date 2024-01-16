@@ -33,8 +33,7 @@ public class L04_InnerClass {
 		//OuterObj.InnerObj obj = new OuterObj().new InnerObj();
 		OuterObj.InnerObj obj = outObj.new InnerObj();
 		obj.write();
-		
-		
+			
 	}
 
 }

@@ -79,9 +79,9 @@ public class L10_ShopArrayList {
 		System.out.println("================================================");
 		for(int i=0;i<list.size();i++)
 		{
-			Shop sh=list.get(i);
+			Shop sh=list.get(i);//★중요!!!
 			System.out.println(i+1+"\t"+sh.getSangName()+"\t"+sh.getDan()+"\t"+sh.getSu()+"\t"+sh.getTot());
-			System.out.println("--------------------------------------------------------------");
+			System.out.println("-----------------------------------------------");
 		}
 	}
 	
@@ -89,8 +89,7 @@ public class L10_ShopArrayList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		
-		
+		//main내에 있는 메소드를 쓰는게 아니므로 아래내용 생성 필요.
 		L10_ShopArrayList sa=new L10_ShopArrayList();
 		
 		Scanner sc=new Scanner(System.in);

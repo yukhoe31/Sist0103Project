@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 //key와 value로 이루어지는 데이터의 집합
 //key로 구분
-//순서유지되지 않는다
+//순서유지되지 않는다.
 //중복허용하지 않고, 값은 중복을 허용한다.
 
 public class L11_MapEx {
@@ -14,6 +14,8 @@ public class L11_MapEx {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		// <Key값, Value값>
+		//Map컬렉션 변수 map 선언 => HashMap 클래스 선언 <String 타입의 Key, Value로>
 		Map<String, String> map = new HashMap<String, String>();
 		
 		map.put("name", "강호동");
