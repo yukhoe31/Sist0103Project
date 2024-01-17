@@ -1,0 +1,11 @@
+package day0117;
+
+public class L07_MyShop {
+
+	private String sangpum;
+	private int su;
+	private int price;
+	
+	
+
+}

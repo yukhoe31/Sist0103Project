@@ -1,0 +1,15 @@
+package day0117;
+
+import java.util.Scanner;
+
+public class L06_FileReadWrite {
+	
+	Scanner sc = new Scanner(System.in);
+	static final String FILENAME = "C:\\sist0103\\file\\shop.txt";
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

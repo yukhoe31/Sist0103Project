@@ -1,0 +1,10 @@
+package day0116;
+
+public class L15_QuizFileException_ans {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

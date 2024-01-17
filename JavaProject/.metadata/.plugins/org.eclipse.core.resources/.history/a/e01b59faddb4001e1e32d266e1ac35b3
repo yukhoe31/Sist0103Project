@@ -1,0 +1,21 @@
+package day0117;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class L05_FileReadWriter {
+
+	static final String FILENAME = "C:\\sist0103\\file\\sungjuk.txt";	
+	FileReader fr = null;
+	BufferedReader br = null;
+	FileWriter fw = null;
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

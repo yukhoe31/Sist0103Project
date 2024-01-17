@@ -1,0 +1,18 @@
+package day0117;
+
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class L04_FWriter {
+	
+	Scanner sc;
+	FileWriter fw;
+	static final String FILENAME = "C:\\sist0103\\file";
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
