@@ -10,7 +10,6 @@ public class L07_MyShop {
 	//디폴트 생성자
 	public L07_MyShop() {
 
-		
 	}
 	
 	//명시적 생성자
@@ -45,7 +44,5 @@ public class L07_MyShop {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	
-	
 
 }

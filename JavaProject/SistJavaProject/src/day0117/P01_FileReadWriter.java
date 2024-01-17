@@ -84,7 +84,6 @@ public class P01_FileReadWriter {
 				int dan = Integer.parseInt(data[2].trim());
 				
 				
-				
 			}
 			
 		} catch (IOException e) {
