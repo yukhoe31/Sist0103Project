@@ -45,25 +45,15 @@ public class L07_MyShopList {
 				int total = su*price;
 				
 				//MyShop클래스에 저장 #1
-				/*
 				L07_MyShop s = new L07_MyShop(); //디폴트 생성
 				
 				s.setSangpum(sang);
 				s.setSu(su);
 				s.setPrice(price);
-				s.setTotal(total);
-				*/
 				
-				//MyShop클래스에 저장 #2
-				L07_MyShop s = new L07_MyShop(sang,su,price);
-				//s.setTotal(total);
 				
-				//리스트에 추가
-				list.add(s);
 				
 			}
-			
-			System.out.println("파일에서 총 "+ list.size()+"개의 상품목록 가져왔음!!");
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -71,7 +61,8 @@ public class L07_MyShopList {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {			
+		}finally {
+			
 			try {
 				br.close();
 				fr.close();
@@ -111,33 +102,7 @@ public class L07_MyShopList {
 	}
 	
 	
-	//MyShop입력
-	public void showAdd() {
-		System.out.println("추가할 상품명은?");
-		String sang = sc.nextLine();
-		System.out.println("수량은?");
-		int su = Integer.parseInt(sc.nextLine());
-		System.out.println("가격은?");
-		int price = Integer.parseInt(sc.nextLine());
-		
-		//MyShop클래스가 생성
-		L07_MyShop shop = new L07_MyShop(sang, su, price);
-		
-		//list에 shop추가
-		list.add(shop);
-		System.out.println("***상품정보가 추가됨.***");
-			
-	}
-	
-	
-	//파일전체출력
-	public void shopAllDatas() {
-		
-		
-	}
-	
-	
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

@@ -1,0 +1,19 @@
+package day0117;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class L07_MyShopList {
+	
+	static final String FILENAME = "C:\\sist0103\\file\\myshop.txt";
+	List<L07_MyShop> list = new ArrayList<L07_MyShop>();
+	
+	Scanner sc = new Scanner(System.in);
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

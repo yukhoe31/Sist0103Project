@@ -1,0 +1,49 @@
+package day0117;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class L07_MyShopList {
+	
+	static final String FILENAME = "C:\\sist0103\\file\\myshop.txt";
+	List<L07_MyShop> list = new ArrayList<L07_MyShop>();
+	
+	Scanner sc = new Scanner(System.in);
+	
+	//생성자
+	public L07_MyShopList() {
+		shopFileRead();
+	}
+	
+	//파일 읽기
+	public void shopFileRead() {
+		
+		FileReader fr = null;
+		BufferedReader br = null;
+		
+		try {
+			fr = new FileReader(FILENAME);
+			br = new BufferedReader(fr);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	//파일 쓰기
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -133,7 +133,6 @@ public class L07_MyShopList {
 	//파일전체출력
 	public void shopAllDatas() {
 		
-		
 	}
 	
 	

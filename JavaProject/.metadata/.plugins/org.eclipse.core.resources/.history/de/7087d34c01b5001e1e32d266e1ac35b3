@@ -1,0 +1,14 @@
+package day0117;
+
+public class L07_MyShopList {
+	
+	static final String FILENAME = "C:\\sist0103\\file\\myshop.txt";
+	List<L07_MyShop> list = ArrayList<L07_MyShop>();
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
