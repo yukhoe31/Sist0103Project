@@ -30,6 +30,8 @@ public class L04_SwingEvent extends JFrame implements ActionListener {
 	}
 	
 	public void initDesign() {
+		
+		//Layout의 종류: FlowLayout()
 		//레이아웃 변경
 		this.setLayout(new FlowLayout());
 		

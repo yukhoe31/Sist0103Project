@@ -29,6 +29,7 @@ public class L05_SwingBtnEvent extends JFrame implements ActionListener {
 
 	public void initDesign() {
 
+		//Layout의 종류: FlowLayout
 		this.setLayout(new FlowLayout());
 
 		btn1 = new JButton("◀");
@@ -41,7 +42,7 @@ public class L05_SwingBtnEvent extends JFrame implements ActionListener {
 		btn1.setForeground(Color.red);
 		btn2.setForeground(Color.blue);
 
-		//버튼에 이벤트 발생
+		//이벤트객체와 핸들러를 연결해주기
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 

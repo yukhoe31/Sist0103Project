@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialog">
 		<item key="DIALOG_X_ORIGIN" value="8"/>
-		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_Y_ORIGIN" value="-2"/>
 		<item key="DIALOG_WIDTH" value="932"/>
 		<item key="DIALOG_HEIGHT" value="1018"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
@@ -41,7 +41,6 @@
 		</list>
 	</section>
 	<section name="PreferencesImportWizard">
-		<item key="" value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>
 		<item key="" value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>
 		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
 			<item value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>

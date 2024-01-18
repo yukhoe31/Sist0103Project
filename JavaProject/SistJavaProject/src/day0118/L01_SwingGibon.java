@@ -23,7 +23,6 @@ public class L01_SwingGibon extends JFrame{
 		this.setVisible(true);
 		
 		
-		
 	}	
 	
 
@@ -32,8 +31,6 @@ public class L01_SwingGibon extends JFrame{
 		
 		new L01_SwingGibon("스윙기본★");
 		
-		
-
 	}
 
 }

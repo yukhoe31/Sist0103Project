@@ -18,7 +18,6 @@ public class L02_SwingStart extends JFrame{
 		cp.setBackground(new Color(000,255,204));
 		this.setVisible(true);
 		
-		
 	}
 	
 
@@ -26,7 +25,6 @@ public class L02_SwingStart extends JFrame{
 	
 		new L02_SwingStart("스윙시작");
 		
-
 	}
 
 }
