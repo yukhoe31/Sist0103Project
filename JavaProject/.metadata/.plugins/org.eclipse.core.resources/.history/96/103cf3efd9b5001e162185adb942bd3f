@@ -1,0 +1,16 @@
+package day0118;
+
+import javax.swing.JFrame;
+
+public class L11_Quiz extends JFrame{
+	
+	Container cp;
+	
+	public L11_Quiz() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		
+	}
+}

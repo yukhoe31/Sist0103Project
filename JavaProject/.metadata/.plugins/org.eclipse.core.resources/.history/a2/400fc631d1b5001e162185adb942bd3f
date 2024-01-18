@@ -1,0 +1,14 @@
+package day0118;
+
+import javax.swing.JFrame;
+
+public class L10_SwingTextF extends JFrame {
+	
+	Container cp;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

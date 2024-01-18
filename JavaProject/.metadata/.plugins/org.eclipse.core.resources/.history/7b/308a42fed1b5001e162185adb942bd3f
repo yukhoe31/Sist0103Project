@@ -1,0 +1,43 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class L10_SwingTextF extends JFrame {
+	
+	Container cp;
+	JTextField tfNum1, tfNum2;
+	JButton btnAdd;
+	
+	public L10_SwingTextF() {
+
+		super("텍스트필드 문제 ☆ 10");
+		
+		cp = this.getContentPane();
+		
+		this.setBounds(200,100,500,300);
+		cp.setBackground(new Color(221,200,245));
+		
+		setDesign();
+		
+		this.setVisible(true);
+		
+		
+	}
+	
+	
+	
+	public void setDesign() {
+	
+		
+	}
+
+	public static void main(String[] args) {
+
+		new L10_SwingTextF();
+	}
+
+}

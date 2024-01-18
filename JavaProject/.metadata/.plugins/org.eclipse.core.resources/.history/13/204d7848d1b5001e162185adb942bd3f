@@ -1,0 +1,22 @@
+package day0118;
+
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class L10_SwingTextF extends JFrame {
+	
+	Container cp;
+	
+	public L10_SwingTextF(String title) {
+		// TODO Auto-generated constructor stub
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

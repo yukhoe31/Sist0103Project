@@ -1,0 +1,40 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class L10_SwingTextF extends JFrame {
+	
+	Container cp;
+	
+	public L10_SwingTextF(String title) {
+
+		super(title);
+		
+		cp = this.getContentPane();
+		
+		this.setBounds(200,100,500,300);
+		cp.setBackground(new Color(221,200,245));
+		
+		initDesign();
+		
+		this.setVisible(true);
+		
+		
+	}
+	
+	
+	public void initDesign() {
+	
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new L10_SwingTextF("텍스트필드 공부 ★ 10");
+	}
+
+}
