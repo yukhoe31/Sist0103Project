@@ -1,0 +1,27 @@
+package day0118;
+
+import javax.swing.JFrame;
+
+public class L01_SwingGibon extends JFrame{
+	
+	public L01_SwingGibon(String title) {
+		
+		super(title);
+		
+		//시작위치, 너비, 높이
+		this.setBounds(500, 100, 300, 300);
+		
+		
+	}	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new L01_SwingGibon("스윙기본");
+		
+		
+
+	}
+
+}

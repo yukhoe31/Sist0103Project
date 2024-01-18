@@ -1,0 +1,59 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
+public class L04_SwingEvent extends JFrame {
+
+	Container cp;
+	JButton btn1,btn2,btn3;
+
+	public L04_SwingEvent(String title) {
+
+		super(title);	
+		cp = this.getContentPane();
+
+		//this.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
+		this.setBounds(300,100,300,300);
+		cp.setBackground(new Color(000,255,204));
+		
+		initDesign();		
+		this.setVisible(true);
+	}
+	
+	public void initDesign() {
+		//레이아웃 변경
+		this.setLayout(new FlowLayout());
+		
+		//버튼 3개 생성
+		btn1 = new JButton("버튼 #1");
+		btn2 = new JButton("버튼 #2");
+		btn3 = new JButton("버튼 #3");
+		
+		//버튼 배경색 바꾸기
+		btn1.setBackground(Color.PINK);
+		btn2.setBackground(Color.blue);
+		btn3.setBackground(Color.orange);
+		
+		//프레임에 추가
+		this.add(btn1);
+		this.add(btn2);
+		this.add(btn3);
+		
+	
+	}
+
+	public static void main(String[] args) {
+		
+		new L04_SwingEvent("버튼이벤트");
+		
+
+
+	}
+
+}
