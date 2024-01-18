@@ -1,0 +1,20 @@
+package day0118;
+
+import java.awt.Container;
+
+public class L08_SwingArrEvent {
+	
+
+	Container cp;
+	
+	
+	public L08_SwingArrEvent(String title) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

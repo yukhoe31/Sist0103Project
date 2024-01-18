@@ -1,0 +1,50 @@
+package day0118;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class L08_SwingArrEvent extends JFrame{
+	
+	Container cp;
+	//배열로 해보는 연습
+	JButton [] btn = new JButton[6];
+	//생성과 동시에 6개의 주소값이 할당된다.
+	String [] btnLabel = {"Red","Green","Orange","Blue","Magenta","Yellow"};
+	Color [] btnColors = {Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.GRAY, Color.YELLOW};
+	
+	
+	public L08_SwingArrEvent(String title) {
+		
+		super(title);	
+		cp = this.getContentPane();
+		
+		this.setBounds(300,100,600,300);
+		cp.setBackground(new Color(221,200,245));
+		
+		initDesign();
+		this.setVisible(true);
+		
+	}
+
+	public void initDesign() {
+		
+		//Panel은 기본이 FlowLayout
+		JFrame panel = new JFrame();
+		panel.setBackground(Color.ORANGE);
+	
+		this.add(panel, BorderLayout.NORTH)
+	
+	
+	}
+	
+	
+	public static void main(String[] args) {
+	
+		new L08_SwingArrEvent("배열버튼이벤트 제목란: L08");
+	}
+
+}

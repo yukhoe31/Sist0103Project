@@ -1,0 +1,71 @@
+package day0118;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class L08_SwingArrEvent extends JFrame{
+	
+	Container cp;
+	//배열로 해보는 연습
+	JButton [] btn = new JButton[6];
+	//생성과 동시에 6개의 주소값이 할당된다.
+	
+	//버튼 이름과 색상을 하나하나 적어주지 않아도,
+	//배열의 인덱스를 쓰면 편하다.
+	String [] btnLabel = {"Red","Green","Orange","Blue","Magenta","Yellow"};
+	Color [] btnColors = {Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.GRAY, Color.YELLOW};
+	
+	
+	public L08_SwingArrEvent(String title) {
+		
+		super(title);	
+		cp = this.getContentPane();
+		
+		this.setBounds(300,100,600,300);
+		cp.setBackground(new Color(221,200,245));
+		
+		initDesign();
+		this.setVisible(true);
+		
+	}
+
+	public void initDesign() {
+		
+		//Panel은 기본이 FlowLayout
+		//전체 배경 위에 오렌지색 판넬 생성
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.ORANGE);
+		this.add(panel, BorderLayout.NORTH);//프레임의 상단에 패널배치
+		//판넬의 위치: 북쪽!
+		
+		//버튼 생성
+		for(int i=0; i<btn.length;i++) {
+			
+			
+			//버튼 6개 생성
+			btn[i] = new JButton(btnLabel[i]);
+			
+			//버튼 6개에 각각 버튼색상변경(btnColors)
+			btn[i].setBackground(btnColors[i]);
+			
+			//panel에 버튼 6개를 추가
+		    panel.add(btn[i]);
+			
+		}
+		
+	
+	}
+	
+	
+	public static void main(String[] args) {
+	
+		new L08_SwingArrEvent("배열버튼이벤트 제목란: L08");
+	}
+
+}
