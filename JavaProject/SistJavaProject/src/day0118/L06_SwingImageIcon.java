@@ -85,15 +85,12 @@ public class L06_SwingImageIcon extends JFrame implements ActionListener{
 		}else if(ob == btn4) {
 			JOptionPane.showMessageDialog(this, "안녕을 클릭했습니다.");
 		}
-		
-		
+
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new L06_SwingImageIcon("이미지 버튼 ★ 6");
 	}
-
-	
 
 }

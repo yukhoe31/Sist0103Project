@@ -22,7 +22,6 @@ public class L01_SwingGibon extends JFrame{
 		//프레임에 보이게
 		this.setVisible(true);
 		
-		
 	}	
 	
 

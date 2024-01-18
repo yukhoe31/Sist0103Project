@@ -21,7 +21,7 @@ public class L08_SwingArrEvent extends JFrame implements ActionListener{
 	
 	//버튼 이름과 색상을 하나하나 적어주지 않아도,
 	//배열의 인덱스를 쓰면 편하다.
-	String [] btnLabel = {"Red","Green","Orange","Blue","Magenta","Yellow"};
+	String [] btnLabel = {"Red","Green","Blue","Magenta","Gray","Yellow"};
 	Color [] btnColors = {Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.GRAY, Color.YELLOW};
 	
 	
@@ -29,7 +29,6 @@ public class L08_SwingArrEvent extends JFrame implements ActionListener{
 		
 		super(title);	
 		cp = this.getContentPane();
-		
 		
 		this.setBounds(300,100,600,300);
 		cp.setBackground(new Color(221,200,245));
@@ -64,8 +63,6 @@ public class L08_SwingArrEvent extends JFrame implements ActionListener{
 			//panel에 버튼 6개를 추가
 		    panel.add(btn[i]);
 		    
-		    
-			
 		}
 	
 	}
@@ -75,21 +72,19 @@ public class L08_SwingArrEvent extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		Object ob = e.getSource();
 		
-		//각각의 버튼을 누르면 프레임의 배경색이 변경되도록 바꿔보세요.
 		for(int i=0;i<btn.length;i++) {
 			if(ob == btn[i]) {
+				//각각의 버튼을 누르면 프레임의 배경색이 변경되도록 바꿔보세요.
 				cp.setBackground(btnColors[i]);
+				//창 제목 변경 (Color:Red)
+				this.setTitle("Color: "+btnLabel[i]);
 			}
 		}
-		
 	}
-
-	
 	
 	public static void main(String[] args) {
 	
-		new L08_SwingArrEvent("배열버튼이벤트 제목란: L08");
+		new L08_SwingArrEvent("배열버튼이벤트 ★ 8");
 	}
-
 
 }

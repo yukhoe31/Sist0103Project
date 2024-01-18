@@ -75,6 +75,4 @@ public class L05_SwingBtnEvent extends JFrame implements ActionListener {
 
 	}
 
-
-
 }

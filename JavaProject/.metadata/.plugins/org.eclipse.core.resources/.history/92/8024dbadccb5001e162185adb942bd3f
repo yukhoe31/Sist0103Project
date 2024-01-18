@@ -1,0 +1,77 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.text.SimpleDateFormat;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+public class L09_SwingComponent extends JFrame {
+	Container cp;
+	JTextField text1, text2;
+	JLabel lbl1,lbl2,lbl3,lbl4;
+
+	Icon icon1 = new ImageIcon("C:\\sist0103\\image\\swingimage\\ame9.gif");
+	Icon icon2 = new ImageIcon("C:\\sist0103\\image\\swingimage\\45-pandadog.gif");
+
+
+	public L09_SwingComponent(String title) {
+		// TODO Auto-generated constructor stub
+		super(title);	
+		cp = this.getContentPane();
+
+		this.setBounds(300,100,300,300);
+		cp.setBackground(new Color(221,200,245));
+		initDesign();
+
+		this.setVisible(true);
+	}
+
+	public void initDesign() {
+		this.setLayout(null);
+
+		text1 = new JTextField();
+		text1.setBounds(10,20,80,30);
+		this.add(text1);
+
+		text2 = new JTextField("Have a Nice Day");
+		text2.setBounds(10, 60, 150, 30);
+		this.add(text2);
+
+		lbl1 = new JLabel("안녕하세요", JLabel.CENTER);
+		lbl1.setBounds(10,100,200,30);
+		lbl1.setBackground(Color.orange);
+		lbl1.setOpaque(true);
+		//색을 입혔는데 안보일때 -> 투명도 문제니까 Opaque사용
+		this.add(lbl1);
+
+		lbl2 = new JLabel("해피데이", icon1, JLabel.RIGHT);
+		lbl2.setBounds(10,150,200,30);
+		lbl2.setBorder(new LineBorder(Color.RED));
+		this.add(lbl2);
+		
+		lbl3 = new JLabel("스윙공부", icon2, JLabel.CENTER);
+		lbl3.setBounds(10,180,200,30);
+		lbl3.setBorder(new TitledBorder("쌍용교육"));
+		this.add(lbl3);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초")
+		
+		
+
+	}
+
+
+	public static void main(String[] args) {
+
+		new L09_SwingComponent("스윙 컴포넌트 ★ 9");
+
+	}
+
+}

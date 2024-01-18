@@ -1,0 +1,37 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class L09_SwingComponent extends JFrame {
+	Container cp;
+	JTextField text1, text2;
+	
+	public L09_SwingComponent(String title) {
+		// TODO Auto-generated constructor stub
+		super(title);	
+		cp = this.getContentPane();
+		
+		this.setBounds(300,100,300,300);
+		cp.setBackground(new Color(221,200,245));
+		initDesign();
+		
+		this.setVisible(true);
+	}
+	
+	public void initDesign() {
+	
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		new L09_SwingComponent("스윙 컴포넌트 ★ 9");
+		
+	}
+
+}
+ 
