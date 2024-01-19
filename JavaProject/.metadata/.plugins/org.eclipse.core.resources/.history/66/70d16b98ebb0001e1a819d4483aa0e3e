@@ -1,7 +1,0 @@
-package day0112;
-
-public class L03_SubObj extends L03_SuperObj{
-
-	String addr;
-	
-}
