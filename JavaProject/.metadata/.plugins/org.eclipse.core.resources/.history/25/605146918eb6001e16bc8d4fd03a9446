@@ -1,0 +1,112 @@
+package day0119;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.util.Vector;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+
+public class L05_JTable extends JFrame {
+	
+	Container cp;
+	JTable tb1, tb2, tb3;
+	JTextArea area;
+	
+	public L05_JTable(String title) {
+		
+		super(title);	
+		cp = this.getContentPane();
+		
+		this.setBounds(300,100,300,300);
+		cp.setBackground(new Color(221,200,245));
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	public void initDesign() {
+		
+		//1번째 테이블 : 2행 2열의 Grid레이아웃
+		this.setLayout(new GridLayout(2,2,5,5));
+		
+		//1번째 테이블은 행,열만 지정
+		tb1 = new JTable(5, 4);
+		this.add(new JScrollPane(tb1));
+		
+		//2번째 테이블 : 생성할 때 데이터 넣기
+		String [] title1 = {"이름","나이","주소"};
+		String [][] data1 = {{"기안","22", "경기"},
+							{"덱스","21","서울"},
+							{"빠니","25","대구"}
+							};
+		
+		tb2 = new JTable(data1, title1);
+		this.add(new JScrollPane(tb2));
+		//JScrollPane에 넣어서 추가해야 
+		//제목이랑 스크롤바가 나타남.
+		
+		//3번째 테이블 : DefaultModel을 이용해서 생성(나중에 추가 삭제가 가능하다)
+		DefaultTableModel model1 = new DefaultTableModel(data1, title1);
+		tb3 = new JTable(model1);
+		this.add(new JScrollPane(tb3));
+		
+
+		
+		//4번째 테이블 : 추가가능?
+		String [] addData1 = {"현무", "44", "서울시"};
+		model1.addRow(addData1);
+		
+		//이번엔 벡터 생성후 추가
+		Vector<String> addData2 = new Vector<String>();
+		addData2.add("유재석");
+		addData2.add("33");
+		addData2.add("제주");
+		model1.addRow(addData2);
+		
+		//area
+		area = new JTextArea();
+		this.add(new JScrollPane(area));
+		
+		
+		//JTable과 model메서드
+		int rowCount = tb3.getRowCount();
+		area.append("tb3의 행갯수:" + rowCount + "\n");
+		
+		int rowCount2 = model1.getRowCount();
+		area.append("tb3의 열갯수:" + rowCount2 + "\n");
+		
+		int columnCount = tb3.getColumnCount();
+		area.append("tb3의 열갯수: " + columnCount +"\n");
+
+		area.append("1행 1열의 값: " + tb3.getValueAt(1, 1) +"\n");
+		area.append("3행 2열의 값: " + tb3.getValueAt(3, 2) +"\n");
+		
+		//tb3에 마우스이벤트를 추가해서 area에 출력
+		tb3.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				//클릭한 행번호 얻기
+				int row = tb3.getSelectedRow();
+				//클릭한 열번호 얻기
+				int column = tb3.getSelectedColumn();
+			}
+		};
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new L05_JTable("스윙테이블 ★ 5");
+
+	}
+
+}

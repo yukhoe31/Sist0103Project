@@ -15,7 +15,8 @@ import javax.swing.JLabel;
 
 public class L01_SwingLabelRandom extends JFrame implements ActionListener{
 
-	Container cp;
+	//Container 가 종이 역할 하는 느낌...이게 없으면 위에 색을 입힐 수 없다.
+	//★Container cp;
 	JLabel [] lblLabel = new JLabel[9];
 	String [] str = {"샌드위치", "햄버거", "콜라","스프라이트"
 			,"요거트","스파게티","피자","고르곤졸라","리조또"};
@@ -24,10 +25,13 @@ public class L01_SwingLabelRandom extends JFrame implements ActionListener{
 	public L01_SwingLabelRandom(String title) {
 		
 		super(title);	
-		cp = this.getContentPane();
+		//★cp = this.getContentPane();
+		
 		
 		this.setBounds(300,100,300,300);
-		cp.setBackground(new Color(221,200,245));
+		//★cp.setBackground(new Color(221,200,245));
+		this.getContentPane().setBackground(new Color(221,200,245));
+		//위의 주석처리된 ★ 묶음과 바로 위의 줄은 같은 기능을 한다.
 		
 		initDesign();
 		this.setVisible(true);

@@ -1,0 +1,18 @@
+package day0119;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+
+public class L07_Combo extends JFrame {
+
+	Container cp;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

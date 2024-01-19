@@ -80,6 +80,8 @@ public class L02_SwingRadioCheck extends JFrame implements ActionListener{
 		for(int i=0; i<cb.length; i++) {
 			
 			cb[i] = new JCheckBox(str2[i]);
+			//액션추가
+			cb[i].addActionListener(this);
 			pBottom.add(cb[i]);
 			
 		}

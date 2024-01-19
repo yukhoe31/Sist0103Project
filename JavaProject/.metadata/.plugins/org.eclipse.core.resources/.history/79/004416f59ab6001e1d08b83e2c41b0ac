@@ -1,0 +1,41 @@
+package day0119;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+
+public class L07_Combo extends JFrame {
+	
+	Container cp;
+	
+	JComboBox<String> combo;
+	String [] names = {"박나래","전현무","덱스","기안"};
+	JTextField tfName;
+	JButton btnAdd,btnDel;
+	JLable lblResult;	
+
+	
+	
+	public L07_Combo(String title) {
+		super(title);	
+		cp = this.getContentPane();
+		
+		this.setBounds(300,100,300,300);
+		cp.setBackground(new Color(221,200,245));
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+
+		new L07_Combo("오늘 마지막 문제 ★ 7");
+
+	}
+
+}
