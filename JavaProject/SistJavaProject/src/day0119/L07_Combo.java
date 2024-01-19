@@ -83,7 +83,6 @@ public class L07_Combo extends JFrame implements ActionListener, ItemListener{
 		String item = (String)combo.getSelectedItem();
 	
 		lblResult.setText(idx + "번 인덱스의 " +item+"선택됨!!!");
-
 		
 	}
 
