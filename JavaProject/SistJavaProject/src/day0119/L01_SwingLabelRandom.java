@@ -81,7 +81,6 @@ public class L01_SwingLabelRandom extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
 		for(int i=0;i<lblLabel.length; i++) {
 			
 			//rgb칼라는 0~255사이의 색 R,G,B
