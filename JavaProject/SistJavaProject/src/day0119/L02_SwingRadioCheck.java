@@ -115,10 +115,7 @@ public class L02_SwingRadioCheck extends JFrame implements ActionListener{
 		lblMessage.setText(msg);
 		lblMessage.setFont(new Font("",Font.BOLD,22));
 		
-		
 	}
-	
-
 	
 	public static void main(String[] args) {
 		
