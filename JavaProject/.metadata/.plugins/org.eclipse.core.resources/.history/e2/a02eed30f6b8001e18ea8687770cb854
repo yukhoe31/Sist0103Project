@@ -47,7 +47,7 @@ public class L08_Quiz extends JFrame implements ItemListener{
 	JCheckBox [] cbCountry = new JCheckBox[4];
 	JRadioButton [] rb = new JRadioButton[3];
 	JLabel lblMessage;
-	
+	JCheckBox lblMessage2;
 	Color [] colors = {Color.RED, Color.GREEN, Color.YELLOW};
 
 
@@ -74,7 +74,7 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		lblMessage.setOpaque(false);
 		this.add(lblMessage);
 		
-		//lblMessage2 = new JLabel("나의 성별은 ");
+		lblMessage2 = new JLabel("나의 성별은 ");
 		
 
 		//1. 남자 체크박스

@@ -47,7 +47,7 @@ public class L08_Quiz extends JFrame implements ItemListener{
 	JCheckBox [] cbCountry = new JCheckBox[4];
 	JRadioButton [] rb = new JRadioButton[3];
 	JLabel lblMessage;
-	
+	JCheckBox lblMessage2;
 	Color [] colors = {Color.RED, Color.GREEN, Color.YELLOW};
 
 

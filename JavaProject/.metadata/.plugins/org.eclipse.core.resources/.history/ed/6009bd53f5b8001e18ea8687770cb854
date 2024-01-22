@@ -47,7 +47,6 @@ public class L08_Quiz extends JFrame implements ItemListener{
 	JCheckBox [] cbCountry = new JCheckBox[4];
 	JRadioButton [] rb = new JRadioButton[3];
 	JLabel lblMessage;
-	
 	Color [] colors = {Color.RED, Color.GREEN, Color.YELLOW};
 
 
@@ -56,7 +55,7 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		super(title);	
 		cp = this.getContentPane();
 
-		this.setBounds(300,100,1000,500);
+		this.setBounds(300,100,500,500);
 		cp.setBackground(new Color(221,200,245));
 
 		initDesign();
@@ -73,9 +72,6 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		lblMessage.setBounds(20,200,300,30);
 		lblMessage.setOpaque(false);
 		this.add(lblMessage);
-		
-		//lblMessage2 = new JLabel("나의 성별은 ");
-		
 
 		//1. 남자 체크박스
 		cbMale = new JCheckBox("남성");
@@ -135,9 +131,9 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		
 		//1. 성별 체크박스
 		if (ob == cbMale) {
-			lblMessage2.setText("남자입니다.");
+			lblMessage.setText("남자입니다.");
 		}else {
-			lblMessage2.setText("여자입니다.");
+			lblMessage.setText("여자입니다.");
 		}
 		
 		
@@ -166,7 +162,7 @@ public class L08_Quiz extends JFrame implements ItemListener{
 				//라디오 버튼 누르면 lblMessage의 색이 달라진다.
 				lblMessage.setForeground(colors[i]);
 				//라디오 버튼 누르면 lblMessage의 Font도 달라진다.
-				lblMessage.setFont(new Font("",Font.BOLD,12));
+				lblMessage.setFont(new Font("",Font.BOLD,22));
 
 				this.setTitle("라디오버튼 색: "+colors[i]);
 			}
