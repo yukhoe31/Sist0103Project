@@ -69,12 +69,12 @@ public class L08_Quiz extends JFrame implements ItemListener{
 
 		//0.기본 메세지
 		//가운데 라벨
-		lblMessage = new JLabel("내가 가본 나라는 없습니다.");
+		lblMessage = new JLabel("내가 가본 나라는 ");
 		lblMessage.setBounds(20,200,300,30);
 		lblMessage.setOpaque(false);
 		this.add(lblMessage);
 		
-		lblMessage2 = new JLabel("내 성별은 여자입니다.");
+		lblMessage2 = new JLabel("내 성별은");
 		lblMessage2.setBounds(300,200,300,30);
 		lblMessage2.setOpaque(false);
 		this.add(lblMessage2);
@@ -140,9 +140,9 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		String msg2 = "";
 		
 		if (ob == cbMale) {
-			lblMessage2.setText("내 성별은 남자입니다.");
+			lblMessage2.setText("남자입니다.");
 		}else {
-			lblMessage2.setText("내 성별은 여자입니다.");
+			lblMessage2.setText("여자입니다.");
 		}
 		
 		
@@ -157,15 +157,11 @@ public class L08_Quiz extends JFrame implements ItemListener{
 			}
 		}
 		
-		msg += "입니다.";
-		
-		
 		if(!msg.equals("내가 가본 나라는 ")) {
 			lblMessage.setText(msg);
 		}else {
 			lblMessage.setText("내가 가본 나라는 없습니다.");
 		}
-		
 
 
 		//3.색상변경 라디오버튼

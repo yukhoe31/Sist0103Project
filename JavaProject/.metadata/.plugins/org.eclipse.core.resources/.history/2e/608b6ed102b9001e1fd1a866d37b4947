@@ -141,8 +141,6 @@ public class L08_Quiz extends JFrame implements ItemListener{
 		
 		if (ob == cbMale) {
 			lblMessage2.setText("내 성별은 남자입니다.");
-		}else {
-			lblMessage2.setText("내 성별은 여자입니다.");
 		}
 		
 		
