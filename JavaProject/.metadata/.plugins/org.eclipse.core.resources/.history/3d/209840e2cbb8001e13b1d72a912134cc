@@ -11,7 +11,6 @@ import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
@@ -44,7 +43,6 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 	JCheckBox cbMale;
 	JCheckBox [] cbCountry = new JCheckBox[4];
 	JRadioButton [] rb = new JRadioButton[3];
-	JLabel lblMessage;
 	
 	
 	Color [] colors = {Color.RED, Color.GREEN, Color.YELLOW};
@@ -66,12 +64,6 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 	
 		this.setLayout(null);
 		
-		//0.기본 메세지
-		//가운데 라벨
-		lblMessage = new JLabel("[]", JLabel.CENTER);
-		this.add("Center", lblMessage);
-		
-		
 		//1. 남자 체크박스
 		cbMale = new JCheckBox("남성");
 		cbMale.setBounds(20,50,80,30);
@@ -87,7 +79,6 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 			cbCountry[i].setBounds(xpos, 100, 80, 30);
 			cbCountry[i].setOpaque(false);
 			this.add(cbCountry[i]);
-			cbCountry[i].addItemListener(this);//액션 추가
 			xpos += 80;
 		}
 		
@@ -122,33 +113,10 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 		
 		Object ob = e.getSource();
 		
-		//2.국가 체크박스
-		//체크박스 호출처리
-		String msg = "";
-		
-		for(int i=0; i<cbCountry.length; i++) {
-			if(cbCountry[i].isSelected() ==true) {
-				msg+= cbCountry[i].getText() +" ";
-			}
-		}
-		lblMessage.setText(msg);
-		lblMessage.add(cp);
-		
-		
-		
 		//3.색상변경 라디오버튼
-		for(int i=0; i<rb.length; i++) {
-			if(ob == rb[i]) {
-	
-				//라디오 버튼 누르면 lblMessage의 색이 달라진다.
-				lblMessage.setForeground(colors[i]);
-				//라디오 버튼 누르면 lblMessage의 Font도 달라진다.
-				lblMessage.setFont(new Font("",Font.BOLD,22));
-				
-				this.setTitle("라디오버튼 색: "+colors[i]);
-			}
+		for(int i=0;i<colors.length;i++) {
+			
 		}
-		
 	}
 
 	@Override

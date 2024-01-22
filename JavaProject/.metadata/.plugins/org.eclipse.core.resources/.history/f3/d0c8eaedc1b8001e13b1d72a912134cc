@@ -32,7 +32,6 @@ public class L02_SwingRadioCheck extends JFrame implements ActionListener{
 	//글씨 쓰기(라벨링)
 	JLabel lblMessage;
 	
-	//생성자
 	public L02_SwingRadioCheck() {
 		
 		super("스윙 라디오 체크박스 ★ 2");	

@@ -32,11 +32,10 @@ public class L03_CheckRadio extends JFrame implements ActionListener, ItemListen
 		this.setBounds(300,100,500,500);
 		cp.setBackground(new Color(221,200,245));
 		
-		initDesign();//디자인 메서드
+		initDesign();
 		this.setVisible(true);
 	}
 	
-	//디자인 메서드
 	public void initDesign() {
 
 		this.setLayout(null);

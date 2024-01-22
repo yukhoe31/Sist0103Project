@@ -68,8 +68,9 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 		
 		//0.기본 메세지
 		//가운데 라벨
-		lblMessage = new JLabel("[]", JLabel.CENTER);
+		lblMessage = new JLabel("", JLabel.CENTER);
 		this.add("Center", lblMessage);
+		
 		
 		
 		//1. 남자 체크박스

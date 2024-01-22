@@ -66,12 +66,6 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 	
 		this.setLayout(null);
 		
-		//0.기본 메세지
-		//가운데 라벨
-		lblMessage = new JLabel("[]", JLabel.CENTER);
-		this.add("Center", lblMessage);
-		
-		
 		//1. 남자 체크박스
 		cbMale = new JCheckBox("남성");
 		cbMale.setBounds(20,50,80,30);
@@ -121,20 +115,6 @@ public class L08_Quiz extends JFrame implements ActionListener,ItemListener{
 		// TODO Auto-generated method stub
 		
 		Object ob = e.getSource();
-		
-		//2.국가 체크박스
-		//체크박스 호출처리
-		String msg = "";
-		
-		for(int i=0; i<cbCountry.length; i++) {
-			if(cbCountry[i].isSelected() ==true) {
-				msg+= cbCountry[i].getText() +" ";
-			}
-		}
-		lblMessage.setText(msg);
-		lblMessage.add(cp);
-		
-		
 		
 		//3.색상변경 라디오버튼
 		for(int i=0; i<rb.length; i++) {
