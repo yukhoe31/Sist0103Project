@@ -18,7 +18,7 @@ insert into test values(3,'정형돈',87,sysdate);
 alter table test add age number(5);
 --주소(addr)를 저장할 컬럼을 추가하는데 초기값을 강남구라고 지정
 alter table test add addr varchar2(30) default '강남구';
---초기값이 강낭구라고 들어갔는지 확인
+--초기값이 구로구라고 들어갔는지 확인
 insert into test (num,addr) values(4,'서울시 구로구');
 
 --addr의 문자타입 늘려주기 / 테이블 컬럼의 타입변경
@@ -121,6 +121,7 @@ alter table person rename column birth to ipsaday;
 --구조확인
 desc person;
 
+--delete from person;
 
 --nextval: 겹치지 않는 다음 값을 발생시킨다.
 --조회연습을 위해서 insert(프로그래머,교사,엔지니어,기타  남자,여자 )최소 10개 이상씩 넣어주러.
@@ -194,8 +195,71 @@ select round(avg(age),2) from person;
 --평균나이보다 많은 사람의 이름과 직업,나이를 구하시오.(서브쿼리)
 select pname,job,age from person where age >= (select avg(age)from person);
 
-
 select * from person;
+
+
+--person의 테이블 복사본 생성하기 person3
+create table person3 as select * from person;
+
+--직업과 나이 수정하기.. 조건을 안쓸시 모든 데이터 수정..조건필수
+update person3 set job='간호사', age = 22;
+
+--위에서 잘못수정한 데이터 원래대로 되돌리기
+Rollback;
+
+--3번의 직업 나이 수정하기
+update person3 set job='간호사', age = 22 where num=3;
+
+--김씨이면서 교수인 사람의 젠더를 여자로 수정하기
+update person3 set gender='여자' where pname like '김%' and job='교수';
+
+--num이 8번인 사람의 직업을 프로게이머 입사일을 24/01/01로 변경하세요.
+update person3 set job='프로게이머', ipsaday='2024-01-01' where num=8;
+
+--최종저장
+commit;
+
+--삭제
+--num 5번 삭제
+delete from person3 where num=5;
+
+
+
+--여자 중에서 나이가 33세 이상만 모두 삭제하시오.
+delete from person3 where gender ='여자' and age>=33;
+
+--핸드폰 뒷자리가 111인 사람의 나이를 39살,입사일을 22/01/01로 수정하시오.
+update person3 set age=39,ipsaday='2022-01-01' where hp like '%1111';
+
+--직업이 간호사이거나 엔지니어인 사람 모두 삭제
+delete from person3 where job='간호사' or job='엔지니어';
+
+select * from person3;
+
+
+--drop table person3;
+
+
+--컬럼을 추가하는데 주소 addr 30바이트 문자열로 추가하라 (기본값은 서울시)
+alter table person3 add addr varchar(30) default '서울시';
+
+--컬럼명 변경 hp==>handphone
+alter table person3 rename column hp to handphone;
+
+--데이터 추가하는데 일부만 넣기(num,pname,gender,job)
+insert into person3 (num,pname,gender,job)values(seq_person.nextval,'김선아','여자','연예인');
+
+--데이터 추가하는데 일부만 넣기(num,pname,addr,ipsaday)
+insert into person3 (num,pname,addr,ipsaday)values(seq_person.nextval,'윤미영','대구시','2021-01-24');
+
+--null일경우 정해진 값으로 출력합니다.(NVL이용, 직업이 null인 경우 무직으로, 나이가 null인경우 20으로 출력)
+select pname 이름, NVL(job,'무직') 직업,NVL(age,20) 나이 from person3;
+
+--핸드폰이 null인경우 ****로 출력
+select pname 이름, NVL(handphone,'****') 핸드폰번호 from person3;
+--
+
+select * from person3;
 
 
 
