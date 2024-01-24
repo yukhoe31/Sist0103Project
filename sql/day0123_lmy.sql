@@ -112,8 +112,8 @@ select * from professor;
 
 --15.dept 테이블에서 40번 부서의 위치가 seattle로 이동하도록 변경하세요
 update dept
-set loc = 'SEATTLE'
-where deptno = 40;
+set loc = 'SEATTLE'--의 위치가 변경
+where deptno = 40;--40번부서
 
 --16.dept2의 컬럼AREA를 LOC로 변경하시오.
 alter table dept2
@@ -128,6 +128,7 @@ where id='bobby';
 select job 직무,round(avg(sal),2) 평균급여,sum(sal) 총급여,max(sal) 최고급여,min(sal) 최저급여
 from emp
 group by job;
+--sum(sal+NVL(comm,0)) 로 총급여를 해도 된다.
 
 --19.emp에서 이름이 S로 시작하는 사람과 같은 부서사람의 
 --부서번호와 이름을 출력하시오.
