@@ -24,7 +24,8 @@ public class L02_QuizJdbcFoodOrder {
 				+ " from foodshop f, jumin j"
 				+ " where f.fno = j.fno"
 				+ " order by order_name";
-
+       //★위에서처럼 돈 금액을 원79,000 이렇게 표시하려면 
+	   // 아래에서 price변수를 int 가 아니라 String으로 해야한다.
 
 		try {
 			//디비의 데이터 연결해서 가져오기
@@ -32,10 +33,10 @@ public class L02_QuizJdbcFoodOrder {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
-			//리스트 제목 출력
+			//리스트 제목 출력w
 			System.out.println("\t[DAY0125 요기요]");
 			System.out.println();
-			System.out.println("주문번호\t음식번호\t주문자\t음식명\t\t가격\t상호명\t\t상점위치\t주문자위치");
+			System.out.println("주문번호\t음식번호\t주문자\t음 식 명\t\t가   격\t상호명\t\t상점위치\t주문자위치");
 			System.out.println("---------------------------------------------"
 					+ "----------------------------------------"
 					+ "---------------------------------------");
@@ -53,7 +54,7 @@ public class L02_QuizJdbcFoodOrder {
 				String order_addr = rs.getString("order_addr");
 
 				System.out.println(order_num+"\t\t"+fno+"\t\t"+order_name+"\t"
-						+fname+"\t"+price+"\t"+fshopname+"\t"+shoploc+"\t"+order_addr);
+						+fname+" "+price+"\t"+fshopname+"\t"+shoploc+"\t"+order_addr);
 
 			}
 
