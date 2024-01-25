@@ -20,7 +20,7 @@ public class L02_QuizJdbcFoodOrder {
 		//select로 콘솔창에 나열하기 원하는 sql쿼리 작성
 		//여기서는 alias 한글로 적지 말것!!! 다운 받기 실패한다.
 		String sql = "select order_num , f.fno , order_name , fname,"
-				+ "price , fshopname, shoploc, order_addr"
+				+ " to_char(price,'L999,999,999') price1, fshopname, shoploc, order_addr"
 				+ " from foodshop f, jumin j"
 				+ " where f.fno = j.fno"
 				+ " order by order_name";
@@ -47,7 +47,7 @@ public class L02_QuizJdbcFoodOrder {
 				int fno = rs.getInt("fno"); //집계함수에 한해서는 컬럼명이 없으므로 alias써도 된다.
 				String order_name = rs.getString("order_name");
 				String fname = rs.getString("fname");
-				int price = rs.getInt("price");
+				String price = rs.getString("price1");
 				String fshopname = rs.getString("fshopname");
 				String shoploc = rs.getString("shoploc");
 				String order_addr = rs.getString("order_addr");
