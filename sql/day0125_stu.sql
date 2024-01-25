@@ -249,11 +249,12 @@ create SEQUENCE seq_food;--시퀀스 완료
 
 --foodshop테이블: fno(음식번호), fname(음식이름), price(가격), fshopname, shoploc
 CREATE TABLE foodshop (
-    fno number(5) PRIMARY KEY,
+    fno number(5) CONSTRAINT foodshop_pk PRIMARY KEY,
     fname VARCHAR(20),
     price number(10),
     fshopname VARCHAR(25),
-    shoploc VARCHAR(35)
+    shoploc VARCHAR(35) 
+   
 );
 
 
@@ -275,7 +276,7 @@ CREATE TABLE jumin (
     order_name VARCHAR(25),
     fno number(5),
     order_addr VARCHAR(25),
-    CONSTRAINT jumin_fk_fno FOREIGN KEY (fno) REFERENCES foodshop(fno)
+    CONSTRAINT jumin_fk_fno FOREIGN KEY (fno) REFERENCES foodshop(fno) 
 );
 
 
@@ -294,6 +295,10 @@ price 가격, fshopname 상호명, shoploc 상점위치, order_addr "주문자 위치"
 from foodshop f, jumin j
 where f.fno = j.fno
 order by order_name; --주문자의 오름차순 순서
+
+
+--drop table jumin;
+--drop table foodshop;
 
 
 
