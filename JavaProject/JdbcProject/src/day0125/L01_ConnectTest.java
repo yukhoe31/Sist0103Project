@@ -6,10 +6,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ConnectTest {
+public class L01_ConnectTest {
 
 	static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 
+	//stu 계정에서 sawon테이블 가져오기
 	public void connectSawon() {
 
 		//아래내용 자동완성시 -> 전부 .sql 버전으로 하기.
@@ -66,6 +67,7 @@ public class ConnectTest {
 		}
 	}
 
+	//stu 계정에서 shop테이블 가져오기
 	public void connectShop() {
 
 		Connection conn = null;
@@ -73,7 +75,7 @@ public class ConnectTest {
 		ResultSet rs = null;
 
 		String sql = "select idx,c.num,sangpum,color,cnt,guipday from shop s,cart2 c where s.num=c.num\r\n";
-		
+
 		try {
 			conn = DriverManager.getConnection(URL, "stu","a1234");
 			System.out.println("오라클 성공★");
@@ -118,16 +120,72 @@ public class ConnectTest {
 	}
 
 
+	//부서별 인원수와 평균급여를 가져오는 메서드
+	public void sawonRead() {
+
+		//연결해서 가져오기
+		Connection conn = null;
+		java.sql.Statement stmt = null;
+		ResultSet rs = null;
+
+		//select로 나열하기 원하는 sql쿼리 작성
+		String sql = "select buseo, count(*) cnt,"
+				+ " round(avg(pay),0) pay from sawon group by buseo";
+
+		try {
+
+			conn = DriverManager.getConnection(URL, "stu", "a1234");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			System.out.println("\t[부서별 평균 인원및 급여구하기]");
+			System.out.println();
+			System.out.println("부서명\t인원수\t평균급여");	
+			System.out.println("------------------------------------");
+
+			while(rs.next()) {
+				String buseo = rs.getString("buseo");
+				int count = rs.getInt("cnt");
+				int pay = rs.getInt("pay");
+
+				System.out.println(buseo +"\t"+ count+"명\t"+pay +"원");
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+
+
 	public static void main(String[] args) {
 
-		ConnectTest ct = new ConnectTest();
-		
+		L01_ConnectTest ct = new L01_ConnectTest();
+
 		//stu계정 내의 sawon테이블 가져오기
 		ct.connectSawon();
+
+		System.out.println();
+
+		//stu계정 내의 shop테이블 가져오기
+		ct.connectShop();
 		
 		System.out.println();
 		
-		//stu계정 내의 shop테이블 가져오기
-		ct.connectShop();
+		//stu계정 내의 sawon테이블에서 부서별 인원수와 평균급여를 가져오는 메서드
+		ct.sawonRead();
 	}
 }

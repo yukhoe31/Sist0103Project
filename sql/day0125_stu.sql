@@ -249,12 +249,11 @@ create SEQUENCE seq_food;--시퀀스 완료
 
 --foodshop테이블: fno(음식번호), fname(음식이름), price(가격), fshopname, shoploc
 CREATE TABLE foodshop (
-    fno number(5) CONSTRAINT foodshop_pk PRIMARY KEY,
+    fno number(5) CONSTRAINT foodshop_pk PRIMARY KEY ,
     fname VARCHAR(20),
     price number(10),
     fshopname VARCHAR(25),
     shoploc VARCHAR(35) 
-   
 );
 
 
@@ -276,7 +275,7 @@ CREATE TABLE jumin (
     order_name VARCHAR(25),
     fno number(5),
     order_addr VARCHAR(25),
-    CONSTRAINT jumin_fk_fno FOREIGN KEY (fno) REFERENCES foodshop(fno) 
+    CONSTRAINT jumin_fk_fno FOREIGN KEY (fno) REFERENCES foodshop(fno)  ON DELETE CASCADE  --
 );
 
 
@@ -297,8 +296,12 @@ where f.fno = j.fno
 order by order_name; --주문자의 오름차순 순서
 
 
---drop table jumin;
+--drop 테이블로 테이블을 통으로 날릴려면 무조건 자식 테이블을 먼저 지워야한다.
+--drop table jumin;  
 --drop table foodshop;
 
-
-
+--하지만 delete문 같이 데이터만 지울 경우, 자식 테이블에 on delete casade가 있으면, 
+--자식테이블과 부모 테이블이 외래키로 엮여 있더라도 상관없이 자식 테이블의 내용을 지울 수 있다.
+--예: 일부 게시판 뻘글에 누가 댓글을 달면, 내가 쓴 내 뻘글을 마음대로 지울 수 없는경우 
+--> "게시글에 댓글이 있어서 게시글을 지울 수 없습니다."
+--이런 문구가 나올 때는  "ON DELETE CASCADE" 을 사용하지 않아서 이래!!!
