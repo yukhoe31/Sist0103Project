@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class L02_QuizJdbcFoodOrder {
+public class L03_Quiz {
 
+	//사용할때만 아래 주석 풀기
 	static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 
 	//stu계정에서 foodshop테이블 가져오기
@@ -80,7 +81,7 @@ public class L02_QuizJdbcFoodOrder {
 
 	public static void main(String[] args) {
 
-		L02_QuizJdbcFoodOrder l2 = new L02_QuizJdbcFoodOrder();
+		L03_Quiz l2 = new L03_Quiz();
 
 		l2.readFoodShop();
 

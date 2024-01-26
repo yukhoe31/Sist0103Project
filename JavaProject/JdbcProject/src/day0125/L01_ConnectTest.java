@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class L01_ConnectTest {
 
+	//사용할때만 아래 주석 풀기
 	static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 
 	//stu 계정에서 sawon테이블 가져오기
