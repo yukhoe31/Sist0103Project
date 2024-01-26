@@ -200,6 +200,45 @@ public class L03_QuizStuInfo {
 		}
 	}
 
+	
+	//3.5 해당하는 데이터가 없을때 알아내는 메서드
+	public boolean getOneDate(String num) {
+		
+		boolean flag = false;
+		
+		String sql = "select * from stuinfo where s_no=" + num;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		conn = db.getOracle();
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			//한개만 조회할경우는 if문
+			if(rs.next()) {//데이터가 있는경우
+				flag = true;
+			}else {
+				flag = false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+
+		
+		return flag;
+		
+		
+	}
+	
+	
 	//4.학생정보수정 메서드
 	public void m4_update() {
 		
@@ -207,10 +246,13 @@ public class L03_QuizStuInfo {
 		
 		System.out.println("[4.정보 수정]");
 		System.out.println("수정할 시퀀스는?");
-		int num = Integer.parseInt(sc.nextLine());
+		String num = sc.nextLine();
 		
 		//해당 입력한 시퀀스가 존재하는지부터 확인한다.
-		
+		if(!this.getOneDate(num)) {
+			System.out.println("해당번호는 존재하지 않습니다.");
+			return;
+		}
 		
 		//bonus:해당 시퀀스의 현재 상태 출력
 		//System.out.println("해당 시퀀스의 현재상태는...");
