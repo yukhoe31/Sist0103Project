@@ -19,6 +19,7 @@ public class L01_SawonGroup {
 		Statement stmt = null;
 		ResultSet rs = null;
 
+		//sawon테이블은 stu계정 안에 있다.
 		String sql = "select gender"
 				+ ",count(buseo) count"//count는 alias
 				+ ",to_char(round(avg(pay),0),'L999,999,999') avgpay"

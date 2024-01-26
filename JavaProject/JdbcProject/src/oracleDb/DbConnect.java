@@ -19,7 +19,17 @@ public class DbConnect {
 		Connection conn = null;
 
 		try {
-			conn = DriverManager.getConnection(ORACLE_DB, "stu","a1234");
+			
+			//stu계정 사용시
+			//conn = DriverManager.getConnection(ORACLE_DB, "stu","a1234");
+		
+			//dragon계정 사용시
+			conn = DriverManager.getConnection(ORACLE_DB, "dragon","a1234");
+			
+			//lmy계정 사용시
+			//conn = DriverManager.getConnection(ORACLE_DB, "lmy","a1234");
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
