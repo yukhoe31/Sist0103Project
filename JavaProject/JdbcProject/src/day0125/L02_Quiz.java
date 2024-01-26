@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class L03_Quiz {
+public class L02_Quiz {
 
 	//사용할때만 아래 주석 풀기
 	static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -81,7 +81,7 @@ public class L03_Quiz {
 
 	public static void main(String[] args) {
 
-		L03_Quiz l2 = new L03_Quiz();
+		L02_Quiz l2 = new L02_Quiz();
 
 		l2.readFoodShop();
 

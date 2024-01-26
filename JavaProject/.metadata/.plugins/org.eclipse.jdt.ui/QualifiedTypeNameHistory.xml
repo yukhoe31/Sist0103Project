@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-    <fullyQualifiedTypeName name="day0118.L06_SwingImageIcon"/>
-    <fullyQualifiedTypeName name="day0118.L07_SwingEvent"/>
-    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
-    <fullyQualifiedTypeName name="java.awt.Container"/>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
-    <fullyQualifiedTypeName name="java.awt.Panel"/>
     <fullyQualifiedTypeName name="day0119.L01_SwingLabelRandom"/>
     <fullyQualifiedTypeName name="javax.swing.Action"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
@@ -53,11 +46,18 @@
     <fullyQualifiedTypeName name="day0119.L08_Quiz"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.QueuedJobCount"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
-    <fullyQualifiedTypeName name="java.beans.Statement"/>
     <fullyQualifiedTypeName name="day0125.ConnectTest"/>
+    <fullyQualifiedTypeName name="day0125.L02_QuizJdbcFoodOrder"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.beans.Statement"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.css.CSSRule"/>
+    <fullyQualifiedTypeName name="day0126.L01_SawonGroup"/>
+    <fullyQualifiedTypeName name="oracleDb.DbConnect"/>
+    <fullyQualifiedTypeName name="day0126.L02_HelloCrud"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="day0125.L02_QuizJdbcFoodOrder"/>
 </qualifiedTypeNameHistroy>
