@@ -108,12 +108,150 @@ public class L02_HelloCrud {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			
+			//select문이므로 rs가 들어간다.
 			db.dbClose(rs,stmt,conn);//만들어둔 DbConnect클래스를 닫기.
 		}
 		
 	}
 	
+	
+	//3.delete 메서드
+	public void delete() {
+		
+		//삭제할 번호 입력후 삭제
+		Scanner sc = new Scanner(System.in);
+		String num;
+		String sql="";
+		
+		System.out.println("삭제할 번호 입력");
+		num = sc.nextLine();
+		
+		sql="delete from hello where num = " +num;
+		System.out.println(sql);
+		
+		Connection conn = null;
+		Statement stmt = null;
+		
+		conn = db.getOracle();
+		
+		try {
+			stmt=conn.createStatement();
+			
+			//a:성공한 레코드의 갯수(하나 삭제하면 1)
+			int a = stmt.executeUpdate(sql);
+			
+			//없는 번호 입력시 실제 삭제 안되므로
+			//0이 반환된다.
+			if(a==0) {
+				System.out.println("없는 데이터 번호입니다.");
+			}else {
+				System.out.println("**삭제되었습니다.**");
+			}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+	}
+	
+	
+	//수정하려는 데이터 조회할때,
+	//조회한다고 입력한 데이터가 존재하지 않을 때를 위하여
+	//만든 메소드
+	//기능 : 없는 번호의 데이터 조회한다고 내가 입력하면
+	//"수정할 데이터가 존재하지 않습니다." 라고 알려주기.
+	//아래()안에 들어가는 값:파라미터 or 인자
+	public boolean getOneDate(String num) {
+		
+		boolean flag = false;
+		//num에 해당하는 데이터가 있으면 true반환,없으면 false반환
+		
+		String sql = "select * from hello where num=" +num;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		conn = db.getOracle();
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			//한개만 조회할경우는 if문
+			if(rs.next()) {//데이터가 있는경우
+				flag = true;
+			}else {
+				flag = false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+
+		
+		return flag;
+	}
+	
+	
+	//4.update 메서드
+	public void update() {
+		
+		//수정할 시퀀스를 입력후 이름,주소 입력
+		Scanner sc = new Scanner(System.in);
+		String num,name,addr;
+		
+		System.out.println("수정할 번호를 입력:");
+		num=sc.nextLine();
+		
+		//만약에 내가 집어넣은 번호가 존재하지 않을뗴
+		//위에서 만든 getOneDate()함수 내에
+		//num을 파라미터값으로 넣는다.
+		if(!this.getOneDate(num)) {
+			System.out.println("해당번호는 존재하지 않습니다.");
+			return;
+		}
+		
+		
+		System.out.println("수정할 이름으로 변경해주세요.");
+		name = sc.nextLine();
+		System.out.println("수정할 주소로 변경해주세요.");
+		addr = sc.nextLine();
+		
+		String sql="update hello set name='"+name+"',addr='"+addr+"' where num="+num;
+		System.out.println(sql);
+		
+		
+		//DB연결
+		Connection conn = null;
+		Statement stmt = null;
+		
+		conn = db.getOracle();
+		try {
+			stmt = conn.createStatement();	
+			
+			//update된 것들을 a라는 변수로 받아서
+			int a = stmt.executeUpdate(sql);
+			
+			if(a==0) {
+				System.out.println("수정할 데이터가 존재하지 않습니다.");
+			}else {
+				System.out.println("**수정되었습니다.**");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+		
+	}
 	
 	
 	public static void main(String[] args) {
@@ -121,7 +259,7 @@ public class L02_HelloCrud {
 		//생성
 		L02_HelloCrud hello = new L02_HelloCrud();
 			
-		//1.insert,4.update를 위한 Scanner
+		//1.2.3.4 선택지 중 하나 번호 고르기할때 쓰는 용도의 스캐너
 		Scanner sc = new Scanner(System.in);
 		int n;
 		
@@ -137,6 +275,10 @@ public class L02_HelloCrud {
 				hello.insert();
 			}else if(n==2) {
 				hello.select();
+			}else if(n==3) {
+				hello.delete();
+			}else if(n==4) {
+				hello.update();
 			}else if(n==9){
 				System.out.println("종료합니다.");
 				break;
