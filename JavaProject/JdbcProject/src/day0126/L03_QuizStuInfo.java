@@ -359,7 +359,7 @@ public class L03_QuizStuInfo {
 		boolean banban = true;
 		while(banban) {
 
-			System.out.println("**hello db 연습**");
+			System.out.println("**stuinfo DB 연습**");
 			System.out.println("1.학생정보입력  2.정보출력   3.정보삭제    4.학생정보 수정   5.학생검색   9.종료");
 								//insert         select       delete        update           select
 			n=Integer.parseInt(sc.nextLine());
@@ -395,5 +395,3 @@ public class L03_QuizStuInfo {
 	}
 
 }
-
-
