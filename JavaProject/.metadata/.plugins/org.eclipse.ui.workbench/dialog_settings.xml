@@ -2,9 +2,9 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialog">
 		<item key="DIALOG_X_ORIGIN" value="-184"/>
-		<item key="DIALOG_Y_ORIGIN" value="22"/>
+		<item key="DIALOG_Y_ORIGIN" value="15"/>
 		<item key="DIALOG_WIDTH" value="932"/>
-		<item key="DIALOG_HEIGHT" value="1018"/>
+		<item key="DIALOG_HEIGHT" value="1015"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="ImportExportAction">
@@ -54,7 +54,6 @@
 		<item key="" value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>
 		<item key="WizardPreferencesExportPage1.STORE_OVERWRITE_EXISTING_FILES_ID" value="false"/>
 		<item key="WizardPreferencesExportPage1.EXPORT_ALL_PREFERENCES_ID" value="true"/>
-		<item key="" value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>
 		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
 			<item value="C:\Users\user\Downloads\eclipse_dark_theme.epf"/>
 		</list>

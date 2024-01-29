@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import oracle.jdbc.proxy.annotation.Pre;
 import oracleDb.DbConnect;
 
 public class L02_JdbcScore {
@@ -33,12 +34,11 @@ public class L02_JdbcScore {
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			//바인딩
+			//바인딩 //?갯수만큼 모두 바인딩후 실행
 			pstmt.setInt(1, oracle);
 			pstmt.setString(2, name);
 			pstmt.setInt(3, java);
 
-			//?갯수만큼 모두 바인딩후 실행
 			pstmt.execute();
 			System.out.println("추가되었습니다~~");
 
@@ -51,7 +51,7 @@ public class L02_JdbcScore {
 	}
 
 
-	//총점,평균 구하는 메서드
+	//1+.총점,평균 구하는 메서드
 	public void calcTotalAverage() {
 		Connection conn = db.getOracle();
 		Statement stmt = null;
@@ -146,6 +146,50 @@ public class L02_JdbcScore {
 		
 	}
 
+	
+	//4.수정 메서드
+	public void updateSungjuk() {
+		//수정할 num을 입력후 java,oracle 의 수정값을 입력받아 수정할 것.
+		//num이 있을경우 "수정됨" 없을경우 "5번학생은 존재하지 않음"
+		System.out.println("수정할 번호 선택:");
+		int num = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("수정할 자바점수 입력:");
+		int java = Integer.parseInt(sc.nextLine());
+		System.out.println("수정할 오라클점수 입력:");
+		int oracle = Integer.parseInt(sc.nextLine());
+		
+		Connection conn = db.getOracle();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update sungjuk set java=?,oracle=? where num=?";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			//바인딩
+			pstmt.setInt(1, java);
+			pstmt.setInt(2, oracle);
+			pstmt.setInt(3, num);
+			
+			//실행
+			int n = pstmt.executeUpdate();
+			
+			if(n==1) {//해당 번호 학생이 존재함
+				System.out.println("수정됨!!");
+			}else {//해당 학생이 존재하지 않음
+				System.out.println(num + "번 학생이 존재하지 않습니다.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+		
+	}
 
 
 	//0.인터페이스 메서드
@@ -167,6 +211,9 @@ public class L02_JdbcScore {
 			case 3:
 				this.deleteSungjuk();
 				break;
+			case 4:
+				this.updateSungjuk();
+				break;	
 			case 9:
 				System.out.println("**성적 프로그램 종료**");
 				System.exit(0);//강제종료
@@ -180,8 +227,8 @@ public class L02_JdbcScore {
 		}
 	}
 
-
-
+	
+	//메인 메서드
 	public static void main(String[] args) {
 
 		L02_JdbcScore score = new L02_JdbcScore();
