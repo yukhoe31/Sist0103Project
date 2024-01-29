@@ -12,11 +12,11 @@
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\Sist0103Project\JavaProject"/>
+			<item value="D:\Sist0103Project\JavaProject\JdbcProject"/>
 			<item value="C:\sist0103\work\JavaProject\SistJavaProject"/>
 			<item value="C:\sist0103\work\JavaProject\JdbcProject"/>
-			<item value="D:\Sist0103Project\JavaProject"/>
 			<item value="C:\sist0103\work"/>
-			<item value="D:\Sist0103Project\JavaProject\JdbcProject"/>
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
