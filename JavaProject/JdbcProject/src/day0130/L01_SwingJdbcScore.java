@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -32,8 +33,12 @@ public class L01_SwingJdbcScore extends JFrame implements ActionListener{
 	JTable table;
 	JButton btnAdd,btnDel,btnUpdate;
 
-	L01_AddStuInfo addForm = new L01_AddStuInfo("★학생 성적 추가★");
-	L01_DeleteStuInfo delForm = new L01_DeleteStuInfo("★학생 성적 삭제★");
+	L01_AddStuInfo addForm = new L01_AddStuInfo("★성적 추가★");
+	L01_UpdateStuInfo updateForm = new L01_UpdateStuInfo("★성적 수정★");
+	//데이터 삭제의 경우 다이알로그 창을 쓰기 때문에 새로운
+	//클래스가 불필요하다.	
+
+	
 
 	//생성자
 	public L01_SwingJdbcScore(String title){
@@ -132,7 +137,7 @@ public class L01_SwingJdbcScore extends JFrame implements ActionListener{
 			pstmt.setString(1, name);
 			pstmt.setString(2, java);
 			pstmt.setString(3, jsp);
-			pstmt.setString(4, spring);;
+			pstmt.setString(4, spring);
 			pstmt.setInt(5, tot);
 			pstmt.setDouble(6, avg);
 			pstmt.setString(7, ban);
@@ -150,6 +155,90 @@ public class L01_SwingJdbcScore extends JFrame implements ActionListener{
 	}
 
 
+	//delete메서드
+	//stuinfo2 테이블의 DB와 연결하여
+	//삭제할 학생 data를 delete 하는 메서드
+	public void deleteData(String num) {
+
+		//삭제할 데이터의 시퀀스 받아오기
+		String sql = "delete from stuinfo2 where num ="+num;
+
+		//sql문 실행후 해당번호가 없으면 메세지가 삭제되면 tableWrite()호출
+
+
+		//DB연결
+		Connection conn = db.getOracle();
+		PreparedStatement pstmt = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			//업데이트
+			int a = pstmt.executeUpdate();
+
+			if(a==1) {
+				JOptionPane.showMessageDialog(this, "삭제가 성공했습니다.");
+				tableWrite();
+			}else {
+				JOptionPane.showMessageDialog(this, "없는 시퀀스 번호입니다.");
+			}
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
+	
+	//update메서드
+	public void updateData() {
+		
+		String num = updateForm.num;
+		
+		String name = updateForm.tfName.getText();
+		String java = updateForm.tfJava.getText();
+		String jsp = updateForm.tfJsp.getText();
+		String spring = updateForm.tfSpring.getText();
+		String ban = (String)updateForm.cbBan.getSelectedItem();
+		
+		int tot = Integer.parseInt(java) + Integer.parseInt(jsp) + Integer.parseInt(spring);
+		double avg = tot/3.0;
+
+		String sql = "update stuinfo2 set name=?,java=?,jsp=?,spring=?,total="
+		             +tot+",average="+avg+",ban=? where num=?";
+		
+		Connection conn = db.getOracle();
+		PreparedStatement pstmt = null;
+
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+
+			//?차례대로 바인딩
+			pstmt.setString(1, name);
+			pstmt.setString(2, java);
+			pstmt.setString(3, jsp);
+			pstmt.setString(4, spring);
+			pstmt.setString(5, ban);
+			pstmt.setInt(6, Integer.parseInt(num));
+	
+			//업데이트
+			pstmt.execute();
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+		updateForm.setVisible(false);
+	}
+	
+	
 	//디자인
 	public void initDesign() {
 
@@ -178,13 +267,13 @@ public class L01_SwingJdbcScore extends JFrame implements ActionListener{
 		btnDel = new JButton("삭제");
 		btnDel.addActionListener(this);
 		pTop.add(btnDel);
-		//삭제폼에 있는 삭제버튼에 액션을 추가
-		delForm.btnDel.addActionListener(this);
 
+		//수정버튼		
 		btnUpdate = new JButton("수정");
 		btnUpdate.addActionListener(this);
 		pTop.add(btnUpdate);
-
+		//수정폼에 있는 수정버튼에 액션을 추가
+		updateForm.btnMod.addActionListener(this);
 	}
 
 
@@ -198,38 +287,86 @@ public class L01_SwingJdbcScore extends JFrame implements ActionListener{
 		if(ob==btnAdd) {
 			//콘솔창에 출력해서 제대로 버튼 클릭이 이루어지는지 
 			//테스트하는 용도의 syso
-			System.out.println("add");
-			//실제 코드는 여기서...
+			//System.out.println("add");
+			//실제 코드는 아래서....
 
 			addForm.setVisible(true);
 			//버튼 btnAdd를 누르면 
 			//실제 생성한 addForm이 보여지도록 하겠다.
 
 		}else if(ob == addForm.btnAdd) {//학생추가폼의 버튼이벤트
-			
+
 			//입력하는 데이터를 읽어서 db추가
 			insertData();//db에 들어간거 확인
-			
+
 			//테이블 다시 출력
 			this.tableWrite();
-			
+
 			//초기화하면서 추가 폼(addForm)은 사라져야 한다.=>보기에 좋다.
 			addForm.tfName.setText("");
 			addForm.tfJava.setText("");
 			addForm.tfJsp.setText("");
 			addForm.tfSpring.setText("");
-			
+
 			addForm.setVisible(false);
 
-		}
-		else if(ob == btnDel) {
-			System.out.println("del");
+		}else if(ob == btnDel) {
+
+			//System.out.println("del");
+
+			//삭제 버튼 클릭 시 다이얼로그 입력창에서 시퀀스 입력 받기
+			String num = JOptionPane.showInputDialog("삭제할 시퀀스는?");
+
+			//삭제메서드 호출
+			deleteData(num);
+
 		}else if(ob == btnUpdate) {
-			System.out.println("update");
-		}
+			//System.out.println("update");
+			String num = JOptionPane.showInputDialog("수정할 시퀀스는?");
+			String sql = "select * from stuinfo2 where num = "+num;
+
+			Connection conn = db.getOracle();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				//데이타 하나 조회 if
+				if(rs.next()) {
+					updateForm.num = num;
+					updateForm.tfName.setText(rs.getString("name"));
+					updateForm.tfJava.setText(rs.getString("java"));
+					updateForm.tfJsp.setText(rs.getString("jsp"));
+					updateForm.tfSpring.setText(rs.getString("spring"));
+					updateForm.cbBan.setSelectedItem(rs.getString("ban"));
+
+					updateForm.setVisible(true);
+
+				}else {
+					JOptionPane.showMessageDialog(this, "존재하지 않는 데이터입니다.");
+				}
+
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+
+
+		}else if(ob == updateForm.btnMod) {//학생추가폼의 수정 버튼 이벤트
+			updateData();
+		}	
+
+
+		//테이블 다시 출력
+		this.tableWrite();
+
 	}
 
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
