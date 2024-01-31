@@ -59,14 +59,16 @@ public class ShopMain extends JFrame implements ActionListener{
 			
 		}else if(ob == btnDel) {
 			System.out.println("del");
+			//삭제는 num값 넘겨서 처리하는걸로...
+			//class 따로 만들지 말고 그냥 메인액션에서 처리하는걸로 해보세요.
+			
 		}else if(ob == btnUpdate) {
 			System.out.println("update");
+			
 		}else if(ob == btnList) {
 			System.out.println("list");
-			ShopListForm listForm = new ShopListForm();
-			
+			ShopListForm listForm = new ShopListForm();		
 		}
-		
 		
 	}
 	
