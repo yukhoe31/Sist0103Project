@@ -1,0 +1,26 @@
+package day0129;
+
+import java.util.Scanner;
+
+import oracleDb.DbConnect;
+
+public class L02_JdbcScore {
+	
+	DbConnect db = new DbConnect();
+	Scanner sc = new Scanner(System.in);
+
+	public void insertSungjuk() {
+		
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

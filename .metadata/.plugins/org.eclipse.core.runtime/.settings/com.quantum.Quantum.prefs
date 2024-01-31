@@ -1,0 +1,6 @@
+com.quantum.actions.BookmarkSelectionUtil.bookmark=dragonDB
+eclipse.preferences.version=1
+quantum.SQLEditorPreferences.ignoredWords=;
+quantum.dialogs.bookmarkwizard.path=C\:\\sist0103\\util\\ojdbc11.jar
+quantum.keyword.color=255,255,128
+quantum.text.color=128,128,255

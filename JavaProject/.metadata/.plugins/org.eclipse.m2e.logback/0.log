@@ -57,3 +57,82 @@
 2024-01-29 12:49:04,886 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2024-01-29 14:09:53,351 [Worker-13: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2024-01-30 08:36:47,136 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-01-30 17:32:23,544 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-01-31 08:57:52,484 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-01-31 08:57:53,132 [Worker-6: Decoration Calculation] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[C:\Program Files\Git\cmd\git.exe, --version]' in 'C:\Program Files\Git\cmd', return code '128', error message 'fatal: bad config line 1 in file C:/Users/user/.gitconfig
+'
+2024-01-31 08:57:53,135 [Worker-6: Decoration Calculation] ERROR o.e.j.i.storage.file.FileRepository - Cannot read file C:\Users\user\.gitconfig
+org.eclipse.jgit.errors.ConfigInvalidException: Cannot read file C:\Users\user\.gitconfig
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:137)
+	at org.eclipse.jgit.storage.file.UserConfigFile.load(UserConfigFile.java:101)
+	at org.eclipse.jgit.util.SystemReader.updateAll(SystemReader.java:436)
+	at org.eclipse.jgit.util.SystemReader.getUserConfig(SystemReader.java:332)
+	at org.eclipse.egit.core.internal.EclipseSystemReader.getUserConfig(EclipseSystemReader.java:106)
+	at org.eclipse.jgit.internal.storage.file.FileRepository.<init>(FileRepository.java:162)
+	at org.eclipse.egit.core.CachingRepository.<init>(CachingRepository.java:40)
+	at org.eclipse.egit.core.RepositoryCache$Builder.createRepository(RepositoryCache.java:213)
+	at org.eclipse.egit.core.RepositoryCache.lookupRepository(RepositoryCache.java:147)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:720)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:678)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:661)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:217)
+	at org.eclipse.egit.core.project.RepositoryMapping.getProjectData(RepositoryMapping.java:335)
+	at org.eclipse.egit.core.project.RepositoryMapping.findMapping(RepositoryMapping.java:356)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:296)
+	at org.eclipse.egit.core.internal.util.ResourceUtil.getRepository(ResourceUtil.java:708)
+	at org.eclipse.egit.core.internal.info.GitItemStateFactory.getIndexDiffDataOrNull(GitItemStateFactory.java:106)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorateResource(GitLightweightDecorator.java:194)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorate(GitLightweightDecorator.java:172)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.ConfigInvalidException: Invalid line in config file
+	at org.eclipse.jgit.lib.Config.fromTextRecurse(Config.java:1236)
+	at org.eclipse.jgit.lib.Config.fromText(Config.java:1164)
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:164)
+	at org.eclipse.jgit.util.FileUtils.readWithRetries(FileUtils.java:733)
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:128)
+	... 27 common frames omitted
+2024-01-31 08:57:53,149 [Worker-6: Decoration Calculation] ERROR o.e.j.i.storage.file.FileRepository - Cannot read file C:\Users\user\.gitconfig
+org.eclipse.jgit.errors.ConfigInvalidException: Cannot read file C:\Users\user\.gitconfig
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:137)
+	at org.eclipse.jgit.storage.file.UserConfigFile.load(UserConfigFile.java:101)
+	at org.eclipse.jgit.util.SystemReader.updateAll(SystemReader.java:436)
+	at org.eclipse.jgit.util.SystemReader.getUserConfig(SystemReader.java:332)
+	at org.eclipse.egit.core.internal.EclipseSystemReader.getUserConfig(EclipseSystemReader.java:106)
+	at org.eclipse.jgit.internal.storage.file.FileRepository.<init>(FileRepository.java:162)
+	at org.eclipse.egit.core.CachingRepository.<init>(CachingRepository.java:40)
+	at org.eclipse.egit.core.RepositoryCache$Builder.createRepository(RepositoryCache.java:213)
+	at org.eclipse.egit.core.RepositoryCache.lookupRepository(RepositoryCache.java:147)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:720)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:678)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:661)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:217)
+	at org.eclipse.egit.core.project.RepositoryMapping.getProjectData(RepositoryMapping.java:335)
+	at org.eclipse.egit.core.project.RepositoryMapping.findMapping(RepositoryMapping.java:356)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:296)
+	at org.eclipse.egit.core.internal.util.ResourceUtil.getRepository(ResourceUtil.java:708)
+	at org.eclipse.egit.core.internal.info.GitItemStateFactory.getIndexDiffDataOrNull(GitItemStateFactory.java:106)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorateResource(GitLightweightDecorator.java:194)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.decorate(GitLightweightDecorator.java:172)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.ConfigInvalidException: Invalid line in config file
+	at org.eclipse.jgit.lib.Config.fromTextRecurse(Config.java:1236)
+	at org.eclipse.jgit.lib.Config.fromText(Config.java:1164)
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:164)
+	at org.eclipse.jgit.util.FileUtils.readWithRetries(FileUtils.java:733)
+	at org.eclipse.jgit.storage.file.FileBasedConfig.load(FileBasedConfig.java:128)
+	... 27 common frames omitted
+2024-01-31 09:53:53,205 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
