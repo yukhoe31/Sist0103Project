@@ -219,9 +219,9 @@ public class EmpMain extends JFrame implements ActionListener{
 		String email = updateForm.tfEmail.getText();
 		String phone = updateForm.tfPhone.getText();
 		String dept_id = (String)updateForm.cbDeptName.getSelectedItem();
-		String image = updateForm.imageName;
+		//String image = updateForm.imageName;
 
-		String sql = "update empt set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=?, image=? where emp_id=?";
+		String sql = "update empt set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=? where emp_id=?";
 
 		Connection conn = db.getOracle();
 		PreparedStatement pstmt = null;
@@ -241,7 +241,7 @@ public class EmpMain extends JFrame implements ActionListener{
 			pstmt.setString(7, email);
 			pstmt.setString(8, phone);
 			pstmt.setString(9, num);
-			pstmt.setString(10,image);
+			//pstmt.setString(10,image);
 			
 			
 			//업데이트
