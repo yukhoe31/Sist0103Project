@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import day0131.ShopDto;
+
 //L01_SwingJdbcScore의 메인 화면에서 btnAdd("추가버튼")을 누르면
 //L01_AddStuInfo의 "학생정보 추가프레임"이 나타나게 한다.
 
@@ -19,6 +21,8 @@ public class EmpUpdate extends JFrame {
 	JComboBox<String> cbDeptName;
 	JButton btnUpdate;
 	String num;//수정할 시퀀스 번호
+	
+
 
 
 	public EmpUpdate(String title) {
@@ -27,7 +31,7 @@ public class EmpUpdate extends JFrame {
 
 		cp = this.getContentPane();
 		this.setBounds(200,100,250,400);
-		cp.setBackground(new Color(204,204,155));
+		cp.setBackground(new Color(234,234,234));
 		initDesign();
 		//this.setVisible(true);
 		//이걸 주석처리한 이유: initDesign화면은 

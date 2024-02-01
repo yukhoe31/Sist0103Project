@@ -1,7 +1,10 @@
 package JavaTeamP;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -11,19 +14,26 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import oracle.jdbc.proxy.annotation.Pre;
 import oracleDb.DbConnect;
 
+//메인 인터페이스에서 클릭하면 나오는 화면
 public class EmpMain extends JFrame implements ActionListener{
 
 	DbConnect db = new DbConnect();
@@ -34,10 +44,8 @@ public class EmpMain extends JFrame implements ActionListener{
 	JTable table;
 	JButton btnAdd, btnDel, btnUpdate, btnSearch;
 
-	EmpAdd addForm = new EmpAdd("★사원 추가★");
-	EmpUpdate updateForm = new EmpUpdate("★사원정보 수정★");
-	//데이터 삭제의 경우 다이알로그 창을 쓰기 때문에 새로운
-	//클래스가 불필요하다.	
+	EmpAdd addForm = new EmpAdd("사원 추가");
+	EmpUpdate updateForm = new EmpUpdate("사원 수정");
 
 
 
@@ -46,7 +54,7 @@ public class EmpMain extends JFrame implements ActionListener{
 
 		super(title);
 		cp = this.getContentPane();
-		this.setBounds(700, 220, 480, 320);
+		this.setBounds(700, 220, 1200, 700);
 		cp.setBackground(new Color(240,210,240));
 		initDesign();
 		//this.setVisible(true);
@@ -65,8 +73,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from emp order by emp_id";//////////////////////////////////////////////////////////
-
+		String sql = "select * from emp order by emp_id";
 		conn = db.getOracle();
 
 		try {
@@ -113,8 +120,6 @@ public class EmpMain extends JFrame implements ActionListener{
 
 
 	//insert메서드
-	//stuinfo2 테이블의 DB와 연결하여
-	//새로운 학생 데이터를 insert하는 메서드
 	public void insertData() {
 
 		// 이름, 생일,입사일,직급,월급,이메일,핸드폰, 부서명 콤보박스
@@ -126,12 +131,9 @@ public class EmpMain extends JFrame implements ActionListener{
 		String salary = addForm.tfSalary.getText();
 		String email = addForm.tfEmail.getText();
 		String phone = addForm.tfPhone.getText();
+		String image = addForm.imageName;
 
-		//(String)하는 이유: 기존의 데이터타입이 Object였으므로
-
-
-		//여기서 stuinfo 테이블이 아니라 stuinfo2 테이블임에 유의할것.
-		String sql = "insert into emp values(seq_emp.nextval,?,?,?,?,?,?,?,?)";
+		String sql = "insert into empt values(seq_emp.nextval,?,?,?,?,?,?,?,?,?)";
 
 		//DB연결
 		Connection conn = db.getOracle();
@@ -140,9 +142,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			//?를 순서대로 바인딩하기.
 			pstmt.setString(1, name);
-
 			pstmt.setString(2, birth);
 			pstmt.setString(3, hire);
 			pstmt.setString(4, dept_id);
@@ -150,6 +150,7 @@ public class EmpMain extends JFrame implements ActionListener{
 			pstmt.setString(6, salary);
 			pstmt.setString(7, email);
 			pstmt.setString(8, phone);
+			pstmt.setString(9, image);
 
 
 			//업데이트
@@ -166,15 +167,8 @@ public class EmpMain extends JFrame implements ActionListener{
 
 
 	//delete메서드
-	//stuinfo2 테이블의 DB와 연결하여
-	//삭제할 학생 data를 delete 하는 메서드
 	public void deleteData(String num) {
-
-		//삭제할 데이터의 시퀀스 받아오기
-		String sql = "delete from emp where emp_id ="+num;
-
-		//sql문 실행후 해당번호가 없으면 메세지가 삭제되면 tableWrite()호출
-
+		String sql = "delete from empt where emp_id ="+num;
 
 		//DB연결
 		Connection conn = db.getOracle();
@@ -217,7 +211,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		String phone = updateForm.tfPhone.getText();
 		String dept_id = (String)updateForm.cbDeptName.getSelectedItem();//
 
-		String sql = "update emp set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=? where emp_id=?";
+		String sql = "update empt set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=? where emp_id=?";
 
 		Connection conn = db.getOracle();
 		PreparedStatement pstmt = null;
@@ -253,12 +247,62 @@ public class EmpMain extends JFrame implements ActionListener{
 
 
 
+	// 검색메서드
+	public void searchData(String name) {
+		model.setRowCount(0);
+
+		Connection conn = db.getOracle();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from empt where emp_name like '%" + name + "%'";
+
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setString(1, "%"+name+"%");
+			System.out.println(sql);
+
+			rs = pstmt.executeQuery();
+
+
+			while(rs.next()) {
+				Vector<String> data = new Vector<String>();
+
+
+				data.add(rs.getString("emp_id"));
+				data.add(rs.getString("emp_name"));
+				data.add(rs.getString("dept_id"));
+
+				data.add(rs.getString("birth_date"));
+				data.add(rs.getString("hire_date"));
+
+				data.add(rs.getString("position"));
+				data.add(rs.getString("salary"));
+				data.add(rs.getString("email"));
+				data.add(rs.getString("phone_number"));
+
+				model.addRow(data);
+
+
+			}
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
+	}
+
+
 	//디자인
 	public void initDesign() {
 
 		String [] title = {"사원번호", "이름", "부서명", "생년월일", "입사일","직급","월급","이메일", "휴대폰번호"};
 
-		//DefaultTableModel 시작시 항상 ABORT는 0으로 시작해야
 		model = new DefaultTableModel(title,0);
 		table = new JTable(model);
 		this.add( "Center", new JScrollPane(table));
@@ -266,12 +310,14 @@ public class EmpMain extends JFrame implements ActionListener{
 		//테이블에 DB데이터 출력
 		tableWrite();		
 
-		//버튼 3개 올릴 패널
+		//버튼 4개 올릴 패널
 		JPanel pTop = new JPanel();
+		pTop.setBounds(100, 100, 1000, 100);
 		this.add("North",pTop);
 
 		//추가버튼
 		btnAdd = new JButton("추가");
+		btnAdd.setBounds(10, 70, 90, 30);
 		btnAdd.addActionListener(this);
 		pTop.add(btnAdd);
 		//추가폼에 있는 추가버튼에 액션을 추가
@@ -279,15 +325,25 @@ public class EmpMain extends JFrame implements ActionListener{
 
 		//삭제버튼
 		btnDel = new JButton("삭제");
+		btnDel.setBounds(10, 100, 90, 30);
 		btnDel.addActionListener(this);
 		pTop.add(btnDel);
 
 		//수정버튼		
 		btnUpdate = new JButton("수정");
+		btnUpdate.setBounds(10, 130, 90, 30);
 		btnUpdate.addActionListener(this);
 		pTop.add(btnUpdate);
 		//수정폼에 있는 수정버튼에 액션을 추가
 		updateForm.btnUpdate.addActionListener(this);
+
+		//검색버튼
+		btnSearch = new JButton("검색");
+		btnSearch.setBounds(10, 100, 90, 30);
+		btnSearch.addActionListener(this);
+		pTop.add(btnSearch);
+
+
 	}
 
 
@@ -299,24 +355,15 @@ public class EmpMain extends JFrame implements ActionListener{
 		Object ob = e.getSource();
 
 		if(ob==btnAdd) {
-			//콘솔창에 출력해서 제대로 버튼 클릭이 이루어지는지 
-			//테스트하는 용도의 syso
-			//System.out.println("add");
-			//실제 코드는 아래서....
 
 			addForm.setVisible(true);
-			//버튼 btnAdd를 누르면 
-			//실제 생성한 addForm이 보여지도록 하겠다.
 
-		}else if(ob == addForm.btnInsert) {//학생추가폼의 버튼이벤트
+		}else if(ob == addForm.btnInsert) {
 
-			//입력하는 데이터를 읽어서 db추가
-			insertData();//db에 들어간거 확인
+			insertData();
 
-			//테이블 다시 출력
 			this.tableWrite();
 
-			//초기화하면서 추가 폼(addForm)은 사라져야 한다.=>보기에 좋다.
 			addForm.tfName.setText("");
 			addForm.tfBirth.setText("");
 			addForm.tfHire.setText("");
@@ -329,18 +376,17 @@ public class EmpMain extends JFrame implements ActionListener{
 
 		}else if(ob == btnDel) {
 
-			//System.out.println("del");
-
-			//삭제 버튼 클릭 시 다이얼로그 입력창에서 시퀀스 입력 받기
 			String num = JOptionPane.showInputDialog("삭제할 시퀀스는?");
 
 			//삭제메서드 호출
 			deleteData(num);
 
+			this.tableWrite();
+
 		}else if(ob == btnUpdate) {
 			//System.out.println("update");
 			String num = JOptionPane.showInputDialog("수정할 시퀀스는?");
-			String sql = "select * from emp where emp_id = "+num;
+			String sql = "select * from empt where emp_id = "+num;
 
 			Connection conn = db.getOracle();
 			PreparedStatement pstmt = null;
@@ -378,26 +424,34 @@ public class EmpMain extends JFrame implements ActionListener{
 			}
 
 		}
-		else if(ob == updateForm.btnUpdate) {//학생추가폼의 수정 버튼 이벤트
+		else if(ob == updateForm.btnUpdate) {
 			updateData();
-		}	
+			this.tableWrite();
+		}else if(ob==btnSearch) {
+			// 검색
+			String name = JOptionPane.showInputDialog("검색할 이름은?");
 
+			//메서드 호출
+			searchData(name);
+
+		}
 
 		//테이블 다시 출력
-		this.tableWrite();
+		//this.tableWrite();
+
 
 	}
 
-/*
+	/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		
+
+
 
 		new EmpMain("★인사관리 DB★");
 
 	}
-*/
+	 */
 
 
 }
