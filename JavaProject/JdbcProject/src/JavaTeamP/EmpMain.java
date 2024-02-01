@@ -112,6 +112,7 @@ public class EmpMain extends JFrame implements ActionListener{
 				data.add(rs.getString("salary"));
 				data.add(rs.getString("email"));
 				data.add(rs.getString("phone_number"));
+				data.add(rs.getString("image"));
 
 				//3.테이블에 위에 데이터들을 한꺼번에 추가
 				model.addRow(data);
@@ -217,9 +218,10 @@ public class EmpMain extends JFrame implements ActionListener{
 		String salary = updateForm.tfSalary.getText();
 		String email = updateForm.tfEmail.getText();
 		String phone = updateForm.tfPhone.getText();
-		String dept_id = (String)updateForm.cbDeptName.getSelectedItem();//
+		String dept_id = (String)updateForm.cbDeptName.getSelectedItem();
+		String image = updateForm.imageName;
 
-		String sql = "update empt set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=? where emp_id=?";
+		String sql = "update empt set emp_name=?, birth_date=?, hire_date=?, dept_id=?, position=?, salary=?, email=?, phone_number=?, image=? where emp_id=?";
 
 		Connection conn = db.getOracle();
 		PreparedStatement pstmt = null;
@@ -239,7 +241,9 @@ public class EmpMain extends JFrame implements ActionListener{
 			pstmt.setString(7, email);
 			pstmt.setString(8, phone);
 			pstmt.setString(9, num);
-
+			pstmt.setString(10,image);
+			
+			
 			//업데이트
 			pstmt.execute();
 
@@ -289,6 +293,7 @@ public class EmpMain extends JFrame implements ActionListener{
 				data.add(rs.getString("salary"));
 				data.add(rs.getString("email"));
 				data.add(rs.getString("phone_number"));
+				data.add(rs.getString("image"));
 
 				model.addRow(data);
 
@@ -309,7 +314,8 @@ public class EmpMain extends JFrame implements ActionListener{
 	//디자인
 	public void initDesign() {
 
-		String [] title = {"사원번호", "이름", "부서명", "생년월일", "입사일","직급","월급","이메일", "휴대폰번호"};
+		String [] title = {"사원번호", "이름", "부서명", "생년월일", "입사일","직급","월급","이메일", "휴대폰번호","이미지URL"};
+		
 
 		model = new DefaultTableModel(title,0);
 		table = new JTable(model);
@@ -322,10 +328,11 @@ public class EmpMain extends JFrame implements ActionListener{
 		JPanel pTop = new JPanel();
 		pTop.setBounds(100, 100, 1000, 100);
 		this.add("North",pTop);
-
+		/*
 		JPanel pRight = new JPanel();
 		pRight.setBounds(100, 100, 1000, 100);
 		this.add("East",pRight);
+		*/
 
 		//추가버튼
 		btnAdd = new JButton("추가");
@@ -355,13 +362,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		btnSearch.addActionListener(this);
 		pTop.add(btnSearch);
 
-	
-
-		
-
-
 	}
-
 
 	//버튼 클릭하면 액션 발생시키는 메서드
 	@Override
