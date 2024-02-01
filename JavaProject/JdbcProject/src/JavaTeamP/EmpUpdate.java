@@ -129,7 +129,7 @@ public class EmpUpdate extends JFrame implements ActionListener {
 		this.add(tfPhone);
 
 		//"데이터 추가" 버튼
-		btnUpdate.setBounds(70, 290, 110, 30);
+		btnUpdate.setBounds(140, 290, 110, 30);
 		this.add(btnUpdate);
 
 		//////이미지

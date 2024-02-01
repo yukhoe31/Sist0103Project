@@ -142,7 +142,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		String phone = addForm.tfPhone.getText();
 		String image = addForm.imageName;
 
-		String sql = "insert into empt values(seq_emp.nextval,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into empt values(seq_empt.nextval,?,?,?,?,?,?,?,?,?)";
 
 		//DB연결
 		Connection conn = db.getOracle();
@@ -388,6 +388,7 @@ public class EmpMain extends JFrame implements ActionListener{
 			addForm.tfSalary.setText("");
 			addForm.tfEmail.setText("");
 			addForm.tfPhone.setText("");
+			
 
 			addForm.setVisible(false);
 
