@@ -64,9 +64,8 @@ public class EmpUpdate extends JFrame {
 		tfPhone = new JTextField(10);
 
 		//부서이름
-		//String [] dept = {"개발팀","인사팀","재무팀","마케팅팀"};
-		String [] dept = {"101","102","103","104"};
-		//메서드:개발팀=>101
+		String [] dept = {"개발팀","인사팀","재무팀","마케팅팀"};
+		
 
 
 		cbDeptName = new JComboBox<String>(dept);

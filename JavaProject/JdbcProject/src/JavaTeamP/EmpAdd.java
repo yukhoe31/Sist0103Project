@@ -160,36 +160,33 @@ public class EmpAdd extends JFrame implements ActionListener{
 		}
 
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
-Object ob = e.getSource();
-		
+
+		Object ob = e.getSource();
+
 		if(ob == btnImage) {
 			FileDialog dlg=new FileDialog(this, "이미지 가져오기", FileDialog.LOAD);
 			dlg.setVisible(true);
-			
-	
-		
+
 			//취소누르면 메서드 종료
 			if(dlg.getDirectory() == null) {
 				return;
 			}
-			
+
 			//이미지명 얻기
 			imageName = dlg.getDirectory() + dlg.getFile();
-			
+
 			//this.setPhoto(imageName);
-			
-			//라벨에 이미지명 출력
-			//lblPhoto.setText(imageName);
-			
+
+
 			//이미지 출력
 			photoDraw.repaint();
 
 		}
-		
+
 	}
 
 
@@ -201,12 +198,5 @@ Object ob = e.getSource();
 	//		new EmpAdd("사원정보 추가프레임");
 	//		
 	//	}
-	String photo;
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 
 }

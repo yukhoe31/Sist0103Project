@@ -1,12 +1,17 @@
 package JavaTeamP;
 
 import java.awt.BorderLayout;
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +22,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -47,6 +53,8 @@ public class EmpMain extends JFrame implements ActionListener{
 	EmpAdd addForm = new EmpAdd("사원 추가");
 	EmpUpdate updateForm = new EmpUpdate("사원 수정");
 
+	ImageDraw draw = new ImageDraw(); // Add this line
+	String imageName;
 
 
 	//생성자
@@ -73,7 +81,7 @@ public class EmpMain extends JFrame implements ActionListener{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from emp order by emp_id";
+		String sql = "select * from empt order by emp_id";
 		conn = db.getOracle();
 
 		try {
@@ -315,6 +323,10 @@ public class EmpMain extends JFrame implements ActionListener{
 		pTop.setBounds(100, 100, 1000, 100);
 		this.add("North",pTop);
 
+		JPanel pRight = new JPanel();
+		pRight.setBounds(100, 100, 1000, 100);
+		this.add("East",pRight);
+
 		//추가버튼
 		btnAdd = new JButton("추가");
 		btnAdd.setBounds(10, 70, 90, 30);
@@ -342,6 +354,10 @@ public class EmpMain extends JFrame implements ActionListener{
 		btnSearch.setBounds(10, 100, 90, 30);
 		btnSearch.addActionListener(this);
 		pTop.add(btnSearch);
+
+	
+
+		
 
 
 	}
@@ -438,6 +454,24 @@ public class EmpMain extends JFrame implements ActionListener{
 
 		//테이블 다시 출력
 		//this.tableWrite();
+
+
+	}
+
+
+	//내부클래스
+	class ImageDraw extends Canvas{
+
+		@Override
+		public void paint(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paint(g);
+
+			if(addForm.imageName != null) {
+				Image image = new ImageIcon(addForm.imageName).getImage();
+				g.drawImage(image, 0, 0, 200, 200, this);
+			}
+		}
 
 
 	}
