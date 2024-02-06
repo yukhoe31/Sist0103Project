@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L09_bgImage.html</title>
+    <style>
+        .bg{
+            background-color: aquamarine;
+        }
+
+        div{
+            width: 400px;
+            height: 250px;
+            border:1px solid gray;
+            margin-bottom: 20px;
+            margin-left: 100px;
+            background-size: 50px 70px;
+        }
+
+        div.a{
+            background-image: url(../image/만화이미지/만화이미지/02.png);
+          
+        }
+
+        div.b{
+            background-image: url(../image/logoImg/logoImg/acc02.png);
+            background-repeat: repeat-x; /*x축만 repeat*/
+        
+        }
+
+        div.c{
+            background-image: url(../image/연예인사진/연예인사진/15.jpg);
+            background-repeat: repeat-y; /*y축만 repeat*/
+        }
+
+        div.d{
+            background-image : url(../image/shoppingmall/쇼핑몰사진/10.jpg);
+            background-repeat: no-repeat;
+            background-position: 320px 150px;
+       
+        } 
+
+    </style>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c bg"></div>
+    <div class="d"></div>
+</body>
+</html>
