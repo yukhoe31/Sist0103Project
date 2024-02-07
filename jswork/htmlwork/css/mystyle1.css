@@ -22,3 +22,8 @@
     padding-left: 200px;
     list-style: none;
 }
+
+#sns{
+    position: relative;
+    top: 200px;
+}
