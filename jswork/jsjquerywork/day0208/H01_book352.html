@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Basic</title>
+    <script>
+        // 이벤트를 연결합니다.
+        //페이지가 로드될 때 실행되는 함수를 정의한다.
+        window.onload = function(){ 
+            //문서 객체를 선택합니다.
+            //문서에서 id가 'header'인 요소를 찾는다.
+            let header = document.getElementById('header');
+
+            //문서 객체를 조작합니다.
+            header.style.color = 'orange';//선택한 요소의 색:주황
+            header.style.background = 'red';//선택한 요소의 배경색:빨강
+            header.innerHTML = '★★From JavaScript★★';
+
+            //선택한 요소의 내용을 "★★From JavaScript★★"로 변경한다.
+        }
+    </script>
+</head>
+<body>
+    <h1 id = "header">Header</h1>
+</body>
+</html>
+
