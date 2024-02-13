@@ -1,0 +1,17 @@
+div.lotto{
+    margin-left: 100px;
+    margin-top: 30px;
+    border: 3px solid goldenrod;
+    background-color: orange;
+    border-radius: 100px; /*거의 원 나옴*/
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-family: Comic Sans MS;
+    font-size: 40px;
+    font-weight: bold;
+    color:black;
+    box-shadow: 5px 5px 5px gray;
+
+}

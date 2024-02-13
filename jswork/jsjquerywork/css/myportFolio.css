@@ -1,0 +1,54 @@
+/* *은 전체를 의미 */
+*{
+    box-sizing: border-box; 
+
+}
+
+
+body{
+    background: #222;
+    height: 100%;
+    margin: 0;
+    font-family: 'Gowun Dodum';
+    font-size:medium;
+}
+
+#container{
+    position: absolute;
+    left: 50%;
+    margin-left: -450px; /*왼쪽으로 이동시 음수값 주면 된다.*/
+    width: 900px;
+    height: 100%;
+    background: #fff;
+}
+
+aside{
+    float:left;
+    width: 300px;
+    padding: 100px 50px;
+    height: 100%;
+    background: rgb(166, 182, 226);
+}
+
+/* aside 하위에 있는 img */
+aside img{
+    width: 100px;
+    border-radius: 200px; /*사진을 둥글게*/
+
+}
+
+#detail{
+    position: relative;
+    top:200px;
+}
+
+#main{
+    float:right;
+    width: 600px;
+    height: 100%;
+    padding-left:50px;
+}
+
+mark {
+    background-color:pink; /* 하이라이트 색상을 핑크색으로 지정합니다. */
+}
