@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L07_jsArray</title>
+    <style>
+      img {
+        border: 2px solid blue;
+        border-radius: 10%;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      for (var i = 1; i < 10; i++) {
+        document.write("<b>" + i + "</b>&nbsp;&nbsp;");
+      }
+
+      document.write("<br><br>");
+
+      //Food폴더의 1~10까지를 출력하세요 (너비: 100)
+      for (var i = 1; i < 10; i++) {
+        document.write(
+          "<img src='../image/Food/" + i + ".jpg' width='100' height='100'>"
+        );
+      }
+
+      document.write("<br><br>");
+
+      //logoImg폴더의 toy01~06.png까지 출력
+      for (var i = 1; i <= 6; i++) {
+        document.write(
+          "<img src='../image/logoimg/toy0" +
+            i +
+            ".png' width='100' height='100'>"
+        );
+      }
+
+      document.write("<br><br>");
+
+      //사진의 일련번호가 없을때 이미지를 배열에 담아 출력
+      var imgArr = ["a01", "bag01", "captain", "acc02", "bag01", "blackwidow"];
+
+      for (var i = 0; i < imgArr.length; i++) {
+        var f = "<img src='../image/logoimg/" + imgArr[i] + ".png'>";
+        document.write(f);
+      }
+
+      document.write("<br><br>");
+
+      //Q.만화이미지의 01.png~20.png까지를 출력하세요 (4행5열)
+
+      //방법3: 삼항연산자
+      document.write("<br><br>");
+      for(var i = 1;i<=20;i++){
+        var imgname="../image/만화이미지/"+(i<10?"0":"")+i+".png";
+        var s = "<img src='"+imgname+"'>";
+        document.write(s);
+
+        //4행 5열로 만들기
+        if(i%5==0){ //5의배수 번째 일때마다 <br><br>뒤에 붙이기.
+            document.write("<br><br>");
+        }
+      }
+
+    </script>
+  </body>
+</html>
