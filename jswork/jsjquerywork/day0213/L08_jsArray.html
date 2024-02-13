@@ -68,25 +68,23 @@
 
       var s4 = "배열개수: " + arr4.length + "<br>";
 
-      for(var arr of arr4){
+      for (var arr of arr4) {
         s4 = "<img src='" + arr + "' height='100' width='100'>";
         document.write(s4);
       }
     </script>
 
-    <h3>배열_new Array()로 지정후 출력_push로 5개 삽입후 출력</h3>
-    <script>
-      var arr5 = new Array();
-
-      arr5.push("../image/만화이미지/02.png");
-      arr5.push("../image/연예인사진/5.jpg");
-      arr5.push("../image/쇼핑몰사진/2.jpg");
-      arr5.push("../image/logoImg/a01.png");
-    </script>
-
     <h3>위의 예제에서 마지막 이미지 2개 지우시고 다시 출력</h3>
-    
+    <script>
+      arr4.pop();
+      arr4.pop();
 
+      var s4 = "배열개수: " + arr4.length + "<br>";
 
+      for (var arr of arr4) {
+        s4 = "<img src='" + arr + "' height='100' width='100'>";
+        document.write(s4);
+      }
+    </script>
   </body>
 </html>
