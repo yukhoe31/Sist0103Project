@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Diphylleia&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Orbit&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 500px;
+        border: 3px solid gray;
+      }
+      th,
+      td {
+        border: 3px solid gray;
+      }
+
+      #result {
+        font-family: "Orbit";
+        width: 450px;
+        height: 200px;
+        border: 2px solid gray;
+        margin-top: 20px 2px;
+        font-size: 28px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        document.getElementById("btnResult").onclick = function () {
+          var s = "";
+          s += "이름: " + document.getElementById("name").value + "<br>";
+
+          var bloodType = document.querySelector('input[name="blood"]:checked');
+          if (bloodType) {
+            s += "혈액형: " + bloodType.value + "<br>";
+          }
+
+          var languages = document.querySelectorAll(
+            'input[name="lang"]:checked'
+          );
+          
+          if (languages.length > 0) {
+            s += "가능언어: ";
+            languages.forEach(function (language) {
+              s += language.value + " ";
+            });
+       
+            
+            s += "<br>";
+          }
+          
+          var hireDate = document.querySelector('input[name="day"]').value;
+          if (hireDate) {
+            s += "입사일자: " + hireDate + "<br>";
+          }
+
+          s += "비밀번호: " + document.getElementById("pw").value + "<br>";
+
+          document.getElementById("result").innerHTML = s;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <form>
+      <table>
+        <caption>
+          <b>폼태그 과제_개인정보</b>
+        </caption>
+        <tr>
+          <th>이름</th>
+          <td>
+            <input type="text" id="name" size="10" placeholder="이름" />
+          </td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td>
+            <input type="password" id="pw" size="12" placeholder="비밀번호" />
+          </td>
+        </tr>
+        <tr>
+          <th>혈액형</th>
+          <td>
+            <input type="radio" name="blood" value="A" />A형
+            <input type="radio" name="blood" value="B" />B형
+            <input type="radio" name="blood" value="O" />O형
+            <input type="radio" name="blood" value="AB" />AB형
+          </td>
+        </tr>
+        <tr>
+          <th>가능언어</th>
+          <td>
+            <input type="checkbox" name="lang" value="C++" />C++
+            <input type="checkbox" name="lang" value="JAVA" />JAVA
+            <input type="checkbox" name="lang" value="Jqeury" />Jqeury
+            <input type="checkbox" name="lang" value="Spring" />Spring
+          </td>
+        </tr>
+        <tr>
+          <th>입사일자</th>
+          <td>
+            <input type="date" name="day" value="2020-01-01" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="button" id="btnResult" value="결과출력" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <!-- 결과 상자 추가 -->
+    <div id="result"></div>
+  </body>
+</html>
