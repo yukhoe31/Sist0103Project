@@ -24,6 +24,7 @@
         //id="btn4" 라고 body에서 이름 붙여준 순간부터 javascript가 되는것.
         //나머지 버튼은 그냥 html이다.
         //따라서 접근을 위해 window.onload를 사용.
+        
         window.onload=function(){
 
             document.getElementById("btn4").onclick=function(){
@@ -31,7 +32,7 @@
                 var city = prompt("당신이 사는 지역은 어디입니까?");
 
                 out.innerHTML="제가 사는 지역은 "+city.fontcolor("magenta") +"입니다.";
-            
+                //innerHTML: 특정한 html의 컴포넌트(버튼,div,등 html위의 모든 요소)에 출력하겠다.(위치 지정)
             }
         }
 
@@ -42,6 +43,14 @@
     <input type="button" value="alert" class="btn btn-green" onclick="test2('초록초록')">
     <input type="button" value="confirm" class="btn btn-blue" onclick="test3()">
     <input type="button" value="prompt" class="btn btn-red" id="btn4" onclick="test4()">
+    <!--
+        id="btn4" 라고 body에서 이름 붙여준 순간부터 javascript가 되는것.
+        나머지 버튼은 그냥 html이다.
+        html상에서 javascript에 접근을 하려면 
+        <script>가 아래쪽에 있어야하는데, 여긴 안그렇다.
+        그래서  window.onload 를 통해 먼저 필요한 html을 전부 세팅해주고,
+        그 후에 function()을 불러와서 하는 것.
+    -->
 
     <div id="out">출력하는 곳...</div>
 

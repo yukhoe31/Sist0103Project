@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Array(3)으로 생성후 각 배열에 이미지 넣고 반복출력_2가지 방법</h3>
+    <script>
+        var arr1 = new Array(3);
+
+        arr1[0]="../image/연예인사진/1.jpg";
+        arr1[1]="../image/연예인사진/2.jpg";
+        arr1[2]="../image/연예인사진/3.jpg";
+
+        //for
+        document.write("[방법1]<br>");
+        for(var i=0;i<=2;i++){
+            var s = "<img src='"+arr1[i]+ "' width='100' >";
+            document.write(s);
+        }
+
+        document.write("<br><br>");
+
+        //of
+        document.write("[방법2]<br>");
+        for(var arr of arr1){
+            var s = "<img src='"+arr+ "' width='100' >";
+            document.write(s);
+        }
+
+    </script>
+
+    <h3>Array()생성후 이미지 3개 넣고 출력(push)_ of문 출력</h3>
+    <script>
+
+        var arr2 = new Array();
+
+        arr2.push("../image/연예인사진/1.jpg");
+        arr2.push("../image/만화이미지/01.png");
+        arr2.push("../image/쇼핑몰사진/1.jpg");
+
+        for(var arr of arr2){
+            var s = "<img src = '" + arr+"' width='100'>";
+            document.write(s);
+        }
+
+    </script>
+
+    <h3>위의 변수로  pop한번 실행후 다시 출력</h3>
+    <script>
+        arr2.pop();
+        var s = "";
+        
+        for(var arr of arr2){
+            s = "<img src = '" + arr+"' width='100'>";
+            document.write(s);
+        }
+
+    </script>
+
+
+</body>
+</html>

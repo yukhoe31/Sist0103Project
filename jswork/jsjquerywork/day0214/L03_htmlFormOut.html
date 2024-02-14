@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L03_htmlFormOut</title>
+    <style>
+      table {
+        border: 2px solid gray;
+        width: 500px;
+        border-collapse: collapse;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#" name="frm">
+      <table>
+        <caption>
+          <b>Radio & Check</b>
+        </caption>
+        <tr height="30">
+          <td>
+            <b>최종학력 선택</b>
+            <!--name을 동일하게 해야 같은 그룹 내의 라디오버튼임을 안다.-->
+            <input type="radio" name="grade" value="고등학교" />고등학교&nbsp;
+            <input type="radio" name="grade" value="대학교" />대학교&nbsp;
+            <input type="radio" name="grade" value="대학원" />고등학교&nbsp;
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <b>가능한 프로그램 언어</b>
+            <!--checkbox:중복가능-->
+            <input type="checkbox" name="lang" value="JAVA" />JAVA&nbsp;
+            <input type="checkbox" name="lang" value="ORACLE" />ORACLE&nbsp;
+            <input type="checkbox" name="lang" value="HTML" />HTML&nbsp;
+            <input type="checkbox" name="lang" value="JQuery" />JQuery&nbsp;
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <b>내가 원하는 세미프로젝트 주제</b>
+            <select>
+              <option value="영화예매">영화예매</option>
+              <option value="휴게소">휴게소</option>
+              <option value="여행지소개">여행지소개</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <b>나의 신장은 몇cm?</b>
+            <input type="number" value="160" min="140" max="210" step="1" >
+          </td>
+        </tr>
+
+        <tr>
+            <td>
+              <b>나의  몸무게는 몇kg?</b>
+              <input type="range" value="weight" min="40" max="110" 
+              step="3" value="60"><span id="outweight">0</span>kg
+            </td>
+          </tr>
+
+        <tr>
+          <td>
+            <b id="outcol">좋아하는 색상선택</b>
+            <input type="color" name="col">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <b>당신 생일은?</b>
+            <input type="date" name="day" value="2000-01-01">
+            <span id="outbirth"></span>
+        </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

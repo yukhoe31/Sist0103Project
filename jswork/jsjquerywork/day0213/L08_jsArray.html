@@ -65,6 +65,7 @@
       arr4.push("../image/연예인사진/5.jpg");
       arr4.push("../image/쇼핑몰사진/2.jpg");
       arr4.push("../image/logoImg/a01.png");
+      arr4.push("../image/logoImg/a02.png");
 
       var s4 = "배열개수: " + arr4.length + "<br>";
 
@@ -74,6 +75,8 @@
       }
     </script>
 
+
+
     <h3>위의 예제에서 마지막 이미지 2개 지우시고 다시 출력</h3>
     <script>
       arr4.pop();
@@ -82,9 +85,11 @@
       var s4 = "배열개수: " + arr4.length + "<br>";
 
       for (var arr of arr4) {
-        s4 = "<img src='" + arr + "' height='100' width='100'>";
-        document.write(s4);
+        s4 += "<img src='" + arr + "' height='100' width='100'>";
+        
       }
+
+      document.write(s4);
     </script>
   </body>
 </html>
