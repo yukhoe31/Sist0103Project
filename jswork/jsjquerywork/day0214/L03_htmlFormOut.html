@@ -9,10 +9,31 @@
         border: 2px solid gray;
         width: 500px;
         border-collapse: collapse;
-        border-bottom: 1px solid black;
-        border-top: 1px solid black;
+      }
+      tr,
+      th,
+      td {
+        border: 2px solid gray;
       }
     </style>
+    <script>
+      function goWrite(weight) {
+        document.getElementById("outweight").innerText = weight;
+      }
+
+      function goColor() {
+        outcol.style.background = frm.col.value;
+      }
+
+      function goBirth(){
+        outbirth.innerHTML="생일: "+frm.day.value;
+      }
+
+      function goProject(){
+        projectout.innerHTML="주제: "+frm.project.value;
+       
+      }
+    </script>
   </head>
   <body>
     <form action="#" name="frm">
@@ -26,7 +47,7 @@
             <!--name을 동일하게 해야 같은 그룹 내의 라디오버튼임을 안다.-->
             <input type="radio" name="grade" value="고등학교" />고등학교&nbsp;
             <input type="radio" name="grade" value="대학교" />대학교&nbsp;
-            <input type="radio" name="grade" value="대학원" />고등학교&nbsp;
+            <input type="radio" name="grade" value="대학원" />대학원&nbsp;
           </td>
         </tr>
 
@@ -41,46 +62,55 @@
           </td>
         </tr>
 
-
         <tr>
           <td>
             <b>내가 원하는 세미프로젝트 주제</b>
-            <select>
+            <select name="project" onchange="goProject()">
               <option value="영화예매">영화예매</option>
               <option value="휴게소">휴게소</option>
               <option value="여행지소개">여행지소개</option>
+              <option value="쇼핑몰">쇼핑몰</option>
             </select>
+
+            <span id="projectout" ></span>
           </td>
         </tr>
 
         <tr>
           <td>
             <b>나의 신장은 몇cm?</b>
-            <input type="number" value="160" min="140" max="210" step="1" >
+            <input type="number" value="160" min="140" max="210" step="1" />
           </td>
         </tr>
 
         <tr>
-            <td>
-              <b>나의  몸무게는 몇kg?</b>
-              <input type="range" value="weight" min="40" max="110" 
-              step="3" value="60"><span id="outweight">0</span>kg
-            </td>
-          </tr>
+          <td>
+            <b>나의 몸무게는 몇kg?</b>
+            <input
+              type="range"
+              value="weight"
+              min="40"
+              max="110"
+              step="3"
+              value="60"
+              onchange="goWrite(this.value)"
+            /><span id="outweight">0</span>kg
+          </td>
+        </tr>
 
         <tr>
           <td>
             <b id="outcol">좋아하는 색상선택</b>
-            <input type="color" name="col">
+            <input type="color" name="col" onchange="goColor()" />
           </td>
         </tr>
 
         <tr>
           <td>
             <b>당신 생일은?</b>
-            <input type="date" name="day" value="2000-01-01">
+            <input type="date" name="day" value="2000-01-01" onchange="goBirth()"  />
             <span id="outbirth"></span>
-        </td>
+          </td>
         </tr>
       </table>
     </form>
