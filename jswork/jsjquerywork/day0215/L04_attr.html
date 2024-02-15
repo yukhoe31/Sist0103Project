@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+
+            var selImage = document.getElementById("selImage");
+            var photo = document.getElementById("photo");
+
+            var init_image = selImage.value;
+            //현재사진의 src속성을 변경해본다.
+            //아래 body에서 구두2가 selected되었으므로
+            //구두2가 초기값으로 등장한다.
+            photo.setAttribute("src",init_image);
+
+
+            //셀렉트 박스 변경시 해당이미지로
+            selImage.onchange = function(){
+
+                //모든 이벤트 함수에 이벤트 발생객체에 대한 
+                //this라는 변수가 기본적으로 존재
+                console.log(this.value);
+
+                //photo의 src속성을 this.value 값으로 바꾼다.
+                photo.setAttribute("src",this.value);
+            }
+
+            //점점 작게 이벤트
+            document.getElementById("btnsmall").onclick=function(){
+                //photo의 현재 width값 얻기
+                var w = photo.getAttribute("width");
+                w -= 10;
+                photo.setAttribute("width",w);
+            }
+
+            //점점 크게 이벤트
+            document.getElementById("btnlarge").onclick=function(){
+                //photo의 현재 width값 얻기
+                var w = parseInt(photo.getAttribute("width"));
+                w += 10;
+                photo.setAttribute("width",w);
+            }
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <button type="button" id="btnsmall">점점작게</button>
+        <button type="button" id="btnlarge">점점크게</button>
+        <b style="margin-left: 20px">사진선택</b>
+        <select id="selImage">
+            <option value="../image/logoImg/shoe01.png">구두1</option>
+            <option value="../image/logoImg/shoe02.png" selected>구두2</option>
+            <option value="../image/logoImg/shoe03.png">구두3</option>
+            <option value="../image/logoImg/shoe04.png">구두4</option>
+        </select>
+    </div>
+
+    <div>
+        <img src="../image/logoImg/shoe01.png" id="photo" width="300">
+    </div>
+</body>
+</html>
