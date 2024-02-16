@@ -1,24 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>연예인 1.jpg~20.jpg까지 for반복문 이용해서 body에 출력하기</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Diphylleia&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Orbit&display=swap"
+      rel="stylesheet"
+    />
+    <title>L06_quizEvent</title>
+    <style>
+      .iyou1 {
+        width: 120px;
+        height: 35px;
+        font-size: 30px;
+        border-radius: 10px;
+        background-color: cornflowerblue;
+        color: rgb(9, 20, 20);
+        font-family: Cute Font;
+      }
+      .iyou{
+        font-family: Cute Font;
+        font-size: 50px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        //1. 연예인 사진 1~20번까지 imgCeleb배열에 넣기.
+        var imgCeleb = new Array();
 
+        for (var i = 1; i < 21; i++) {
+          var img_name =
+            "<img src='../image/연예인사진/" + i + ".jpg' width='100'>";
+          imgCeleb.push(img_name);
+          document.getElementById("celeb_show").innerHTML = imgCeleb;
+        }
 
-    <h3>2. Food사진 1.jpg를 img태그로 나타낸후, id를 img1으로 주소 그 아이디로 이벤트 추가
-        사진에 마우스 올리면 10.jpg로 바뀌고 클릭하면 11.jpg로 바뀌며 마우스 벗어나면 원래
-        자기사진으로 (1.jpg) 변경되도록 이벤트 추가
-    </h3>
+        //2. Food 사진
+        var s = document.getElementById("img1");
+
+        //기존 사진의 경로 얻어놓기
+        img_origin = s.getAttribute("src");
+        s;
+
+        //2-1.마우스 올리면
+        s.onmouseover = function () {
+          //이미지 변경
+          s.setAttribute("src", "../image/Food/10.jpg");
+        };
+
+        //2-2.클릭하면
+        s.onclick = function () {
+          //이미지 변경
+          s.setAttribute("src", "../image/Food/11.jpg");
+        };
+
+        //2-3.마우스 벗어나면 다시 원래 사진
+        s.onmouseout = function () {
+          this.setAttribute("src", img_origin);
+        };
+
+        //3.버튼 이벤트
+        document.getElementById("btn").onclick = function () {
+          var name = prompt("당신의 이름은 무엇입니까?");
+          if (name != null) {
+            document.getElementById("name_show").innerHTML =
+              "내 이름은 " + name + "입니다.";
+          }else{
+
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <h3>1. 연예인 1.jpg~20.jpg까지 for반복문 이용해서 body에 출력하기</h3>
+    <div id="celeb_show"></div>
 
     <h3>
-        버튼을 하나 만들고 버튼을 클릭시 prompt로 이름을 입력받아서 div태그안에
-        '내 이름은 홍길동입니다.'라고 출력할것.(div에 class='iyou' 라고 준 후 css로 스타일 적용해볼것)
+      2. Food사진 1.jpg를 img태그로 나타낸후, id를 img1으로 주고 그 아이디로
+      이벤트 추가 사진에 마우스 올리면 10.jpg로 바뀌고 클릭하면 11.jpg로 바뀌며
+      마우스 벗어나면 원래 자기사진으로 (1.jpg) 변경되도록 이벤트 추가
     </h3>
+    <img src="../image/Food/1.jpg" id="img1" width="200px" />
 
-
-</body>
+    <h3>
+      3. 버튼을 하나 만들고 버튼을 클릭시 prompt로 이름을 입력받아서 div태그안에
+      '내 이름은 홍길동입니다.'라고 출력할것.(div에 class='iyou' 라고 준 후
+      css로 스타일 적용해볼것)
+    </h3>
+    <button class="iyou1" id="btn">버튼</button>
+    <div class="iyou" id="name_show"></div>
+  </body>
 </html>
