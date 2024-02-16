@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #photo_zone {
+        position: absolute;
+        left: 50px;
+        top: 100px;
+        width: 400px;
+        height: 500;
+        border: 2px solid gray;
+        padding: 10px 10px;
+      }
+
+      #main_zone {
+        position: absolute;
+        left: 500px;
+        top: 120px;
+      }
+
+      #large_photo {
+        width: 400px;
+        height: 450px;
+        border: 10px groove gray;
+      }
+
+      .sphoto {
+        width: 60px;
+        height: 60px;
+        border: 1px solid gray;
+        margin: 5px 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="photo_zone">
+      <script>
+        for (var i = 1; i <= 35; i++) {
+          if (i == 23) {
+            continue; //23번 사진이없어서...
+          }
+          document.write(
+            "<img src='../image/쇼핑몰사진/" + i + ".jpg' class='sphoto' >"
+          );
+        }
+      </script>
+    </div>
+    <div id="main_zone">
+      <img src="../image/logoImg/toy01.png" id="large_photo" />
+    </div>
+
+    <script>
+      //작은 이미지위에 마우스 가져다대면 큰 이미지에 출력
+      var img_change = document.querySelectorAll(".sphoto");
+
+      for (var s of img_change) {
+        s.onmouseover = function () {
+          origin_photo = this.getAttribute("src");
+
+          //이미지변경
+          document.getElementById("large_photo").src = this.src;
+        };
+
+      }
+    </script>
+  </body>
+</html>
