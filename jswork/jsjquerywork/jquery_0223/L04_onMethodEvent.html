@@ -42,6 +42,7 @@
         font-size: 20px;
         font-family: 20px;
         font-family: "Nanum Pen Script";
+        font-size: 25px;
       }
 
       #one {
@@ -51,13 +52,19 @@
       }
 
       #two {
-        left: 700px;
+        left: 500px;
         top: 100px;
         border: 0px solid gray;
       }
 
       #three {
-        left: 1200px;
+        left: 700px;
+        top: 100px;
+        border: 0px solid gray;
+      }
+
+      #four {
+        left: 1100px;
         top: 100px;
         border: 0px solid gray;
       }
@@ -81,8 +88,8 @@
     </style>
     <script>
       $(function () {
-
-        var theater="", movie="";
+        var theater = "",
+          movie = "";
 
         //#div one에 버튼
         var b1 =
@@ -125,32 +132,63 @@
 
           $("#three").html(s);
         });
-      });
 
-      //영화관 영화제목 클릭시 이벤트
-      $(document).on("click","#three h3",function(){
+        //영화관 영화제목 클릭시 이벤트
+        $(document).on("click", "#three h3", function () {
+          //클릭한 h3에서 class속성을 얻는다.
+          var movie_select = $(this).attr("class");
 
-        //클릭한 h3에서 class속성을 얻는다.
-        var movie_select = $(this).attr("class");
-
-        if(movie_select == 'theater'){
+          if (movie_select == "theater") {
             theater = "극장명: " + $(this).text();
-        }else{
-            movie="영화제목: " + $(this).text();
-        }
+          } else {
+            var times = ["09:00", "12:30", "14:45", "18:20", "21:30"];
 
-        $("#movie_result").html(theater+"<br>" +movie);
+            var t = "";
+            $.each(times, function (i, ele) {
+              t +=
+                "<input type='radio' name='time' value='" +
+                times[i] +
+                "'>" +
+                times[i] +
+                " ";
+            });
 
-      
+            movie = "영화제목: " + $(this).text();
 
-      })
+            t += "<input type='number' min='1' max='5' value='0' id='inwon'>";
 
+            $("#four").html(t);
+          }
+
+          $("#movie_result").html(theater + "<br>" + movie);
+        });
+
+        //라디오버튼 선택시 이벤트
+        $(document).on("click","input[name='time']",function(){
+
+            console.log($(this).val());
+
+            time="상영시간: " + $(this).val();
+
+            $("#movie_result").html(theater + "<br>" +movie+ "<br>" +time);
+
+        })
+
+        //인원 변경시 이벤트
+        $(document).on("change","#inwon", function(){
+            inwon = "인원수: " + $(this).val();
+
+            $("#movie_result").html(theater + "<br>" +movie+ "<br>" +time+ "<br>" +inwon);
+        })
+
+      });
     </script>
   </head>
   <body>
     <div id="one"></div>
     <div id="two"></div>
     <div id="three"></div>
+    <div id="four"></div>
     <div id="movie_result"></div>
   </body>
 </html>
