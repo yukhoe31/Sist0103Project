@@ -5,7 +5,6 @@
         <h3>{{reactiveMessage}}</h3>
         <button v-on:click="btnReactiveMessage">Add Message</button>
 
-
         <h2>일반 메세지</h2>
         <h3>{{ normalMessage }}</h3>
         <button @click="btnNormalMessage">Add Message</button>
@@ -52,6 +51,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 
 </style>
