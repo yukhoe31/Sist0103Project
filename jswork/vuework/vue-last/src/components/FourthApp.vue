@@ -1,6 +1,10 @@
 <template>
     <div>
         <h1 class="alert alert-info">FourthApp 입니다.</h1>
+    
+        <li v-for="fruit in fruitArray" :key="fruit">{{ fruit }}</li>
+        <li v-for="info in infoArray" :key="info">{{ info }}</li>
+        <li v-for="info in infoArray" :key="info">{{ info.id }}/{{ info.user }}</li>
     </div>
 </template>
 
