@@ -25,9 +25,8 @@
  			String num=rs.getString("num");
  			String foodname=rs.getString("foodname");
  			String foodphoto=rs.getString("foodphoto");
- 			String price=rs.getString("price");
- 			String cnt=rs.getString("cnt");
- 
+ 			int price = rs.getInt("price");
+ 			int cnt = rs.getInt("cnt");
  			%>
  			
  			<food num="<%=num %>">

@@ -30,11 +30,11 @@ public class DbConnect {
 		
 		try {
 			conn=DriverManager.getConnection(MYSQL_URL, "angel", "a1234");
-			System.out.println("MYSQL계정연결성공");
+			System.out.println("MYSQL 계정연결성공");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("MYSQL연결실패: "+e.getMessage());
+			System.out.println("MYSQL 연결실패: "+e.getMessage());
 		}
 		
 		

@@ -49,7 +49,7 @@
 			});
 		});
 		
-		$("#btnmunjae").click(function(){
+		$("#btnfood").click(function(){
 			
 			$.ajax({
 				type:"get",
@@ -60,12 +60,13 @@
 					var s ="";
 					$(data).find("food").each(function(i,ele){
 						var n = $(ele);
-						s += "<div class= 'alert alert-warning' style='width:400px;'>";
-						s += "No. " +n.attr("num") + "<br>";
+						s += "<div class= 'alert alert-warning' style='width:400px;'>";		
+						s += "<img src='" + n.find("foodphoto").text() +"' height='100px'><br>";
+						s += "FoodNo. " +n.attr("num") + "<br>";
 						s += "음식이름: " +n.find("foodname").text()+"<br>";
 						s += "가격: " +n.find("price").text() + "<br>";
 						s += "수량: " +n.find("cnt").text() + "<br>";
-						s += "<img src='" + n.find("foodphoto").text() +"' width='100px'>";
+
 						s += "</div>";
 						
 					});
@@ -86,7 +87,7 @@
 <h2>xml db읽기</h2>
 <button type="button" class="btn btn-info" id="btnteam">teamtoxml.jsp읽기</button>
 
-<button type="button" class="btn btn-warning" id="btnmunjae">foodtoxml.jsp읽기</button>
+<button type="button" class="btn btn-warning" id="btnfood">foodtoxml.jsp읽기</button>
 <div id="show"></div>
 
 </body>
