@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Diphylleia&family=Dongle&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Orbit&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+ul li {
+	list-style: none;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	border: 1px solid tomato;
+	margin: 5px;
+	float: left;
+	cursor: pointer;
+}
+
+.bg1 {
+	background-color: tomato;
+	color: #fff;
+}
+</style>
+<script type="text/javascript">
+
+	//첫번째 Home버튼 누르면 메인이미지 아무거나 하나 나오게
+
+	//두번째 Food버튼 누르면  json 파일 하나가져오기div
+   $("#btn1").click(function(){
+    	  
+    	  $.ajax({
+    		  type:"get",
+    		  url:"data3.xml",
+    		  dataType:"xml",
+    		  success:function(data){
+    			  
+    			  var s="";
+    			  //idx는 0부터,ele는 각태그값,여기서는 stu각각이 ele로 넘어옴
+    			  $(data).find("stu").each(function(idx,ele){
+    				  var e=$(ele);
+    				  
+    				  s+="idx:"+idx+"<br>";
+    				  s+="이름: "+e.attr("name")+"<br>";
+    				  s+="Java: "+e.find("java").text()+"<br>";
+    				  s+="Spring: "+e.find("spring").text()+"<br>";
+    				  s+="Ajax: "+e.find("ajax").text()+"<br>";
+    				  s+="--------------------<br>";
+    			  });
+    			  
+    			  $("#result").html(s);
+    		  }
+    	  })
+      });
+      
+      $("#btn2").click(function(){
+    	  
+    	  var s="";
+    	  
+    	  $.ajax({
+    		  
+    		  type:"get",
+    		  url:"data3.json",
+    		  dataType:"json",
+    		  success:function(data){
+    			  
+    			  $.each(data,function(idx,ele){
+    				  s+="idx: "+idx+"<br>";
+    				  s+="Name: "+ele.name+"<br>";
+    				  s+="city: "+ele.city+"<br>";
+    				  s+="hp: "+ele.hp+"<br>";
+    				  s+="detailaddr: "+(ele.detailaddr==null?"상세주소없음":ele.detailaddr)+"<br>";
+    			  });
+    			  
+    			  $("#result").html(s);
+    		  }
+    	  });
+      });
+	
+
+
+	//3번째 Info버튼 누르면 xml파일 가져오기(div or table)	
+</script>
+</head>
+<body>
+	<ul>
+		<li>Home</li>
+		<li>Food</li>
+		<li>Info</li>
+	</ul>
+
+	<div style="clear: both;"></div>
+
+	<div id="show" style="margin-top: 50px;"></div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+    href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Diphylleia&family=Dongle&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Orbit&display=swap"
+    rel="stylesheet">
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+    #out{
+        display: flex;
+        font-family: 'Orbit';
+        font-size: 1.5em;
+    }
+    
+    .box{
+    	width:40px;
+    	height:40px;
+    	border-radius: 100px;
+    }
+</style>
+</head>
+<body>
+    <h2>jshop_json으로 파싱한것 읽어오기</h2>
+    <button type="button" class="btn btn-warning"
+    id="btnshop">jshop DB 데이터 읽기</button>
+    
+    <div id="out"></div>
+    
+    <script type="text/javascript">
+        $("#btnshop").click(function(){
+            
+            $.ajax({
+                type:"get",
+                url:"c1_jshoptojson.jsp",
+                dataType:"json",
+                success:function(res){
+                
+                    var s = "<table class='table table- table-bordered border-warning' style='width:800px;'>";
+                    s += "<caption align='top'><b>Json Jshop읽어오기</b></caption>";
+                    s += "<tr class='table table-danger'>";
+                    s += "<th>번호</th><th>상품명</th><th>색상</th><th>가격</th><th>상품이미지</th>";
+                    s += "</tr>";
+
+                    $.each(res,function(i,elt){
+                        s += "<tr>";
+                        s += "<td>" +elt.num +"</td>";
+                        s += "<td>" +elt.sangpum + "</td>";
+                        s += "<td>"+elt.color+"<br>" + "<div class='box' style='background-color:"+ elt.color + ";'></div></td>";
+                        s += "<td>" +elt.price + "</td>";
+                        s += "<td><img src='"+elt.imagename+"' width='50'></td>";
+                        s += "</tr>";                    
+
+                    });
+                    
+                    s += "</table>";
+                    $("#out").html(s);
+                    
+                }
+                
+            })
+        })
+    </script>
+</body>
+</html>
