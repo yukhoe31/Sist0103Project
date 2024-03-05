@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-ul li {
+ul button {
 	list-style: none;
 	width: 150px;
 	height: 50px;
@@ -28,75 +28,79 @@ ul li {
 	color: #fff;
 }
 </style>
-<script type="text/javascript">
-
-	//첫번째 Home버튼 누르면 메인이미지 아무거나 하나 나오게
-
-	//두번째 Food버튼 누르면  json 파일 하나가져오기div
-   $("#btn1").click(function(){
-    	  
-    	  $.ajax({
-    		  type:"get",
-    		  url:"data3.xml",
-    		  dataType:"xml",
-    		  success:function(data){
-    			  
-    			  var s="";
-    			  //idx는 0부터,ele는 각태그값,여기서는 stu각각이 ele로 넘어옴
-    			  $(data).find("stu").each(function(idx,ele){
-    				  var e=$(ele);
-    				  
-    				  s+="idx:"+idx+"<br>";
-    				  s+="이름: "+e.attr("name")+"<br>";
-    				  s+="Java: "+e.find("java").text()+"<br>";
-    				  s+="Spring: "+e.find("spring").text()+"<br>";
-    				  s+="Ajax: "+e.find("ajax").text()+"<br>";
-    				  s+="--------------------<br>";
-    			  });
-    			  
-    			  $("#result").html(s);
-    		  }
-    	  })
-      });
-      
-      $("#btn2").click(function(){
-    	  
-    	  var s="";
-    	  
-    	  $.ajax({
-    		  
-    		  type:"get",
-    		  url:"data3.json",
-    		  dataType:"json",
-    		  success:function(data){
-    			  
-    			  $.each(data,function(idx,ele){
-    				  s+="idx: "+idx+"<br>";
-    				  s+="Name: "+ele.name+"<br>";
-    				  s+="city: "+ele.city+"<br>";
-    				  s+="hp: "+ele.hp+"<br>";
-    				  s+="detailaddr: "+(ele.detailaddr==null?"상세주소없음":ele.detailaddr)+"<br>";
-    			  });
-    			  
-    			  $("#result").html(s);
-    		  }
-    	  });
-      });
-	
-
-
-	//3번째 Info버튼 누르면 xml파일 가져오기(div or table)	
-</script>
 </head>
 <body>
 	<ul>
-		<li>Home</li>
-		<li>Food</li>
-		<li>Info</li>
+		<button id="btnhome">Home</button>
+		<button id="btnfood">Food</button>
+		<button id="btninfo">Info</button>
 	</ul>
 
 	<div style="clear: both;"></div>
 
 	<div id="show" style="margin-top: 50px;"></div>
+	
+	
+	<script type="text/javascript">
+$(document).ready(function() {
+    //첫번째 Home버튼 누르면 메인이미지 아무거나 하나 나오게
+    $("#btnhome").click(function(){
+
+                 var s ="<img src='../image/만화이미지/만화이미지/17.png' width='400'>";
+     
+                 $("#show").html(s);
+
+    	
+    });
+    
+    
+    
+    
+    //두번째 Food버튼 누르면  json 파일 하나가져오기div
+    $("#btnfood").click(function(){
+        $.ajax({
+            type:"get",
+            url:"d1_foodtojson.jsp",
+            dataType:"json",
+            success:function(res){
+                var s = "";
+                $.each(res,function(i,item){
+                    s += "<div   class='alert alert-success' style='width:300px;'>";
+                    s += "음식번호: " +item.num + "<br>";
+                    s += "음식이름: " +item.foodname + "<br>";
+                    s += "가격: " +item.price + "<br>";
+                    s += "수량: " +item.cnt + "<br>";
+                    s += "<img src='" +item.foodphoto+ "' width='100'>";
+                    s += "</div>";
+                });
+                $("#show").html(s);
+            }
+        });
+    }); 
+    //3번째 Info버튼 누르면 xml파일 가져오기(div or table)
+    $("#btninfo").click(function(){
+        $.ajax({
+            type:"get",
+            url:"d2_infotoxml.jsp",
+            dataType:"xml",
+            success:function(data){
+                var s="";
+                $(data).find("food").each(function(idx,ele){
+                    var e=$(ele);
+                    s += "<div class='alert alert-warning' style='width:300px;'>";
+                    s+="번호:"+e.attr("num")+"<br>";
+                    s+="이름: "+e.find("name").text()+"<br>";
+                    s+="hp: "+e.find("hp").text()+"<br>";
+                    s+="age: "+e.find("age").text()+"<br>";
+                    s+="<img src='"+e.find("photo").text()+"' width='100'>";
+                    s += "</div>";
+                });
+                $("#show").html(s);
+            }
+        })
+    });
+});
+</script>
 </body>
 </html>
+
