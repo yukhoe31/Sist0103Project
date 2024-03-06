@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="c2_uploadProc.jsp" method="post" enctype="multipart0306/form-data">
+	<form action="c2_uploadProc.jsp" method="post" enctype="multipart/form-data">
 	   <table class="table table-bordered" style="width: 500px;">
 	     <tr>
 	       <th width="100">이름</th>
