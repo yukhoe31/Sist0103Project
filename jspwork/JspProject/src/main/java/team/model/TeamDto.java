@@ -3,13 +3,12 @@ package team.model;
 import java.sql.Timestamp;
 
 public class TeamDto {
-	
+
 	private String num;
 	private String name;
 	private String driver;
 	private String addr;
 	private Timestamp writeday;
-	
 	
 	
 	public String getNum() {
@@ -42,8 +41,6 @@ public class TeamDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
-	
-	
 	
 	
 }
