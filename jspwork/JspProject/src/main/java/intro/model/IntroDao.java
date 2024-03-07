@@ -14,7 +14,7 @@ public class IntroDao{
 	DbConnect db=new DbConnect();
 	
 	//insert
-	public void insertTeam(IntroDto dto)
+	public void insertIntro(IntroDto dto)
 	{
 		
 		Connection conn=db.getConnection();
@@ -24,7 +24,8 @@ public class IntroDao{
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			//바인딩3개
+			
+			//?순서대로 바인딩
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getAge());
 			pstmt.setString(3, dto.getBirthday());
@@ -46,9 +47,8 @@ public class IntroDao{
 	}
 	
 	
-	//전체출력
-	
-	public ArrayList<IntroDto> getAllTeams()
+	//전체출력(조회)
+	public ArrayList<IntroDto> getAllDatas()
 	{
 		ArrayList<IntroDto> list=new ArrayList<IntroDto>();
 		
@@ -72,7 +72,6 @@ public class IntroDao{
 				dto.setBirthday(rs.getString("birthday"));
 				dto.setHometown(rs.getString("hometown"));
 				dto.setHobby(rs.getString("hobby"));
-
 				dto.setMemo(rs.getString("memo"));
 				
 				//list에 추가

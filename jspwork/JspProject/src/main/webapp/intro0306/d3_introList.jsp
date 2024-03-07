@@ -16,7 +16,7 @@
 <%
   //db목록 가져오기
     IntroDao dao=new IntroDao();
-	ArrayList<IntroDto>list=dao.getAllTeams();
+	ArrayList<IntroDto>list=dao.getAllDatas();
 
 %>
 <body>
@@ -31,28 +31,32 @@
           <th width="80">이름</th>
           <th width="60">나이</th>
           <th width="100">생년월일</th>
-          <th width="100">고향</th>
-          <th width="120">취미</th>
-          <th width="120">비고</th>
-          
+          <th width="300">자세히보기</th>          
        </tr>
        
        <%
-         for(int i=0;i<list.size();i++)
-         {
-        	 IntroDto dto=list.get(i);  //i번지의 dto를 꺼낸다
-        	 %>
-        	 
-        	 <tr>
-        	   <td><%=i+1 %></td>
-        	   <td><%=dto.getName() %></td>
-        	   <td><%=dto.getAge() %></td>
-        	   <td><%=dto.getBirthday() %></td>
-        	   <td><%=dto.getHometown() %></td>
-        	   <td><%=dto.getHobby() %></td>
-   			   <td><%=dto.getMemo() %></td>
-        	 </tr>
-         <%}
+       	 if(list.size()==0){%>
+       	 	
+       	 	<tr>
+       	 		<td colspan="5" align="center">
+       	 			<h3>자기소개가 없습니다.</h3>
+       	 		</td>
+       	 	</tr>
+       	 <%}else{
+       		 for(int i=0;i<list.size();i++){
+       			 IntroDto dto = list.get(i);
+       			 %>
+       			 <tr>
+       			 	<td align="center"><%=i+1 %> </td>
+       			 	<td><%=dto.getName() %></td>
+       			 	<td><%=dto.getAge() %></td>
+       			 	<td><%=dto.getBirthday() %></td>
+       			 	<td><button type="button" class="btn btn-info"
+       			 	onclick="location.href=''">자세히보기</button></td>
+       			 </tr>
+       		 <%}
+       	 }
+      
        %>
        
        
