@@ -1,26 +1,25 @@
-
 package intro.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 import mysql.db.DbConnect;
 
-public class IntroDao{
+public class IntroDao {
 
 	DbConnect db=new DbConnect();
 	
 	//insert
 	public void insertIntro(IntroDto dto)
 	{
-		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="insert into intro (name,age,birthday,hometown,hobby,memo) values(?,?,?,?,?,?)";
+		String sql="insert into intro values (null,?,?,?,?,?,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -33,9 +32,7 @@ public class IntroDao{
 			pstmt.setString(5, dto.getHobby());
 			pstmt.setString(6, dto.getMemo());
 			
-			//실행
 			pstmt.execute();
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,14 +40,12 @@ public class IntroDao{
 			db.dbClose(pstmt, conn);
 		}
 		
-		
 	}
 	
-	
-	//전체출력(조회)
-	public ArrayList<IntroDto> getAllDatas()
+	//전체조회
+	public List<IntroDto> getAllDatas()
 	{
-		ArrayList<IntroDto> list=new ArrayList<IntroDto>();
+		List<IntroDto> list=new Vector<IntroDto>();
 		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
@@ -68,16 +63,15 @@ public class IntroDao{
 				
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setAge(rs.getString("age"));
 				dto.setBirthday(rs.getString("birthday"));
-				dto.setHometown(rs.getString("hometown"));
 				dto.setHobby(rs.getString("hobby"));
+				dto.setHometown(rs.getString("hometown"));
 				dto.setMemo(rs.getString("memo"));
+				dto.setAge(rs.getString("age"));
 				
-				//list에 추가
+				
 				list.add(dto);
 			}
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,35 +80,12 @@ public class IntroDao{
 			db.dbClose(rs, pstmt, conn);
 		}
 		
+		
 		return list;
 	}
 	
 	
-	
-	//삭제
-	public void deleteTeam(String num)
-	{
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		
-		String sql="delete from intro where num=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setString(1, num);
-			
-			pstmt.execute();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			db.dbClose(pstmt, conn);
-		}
-		
-	}
-	
+
 	
 	//하나의 dto조회
 	public IntroDto getOneData(String num)
@@ -152,36 +123,38 @@ public class IntroDao{
 			db.dbClose(rs, pstmt, conn);
 		}
 		
-		
 		return dto;
+		
 	}
 	
-	//수정
-	public void updateTeam(IntroDto dto) {
+	
+	//수정(나이,생년월일,거주지역,취미, 성격)
+	
+	
+	
+	
+	
+	//삭제(시퀀스에 해당하는 DB삭제)
+	public void deleteIntro(String num) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "update intro set name=?,age=?,birthday=?,hometown=?,hobby=?,memo=? where num=?";
+		String sql = "delete from intro where num=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			//바인팅 7개
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getAge());
-			pstmt.setString(3, dto.getBirthday());
-			pstmt.setString(4, dto.getHometown());
-			pstmt.setString(5, dto.getHobby());
-			pstmt.setString(6, dto.getMemo());
-			pstmt.setString(7, dto.getNum());
-			
+			pstmt.setString(1,num);
 			pstmt.execute();
 			
 		}catch(SQLException e) {
-			
+			e.printStackTrace();
+		}finally {
+			db.dbClose( pstmt, conn);
 		}
 		
 	}
 	
-
+	
+	
+	
 }
