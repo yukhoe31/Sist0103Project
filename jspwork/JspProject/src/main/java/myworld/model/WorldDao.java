@@ -13,7 +13,7 @@ public class WorldDao {
 	
 	DbConnect db = new DbConnect();
 	
-	private void insertWorld(WorldDto dto) {
+	public void insertWorld(WorldDto dto) {
 		// TODO Auto-generated method stub
 		
 		Connection conn = db.getConnection();
