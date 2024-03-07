@@ -1,5 +1,5 @@
-<%@page import="intro.model.IntroDao"%>
 <%@page import="intro.model.IntroDto"%>
+<%@page import="intro.model.IntroDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,38 +12,35 @@
 <title>Insert title here</title>
 </head>
 <%
-	String num = request.getParameter("num");
-	IntroDao dao = new IntroDao();
-	IntroDto dto = dao.getOneData(num);
+  String num=request.getParameter("num");
+  IntroDao dao=new IntroDao();
+  IntroDto dto=dao.getOneData(num);
 %>
-
-
 <body>
 <div style="margin: 30px 50px;">
    <form action="d6_updateAction.jsp" method="post">
+     <input type="hidden" name="num" value="<%=num%>">
      <table class="table table-bordered" style="width: 600px;">
-        <caption align="top"><h2 class="alert alert-info"><%=dto.getName() %>님의 자기소개 수정</caption>
+        <caption align="top"><h2 class="alert alert-info"><%=dto.getName() %>님의  자기소개 수정</h2></caption>
         <tr>
           <th >이름</th>
           <td>
             <input type="text" name="name" class="form-control" required="required" style="width: 120px;"
-            value="<%=dto.getName() %>">
+            value="<%=dto.getName()%>">
           </td>
         </tr>
         
         <tr>
           <th >나이</th>
           <td>
-            <input type="number" name="age" class="form-control" value="20" style="width: 80px;"
-            value="<%=dto.getAge() %>">
+            <input type="number" name="age" class="form-control" value="<%=dto.getAge() %>" style="width: 80px;">
           </td>
         </tr>
         
         <tr>
           <th >생년월일</th>
           <td>
-            <input type="date" name="birthday" class="form-control" value="1997-02-25" style="width: 200px;"
-            value="<%=dto.getBirthday() %>">
+            <input type="date" name="birthday" class="form-control" value="<%=dto.getBirthday() %>" style="width: 200px;">
           </td>
         </tr>
         
@@ -83,13 +80,14 @@
           <th >성격</th>
           <td>
             <textarea style="width: 500px; height: 100px;" placeholder="자유롭게 서술하세요"
-            class="form-control" name="memo"></textarea>
+            class="form-control" name="memo"><%=dto.getMemo() %></textarea>
           </td>
         </tr>
         
+        
         <tr>
           <td colspan="2" align="center">
-            <button type="submit" class="btn btn-outline-info">수정 전송</button>
+            <button type="submit" class="btn btn-outline-info">수정전송</button>
           </td>
         </tr>
      </table>

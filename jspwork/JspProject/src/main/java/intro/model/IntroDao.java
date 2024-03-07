@@ -84,10 +84,7 @@ public class IntroDao {
 		return list;
 	}
 	
-	
-
-	
-	//하나의 dto조회
+	//detailView..num에 해당하는 하나의 dto반환
 	public IntroDto getOneData(String num)
 	{
 		IntroDto dto=new IntroDto();
@@ -107,15 +104,13 @@ public class IntroDao {
 			{
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setAge(rs.getString("age"));
 				dto.setBirthday(rs.getString("birthday"));
-				dto.setHometown(rs.getString("hometown"));
 				dto.setHobby(rs.getString("hobby"));
+				dto.setHometown(rs.getString("hometown"));
 				dto.setMemo(rs.getString("memo"));
+				dto.setAge(rs.getString("age"));
+				
 			}
-			
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,38 +118,33 @@ public class IntroDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 		
-		return dto;
 		
+		return dto;
 	}
 	
-	
-	//수정(나이,생년월일,거주지역,취미, 성격)
-	
+	//수정(나이,생년월일,거주지역,취미,성격)
 	
 	
 	
-	
-	//삭제(시퀀스에 해당하는 DB삭제)
-	public void deleteIntro(String num) {
-		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
+	//삭제 (시퀀스에 해당 하는 db삭제)
+	public void deleteIntro(String num)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
 		
-		String sql = "delete from intro where num=?";
+		String sql="delete from intro where num=?";
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,num);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
 			pstmt.execute();
-			
-		}catch(SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			db.dbClose( pstmt, conn);
+			db.dbClose(pstmt, conn);
 		}
 		
 	}
-	
-	
-	
 	
 }

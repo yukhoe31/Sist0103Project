@@ -1,4 +1,5 @@
-<%@page import="intro.model.IntroDao"%>
+<%@page import="myworld.model.WorldDao"%>
+<%@page import="myworld.model.WorldDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,17 +17,22 @@
 </head>
 <body>
 <%
-	String num = request.getParameter("num");
-	IntroDao dao = new IntroDao();
-	dao.deleteIntro(num);
+	WorldDao dao = new WorldDao();
+
+
+	request.setCharacterEncoding("utf-8");
 	
+	//데이터 읽기(writer,content,avata)
+	String writer = request.getParameter("writer");
+	String content = request.getParameter("content");
+	String avata = request.getParameter("avata");
 	
-
-
-
-
-
+	WorldDto dto = new WorldDto();
+	dto.setWriter(writer);
+	dto.setWriter(content);
+	dto.setWriter(avata);
+	dao.in
+	
 %>
-
 </body>
 </html>
