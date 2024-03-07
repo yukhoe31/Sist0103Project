@@ -7,63 +7,67 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import oracle.db.DbConnect;
+import mysql.db.DbConnect;
 
 public class WorldDao {
+
+	DbConnect db=new DbConnect();
 	
-	DbConnect db = new DbConnect();
-	
-	public void insertWorld(WorldDto dto) {
-		// TODO Auto-generated method stub
+	//insert
+	public void insertWorld(WorldDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
 		
-		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "insert into myworld values(null,?,?,?,now())";
-				
+		String sql="insert into myworld values(null,?,?,?,now())";
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getAvata());
+			
+			pstmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			db.dbClose(rs, pstmt, conn);
+			db.dbClose(pstmt, conn);
 		}
 		
-		
+				
 	}
 	
 	
-	public List<WorldDto> getAllMyWorld(){
+	//select
+	public List<WorldDto> getAllMyWorld()
+	{
+		List<WorldDto> list=new Vector<WorldDto>();
 		
-		List<WorldDto> list = new Vector<WorldDto>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
 		
-		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "select * from myworld order by num desc";
+		String sql="select * from myworld order by num desc";
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
 			
-			while(rs.next()) {
-				
-				WorldDto dto = new WorldDto();
+			while(rs.next())
+			{
+				WorldDto dto=new WorldDto();
 				
 				dto.setNum(rs.getString("num"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setContent(rs.getString("content"));
 				dto.setAvata(rs.getString("avata"));
 				dto.setWriteday(rs.getTimestamp("writeday"));
-			
-				list.add(dto);
 				
+				list.add(dto);
 			}
-		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,9 +75,51 @@ public class WorldDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 		
+		
 		return list;
-
 	}
 	
+	
+	// Update
+	public void updateWorld(WorldDto dto) {
+	    Connection conn = db.getConnection();
+	    PreparedStatement pstmt = null;
+
+	    String sql = "update myworld set writer=?, content=?, avata=?, writeday=now() where num=?";
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+
+	        pstmt.setString(1, dto.getWriter());
+	        pstmt.setString(2, dto.getContent());
+	        pstmt.setString(3, dto.getAvata());
+	        pstmt.setString(4, dto.getNum());
+
+	        pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        db.dbClose(pstmt, conn);
+	    }
+	}
+
+	// Delete
+	public void deleteWorld(String num) {
+	    Connection conn = db.getConnection();
+	    PreparedStatement pstmt = null;
+
+	    String sql = "delete from myworld where num=?";
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, num);
+
+	        pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        db.dbClose(pstmt, conn);
+	    }
+	}
 
 }
