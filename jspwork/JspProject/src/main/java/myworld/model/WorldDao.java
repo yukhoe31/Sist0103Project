@@ -36,11 +36,10 @@ public class WorldDao {
 		}finally {
 			db.dbClose(pstmt, conn);
 		}
-		
-				
+						
 	}
 	
-	
+
 	//select
 	public List<WorldDto> getAllMyWorld()
 	{
@@ -80,8 +79,6 @@ public class WorldDao {
 	}
 	
 	
-
-
 	// Delete 메서드
 	public void deleteWorld(String num) {
 	    Connection conn = db.getConnection();
@@ -139,7 +136,6 @@ public class WorldDao {
 	}
 	
 	
-	
 	// Update 메서드
 	public void updateWorld(WorldDto dto) {
 	    Connection conn = db.getConnection();
@@ -163,8 +159,6 @@ public class WorldDao {
 	        db.dbClose(pstmt, conn);
 	    }
 	}
-	
-	
 	
 
 }
