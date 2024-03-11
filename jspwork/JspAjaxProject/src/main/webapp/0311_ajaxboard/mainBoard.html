@@ -18,19 +18,19 @@ div.list {
 	position: absolute;
 	left: 100px;
 	top: 100px;
-	border: 1px solid gray;
+	
 }
 
 div.writeform {
 	position: absolute;
-	left: 600px;
+	left: 800px;
 	top: 100px;
-	border: 1px solid gray;
+	
 }
 
 div.list *, div.writeform {
 	font-family: 'Orbit';
-	font-size: 14pt;
+	font-size: 12pt;
 }
 </style>
 
@@ -48,42 +48,104 @@ div.list *, div.writeform {
 		});
 
 		//insert
-    function insertData() {
-        var writer = $("#writer").val();
-        var subject = $("#subject").val();
-        var avatar = $("#avatar").val();
-        var content = $("#content").val();
+		$("#btnadd").click(function() {
+			
+			var writer = $("#writer").val();
+			var subject = $("#subject").val();
+			var content = $("#content").val();
+			var avata = $("#avata").val();
+			
+			console.log(writer,subject,avata,content);			
+			
+			//var data="writer=" +writer+"&subject=" +subject+ 
+			//          "&content=" +content+ "&avata=" +avata;
+			
+			$.ajax({
+				type:"post",
+				dataType:"html",
+				url:"insertBoard.jsp",
+				data:{"writer":writer,"subject":subject,"content":content,"avata":avata},
+				success:function(){
+					
+					//insert성공시...폼 초기화
+					$("#writer").val("");
+					$("#subject").val("");
+					$("#content").val("");
 
-        // AJAX 호출
-        $.ajax({
-            type: "POST",
-            url: "insertBoard.jsp", // Your server-side JSP script to handle the insertion
-            data: {
-                writer: writer,
-                subject: subject,
-                avatar: avatar,
-                content: content
-            },success:function(){
-				   
-				   //추가 성공시 DB에 수정되어 저장된 목록 다시 호출
-				   list();
-
+					list();
+					
+					
+					//입력후 사라지게
+					$("div.writeform").hide();
+					
 				}
-        });
-
-	
+			})
+			
+		});
+    
+	});
 
 	function list() {
+		//번호	제목	작성자	작성일
+		
+		//alert("성공");
+		$.ajax({
+			
+			type:"get",
+			dataType:"json",
+			url:"listBoard.jsp",
+			success:function(data){
+				
+				 console.log(data);
+				alert(data.length);
+				//제목출력
+				var s = "<table class='table table-bordered' style='width:500px;'>";
+				s += "<caption align='top'><b>Ajax 게시판 목록</b></caption>";
+				s += "<tr class='table-primary'>";
+				s += "<th width='80'>번호</th>";
+				s += "<th width='350'>제목</th>";
+				s += "<th width='180'>작성자</th>";
+				s += "<th width='180'>작성일</th>";
+				s += "</tr>";
+				
+				if(data.length ==0){
+					s += "<tr>";
+					s += "<td colspan='4' align='center' >";
+					s += "<b>저장된 글이 없습니다.</b>";
+					s += "</td></tr>";					
+				}else{
+					//데이터가 1개이상 있는경우
+					$.each(data,function(i,item){
+						s += "<tr>";
+						s += "<td align='center'>" + (i+1)+ "</td>";
+						s += "<td>";
+						s += "<span num='"+item.num+"' class='detail'>" +item.subject+"</span>";					
+						s += "</td>";
+						s += "<td>" + item.writer+ "</td>";
+						s += "<td>" + item.writeday + "</td>";
+						
+					});
+				
+				}
+				s += "</table>";
+				
+				$("#boardlist").html(s);
+				
+			}
+		});
+		
 		
 	}
 </script>
 
 </head>
 <body>
+
 	<div class="list">
 		<button type="button" class="btn btn-info" id="btnwrite">글쓰기</button>
 		<div id="boardlist">list</div>
 	</div>
+
 	<div class="writeform" style="width: 400px;">
 		<form action="#">
 			<table class="table table-bordered">
@@ -104,7 +166,7 @@ div.list *, div.writeform {
 
 				<tr>
 					<th class="table-primary">아바타</th>
-					<td><select ic="avata" class="form-control">
+					<td><select id="avata" class="form-control">
 							<option value="../image/avata/b1.png">사랑해</option>
 							<option value="../image/avata/b8.png">최고</option>
 							<option value="../image/avata/b7.png">신남</option>
@@ -122,7 +184,7 @@ div.list *, div.writeform {
 
 				<tr>
 					<td colspan="2" align="center">
-						<button type="button" class="btn btn-danger" id="btnDB">DB추가</button>
+						<button type="button" class="btn btn-danger" id="btnadd">DB추가</button>
 					</td>
 				</tr>
 

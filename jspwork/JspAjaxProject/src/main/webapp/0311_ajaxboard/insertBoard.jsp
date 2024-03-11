@@ -1,5 +1,6 @@
-<%@page import="ajaxboard.AjaxBoardDto"%>
+
 <%@page import="ajaxboard.AjaxBoardDao"%>
+<%@page import="ajaxboard.AjaxBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,8 +18,7 @@
 </head>
 <body>
 	<%
-	AjaxBoardDao dao = new AjaxBoardDao();
-
+	//post방식
 	request.setCharacterEncoding("utf-8");
 	// Retrieve form data from request parameters
 	String writer = request.getParameter("writer");
@@ -26,12 +26,17 @@
 	String avata = request.getParameter("avata");
 	String content = request.getParameter("content");
 
+	//dto
 	AjaxBoardDto dto = new AjaxBoardDto();
 	dto.setWriter(writer);
 	dto.setSubject(subject);
 	dto.setContent(content);
 	dto.setAvata(avata);
 
+	//dao
+	AjaxBoardDao dao = new AjaxBoardDao();
+	
+	//insert
 	dao.insertBoard(dto);
 	%>
 
