@@ -11,7 +11,6 @@ public class AjaxBoardDto {
 	private String avata;
 	private Timestamp writeday;
 	
-	
 	public String getNum() {
 		return num;
 	}
