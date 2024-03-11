@@ -11,73 +11,37 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
-<%
-  String num=request.getParameter("num");
-  GuestDao dao=new GuestDao();
-  GuestDto dto=dao.getData(num);
-%>
 <body>
-<div style="margin: 50px 100px;">
-   <form action="updateAction.jsp" method="post">
-      <table class="table table-bordered" style="width: 550px;">
-          <caption align="top"><b>간단 방명록 수정</b></caption>
-          <tr>
-            <th width="100" class="table-primary">닉네임</th>
-            <td>
-              <input type="text" name="nickname" required="required"
-              class="form-control" style="width: 120px;" value="<%=dto.getNickname()%>">
-            </td>
-            <th width="100" class="table-primary">비밀번호</th>
-            <td>
-              <input type="password" name="pass" required="required"
-              class="form-control" style="width: 120px;">
-            </td>
-          </tr>
-          
-          <tr>
-             <th class="table-primary">아바타</th>
-             <td colspan="4">
-               <%
-                 for(int i=1;i<=10;i++)
-                 {
-                  int n =Integer.parseInt(dto.getImage());
-                 %>
-                	 <input type="radio" value="<%=i%>" 
-                	 <%=i==n?"checked":"" %> style="width: 35px;"
-                	 name="image">
-                 <%}
-               %>
-               <br>
-               <%
-                for(int i=1;i<=10;i++)
-                {%>
-                	<img src="../image/avata/b<%=i%>.png" style="width: 35px;">
-                <%}
-               %>
-             </td>
-          </tr>
-          
-          <tr>
-            <td colspan="4">
-              <textarea style="width: 530px; height: 100px;" name="content"
-              class="form-control"><%=dto.getContent() %></textarea>
-            </td>
-          </tr>
-          
-          <tr>
-            <td colspan="4" align="center">
-            
-            <input type="hidden" name="num" value="<%=num%>">
-              <input type="submit" value="저장" class="btn btn-outline-primary"
-              style="width: 100px;">
-              <input type="button" value="방명록" onclick="location.href='guestList.jsp'"
-              class="btn btn-outline-success"
-              style="width: 100px;">
-            </td>
-          </tr>
-          
-      </table>
-   </form>
-</div>
+<%
+  request.setCharacterEncoding("utf-8");
+
+  String num=request.getParameter("num");
+  String pass=request.getParameter("pass");
+  String nickname=request.getParameter("nickname");
+  String content=request.getParameter("content");
+  String image=request.getParameter("image");
+  
+  GuestDao dao=new GuestDao();
+  //비밀번호가 맞으면 수정후 목록으로이동
+  if(dao.isEqualPass(num, pass))
+  {
+	  GuestDto dto=new GuestDto();
+	  dto.setNum(num);
+	  dto.setNickname(nickname);
+	  dto.setContent(content);
+	  dto.setImage(image);
+	  
+	  //수정메서드 호출
+	  dao.updateGuest(dto);
+	  
+	  response.sendRedirect("guestList.jsp");
+	  
+  }else{%>
+	  <script type="text/javascript">
+	    alert("비밀번호가 맞지않습니다!!");
+	    history.back();
+	  </script>
+  <%}
+%>
 </body>
 </html>
