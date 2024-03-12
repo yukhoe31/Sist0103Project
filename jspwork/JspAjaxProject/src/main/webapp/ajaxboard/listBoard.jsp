@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	AjaxBoardDao dao=new AjaxBoardDao();
+	AjaxBoardDao dao = new AjaxBoardDao();
 	List<AjaxBoardDto> list=dao.getAllDatas();
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	
