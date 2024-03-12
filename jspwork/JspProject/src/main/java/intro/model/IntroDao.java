@@ -1,32 +1,36 @@
-package myinfo.db;
+package intro.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import mysql.db.DbConnect;
 
-public class MyInfoDao {
+public class IntroDao {
 
 	DbConnect db=new DbConnect();
 	
-	public void insertMyInfo(MyInfoDto dto)
+	//insert
+	public void insertIntro(IntroDto dto)
 	{
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="insert into myinfo values(null,?,?,?,?,now())";
+		String sql="insert into intro values (null,?,?,?,?,?,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
+			//?순서대로 바인딩
 			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getHp());
-			pstmt.setString(3, dto.getBlood());
-			pstmt.setString(4, dto.getBirth());
+			pstmt.setString(2, dto.getAge());
+			pstmt.setString(3, dto.getBirthday());
+			pstmt.setString(4, dto.getHometown());
+			pstmt.setString(5, dto.getHobby());
+			pstmt.setString(6, dto.getMemo());
 			
 			pstmt.execute();
 		} catch (SQLException e) {
@@ -38,15 +42,16 @@ public class MyInfoDao {
 		
 	}
 	
-	public List<MyInfoDto> getAllInfos()
+	//전체조회
+	public List<IntroDto> getAllDatas()
 	{
-		List<MyInfoDto> list=new ArrayList<MyInfoDto>();
+		List<IntroDto> list=new Vector<IntroDto>();
 		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from myinfo order by num desc";
+		String sql="select * from intro order by num";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -54,17 +59,20 @@ public class MyInfoDao {
 			
 			while(rs.next())
 			{
-				MyInfoDto dto=new MyInfoDto();
+				IntroDto dto=new IntroDto();
 				
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setBlood(rs.getString("blood"));
-				dto.setHp(rs.getString("hp"));
-				dto.setBirth(rs.getString("birth"));
-				dto.setWriteday(rs.getTimestamp("writeday"));
+				dto.setBirthday(rs.getString("birthday"));
+				dto.setHobby(rs.getString("hobby"));
+				dto.setHometown(rs.getString("hometown"));
+				dto.setMemo(rs.getString("memo"));
+				dto.setAge(rs.getString("age"));
+				
 				
 				list.add(dto);
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,37 +84,16 @@ public class MyInfoDao {
 		return list;
 	}
 	
-	public void deleteInfo(String num)
+	//detailView..num에 해당하는 하나의 dto반환
+	public IntroDto getOneData(String num)
 	{
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		
-		String sql="delete from myinfo where num=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setString(1, num);
-			pstmt.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			db.dbClose(pstmt, conn);
-		}
-		
-	}
-	
-	//num에 대한 dto반환
-	public MyInfoDto getOneData(String num)
-	{
-		MyInfoDto dto=new MyInfoDto();
+		IntroDto dto=new IntroDto();
 		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from myinfo where num=?";
+		String sql="select * from intro where num=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -117,9 +104,12 @@ public class MyInfoDao {
 			{
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setBlood(rs.getString("blood"));
-				dto.setHp(rs.getString("hp"));
-				dto.setBirth(rs.getString("birth"));
+				dto.setBirthday(rs.getString("birthday"));
+				dto.setHobby(rs.getString("hobby"));
+				dto.setHometown(rs.getString("hometown"));
+				dto.setMemo(rs.getString("memo"));
+				dto.setAge(rs.getString("age"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -132,23 +122,21 @@ public class MyInfoDao {
 		return dto;
 	}
 	
+	//수정(나이,생년월일,거주지역,취미,성격)
 	
-	//수정
-	public void updateInfo(MyInfoDto dto)
+	
+	
+	//삭제 (시퀀스에 해당 하는 db삭제)
+	public void deleteIntro(String num)
 	{
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="update myinfo set name=?,blood=?,hp=?,birth=? where num=?";
+		String sql="delete from intro where num=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBlood());
-			pstmt.setString(3, dto.getHp());
-			pstmt.setString(4, dto.getBirth());
-			pstmt.setString(5, dto.getNum());
+			pstmt.setString(1, num);
 			pstmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -158,4 +146,5 @@ public class MyInfoDao {
 		}
 		
 	}
+	
 }

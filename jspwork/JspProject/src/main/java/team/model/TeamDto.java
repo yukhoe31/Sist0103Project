@@ -1,15 +1,15 @@
-package myinfo.db;
+package team.model;
 
 import java.sql.Timestamp;
 
-public class MyInfoDto {
-	
+public class TeamDto {
+
 	private String num;
 	private String name;
-	private String blood;
-	private String hp;
-	private String birth;
+	private String driver;
+	private String addr;
 	private Timestamp writeday;
+	
 	
 	public String getNum() {
 		return num;
@@ -23,23 +23,17 @@ public class MyInfoDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBlood() {
-		return blood;
+	public String getDriver() {
+		return driver;
 	}
-	public void setBlood(String blood) {
-		this.blood = blood;
+	public void setDriver(String driver) {
+		this.driver = driver;
 	}
-	public String getHp() {
-		return hp;
+	public String getAddr() {
+		return addr;
 	}
-	public void setHp(String hp) {
-		this.hp = hp;
-	}
-	public String getBirth() {
-		return birth;
-	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	public Timestamp getWriteday() {
 		return writeday;
@@ -47,5 +41,6 @@ public class MyInfoDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
+	
 	
 }
