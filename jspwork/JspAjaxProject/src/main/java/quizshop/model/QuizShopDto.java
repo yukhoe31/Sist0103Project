@@ -5,9 +5,9 @@ import java.sql.Timestamp;
 public class QuizShopDto {
 	
 	private String num;
-	private String sang_num;
+	private String sang_name;
 	private String photo;
-	private int price;
+	private String price;
 	private String ipgoday;
 	private Timestamp writeday;
 	public String getNum() {
@@ -16,11 +16,12 @@ public class QuizShopDto {
 	public void setNum(String num) {
 		this.num = num;
 	}
-	public String getSang_num() {
-		return sang_num;
+
+	public String getSang_name() {
+		return sang_name;
 	}
-	public void setSang_num(String sang_num) {
-		this.sang_num = sang_num;
+	public void setSang_name(String sang_name) {
+		this.sang_name = sang_name;
 	}
 	public String getPhoto() {
 		return photo;
@@ -28,10 +29,13 @@ public class QuizShopDto {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public int getPrice() {
+
+	
+	
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getIpgoday() {

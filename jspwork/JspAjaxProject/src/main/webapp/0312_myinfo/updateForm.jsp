@@ -26,7 +26,6 @@
   MyInfoDao dao=new MyInfoDao();
   MyInfoDto dto=dao.getOneData(num);
   
-  
 %>
 </head>
 <body>

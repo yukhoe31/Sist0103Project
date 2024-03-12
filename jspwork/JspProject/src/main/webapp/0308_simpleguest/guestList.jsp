@@ -66,9 +66,7 @@ onclick="location.href='insertForm.jsp'">글쓰기</button>
 	       </td>
 	     </tr>
 	  </table>
-	  
-	  
-	  
+
   <%}
 %>
 

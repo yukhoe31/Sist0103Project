@@ -33,7 +33,6 @@
           <th width="260">주소</th>
           <th width="250">작성일</th>
           <th width="150">편집</th>
-          
        </tr>
        
        <%
