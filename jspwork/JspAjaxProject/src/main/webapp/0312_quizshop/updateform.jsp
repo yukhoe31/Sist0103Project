@@ -26,19 +26,20 @@
 <body>
 <div style="margin: 50px 100px; width: 500px;">
 	 <form action="updateaction.jsp" method="post">
+	 <input type="hidden" name="num" value="<%=num%>">
 		<table class="table table-bordered">
 			<caption align="top"><b>상품명</b></caption>
 			<tr>
 				<th class="table-success" width="100">상품명</th>
 				<td>
-					<input type="text" name="usang_name" required="required" value="<%=dto.getSang_name()%>">
+					<input type="text" name="sang_name" required="required" value="<%=dto.getSang_name()%>">
 				</td>
 			</tr>
 			<tr>
 				<th class="table-success" width="100">상품이미지</th>
 				<td >
 				<div class="d-inline-flex">
-					<select name="uphoto"  id="uphoto"  class="form-control" style="width:150px;">
+					<select name="photo"  id="photo"  class="form-control" style="width:150px;">
 						<option value="1" <%=dto.getPhoto().equals("1")?"selected":"" %>>판쵸외투</option>
 						<option value="2" <%=dto.getPhoto().equals("2")?"selected":"" %>>가디건</option>
 						<option value="25" <%=dto.getPhoto().equals("25")?"selected":"" %>>원피스</option>
@@ -53,7 +54,7 @@
 						$(function() {
 							
 							//포토 이미지 선택시 옆에 이미지 나오게
-							$("#uphoto").change(function() {
+							$("#photo").change(function() {
 								
 								var s = "../image/쇼핑몰사진/"+$(this).val() + ".jpg";
 								
@@ -69,7 +70,7 @@
 			<tr>
 				<th class="table-success" width="100">가격</th>
 				<td>
-					<input type="text" name="uprice" required="required"
+					<input type="text" name="price" required="required"
 					class="form-control" style="width:150px;"  value="<%=dto.getPrice()%>">
 				</td>
 			</tr>
@@ -77,14 +78,14 @@
 			<tr>
 				<th class="table-success" width="100">입고일</th>
 				<td>
-					<input type="date" name="uipgoday" 
+					<input type="date" name="ipgoday" 
 					class="form-control" style="width:150px;" value="<%=dto.getIpgoday()%>">
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2"  align="center"> 
-					<button type="submit" class="btn btn-outline-info">상품등록</button>
+					<button type="submit" class="btn btn-outline-info">상품수정</button>
 					<button type="button" class="btn btn-outline-success"  onclick="location.href='shoplist.jsp'">상품목록</button>
 				</td>
 			</tr>
