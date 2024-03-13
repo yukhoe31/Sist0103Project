@@ -20,11 +20,13 @@
 %>
 <body>
   <div style="margin: 50px 100px; width: 1000px;">
+  
      <button type="button" class="btn btn-info"
      onclick="location.href='addform.jsp'">게시글추가</button>
      
      <button type="button" class="btn btn-warning" onclick="location.href='boardlist2.jsp'">앨범형 목록</button>
      
+    
      <h6 class="alert alert-info">총 <%=list.size() %>개의 게시글이 있습니다</h6>
      
      <table class="table table-hover">
