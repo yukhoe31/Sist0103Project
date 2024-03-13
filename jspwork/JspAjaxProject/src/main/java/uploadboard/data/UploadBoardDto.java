@@ -14,8 +14,6 @@ public class UploadBoardDto {
 	private Timestamp writeday;
 	
 	
-	
-	
 	public String getNum() {
 		return num;
 	}
