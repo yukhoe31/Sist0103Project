@@ -19,11 +19,11 @@
 .album {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between album items */
+    gap: 20px; 
 }
 
 .album-item {
-    width: 200px; /* Adjust the width of each album item */
+    width: 250px; 
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;

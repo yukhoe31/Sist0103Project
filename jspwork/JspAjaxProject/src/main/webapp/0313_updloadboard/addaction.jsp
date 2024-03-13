@@ -19,7 +19,7 @@
   
     //업로드에 필요한 변수선언
     //업로드할 경로(톰캣에 올라가는 프로젝트경로)
-    String realFolder=getServletContext().getRealPath("/save");
+    String realFolder=getServletContext().getRealPath("/upload");
     System.out.println(realFolder);
   
      //업로드사이즈
