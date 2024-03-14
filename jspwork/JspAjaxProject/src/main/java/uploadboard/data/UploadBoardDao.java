@@ -14,6 +14,7 @@ public class UploadBoardDao {
 
 	DbConnect db=new DbConnect();
 	
+	//insert
 	public void insertUploadBoard(UploadBoardDto dto)
 	{
 		Connection conn=db.getConnection();
