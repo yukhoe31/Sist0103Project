@@ -57,7 +57,7 @@
 	  <button type="button" class="btn btn-outline-success" 
 	  onclick="location.href='boardlist2.jsp'">목록</button>
 	  <button type="button" class="btn btn-outline-warning" 
-	  onclick="location.href=''">수정</button>
+	  onclick="location.href='updateform.jsp?num=<%=dto.getNum()%>'">수정</button>
 	  <button type="button" class="btn btn-outline-danger" 
 	  onclick="location.href=''">삭제</button>
 	</div>

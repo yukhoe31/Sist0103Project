@@ -29,7 +29,7 @@
     text-align: center;
 }
 </style>
-<title>Album View</title>
+<title>앨범 형식으로 보기</title>
 </head>
 <%
 UploadBoardDao dao = new UploadBoardDao();
@@ -57,7 +57,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					style="text-decoration: none; color: black;">
 					<img src="../upload/<%=dto.getImgname() %>"
 						style="height: 150px;" alt="<%=dto.getSubject() %>" >
-					<p>제목 : <%=dto.getSubject() %></p>
+					
+					<p><br>제목 : <%=dto.getSubject() %></p>
 					<p>작성자 : <%=dto.getWriter() %></p>
 					<p>작성일 : <%=sdf.format(dto.getWriteday()) %></p>
 					<p>조회수 : <%=dto.getReadcount() %></p>
