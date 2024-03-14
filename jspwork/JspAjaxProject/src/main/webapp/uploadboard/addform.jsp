@@ -1,5 +1,3 @@
-<%@page import="uploadboard.data.UploadBoardDto"%>
-<%@page import="uploadboard.data.UploadBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,19 +31,15 @@ function readURL(input) {
 
 </script>
 </head>
-<%
-  String num=request.getParameter("num");
-  UploadBoardDao dao=new UploadBoardDao();
-  UploadBoardDto dto=dao.getData(num);
-%>
 <body>
 <div style="margin: 50px 100px; width: 500px;">
-    <form action="updateaction.jsp" method="post" enctype="multipart/form-data">
+    <form action="addaction.jsp" method="post" enctype="multipart/form-data">
       <table class="table table-bordered">
          <tr>
            <th width="100" class="table-info">작성자</th>
            <td>
-             <b><%=dto.getWriter() %></b>
+             <input type="text" name="writer" class="form-control"
+             style="width: 120px;" required="required">
            </td>
          </tr>
          
@@ -53,7 +47,7 @@ function readURL(input) {
            <th width="100" class="table-info">제목</th>
            <td>
              <input type="text" name="subject" class="form-control"
-             style="width: 300px;" required="required" value="<%=dto.getSubject()%>">
+             style="width: 300px;" required="required">
            </td>
          </tr>
          
@@ -77,16 +71,14 @@ function readURL(input) {
          <tr>
            <td colspan="2">
              <textarea style="width: 480px; height: 100px;"
-             class="form-control" name="content" required="required"><%=dto.getContent() %></textarea>
+             class="form-control" name="content" required="required"></textarea>
            </td>
          </tr>
          
          <tr>
            <td colspan="2" align="center">
-           
-             <input type="hidden" name="num" value="<%=num%>">
              <button type="submit" style="width: 100px;"
-             class="btn btn-warning btn-md">수정하기</button>
+             class="btn btn-success btn-md">저장하기</button>
              <button type="button" style="width: 100px;"
              class="btn btn-warning btn-md"
              onclick="location.href='boardlist.jsp'">목록보기</button>
@@ -96,7 +88,7 @@ function readURL(input) {
     
     </form>
     
-    <img alt="" src="../upload/<%=dto.getImgname()%>" id="preshow">
+    <img alt="" src="" id="preshow">
 </div>
 </body>
 </html>

@@ -96,7 +96,7 @@ function readURL(input) {
     
     </form>
     
-    <img alt="" src="../upload/<%=dto.getImgname()%>" id="preshow">
+    <img alt="" src="../save/<%=dto.getImgname()%>" id="preshow">
 </div>
 </body>
 </html>

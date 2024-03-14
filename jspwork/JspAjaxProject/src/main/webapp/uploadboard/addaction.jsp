@@ -14,12 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+  <%
     request.setCharacterEncoding("utf-8");
   
     //업로드에 필요한 변수선언
     //업로드할 경로(톰캣에 올라가는 프로젝트경로)
-    String realFolder=getServletContext().getRealPath("/save");
+    String realFolder=getServletContext().getRealPath("/upload");
     System.out.println(realFolder);
   
      //업로드사이즈
@@ -35,7 +35,6 @@
      String subject=multi.getParameter("subject");
      String content=multi.getParameter("content");
      String pass=multi.getParameter("pass");
-     String num=multi.getParameter("num");
      
      //실제 업로드 이미지이름 읽어오기
      String imgname=multi.getFilesystemName("photo");
@@ -48,27 +47,15 @@
      dto.setContent(content);
      dto.setPass(pass);
      dto.setImgname(imgname);
-     dto.setNum(num);
      
      //dao생성
      UploadBoardDao dao=new UploadBoardDao();
+     //insert
+     dao.insertUploadBoard(dto);
      
-     //비번이 맞으면 수정후 디테일페이지로 이동
-     //비번이 틀리면 스크립트로 경고
-     boolean b=dao.isEqualPass(num, pass);
+     //목록이동
+     response.sendRedirect("boardlist.jsp");
      
-     if(b)
-     {
-    	 dao.updateUploadBoard(dto); //수정
-    	 
-    	 response.sendRedirect("content.jsp?num="+num);
-     }else{
-    	 %>
-    	 <script type="text/javascript">
-    	    alert("비밀번호가 틀렸어요");
-    	    history.back();
-    	 </script>
-     <%}
      
      
      
