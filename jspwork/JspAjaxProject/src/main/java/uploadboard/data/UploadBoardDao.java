@@ -187,6 +187,7 @@ public class UploadBoardDao {
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getImgname());
+			
 			pstmt.setString(4, dto.getNum());
 			
 			pstmt.execute();

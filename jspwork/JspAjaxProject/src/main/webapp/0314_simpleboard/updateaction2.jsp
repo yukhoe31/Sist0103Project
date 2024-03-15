@@ -1,3 +1,6 @@
+<!-- 이것은 updateaction.jsp와 같은 기능을 하는 것으로
+선생님 답안. -->
+
 <%@page import="simpleboard.model.SimpleBoardDao"%>
 <%@page import="simpleboard.model.SimpleBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,25 +16,16 @@
 </head>
 <body>
 <%
-    String num = request.getParameter("num");
-    String password = request.getParameter("password");
-    
-    SimpleBoardDao dao = new SimpleBoardDao();
-    
-    boolean isPasswordCorrect = dao.isEqualPass(num, password);
-
-
-    
-    if (isPasswordCorrect) {
-        // Password is correct, delete the board entry
-        //dao.deleteSimpleBoard(num);
-        //true면 updateform.jsp로 가야한다.
-        response.sendRedirect("updateform.jsp?num="+num);
-    } else {%>
-        <script type="text/javascript">
-            alert("비밀번호가 맞지 않습니다.");
-            history.back();
-        </script>
-    <%}
+    request.setCharacterEncoding("utf-8");
 %>
+<jsp:useBean id="dao" class="simpleboard.model.SimpleBoardDao"></jsp:useBean>
+<jsp:useBean id="dto" class="simpleboard.model.SimpleBoardDto"></jsp:useBean>
+<jsp:setProperty property="*" name="dto"/>
+<%
+
+     dao.updateSimpleBoard(dto); //수정
+     response.sendRedirect("contentview.jsp?num="+dto.getNum());
+  
+  %>
+</body>
 </html>
