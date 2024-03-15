@@ -61,7 +61,7 @@ public class SimpleAnswerDao {
 			while(rs.next()) {
 				SimpleAnswerDto dto = new SimpleAnswerDto();
 				
-				dto.setIdx(rs.getString("idx"));
+				dto.setIdx(rs.getString("idx"));//이게 없어서 댓글 지울때 고생함;
 				dto.setNum(rs.getString("num"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setContent(rs.getString("content"));
