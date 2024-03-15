@@ -46,6 +46,18 @@ i.amod {
 i.adel {
 	color: red;
 }
+
+/* 버튼 아이콘 스타일 */
+i.bi {
+    cursor: pointer;
+    font-size: 1.0em;
+    margin-right: 5px;
+}
+
+i.bi:hover {
+    color: #007bff; /* 마우스 호버시 색상 변경 */
+}
+
 </style>
 
 <script type="text/javascript">
@@ -93,63 +105,32 @@ i.adel {
 			});
 		});
 
-		$("#updatebtn").click(function() {
-			var nickname = $("#nickname").val();
-			var content = $("#content").val();
 
-			console.log(num, nickname, content);
+		 
+		  //alert(num);
 
-			if (nickname == '') {
-				alert("닉네임을 입력후 저장해주세요.");
-				return;
-			}
-			if (content == '') {
-				alert("댓글 내용을 입력후 저장해주세요/");
-				return;
-			}
+		  //리스트의 삭제버튼 클릭시 삭제
+		  //adel: 클래스
+		  $(document).on("click",".adel",function(){
+			  
+			  var idx = $(this).attr("idx");
+			  
+			  alert(idx);
+			  
+			  var ans = confirm("댓글삭제하려면 [확인]눌려주세요");
 
-			$.ajax({
-				type : "get",
-				dataType : "html",
-				url : "../0315_simpleboardanswer/insertAnswer2.jsp",
-				data : {
-					"num" : num,
-					"nickname" : nickname,
-					"content" : content
-				},
-				success : function() {
-					alert("성공");
-
-					//insert성공시..폼초기화
-					$("#nickname").val("");
-					$("#content").val("");
-
-					list();
-
-				}
-			});
-		});
-
-		//삭제버튼 누르면..삭제후 내용보기 숨기고 목록을 보이게
-		$(document).on("click", ".adel", function() {
-
-			var num = $(this).closest('div').attr("num");
-			//alert(num);
-
-			$.ajax({
-				type : "get",
-				dataType : "html",
-				url : "../0315_simpleboardanswer/deleteAnswer.jsp",
-				data : {
-					"num" : num
-				},
-				success : function() {
-
-					list(); //목록 다시호출
-
-				}
-			});
-		});
+			  $.ajax({
+				  type:"get",
+				  dataType:"html",
+				  url:"../0315_simpleboardanswer/deleteAnswer.jsp",
+				  data:{"idx":idx},
+				  success:function(){
+					  alert("삭제되었습니다.");
+					  list(); //목록 다시호출
+				  }
+			  })
+		  });
+		  
 
 	});
 
@@ -157,14 +138,14 @@ i.adel {
 
 		console.log("list num =" + $("#num").val());
 
-		$
-				.ajax({
+		$.ajax({
 
 					type : "get",
 					url : "../0315_simpleboardanswer/listAnswer.jsp",
 					dataType : "json",
 					data : {
-						"num" : $("#num").val()
+						"num" : $("#num").val(),
+						
 					},
 					success : function(res) {
 
@@ -172,19 +153,16 @@ i.adel {
 						$("b.acounct>span").text(res.length);
 
 						var s = "";
-						$
-								.each(
-										res,
-										function(idx, item) {
-
+						$.each(res,function(idx, item) {
+							
 											s += "<div>" + item.nickname + ":"
 													+ item.content;
 											s += "<span class='aday'>"
 													+ item.writeday + "</span>";
-											s += "<i class='bi bi-pencil-square amod' id='updatebtn'></i>";
-											s += "<i class='bi bi-trash adel' id='deletebtn'></i>";
+											s += "<i class='bi bi-pencil-square amod'></i>";
+											s += "<i class='bi bi-trash adel' idx="+item.idx+" ></i>";
 
-										});
+						});
 
 						$("div.alist").html(s);
 
@@ -192,6 +170,7 @@ i.adel {
 
 				});
 	}
+	
 </script>
 
 </head>

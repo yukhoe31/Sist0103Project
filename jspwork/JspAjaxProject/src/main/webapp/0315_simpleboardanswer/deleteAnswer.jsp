@@ -3,7 +3,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
-  String num=request.getParameter("num");
+  String idx=request.getParameter("idx");
   SimpleAnswerDao dao=new SimpleAnswerDao();
-  dao.deleteAnswer(num);
+  dao.deleteAnswer(idx);
+  
+ // response.sendRedirect("../0314_simpleboard/contentview.jsp");
 %>

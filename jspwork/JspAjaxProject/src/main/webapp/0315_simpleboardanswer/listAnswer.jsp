@@ -9,7 +9,6 @@
 	pageEncoding="UTF-8"%>
 <%
 
-
 String num = request.getParameter("num");
 SimpleAnswerDao dao = new SimpleAnswerDao();
 List<SimpleAnswerDto> list = dao.getAnswerList(num);

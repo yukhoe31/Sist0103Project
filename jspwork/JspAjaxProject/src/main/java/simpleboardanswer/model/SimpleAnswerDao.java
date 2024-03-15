@@ -61,6 +61,7 @@ public class SimpleAnswerDao {
 			while(rs.next()) {
 				SimpleAnswerDto dto = new SimpleAnswerDto();
 				
+				dto.setIdx(rs.getString("idx"));
 				dto.setNum(rs.getString("num"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setContent(rs.getString("content"));
@@ -81,16 +82,16 @@ public class SimpleAnswerDao {
 	}
 	
 	//삭제
-	public void deleteAnswer(String num)
+	public void deleteAnswer(String idx)
 	{
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="delete from simpleboardanswer where num=?";
+		String sql="delete from simpleboardanswer where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, num);
+			pstmt.setString(1, idx);
 			pstmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
