@@ -61,116 +61,101 @@ i.bi:hover {
 </style>
 
 <script type="text/javascript">
-	list();
-
-	$(function() {
-
-		//ajax로 insert하기
-		var num = $("#num").val();
-
-		$("#btnsend").click(function() {
-			var nickname = $("#nickname").val();
-			var content = $("#content").val();
-
-			console.log(num, nickname, content);
-
-			if (nickname == '') {
-				alert("닉네임을 입력후 저장해주세요.");
-				return;
+  $(function(){
+	  
+	  list();
+	  
+	  //ajax insert
+	  var num=$("#num").val();
+	  //alert(num);
+	  
+	  $("#btnsend").click(function(){
+		  
+		  var nickname=$("#nickname").val().trim();
+		  var content=$("#content").val().trim();
+		  
+		   if(nickname=='')
+			{
+			   alert("닉네임을 입력후 저장해주세요");
+			   return;
 			}
-			if (content == '') {
-				alert("댓글 내용을 입력후 저장해주세요/");
-				return;
+		   if(content=='')
+			{
+			   alert("댓글내용을 입력후 저장해주세요");
+			   return;
 			}
-
-			$.ajax({
-				type : "get",
-				dataType : "html",
-				url : "../0315_simpleboardanswer/insertAnswer2.jsp",
-				data : {
-					"num" : num,
-					"nickname" : nickname,
-					"content" : content
-				},
-				success : function() {
-					alert("성공");
-
-					//insert성공시..폼초기화
-					$("#nickname").val("");
-					$("#content").val("");
-
-					list();
-
-				}
-			});
-		});
-
-
-		 
-		  //alert(num);
-
-		  //리스트의 삭제버튼 클릭시 삭제
-		  //adel: 클래스
-		  $(document).on("click",".adel",function(){
+		  
+		  $.ajax({
 			  
-			  var idx = $(this).attr("idx");
-			  
-			  alert(idx);
-			  
-			  var ans = confirm("댓글삭제하려면 [확인]눌려주세요");
-
+			  type:"get",
+			  url:"../0315_simpleboardanswer/insertAnswer2.jsp",
+			  dataType:"html",
+			  data:{"num":num,"nickname":nickname,"content":content},
+			  success:function(){
+				 //기존입력값 지우기
+				 $("#nickname").val('');
+				 $("#content").val('');
+				 
+				 list();
+			  }
+		  });
+	  });
+	  
+	  
+	  //리스트의 삭제버튼클릭시 삭제
+	  $(document).on("click",".adel",function(){
+		  
+		  var idx=$(this).attr("idx");
+		  //alert(idx);
+		  var ans=confirm("댓글을 삭제하려면 [확인]을 눌러주세요");
+		  
+		  if(ans){
 			  $.ajax({
 				  type:"get",
-				  dataType:"html",
 				  url:"../0315_simpleboardanswer/deleteAnswer.jsp",
+				  dataType:"html",
 				  data:{"idx":idx},
 				  success:function(){
-					  alert("삭제되었습니다.");
-					  list(); //목록 다시호출
+					  alert("삭제되었습니다");
+					  list();
 				  }
 			  })
-		  });
+		  }
+		 
+	  });
+	  
+  });
+  
+  
+  function list()
+  {
+	  console.log("list num="+$("#num").val());
+	  
+	  $.ajax({
 		  
-
-	});
-
-	function list() {
-
-		console.log("list num =" + $("#num").val());
-
-		$.ajax({
-
-					type : "get",
-					url : "../0315_simpleboardanswer/listAnswer.jsp",
-					dataType : "json",
-					data : {
-						"num" : $("#num").val(),
-						
-					},
-					success : function(res) {
-
-						//댓글 갯수 출력
-						$("b.acounct>span").text(res.length);
-
-						var s = "";
-						$.each(res,function(idx, item) {
-							
-											s += "<div>" + item.nickname + ":"
-													+ item.content;
-											s += "<span class='aday'>"
-													+ item.writeday + "</span>";
-											s += "<i class='bi bi-pencil-square amod'></i>";
-											s += "<i class='bi bi-trash adel' idx="+item.idx+" ></i>";
-
-						});
-
-						$("div.alist").html(s);
-
-					}
-
-				});
-	}
-	
+		  type:"get",
+		  url:"../0315_simpleboardanswer/listAnswer.jsp",
+		  dataType:"json",
+		  data:{"num":$("#num").val()},
+		  success:function(res){
+			 
+			  //댓글갯수출력
+			  $("b.acount>span").text(res.length);
+			  
+			  var s="";
+			  $.each(res,function(idx,item){
+				  
+				  s+="<div>"+item.nickname+":  "+item.content;
+				  s+="<span class='aday'>"+item.writeday+"</span>";
+				  s+="<i class='bi bi-pencil-square amod'></i>";
+				  s+="<i class='bi bi-trash adel'  idx="+item.idx+"></i>";
+			  });
+			  $("div.alist").html(s);
+			  
+		  }
+		  
+	  });
+  }
 </script>
 
 </head>
@@ -187,16 +172,16 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 <input type="hidden" id="num" value="<%=num%>">
 
-
-
 <div style="margin: 50px 100px; width: 500px;">
 	<table class="table table-bordered">
 		<caption align="top">
 			<b style="font-size: 15pt;"><%=dto.getSubject()%></b>
 		</caption>
 		<tr>
-			<td><b>작성자: <%=dto.getWriter()%></b><br> <span class="day"><%=sdf.format(dto.getWriteday())%></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;조회: <%=dto.getReadcount()%></td>
+			<td>
+			<b>작성자: <%=dto.getWriter()%></b><br> 
+			<span class="day"><%=sdf.format(dto.getWriteday())%></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;조회: <%=dto.getReadcount()%></td>
 		</tr>
 		<tr height="250">
 			<td><%=dto.getContent().replace("\n", "<br>")%></td>
@@ -208,12 +193,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<div class="alist">댓글목록</div> <!-- 댓글 작성부분 -->
 				<div class="aform input-group">
 					<input type="text" id="nickname" class="form-control"
-						style="width: 80px;" placeholder="닉네임"> <input type="text"
-						id="content" class="form-control" style="width: 300px;"
-						placeholder="댓글메세지">
+						style="width: 80px;" placeholder="닉네임"> 
+					<input type="text" id="content" class="form-control" 
+						style="width: 300px; margin-left:10px;" placeholder="댓글메세지">
 
-					<button type="button" id="btnsend" class="btn btn-info btn-sm"
-						style="margin-left:">저장</button>
+					<button type="button" id="btnsend" 
+					class="btn btn-info btn-sm" style="margin-left:">저장</button>
 				</div></td>
 		</tr>
 
@@ -240,12 +225,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	</table>
 </div>
 <body>
-	<script>
-		$(document).ready(function() {
-			// 페이지 로드시 댓글 목록 가져오기
-			list();
-		});
-	</script>
+
+
 
 </body>
 </html>
