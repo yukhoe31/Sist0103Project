@@ -1,3 +1,4 @@
+<%@page import="simpleboardanswer.model.SimpleAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="simpleboard.model.SimpleBoardDto"%>
 <%@page import="java.util.List"%>
@@ -48,38 +49,48 @@ int no; //각페이지당 출력할 시작번호
 if(request.getParameter("currentPage")==null)
 	currentPage=1;
 else
-	currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	currentPage=Integer.parseInt(request.getParameter("currentPage"));
 
 //총페이지수 구한다
 //총글갯수/한페이지당보여질갯수로 나눔(7/5=1)
 //나머지가 1이라도 있으면 무조건 1페이지 추가(1+1=2페이지가 필요)
-totalPage = totalCount/perPage + (totalCount % perPage == 0 ? 0:1) ;
+totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
 
 //각블럭당 보여질 시작페이지
 //perBlock=5일경우 현재페이지가 1~5일경우 시작페이지가1,끝페이지가 5
 //현재가 13일경우 시작:11 끝:15
-startPage = (currentPage - 1) / perBlock*perBlock + 1;
-endPage = startPage+perBlock - 1;
+startPage=(currentPage-1)/perBlock*perBlock+1;
+endPage=startPage+perBlock-1;
 
 //총페이지가 23일경우 마지막블럭은 끝페이지가 25가 아니라 23
-if(endPage>totalPage){
+if(endPage>totalPage)
 	endPage=totalPage;
-}
 
 //각페이지에서 보여질 시작번호
-//1페이지:0, 2페이지:5 , 3페이지: 10.....
-startNum = (currentPage-1) * perPage;
+//1페이지:0, 2페이지:5 3페이지: 10.....
+startNum=(currentPage-1)*perPage;
 
 //각페이지당 출력할 시작번호 구하기
 //총글개수가 23  , 1페이지:23 2페이지:18  3페이지:13
-no = totalCount - (currentPage - 1) * perPage;
+no=totalCount-(currentPage-1)*perPage;
 
 //페이지에서 보여질 글만 가져오기
-List<SimpleBoardDto> list = dao.getPagingList(startNum, perPage);
+List<SimpleBoardDto>list=dao.getPagingList(startNum, perPage);
 
 //List<SimpleBoardDto>list=dao.getAllDatas();
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //int count=list.size();
+
+
+//list의 각 dto에 댓글개수 저장해두기
+SimpleAnswerDao adao=new SimpleAnswerDao(); //댓글dao
+
+for(SimpleBoardDto dto:list)
+{
+	//댓글변수에 댓글 총개수 넣기
+	int acount=adao.getAnswerList(dto.getNum()).size();
+	dto.setAnswercount(acount);
+}
 %>
 <body>
 <div style="margin: 50px 100px; width: 800px;">
@@ -111,12 +122,22 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     	  {
     		  SimpleBoardDto dto=list.get(i);
     		  %>
+    		  
     		  <tr>
     		    <td align="center"><%=no--%></td>
     		    <td>
     		      <a href="contentview.jsp?num=<%=dto.getNum()%>">
     		       <%=dto.getSubject() %>
     		      </a>
+    		      
+    		      <!-- 댓글개수 -->
+    		      <%
+    		        if(dto.getAnswercount()>0)
+    		        {%>
+    		        	<a href="contentview.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>#alist" style="color: red;">[<%=dto.getAnswercount() %>]</a>
+    		        <%}
+    		      %>
+    		      
     		    </td>
     		    <td align="center"><%=dto.getWriter() %></td>
     		    <td align="center"><%=sdf.format(dto.getWriteday()) %></td>
@@ -163,6 +184,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
   %>
   
   </ul>
+  
+  
   
   
 </div>

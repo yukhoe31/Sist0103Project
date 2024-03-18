@@ -11,6 +11,7 @@ public class SimpleBoardDto {
 	private String content;
 	private int readcount;
 	private Timestamp writeday;
+	private int answercount; //댓글개수
 	
 	
 	public String getNum() {
@@ -55,6 +56,17 @@ public class SimpleBoardDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
+	
+	//댓글개수저장
+	public int getAnswercount() {
+		return answercount;
+	}
+	
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
+	}
+	
+	
 	
 	
 }
