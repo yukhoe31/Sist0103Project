@@ -18,18 +18,45 @@
 		window.open("idSearch.jsp","idcheck","left='100px',top='100px',width='400px',height='200px'");
 		
 	}
-	
-
-
 </script>
+
+
 <%
   String m_num=request.getParameter("m_num");
   MemgaipDao dao=new MemgaipDao();
   MemgaipDto dto=dao.getOneMember(m_num);
-  
 %>
 
 <title>Insert title here</title>
+
+
+<style type="text/css">
+   #preshow{
+     position: absolute;
+     left: 650px;
+     top: 100px;
+     height: 200px;
+   }
+</style>
+
+
+<script type="text/javascript">
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader(); 
+        reader.onload = function (e) {
+       
+            $('#preshow').attr('src', e.target.result);
+            
+        }                   
+        reader.readAsDataURL(input.files[0]);
+       
+    }
+}
+</script>
+
+
+
 </head>
 <body>
 <div style="margin: 50px 100px; width: 500px;" >
@@ -78,12 +105,15 @@
 			
 			<tr>
 				<td colspan="2" align="center">
+				<input type="hidden" name="m_num" value="<%=m_num%>">
 				<button type="submit" class="btn btn-info" id="btnsubmitupdate">회원정보수정</button>
 				</td>
 			</tr>
 			
 		</table>
 	</form>
+	
+	 <img alt="" src="../upload/<%=dto.getM_photo()%>" id="preshow">
 </div>
 </body>
 </html>

@@ -37,12 +37,12 @@
 	dto.setM_num(multi.getParameter("m_num"));
 	dto.setM_hp(multi.getParameter("m_hp"));
 	
-	String photo = multi.getFilesystemName("m_photo");
+	String m_photo = multi.getFilesystemName("m_photo");
 	
-	if(photo==null){
+	if(m_photo==null){
 		dto.setM_photo("../image/연예인사진/no_image.png");//사진선택안한경우
 	}else{
-		dto.setM_photo("../upload2/"+photo);//한경우
+		dto.setM_photo("../upload2/"+ m_photo);//한경우
 	}
 	
 	

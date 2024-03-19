@@ -23,7 +23,6 @@
 <body>
   <%
     String key=request.getParameter("key"); //처음호출시 null값
-    System.out.println(key);
     if(key==null){
     	//널값일때는 폼을 나타내고
     	%>

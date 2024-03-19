@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+
+
 <style type="text/css">
    #preshow{
      position: absolute;
@@ -17,6 +19,8 @@
      top: 100px;
    }
 </style>
+
+
 <script type="text/javascript">
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -30,8 +34,9 @@ function readURL(input) {
        
     }
 }
-
 </script>
+
+
 </head>
 <%
   String num=request.getParameter("num");
@@ -93,6 +98,7 @@ function readURL(input) {
            </td>
          </tr>
       </table>
+      
     
     </form>
     

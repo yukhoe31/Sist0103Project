@@ -25,7 +25,7 @@ public class MemgaipDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from memgaip where m_id=";
+		String sql = "select * from memgaip where m_id=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);

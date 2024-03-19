@@ -21,35 +21,40 @@
 	<%
 	request.setCharacterEncoding("utf-8");
 
+    //업로드에 필요한 변수선언
+    //업로드할 경로(톰캣에 올라가는 프로젝트경로)
 	String realPath = getServletContext().getRealPath("/upload2");
 	System.out.println(realPath);
 
 	int uploadSize = 1024 * 1024 * 5; //5mb
 
-	MultipartRequest multi = null;
-
+	
+	//생성자파라메터(request,업로드폴더,업로드사이즈,한글,같은이름일경우 1,2,3붙히기)
 	try {
+		MultipartRequest multi = null;
 		multi = new MultipartRequest(request, realPath, uploadSize, "utf-8", new DefaultFileRenamePolicy());
 
 		//입력값읽기
 		String m_pass = multi.getParameter("m_pass");
 		String m_name = multi.getParameter("m_name");
 		String m_hp = multi.getParameter("m_hp");
-		String photo = multi.getFilesystemName("m_photo");
+		String m_photo = multi.getFilesystemName("m_photo");
+		String m_num = multi.getParameter("m_num");
+		String m_id = multi.getParameter("m_id");
 
 		//dto에 담기
 		MemgaipDto dto = new MemgaipDto();
 
-		//dto.setM_id(multi.getParameter("m_id"));
+		dto.setM_id(multi.getParameter("m_id"));
 		dto.setM_pass(multi.getParameter("m_pass"));
 		dto.setM_name(multi.getParameter("m_name"));
-		//dto.setM_num(multi.getParameter("m_num"));
+		dto.setM_num(multi.getParameter("m_num"));
 		dto.setM_hp(multi.getParameter("m_hp"));
 
-		if (photo == null) {
+		if (m_photo == null) {
 			dto.setM_photo("../image/연예인사진/no_image.png");//사진선택안한경우
 		} else {
-			dto.setM_photo("../upload2/" + photo);//한경우
+			dto.setM_photo("../upload2/" + m_photo);//한경우
 		}
 
 		//dto.setM_photo(photo);
