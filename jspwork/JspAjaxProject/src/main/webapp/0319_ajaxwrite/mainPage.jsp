@@ -180,7 +180,7 @@ function list()
 					s+="<td num="+elt.num+" class='subject'>"+elt.subject+"</td>";
 					s+="<td align='center'>"+elt.writer+"</td>";
 					s+="<td align='center'>"+elt.writeday+"</td>";
-					s+="<td align='center'>"+elt.likes+"</td>";
+					 s+="<td align='center'>"+(elt.likes ? elt.likes : '0')+"</td>";
 					s+="</tr>";
 				})
 			}
