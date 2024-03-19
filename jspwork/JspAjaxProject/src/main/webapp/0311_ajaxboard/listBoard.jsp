@@ -16,6 +16,7 @@
 	for(AjaxBoardDto dto:list)
 	{
 		JSONObject ob=new JSONObject();
+		
 		ob.put("num", dto.getNum());
 		ob.put("writer", dto.getWriter());
 		ob.put("subject", dto.getSubject());
