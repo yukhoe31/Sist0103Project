@@ -13,13 +13,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script type="text/javascript">
-	function openId() {
-		window.open("idSearch.jsp","idcheck","left='100px',top='100px',width='400px',height='200px'");
-		
-	}
-</script>
 
+
+
+</head>
 
 <%
   String m_num=request.getParameter("m_num");
@@ -28,7 +25,6 @@
 %>
 
 <title>Insert title here</title>
-
 
 <style type="text/css">
    #preshow{
@@ -55,30 +51,23 @@ function readURL(input) {
 }
 </script>
 
-
-
-</head>
 <body>
 <div style="margin: 50px 100px; width: 500px;" >
 	<form action="updateMember.jsp" method="post" enctype="multipart/form-data" >
+	<!-- 항상 hidden타입의 num을 잊지마!! -->
+	<input type="hidden" name="m_num" value="<%=m_num%>">
 	
 		<table class="table table-bordered">
-			<caption align="top"><b>회원정보수정</b></caption>
+			<caption align="top"><b>마이정보수정</b></caption>
 			<tr>
 				<td width="120" class="table-primary">아이디</td>
 				<td >
-				<%=dto.getM_id() %>
+				<b><%=dto.getM_id() %></b>
 				</td>
 			</tr>
 			
-			<tr>
-				<td width="120" class="table-primary">비밀번호</td>
-				<td>
-					<input type="password" class="form-control"
-					style="width: 120px;" name="m_pass" required="required" value="<%=dto.getM_pass()%>">
-				</td>
-			</tr>
 			
+						
 			<tr>
 				<td width="120" class="table-primary">회원명</td>
 				<td>
@@ -105,7 +94,7 @@ function readURL(input) {
 			
 			<tr>
 				<td colspan="2" align="center">
-				<input type="hidden" name="m_num" value="<%=m_num%>">
+				
 				<button type="submit" class="btn btn-info" id="btnsubmitupdate">회원정보수정</button>
 				</td>
 			</tr>
