@@ -39,7 +39,7 @@
 	}
 	
 	div.info{
-		width: 370px;
+		width: 350px;
 		height: 250px;
 		line-height: 10px;
 		font-size: 13pt;

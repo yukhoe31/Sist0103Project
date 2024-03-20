@@ -19,12 +19,11 @@
 
 </head>
 <%
-//프로젝트 경로
+//프로젝트 경로 : 이것이 사실상 메인 화면이다.
 String root = request.getContextPath();
 
-
-String id = request.getParameter("id");//id를 받아야 써먹지!
-
+//addaction.jsp로부터 id를 받아야 써먹을 수 있다.
+String id = request.getParameter("id");
 
 	
 %>

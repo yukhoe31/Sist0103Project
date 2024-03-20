@@ -25,7 +25,9 @@
 		<i class="bi bi-telephone-inbound"></i> 01-234-5678<br>
 		<i class="bi bi-house-add"></i> 일본 도쿄도 치요다구 칸다 니시키 쵸 2-2-1 KANDA SQUARE<br>
 		<i class="bi bi-envelope-arrow-down"></i> gamefreak@gamefreak.com<br>
+	    <a href="https://pokemonkorea.co.kr/"  target="_blank">
 	    <i class="bi bi-upc-scan"> <img alt="" src="<%=root %>/image/miniproject_img/pokemon_logo.png"  width="150px"><br> </i> 
+		</a>
 	</div>
 </body>
 </html>
