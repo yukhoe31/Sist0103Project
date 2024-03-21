@@ -19,7 +19,8 @@
 request.setCharacterEncoding("utf-8");
 String email= request.getParameter("email1")+"@"+request.getParameter("email2");
 
-
+String id = request.getParameter("id");
+String name= request.getParameter("name");
 %>
 
 <jsp:useBean id="dao" class="data.dao.MemberDao"/>

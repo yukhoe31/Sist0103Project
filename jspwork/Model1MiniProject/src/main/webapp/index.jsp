@@ -11,7 +11,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<title>Insert title here</title>
+<%
+	//프로젝트 경로
+	String root = request.getContextPath();
+
+%>
+
+<title>GAME FREAK</title>
 
 <style type="text/css">
 	div.layout{
@@ -53,7 +59,7 @@
 	}
 	
 	div.main{
-		width: 560px;
+		width:1000px;
 		height: 500px;
 		font-size: 13pt;
 		font-family: 'Diphylleia';
@@ -64,6 +70,7 @@
 	}
 </style>
 
+<link rel="icon" href="<%=root %>/image/miniproject_img/monsterball.ico" type="image/x-icon">
 
 </head>
 

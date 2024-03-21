@@ -25,6 +25,9 @@ String root = request.getContextPath();
 //addaction.jsp로부터 id를 받아야 써먹을 수 있다.
 String id = request.getParameter("id");
 
+MemberDao dao = new MemberDao();
+MemberDto dto = dao.getMemberById(id);
+String name = dto.getName(); // 수정된 부분
 	
 %>
 
@@ -34,7 +37,7 @@ String id = request.getParameter("id");
         <div align="center" >
             <img src="<%=root %>/image/miniproject_img/pkmn_1.png" alt="" width="400px">
             
-            <h3 ><%=id %>님,
+            <h3 ><%=id %>(<%=name %>)님,
             <br>회원가입에 
             <br>성공했습니다.</h3>
             <br>

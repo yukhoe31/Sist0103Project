@@ -52,7 +52,7 @@
 				<nav id="navigation">
 
 					<ul id="main-menu">
-						<li class="current-menu-item"><a href="#">Home</a></li>
+						<li class="current-menu-item"><a href="<%=root%>">Home</a></li>
 						<li class="parent"><a href="#">게시판</a>
 							<ul class="sub-menu">
 								<li><a href="#"><i class="icon-wrench"></i> 고객게시판</a></li>
@@ -65,8 +65,8 @@
 							<ul class="sub-menu">
 								<li><a href="<%=root%>/index.jsp?main=member/addform.jsp">
 								<i class="icon-wrench"></i> 회원가입</a></li>
-								<li><a href="#"></i> 회원목록</a></li>
-								<li><a href="#"><i class="icon-gift"></i> 마이페이지</a></li>
+								<li><a href="<%=root%>/index.jsp?main=member/memberlist.jsp"></i> 회원목록</a></li>
+								<li><a href="<%=root%>/index.jsp?main=member/mypage.jsp"><i class="icon-gift"></i> 마이페이지</a></li>
 							</ul></li>
 
 						<li class="parent"><a href="#">방명록</a>
