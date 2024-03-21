@@ -37,8 +37,8 @@
 	<br><h3>주요 제품보기</h3>
 	<img alt="" src="<%=root %>/image/miniproject_img/sang7.png"  height="200px" width="380px">
 	<img alt="" src="<%=root %>/image/miniproject_img/sang6.png"  height="200px" width="380px">
-	<img alt="" src="<%=root %>/image/miniproject_img/sang5.png"  height="200px" width="380px"><br>
-
+	<img alt="" src="<%=root %>/image/miniproject_img/sang5.png"  height="200px" width="380px">
+	<img alt="" src="<%=root %>/image/miniproject_img/sang9.jpg"  height="200px" width="380px">
 
 </body>
 </html>
