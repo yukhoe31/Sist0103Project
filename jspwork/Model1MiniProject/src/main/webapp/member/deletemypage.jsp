@@ -1,5 +1,7 @@
+
+
+
 <%@page import="data.dao.MemberDao"%>
-<%@page import="data.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,25 +19,42 @@
 </head>
 <body>
 
-<div style="margin: 100px 200px;">
-	<img src="image/miniproject_img/welcome.jpg" width="300px">
-	<%
-	String myid = (String)session.getAttribute("myid");
-	MemberDao dao = new MemberDao();
-	MemberDto dto= dao.getMemberById(myid);
-	String name = dto.getName();
-	
-	
+<%
+
+
+String num = request.getParameter("num");
+String pass= request.getParameter("pass");
+
+
+//dao
+MemberDao dao = new MemberDao();
+
+//비번체크해서 맞으면 삭제
+boolean b = dao.isEqualPass(num, pass);
+
+if(b){
+	dao.deleteMember(num);
 	%>
 	
-	<br><br>
+	<script type="text/javascript">
+		alert("회원탈퇴성공!!");
+		
+		location.href="../index.jsp";
+	</script>
+<%}else{%>
 	
-	<b><%=name %>님 로그인중</b>
-	<button type="button" class="btn btn-danger"
-	onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
+	<script type="text/javascript">
+		alert("비번이 틀립니다.");
+		history.back();
 	
 	
-</div>
+	</script>
+<%}
+
+
+
+%>
+
 
 </body>
 </html>

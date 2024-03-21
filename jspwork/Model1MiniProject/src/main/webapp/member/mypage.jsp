@@ -33,25 +33,38 @@
 
 </style>
 
-
 <script type="text/javascript">
-	function delfunc(num) {
-		//alert(num);
-		$("#delnum").val(num);
-		$("#myModal").modal('show');
+function delfunc(num) {
+	
+	$("#delnum").val(num);
+	$("#myModal").modal('show');
+	
+	//삭제버튼이벤트
+	$("button.btndel").click(function() {
 		
-		//삭제버튼 이벤트
-		if
+		//num,pass읽기
+		var num=$("#delnum").val();
+		var pass= $("#delpass").val();
 		
+		//alert(num + "," +pass);
 		
-	}
+		//삭제파일 호출
+		location.href = "member/deletemypage.jsp?num="+num +"&pass=" +pass;
+	}) 
+	
+}
 
 </script>
+
+
 </head>
 
 <%
 MemberDao dao = new MemberDao();
+
 List<MemberDto> list = dao.getAllMembers();
+
+
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 String[] imageUrls = {
     "image/miniproject_img/monsterball.png",
@@ -68,6 +81,7 @@ String[] imageUrls = {
 };
 Random random = new Random();
 %>
+
 
 <body>
 	<div style="margin: 100px 200px; width: 800px;">
@@ -86,8 +100,10 @@ Random random = new Random();
 
 				<td rowspan="6" style="width: 150px;" align="center" valign="middle">
 					<button type="button" class="btn btn-outline-info">수정</button>
+					<input type="hidden" pass="<%=dto.getPass() %>">
 					<button type="button" class="btn btn-outline-danger"
-					onclick="delfunc(<%=dto.getNum()%>)">탈퇴</button>
+					onclick="delfunc('<%=dto.getNum()%>')">탈퇴</button>
+					
 				</td>
 			</tr>
 			<tr>
@@ -109,9 +125,7 @@ Random random = new Random();
             %>
 			</tr>
 		</table>
-
 	</div>
-
 
 
 	<!-- The Modal -->
@@ -126,15 +140,17 @@ Random random = new Random();
 				</div>
 
 				<!-- Modal body -->
-				<div class="modal-body d-inline-flex">			
+				<div class="modal-body d-inline-flex">		
+				    <input type="hidden" id="delnum">	
 					<b>삭제비밀번호: </b>
 					<input type="password" id="delpass" class="form-control" style="width: 120px;">
+					
 				</div>
-
+			
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger btndel"
-						data-bs-dismiss="modal">삭제</button>
+					data-bs-dismiss="modal">삭제</button>
 				</div>
 
 			</div>

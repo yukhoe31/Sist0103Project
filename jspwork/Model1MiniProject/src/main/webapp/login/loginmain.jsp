@@ -15,5 +15,19 @@
 </head>
 <body>
 
+<%
+	//세션이 저장된 loginok 가져온다.
+	String loginok = (String)session.getAttribute("loginok");
+	
+	//로그아웃상태
+	if(loginok==null){%>
+		<jsp:include page="loginform.jsp"/>
+	<%}else{%>
+		<jsp:include page="logoutform.jsp"/>
+	<%}
+	
+%>
+
+
 </body>
 </html>

@@ -42,6 +42,8 @@
 %>
 <body>
 	<div style="margin: 0px 100px;" >
+	
+	  <h5 class="alert alert-light">총 <%=list.size() %>명의 회원이 있습니다</h5>
 		<table class="table table-bordered">
 			<caption align="top">전체 회원명단</caption>
 			<tr class="table-light">

@@ -57,8 +57,6 @@
      response.sendRedirect("boardlist.jsp");
      
      
-     
-     
      }catch(Exception e){
     	 
      }

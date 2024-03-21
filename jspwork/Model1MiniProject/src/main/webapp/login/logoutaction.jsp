@@ -15,5 +15,30 @@
 </head>
 <body>
 
+<%
+	session.removeAttribute("loginok");
+	response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+
+%>
+
+<%
+	// 세션이 저장된 loginok을 가져온다.
+	String loginok = (String)session.getAttribute("loginok");
+	
+	// 로그아웃 상태
+	if(loginok == null) { %>
+		<jsp:include page="loginform.jsp"/>
+	<% } else { %>
+		<jsp:include page="logoutform.jsp"/>
+	<% }
+%>
+
+<script>
+    // JavaScript to check the value of loginok and display it
+    var loginokValue = "<%= loginok %>";
+    console.log("Value of loginok:", loginokValue);
+    alert("Value of loginok: " + loginokValue);
+</script>
+
 </body>
 </html>

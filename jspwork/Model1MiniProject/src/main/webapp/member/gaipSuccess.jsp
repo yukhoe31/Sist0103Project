@@ -32,20 +32,22 @@ String name = dto.getName(); // 수정된 부분
 %>
 
 <body>
-<div class="container mt-5">
-    <div >
-        <div align="center" >
-            <img src="<%=root %>/image/miniproject_img/pkmn_1.png" alt="" width="400px">
-            
-            <h3 ><%=id %>(<%=name %>)님,
-            <br>회원가입에 
-            <br>성공했습니다.</h3>
-            <br>
-            <a href="login/loginform.jsp" class="btn btn-warning">로그인</a>
-            <a href="<%=root %>" class="btn btn-success">확인</a>
-        </div>
-    </div>
-</div>
+	<div class="container mt-5">
+		<div>
+			<div align="center">
+				<img src="<%=root %>/image/miniproject_img/pkmn_1.png" alt=""
+					width="400px">
+
+				<h3><%=id %>(<%=name %>)님, <br>회원가입에 <br>성공했습니다.
+				</h3>
+				<br>
+				<button type="button" class="btn btn-warning"
+					onclick="location.href='index.jsp?main=login/loginmain.jsp'">로그인</button>
+				<button type="button" class="btn btn-success"
+					onclick="location.href='index.jsp?main=member/mypage.jsp'">마이페이지</button>
+			</div>
+		</div>
+	</div>
 
 
 </body>
