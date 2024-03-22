@@ -47,7 +47,20 @@ i.adel {
 
 <script type="text/javascript">
 	//리스트의 삭제버튼클릭시 삭제
-
+    function confirmDelete(num) {
+        var result = confirm("정말 삭제하시겠습니까?");
+        if (result) {
+            // 사용자가 확인을 선택한 경우
+            // 삭제 액션을 수행하는 페이지로 이동하거나 AJAX로 삭제 요청을 보냅니다.
+            // 여기에 필요한 코드를 추가하세요.
+            // 예를 들어, 삭제 액션을 처리하는 페이지로 이동하는 경우:
+            location.href='memberguest/guestdeleteaction.jsp?num=' + num;
+        } else {
+            // 사용자가 취소를 선택한 경우
+            // 아무런 동작을 하지 않습니다.
+            // 혹은 필요한 경우 다른 동작을 수행할 수 있습니다.
+        }
+    }
 	//수정
 	$("#btnaUsend").click(function() {
 
@@ -217,10 +230,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 						onclick="location.href='memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>'">
 					<i class="bi bi-pencil-square"></i>수정
 					</button>
-					<button type="button" class="btn btn-outline-danger btn-sm"
-						onclick="location.href='memberguest/guestdeleteaction.jsp?num=<%=dto.getNum()%>'">
-						<i class="bi bi-trash"></i>삭제
+					<button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(<%=dto.getNum()%>)">
+    					<i class="bi bi-trash"></i>삭제
 					</button>
+					
 					 <% } %>
 				</td>
 
@@ -267,9 +280,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			%>
 
 		</ul>
-
-
-
 
 	</div>
 
