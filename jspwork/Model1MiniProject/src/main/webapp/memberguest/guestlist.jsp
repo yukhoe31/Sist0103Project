@@ -173,6 +173,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			</tr>
 
 			<%
+			
+			//로그인한 사람의 id가 뭔지 가져와서 loginId에 저장하기.
+			String loginId = (String)session.getAttribute("myid"); 
+			
+			
 			if (totalCount == 0) {
 			%>
 			<tr>
@@ -186,6 +191,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			} else {
 			for (int i = 0; i < list.size(); i++) {
 				GuestDto dto = list.get(i);
+				
+				//게시글을 작성한 사람의 id가 뭔지 가져와서 postId에 저장하기.
+				String postId = dto.getMyid(); 
 			%>
 
 			<tr>
@@ -198,15 +206,22 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td>
 					<button type="button" class="btn btn-outline-warning btn-sm">👍추천</button>
+					
+					<% 
+       				 // 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
+       				 // id가 동일한 경우에만 수정, 삭제 버튼이 보이게 하기
+       				 if(loginId != null && loginId.equals(postId)) {
+       				 %>
+       				 
 					<button type="button" class="btn btn-outline-primary btn-sm"
 						onclick="location.href='memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>'">
-						<i class="bi bi-pencil-square"></i>수정
+					<i class="bi bi-pencil-square"></i>수정
 					</button>
 					<button type="button" class="btn btn-outline-danger btn-sm"
 						onclick="location.href='memberguest/guestdeleteaction.jsp?num=<%=dto.getNum()%>'">
 						<i class="bi bi-trash"></i>삭제
 					</button>
-
+					 <% } %>
 				</td>
 
 			</tr>
