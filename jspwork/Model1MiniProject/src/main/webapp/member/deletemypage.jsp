@@ -34,6 +34,12 @@ boolean b = dao.isEqualPass(num, pass);
 
 if(b){
 	dao.deleteMember(num);
+	
+	//로그인 세션 삭제
+	session.removeAttribute("loginok");
+	session.removeAttribute("myid");
+	session.removeAttribute("saveok");
+	
 	%>
 	
 	<script type="text/javascript">
@@ -50,8 +56,6 @@ if(b){
 	
 	</script>
 <%}
-
-
 
 %>
 
