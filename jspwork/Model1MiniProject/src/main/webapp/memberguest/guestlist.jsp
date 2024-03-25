@@ -31,7 +31,7 @@ a:hover {
 }
 
 body * {
-	font-family: 'Noto Serif KR';
+	font-family: 'Diphylleia';
 	font-size: 11pt;
 }
 
@@ -43,7 +43,20 @@ i.amod {
 i.adel {
 	color: red;
 }
+
+/* 버튼 사이 간격 조정 */
+td .btn {
+    margin-bottom: 10px; /* 버튼 아래 여백 조정 */
+}
+
+/* 테이블 셀 가운데 정렬 */
+th {
+    text-align: center;
+}
+
+
 </style>
+
 
 <script type="text/javascript">
 	//리스트의 삭제버튼클릭시 삭제
@@ -85,9 +98,8 @@ i.adel {
 		})
 	});
 </script>
-
-
 </head>
+
 
 
 <body>
@@ -108,9 +120,6 @@ i.adel {
 	%>
 
 
-	<div style="margin: 50px 100px;">
-		<b>방명록 리스트가 출력될곳...</b>
-	</div>
 </head>
 
 <%
@@ -166,7 +175,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
-
 		<br>
 		<h6>
 			<b>총<%=totalCount%>개의 글이 있습니다
@@ -177,22 +185,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<b>방명록 리스트</b>
 			</caption>
 			<tr class="table-light">
-				<th width="100">작성자</th>
-				<th width="200">내용</th>
-				<th width="150">이미지</th>
-				<th width="80">추천수</th>
-				<th width="160">작성일</th>
-				<th width="100">비고</th>
+				<th width="100" ><i class="bi bi-person-circle"></i>&nbsp;작성자</th>
+				<th width="200" ><i class="bi bi-pencil-fill"></i>&nbsp;내용</th>
+				<th width="150"><i class="bi bi-card-image"></i>&nbsp;이미지</th>
+				<th width="100"><i class="bi bi-hand-thumbs-up-fill"></i>&nbsp;추천수</th>
+				<th width="160"><i class="bi bi-calendar-date-fill"></i>&nbsp;작성일</th>
+				<th width="100"><i class="bi bi-tools"></i>&nbsp;비고</th>
 			</tr>
 
 			<%
-			
-			//로그인한 사람의 id가 뭔지 가져와서 loginId에 저장하기.
+			//★로그인한 사람의 id가 뭔지 가져와서 loginId에 저장하기.
 			String loginId = (String)session.getAttribute("myid"); 
-			
 			
 			if (totalCount == 0) {
 			%>
+			
 			<tr>
 				<td colspan="5" align="center">
 					<h6>
@@ -205,20 +212,28 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			for (int i = 0; i < list.size(); i++) {
 				GuestDto dto = list.get(i);
 				
-				//게시글을 작성한 사람의 id가 뭔지 가져와서 postId에 저장하기.
+				//★게시글을 작성한 사람의 id가 뭔지 가져와서 postId에 저장하기.
 				String postId = dto.getMyid(); 
+				
+				//실명 가져오기(반드시 필요한 기능은 아니지만...)
+				MemberDao mdao = new MemberDao();
+				MemberDto mdto = new MemberDto();
+				mdto = mdao.getMemberById(dto.getMyid());
+				String name = mdto.getName();
 			%>
 
 			<tr>
 
-				<td align="center"><%=dto.getMyid()%></td>
+				<td align="center"><%=dto.getMyid()%><br>(<%=name %>)</td>
 				<td align="center"><%=dto.getContent()%></td>
 				<td align="center"><img src="save/<%=dto.getPhotoname()%>"
-					height="150px"></td>
+					height="150px"></td>	
 				<td align="center"><%=dto.getChu()%></td>
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td>
-					<button type="button" class="btn btn-outline-warning btn-sm">👍추천</button>
+					<button type="button" class="btn btn-outline-warning btn-sm">
+					<i class="bi bi-hand-thumbs-up"></i>추천</button>
+					<br> 
 					
 					<% 
        				 // 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
@@ -229,19 +244,17 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 					<button type="button" class="btn btn-outline-primary btn-sm"
 						onclick="location.href='memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>'">
 					<i class="bi bi-pencil-square"></i>수정
+					<br> 
 					</button>
 					<button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(<%=dto.getNum()%>)">
     					<i class="bi bi-trash"></i>삭제
 					</button>
 					
-					 <% } %>
+				 <% } %>				 
 				</td>
-
 			</tr>
-			<%
-			}
-			}
-			%>
+			<%}
+			}%>
 		</table>
 
 		<!-- 페이지 번호 출력 -->

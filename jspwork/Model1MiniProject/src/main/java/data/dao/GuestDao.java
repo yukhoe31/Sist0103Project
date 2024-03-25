@@ -149,7 +149,9 @@ public class GuestDao {
 	
 		
 		//댓글 수정시 띄울 데이터
-		public GuestDto getGuestData(String num) {
+		//num에 해당하는 dto반환ㄴ
+		public GuestDto getData(String num) {
+			
 			GuestDto dto  = new GuestDto();
 			
 			Connection conn = db.getConnection();

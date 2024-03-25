@@ -19,43 +19,44 @@
 </head>
 <body>
 
-<%
- 	String myid= (String)session.getAttribute("myid");
+	<%
+	String myid = (String) session.getAttribute("myid");
 
 	String realPath = getServletContext().getRealPath("/save");
 	System.out.println(realPath);
-	
-	int uploadSize =1024*1024*3;//3mb
-	
+
+	int uploadSize = 1024 * 1024 * 3;//3mb
+
 	MultipartRequest multi = null;
-	
-	try{
-	multi=new MultipartRequest(request, realPath, uploadSize, "utf-8", new DefaultFileRenamePolicy() );
-	
-	String content = multi.getParameter("content");
-	String photoname = multi.getFilesystemName("photo");
-	
-	//dto에 저장
-	GuestDto dto = new GuestDto();
-	
-	dto.setMyid(myid);
-	dto.setContent(content);
-	dto.setPhotoname(photoname);
-	
-	//dao
-	GuestDao dao = new GuestDao();
-	dao.InsertGuest(dto);
-	
-	//방명록 목록으로 이동
-	response.sendRedirect("../index.jsp?main=memberguest/guestlist.jsp");
-	
-	
-	}catch (Exception e) {
+
+	try {
+		multi = new MultipartRequest(request, realPath, uploadSize, "utf-8", new DefaultFileRenamePolicy());
+
+		String content = multi.getParameter("content");
+		String photoname = multi.getFilesystemName("photo");
+
+		//dto에 저장
+		GuestDto dto = new GuestDto();
+
+		dto.setMyid(myid);
+		dto.setContent(content);
+
+		if (photoname == null) {
+			photoname = "../image/miniproject_img/pkmn_wallpaper_1.jpg";
+		}
+		dto.setPhotoname(photoname);
+
+		//dao
+		GuestDao dao = new GuestDao();
+		dao.InsertGuest(dto);
+
+		//방명록 목록으로 이동
+		response.sendRedirect("../index.jsp?main=memberguest/guestlist.jsp");
+
+	} catch (Exception e) {
 
 	}
-	
-	
-%>	
+	%>
 
 
 </body>

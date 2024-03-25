@@ -75,14 +75,12 @@ function readURL(input, expression) {
 				
 				<td>
 					<button type="submit" class="btn btn-info"
-					style="width: 100px; height: 100px;">등록</button>
+					style="width: 100px; height: 100px; font-style: bold;">등록</button>
 				</td>
 			</tr>
 
 		</table>	
-		
 
-		
 		
 	</form>
 	
