@@ -1,3 +1,4 @@
+<%@page import="com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.GuestDto"%>
 <%@page import="data.dto.MemberDto"%>
@@ -60,14 +61,14 @@ th {
 
 <script type="text/javascript">
 	//리스트의 삭제버튼클릭시 삭제
-    function confirmDelete(num) {
+    function confirmDelete(num,currentPage) {
         var result = confirm("정말 삭제하시겠습니까?");
         if (result) {
             // 사용자가 확인을 선택한 경우
             // 삭제 액션을 수행하는 페이지로 이동하거나 AJAX로 삭제 요청을 보냅니다.
             // 여기에 필요한 코드를 추가하세요.
             // 예를 들어, 삭제 액션을 처리하는 페이지로 이동하는 경우:
-            location.href='memberguest/guestdeleteaction.jsp?num=' + num;
+            location.href='memberguest/guestdeleteaction.jsp?num=' + num+'&currentPage='+currentPage;
         } else {
             // 사용자가 취소를 선택한 경우
             // 아무런 동작을 하지 않습니다.
@@ -98,6 +99,9 @@ th {
 		})
 	});
 </script>
+
+
+
 </head>
 
 
@@ -168,10 +172,23 @@ no = totalCount - (currentPage - 1) * perPage;
 //페이지에서 보여질 글만 가져오기
 List<GuestDto> list = dao.getList(startNum, perPage);
 
+
+if(list.size()==0 && currentPage != 1){
+%>	
+	<script type="text/javascript">
+		location.href="index.jsp?memeberguest/guestlist.jsp?currentPage=<%=currentPage-1%>";
+
+	</script>	
+
+<%}
+
+
+
 //List<SimpleBoardDto>list=dao.getAllDatas();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //int count=list.size();
 %>
+
 
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
@@ -226,8 +243,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 				<td align="center"><%=dto.getMyid()%><br>(<%=name %>)</td>
 				<td align="center"><%=dto.getContent()%></td>
-				<td align="center"><img src="save/<%=dto.getPhotoname()%>"
-					height="150px"></td>	
+				<td align="center"><img src="save/<%=dto.getPhotoname()%>" style="height: 150px;" ></td>	
 				<td align="center"><%=dto.getChu()%></td>
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td>
@@ -241,16 +257,25 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
        				 if(loginId != null && loginId.equals(postId)) {
        				 %>
        				 
+       				<input type="hidden" name="currentPage" value="<%=currentPage%>"> 
 					<button type="button" class="btn btn-outline-primary btn-sm"
-						onclick="location.href='memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>'">
+						onclick="location.href='index.jsp?main=memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'">
 					<i class="bi bi-pencil-square"></i>수정
 					<br> 
 					</button>
-					<button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(<%=dto.getNum()%>)">
+					
+					<button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(<%=dto.getNum()%>, <%=currentPage%>)">
     					<i class="bi bi-trash"></i>삭제
 					</button>
 					
 				 <% } %>				 
+				</td>
+			</tr>
+			
+			<!--댓글 추천 -->
+			<tr >
+				<td colspan="6">
+					<span class="answer" style="cursor:pointer;">댓글 0</span>
 				</td>
 			</tr>
 			<%}
