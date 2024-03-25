@@ -47,15 +47,13 @@ i.adel {
 
 /* 버튼 사이 간격 조정 */
 td .btn {
-    margin-bottom: 10px; /* 버튼 아래 여백 조정 */
+	margin-bottom: 10px; /* 버튼 아래 여백 조정 */
 }
 
 /* 테이블 셀 가운데 정렬 */
 th {
-    text-align: center;
+	text-align: center;
 }
-
-
 </style>
 
 
@@ -75,29 +73,35 @@ th {
             // 혹은 필요한 경우 다른 동작을 수행할 수 있습니다.
         }
     }
-	//수정
-	$("#btnaUsend").click(function() {
-
-		var num = $("#num").val();
-		var photoname = $("#uphotoname").val();
-		var content = $("#ucontent").val();
-
-		//alert(idx+","+nick+","+content);
-
-		$.ajax({
-			type : "get",
-			url : "../memberguest/guestupdateaction.jsp",
-			dataType : "html",
-			data : {
-				"num" : num,
-				"photoname" : photoname,
-				"content" : content
-			},
-			success : function() {
-
-			}
-		})
-	});
+	//추천수 추가
+	  $(function(){
+	   
+	   $("span.likes").click(function(){
+		   
+		   var num=$(this).attr("num");
+		   //alert(num);
+		   var tag=$(this);
+		   
+		   $.ajax({
+			   type:"get",
+			   dataType:"json",
+			   url:"memberguest/updateincrechu.jsp",
+			   data:{"num":num},
+			   success:function(data){
+				   
+				  // alert(data.chu);
+				  tag.next().text(data.chu);
+				  
+				  //하트의 animate
+				  tag.next().next().animate({"font-size":"15px"},500,function(){
+					  //애니메이션 끝난후
+					  $(this).css("font-size", "0px");
+				  });
+				  
+			   }
+		   })
+	   });
+   });
 </script>
 
 
@@ -122,7 +126,6 @@ th {
 	<%
 	}
 	%>
-
 
 </head>
 
@@ -172,17 +175,15 @@ no = totalCount - (currentPage - 1) * perPage;
 //페이지에서 보여질 글만 가져오기
 List<GuestDto> list = dao.getList(startNum, perPage);
 
+if (list.size() == 0 && currentPage != 1) {
+%>
+<script type="text/javascript">
+		location.href="index.jsp?memeberguest/guestlist.jsp?currentPage=<%=currentPage - 1%>";
 
-if(list.size()==0 && currentPage != 1){
-%>	
-	<script type="text/javascript">
-		location.href="index.jsp?memeberguest/guestlist.jsp?currentPage=<%=currentPage-1%>";
+</script>
 
-	</script>	
-
-<%}
-
-
+<%
+}
 
 //List<SimpleBoardDto>list=dao.getAllDatas();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -202,21 +203,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<b>방명록 리스트</b>
 			</caption>
 			<tr class="table-light">
-				<th width="100" ><i class="bi bi-person-circle"></i>&nbsp;작성자</th>
-				<th width="200" ><i class="bi bi-pencil-fill"></i>&nbsp;내용</th>
+				<th width="100"><i class="bi bi-person-circle"></i>&nbsp;작성자</th>
+				<th width="200"><i class="bi bi-pencil-fill"></i>&nbsp;내용</th>
 				<th width="150"><i class="bi bi-card-image"></i>&nbsp;이미지</th>
-				<th width="100"><i class="bi bi-hand-thumbs-up-fill"></i>&nbsp;추천수</th>
 				<th width="160"><i class="bi bi-calendar-date-fill"></i>&nbsp;작성일</th>
 				<th width="100"><i class="bi bi-tools"></i>&nbsp;비고</th>
 			</tr>
 
 			<%
 			//★로그인한 사람의 id가 뭔지 가져와서 loginId에 저장하기.
-			String loginId = (String)session.getAttribute("myid"); 
-			
+			String loginId = (String) session.getAttribute("myid");
+
 			if (totalCount == 0) {
 			%>
-			
+
 			<tr>
 				<td colspan="5" align="center">
 					<h6>
@@ -228,10 +228,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			} else {
 			for (int i = 0; i < list.size(); i++) {
 				GuestDto dto = list.get(i);
-				
+
 				//★게시글을 작성한 사람의 id가 뭔지 가져와서 postId에 저장하기.
-				String postId = dto.getMyid(); 
-				
+				String postId = dto.getMyid();
+
 				//실명 가져오기(반드시 필요한 기능은 아니지만...)
 				MemberDao mdao = new MemberDao();
 				MemberDto mdto = new MemberDto();
@@ -241,45 +241,49 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 			<tr>
 
-				<td align="center"><%=dto.getMyid()%><br>(<%=name %>)</td>
+				<td align="center"><%=dto.getMyid()%><br>(<%=name%>)</td>
 				<td align="center"><%=dto.getContent()%></td>
-				<td align="center"><img src="save/<%=dto.getPhotoname()%>" style="height: 150px;" ></td>	
-				<td align="center"><%=dto.getChu()%></td>
+				<td align="center"><img src="save/<%=dto.getPhotoname()%>"
+					style="height: 150px;"></td>
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td>
-					<button type="button" class="btn btn-outline-warning btn-sm">
-					<i class="bi bi-hand-thumbs-up"></i>추천</button>
-					<br> 
-					
-					<% 
-       				 // 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
-       				 // id가 동일한 경우에만 수정, 삭제 버튼이 보이게 하기
-       				 if(loginId != null && loginId.equals(postId)) {
-       				 %>
-       				 
-       				<input type="hidden" name="currentPage" value="<%=currentPage%>"> 
+					<%
+ // 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
+ // id가 동일한 경우에만 수정, 삭제 버튼이 보이게 하기
+ if (loginId != null && loginId.equals(postId)) {
+ %> <input type="hidden" name="currentPage" value="<%=currentPage%>">
 					<button type="button" class="btn btn-outline-primary btn-sm"
-						onclick="location.href='index.jsp?main=memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'">
-					<i class="bi bi-pencil-square"></i>수정
-					<br> 
+						onclick="location.href='index.jsp?main=memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'">
+						<i class="bi bi-pencil-square"></i>수정 <br>
 					</button>
-					
-					<button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(<%=dto.getNum()%>, <%=currentPage%>)">
-    					<i class="bi bi-trash"></i>삭제
-					</button>
-					
-				 <% } %>				 
+
+					<button type="button" class="btn btn-outline-danger btn-sm"
+						onclick="confirmDelete(<%=dto.getNum()%>, <%=currentPage%>)">
+						<i class="bi bi-trash"></i>삭제
+					</button> <%
+ }
+ %>
 				</td>
 			</tr>
-			
+
 			<!--댓글 추천 -->
-			<tr >
-				<td colspan="6">
-					<span class="answer" style="cursor:pointer;">댓글 0</span>
+			<tr>
+				<td colspan="6"><span class="answer" style="cursor: pointer;"><i
+						class="bi bi-chat-left-dots"></i>&nbsp;댓글 0</span> 
+					
+						<span class="likes" style="margin-left: 20px; cursor: pointer;" num="<%=dto.getNum() %>">추천</span>
+
+						<span class="chu"><%=dto.getChu() %></span>
+							
+						<i class="bi bi-heart-fill" style="font-size: 0px; color: red;"></i>
+						
+						
 				</td>
 			</tr>
-			<%}
-			}%>
+			<%
+			}
+			}
+			%>
 		</table>
 
 		<!-- 페이지 번호 출력 -->

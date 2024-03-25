@@ -211,8 +211,34 @@ public class GuestDao {
 		}finally {
 			db.dbClose(pstmt, conn);
 		}
-
-
 	}
+
+
+	//추천클릭시 추천수 증가시키기
+	public void updateChu(String num) {
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "update memberguest set chu = chu+1 where num=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
+	
+	
+	
+
 
 }
