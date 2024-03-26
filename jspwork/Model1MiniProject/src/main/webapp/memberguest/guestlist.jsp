@@ -78,7 +78,7 @@ th {
         }
     }
 	//추천수 추가
-	  $(function(){
+   $(function(){
 	   
 	   $("span.likes").click(function(){
 		   
@@ -96,30 +96,27 @@ th {
 				  // alert(data.chu);
 				  tag.next().text(data.chu);
 				  
-				  //하트의 animate
-				  tag.next().next().animate({"font-size":"15px"},500,function(){
+				  //하트에 animate
+				  tag.next().next().animate({"font-size":"15px"},1000,function(){
 					  //애니메이션 끝난후
-					  $(this).css("font-size", "0px");
-				  });
-				  
+					  $(this).css("font-size","0px");
+				  })
 			   }
 		   })
 	   });
 	   
 	   
+
+	   
 	   
 	   //댓글부분은 무조건 처음에는 안보이게 처리
 	   $("div.answer").hide();
-	   //댓글 클릭시 댓글부분이 보였다 안보였다 하기.
+	   //댓글 클릭시 댓글부분이 보였다 안보였다 하기
 	   $("span.answer").click(function(){
-		  // $("div.answer").toggle();
-		   //만약 위처럼 안된다면 아래처럼 하기
+		   //$("div.answer").toggle();
 		   $(this).parent().find("div.answer").toggle();
-	   })
+	   });
 	   
-
-   });
-	
 	   
 	   //댓글삭제
 	   $("i.adel").click(function(){
@@ -149,7 +146,7 @@ th {
 	   
 	   
 	   
-  });
+   });
 	
 </script>
 
