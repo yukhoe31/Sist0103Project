@@ -62,23 +62,8 @@ th {
 
 
 <script type="text/javascript">
-	//리스트의 삭제버튼클릭시 삭제
-    function confirmDelete(num,currentPage) {
-        var result = confirm("정말 삭제하시겠습니까?");
-        if (result) {
-            // 사용자가 확인을 선택한 경우
-            // 삭제 액션을 수행하는 페이지로 이동하거나 AJAX로 삭제 요청을 보냅니다.
-            // 여기에 필요한 코드를 추가하세요.
-            // 예를 들어, 삭제 액션을 처리하는 페이지로 이동하는 경우:
-            location.href='memberguest/guestdeleteaction.jsp?num=' + num+'&currentPage='+currentPage;
-        } else {
-            // 사용자가 취소를 선택한 경우
-            // 아무런 동작을 하지 않습니다.
-            // 혹은 필요한 경우 다른 동작을 수행할 수 있습니다.
-        }
-    }
-	//추천수 추가
-   $(function(){
+
+$(function(){
 	   
 	   $("span.likes").click(function(){
 		   
@@ -144,18 +129,74 @@ th {
 		   
 	   });
 	   
+	   //수정아이콘 누르면 모달창
+	   $("i.aedit").click(function(){
+		   
+		   var idx=$(this).attr("idx");
+		   //alert(idx);
+		   
+		   $("#idx").val(idx);
+		   
+		   $.ajax({
+			   
+			   type:"get",
+			   dataType:"json",
+			   url:"memberguest/answercontent.jsp",
+			   data:{"idx":idx},
+			   success:function(res){
+				   
+				   $("#idx").val(res.idx);
+				   $("#ucontent").val(res.story);
+			   }
+		   })
+	   });
 	   
 	   
-   });
+	   //댓글수정하기
+	   $("#btnupdate").click(function(){
+		   
+		  var idx= $("#idx").val();
+		  var content=$("#ucontent").val();
+		  
+		  //alert(idx+","+content);
+		  
+		  $.ajax({
+			  type:"post",
+			  url:"memberguest/updateanswer.jsp",
+			  dataType:"html",
+			  data:{"idx":idx,"content":content},
+			  success:function(){
+				  location.reload();
+			  }
+		  })
+	   });
+	   
+});
+
+
+	//리스트의 삭제버튼클릭시 삭제
+    function confirmDelete(num,currentPage) {
+        var result = confirm("정말 삭제하시겠습니까?");
+        if (result) {
+            // 사용자가 확인을 선택한 경우
+            // 삭제 액션을 수행하는 페이지로 이동하거나 AJAX로 삭제 요청을 보냅니다.
+            // 여기에 필요한 코드를 추가하세요.
+            // 예를 들어, 삭제 액션을 처리하는 페이지로 이동하는 경우:
+            location.href='memberguest/guestdeleteaction.jsp?num=' + num+'&currentPage='+currentPage;
+        } else {
+            // 사용자가 취소를 선택한 경우
+            // 아무런 동작을 하지 않습니다.
+            // 혹은 필요한 경우 다른 동작을 수행할 수 있습니다.
+        }
+    }
+	
+	
+
+		   
+
 	
 </script>
-
-
-
 </head>
-
-
-
 <body>
 
 	<%
@@ -371,13 +412,18 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
  										%> <span style="color: red;">작성자</span> <%}
  %> <span style="font-size: 9pt; color: gray; margin-left: 20px;">
 											<%=sdf.format(adto.getWriteday())%>
-									</span> <!-- 댓글 수정삭제는 본인만 보이게 --> <%
- if (loginok != null && adto.getMyid().equals(loginId)) {
- %> <i class="aedit bi bi-pencil-square" idx="<%=adto.getIdx()%>"
+									</span> 
+									
+									
+									<!-- 댓글 수정삭제는 본인만 보이게 --> <%
+ 									if (loginok != null && adto.getMyid().equals(loginId)) {
+ 									%> 
+ 										<i class="aedit bi bi-pencil-square" idx="<%=adto.getIdx()%>"
 										data-bs-toggle="modal" data-bs-target="#myModal"></i> <i
 										class="bi bi-trash adel" idx="<%=adto.getIdx()%>"></i> <%
- }
- %> <br> <span style="font-family: 10pt;"><%=adto.getContent().replace("\n", "<br>")%></span>
+ 									} %> 
+ 									<br> 
+ 									<span style="font-family: 10pt;"><%=adto.getContent().replace("\n", "<br>")%></span>
 
 									</td>
 								</tr>
@@ -450,17 +496,16 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<div class="updateform">
-						<input type="text" id="idx"> <input type="text"
-							id="ucontent">
-						<button type="button" class="btn btn-info" id="btnupdate">댓글수정</button>
+					<div class="updateform d-inline-flex">
+						<input type="hidden" id="idx">
+						<input type="text" class="form-control"	id="ucontent" style="width:350px;" >
+						<button type="button" class="btn btn-info" id="btnupdate" style="margin-left: 10px;">댓글수정</button>
 					</div>
 				</div>
 
 				<!-- Modal footer -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 				</div>
 
 			</div>
