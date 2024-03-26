@@ -1,3 +1,5 @@
+<%@page import="data.dto.AnswerGuestDto"%>
+<%@page import="data.dao.AnswerGuestDao"%>
 <%@page import="com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.GuestDto"%>
@@ -18,6 +20,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -101,7 +105,52 @@ th {
 			   }
 		   })
 	   });
+	   
+	   
+	   
+	   //댓글부분은 무조건 처음에는 안보이게 처리
+	   $("div.answer").hide();
+	   //댓글 클릭시 댓글부분이 보였다 안보였다 하기.
+	   $("span.answer").click(function(){
+		  // $("div.answer").toggle();
+		   //만약 위처럼 안된다면 아래처럼 하기
+		   $(this).parent().find("div.answer").toggle();
+	   })
+	   
+
    });
+	
+	   
+	   //댓글삭제
+	   $("i.adel").click(function(){
+		   
+		  
+		   var a=confirm("삭제하려면 [확인]을 눌러주세요");
+		   
+		   if(a){
+			   
+			   var idx=$(this).attr("idx");
+			   //alert(idx);
+			   
+			   $.ajax({
+				   type:"get",
+				   dataType:"html",
+				   url:"memberguest/deleteanswer.jsp",
+				   data:{"idx":idx},
+				   success:function(){
+					   location.reload();//새로고침
+				   }
+			   })
+			   
+		   }
+		   
+		   
+	   });
+	   
+	   
+	   
+  });
+	
 </script>
 
 
@@ -248,10 +297,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td>
 					<%
- // 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
- // id가 동일한 경우에만 수정, 삭제 버튼이 보이게 하기
- if (loginId != null && loginId.equals(postId)) {
- %> <input type="hidden" name="currentPage" value="<%=currentPage%>">
+					// 로그인한 유저(loginId)와 게시글 작성한 유저(postId)의
+					// id가 동일한 경우에만 수정, 삭제 버튼이 보이게 하기
+					if (loginId != null && loginId.equals(postId)) {
+					%> <input type="hidden" name="currentPage" value="<%=currentPage%>">
 					<button type="button" class="btn btn-outline-primary btn-sm"
 						onclick="location.href='index.jsp?main=memberguest/guestupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'">
 						<i class="bi bi-pencil-square"></i>수정 <br>
@@ -268,16 +317,80 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 			<!--댓글 추천 -->
 			<tr>
-				<td colspan="6"><span class="answer" style="cursor: pointer;"><i
-						class="bi bi-chat-left-dots"></i>&nbsp;댓글 0</span> 
-					
-						<span class="likes" style="margin-left: 20px; cursor: pointer;" num="<%=dto.getNum() %>">추천</span>
+				<td colspan="6">
+					<%
+					//각방명록에 달린 댓글 목록가져오기
+					AnswerGuestDao adao = new AnswerGuestDao();
+					List<AnswerGuestDto> alist = adao.getAllAnswers(dto.getNum());
+					%> <span class="answer" style="cursor: pointer;">댓글 <%=alist.size()%></span>
+					<span class="likes" style="margin-left: 20px; cursor: pointer;"
+					num=<%=dto.getNum()%>>추천</span> <span class="chu"><%=dto.getChu()%></span>
+					<i class="bi bi-heart-fill" style="font-size: 0px; color: red;"></i>
 
-						<span class="chu"><%=dto.getChu() %></span>
-							
-						<i class="bi bi-heart-fill" style="font-size: 0px; color: red;"></i>
-						
-						
+
+					<div class="answer">
+						<%
+						if (loginok != null) {
+						%>
+
+						<div class="answerform">
+							<form action="memberguest/answerinsert.jsp" method="post">
+								<input type="hidden" name="num" value="<%=dto.getNum()%>">
+								<input type="hidden" name="myid" value="<%=loginId%>"> <input
+									type="hidden" name="currentPage" value="<%=currentPage%>">
+								<table>
+									<tr>
+										<td width="500"><textarea
+												style="width: 480px; height: 70px;" name="content"
+												required="required" class="form-control"></textarea></td>
+										<td>
+											<button type="submit" class="btn btn-info"
+												style="width: 70px; height: 70px;">등록</button>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+						<%
+						}
+						%>
+
+						<div class="answerlist">
+							<table style="width: 500px;">
+								<%
+								for (AnswerGuestDto adto : alist) {
+								%>
+								<tr>
+									<td><i class="bi bi-person-circle fs-2"
+										style="color: gray;"></i></td>
+									<td>
+										<%
+										//작성자명
+										  String answerId=adto.getMyid();
+										%> <br> <b><%=answerId%></b> &nbsp; <%
+ 										
+										//글작성자와 댓글작성자가 같을경우
+ 										if (dto.getMyid().equals(adto.getMyid())) {
+ 										%> <span style="color: red;">작성자</span> <%}
+ %> <span style="font-size: 9pt; color: gray; margin-left: 20px;">
+											<%=sdf.format(adto.getWriteday())%>
+									</span> <!-- 댓글 수정삭제는 본인만 보이게 --> <%
+ if (loginok != null && adto.getMyid().equals(loginId)) {
+ %> <i class="aedit bi bi-pencil-square" idx="<%=adto.getIdx()%>"
+										data-bs-toggle="modal" data-bs-target="#myModal"></i> <i
+										class="bi bi-trash adel" idx="<%=adto.getIdx()%>"></i> <%
+ }
+ %> <br> <span style="font-family: 10pt;"><%=adto.getContent().replace("\n", "<br>")%></span>
+
+									</td>
+								</tr>
+								<%
+								}
+								%>
+							</table>
+
+						</div>
+					</div>
 				</td>
 			</tr>
 			<%
@@ -324,6 +437,43 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		</ul>
 
 	</div>
+
+
+
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">댓글수정</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="updateform">
+						<input type="text" id="idx"> <input type="text"
+							id="ucontent">
+						<button type="button" class="btn btn-info" id="btnupdate">댓글수정</button>
+					</div>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 
 </body>
 </html>
