@@ -410,7 +410,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 										//글작성자와 댓글작성자가 같을경우
  										if (dto.getMyid().equals(adto.getMyid())) {
  										%> <span style="color: red;">작성자</span> <%}
- %> <span style="font-size: 9pt; color: gray; margin-left: 20px;">
+ 										%> <span style="font-size: 9pt; color: gray; margin-left: 20px;">
 											<%=sdf.format(adto.getWriteday())%>
 									</span> 
 									

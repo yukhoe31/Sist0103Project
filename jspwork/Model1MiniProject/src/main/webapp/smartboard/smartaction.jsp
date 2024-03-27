@@ -27,7 +27,15 @@
 <%
 dao.insertSmart(dto);
 //일단은 목록...나중에 디테일페이지로 바꿀예정
-response.sendRedirect("../index.jsp?main=smartboard/boardlist.jsp");
+//response.sendRedirect("../index.jsp?main=smartboard/boardlist.jsp");
+
+
+int num = dao.getMaxNum();
+String redirectURL = "../index.jsp?main=smartboard/contentview.jsp?num=" + num + "&currentPage=1";
+response.sendRedirect(redirectURL);
+
+
+
 
 
 %>
