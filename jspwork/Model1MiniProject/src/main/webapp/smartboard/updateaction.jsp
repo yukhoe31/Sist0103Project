@@ -12,6 +12,9 @@
 <body>
 <%
   request.setCharacterEncoding("utf-8");
+  String currentPage = request.getParameter("currentPage");
+  String num = request.getParameter("num");
+  
 %>
 
 <jsp:useBean id="dao" class="data.dao.SmartDao"/>
@@ -19,12 +22,12 @@
 <jsp:setProperty property="*" name="dto"/>
 
 <%
-  dao.insertSmart(dto);
+  dao.updateSmart(dto);
   //일단은 목록..나중에 디테일페이지로 바꿀예정
   //response.sendRedirect("../index.jsp?main=smartboard/boardlist.jsp");
   
-  int num=dao.getMaxNum();
-  response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage="+1);
+  
+  response.sendRedirect("../index.jsp?main=smartboard/contentview.jsp?num="+num+"&currentPage="+currentPage);
 %>
 </body>
 </html>

@@ -40,6 +40,56 @@
 </style>
 
 
+
+<script type="text/javascript">
+$(function(){
+	  
+	  //전체체크 클릭시 체크값 얻어서 모든체크값 에 전달
+	  $(".alldelcheck").click(function(){
+		  
+		  //전체 체크값 얻기
+		  var chk=$(this).is(":checked");
+		  console.log(chk);
+		  
+		  //전체체크값을 글앞에 체크에 일괄 전달하기
+		  $(".alldel").prop("checked",chk);
+	  });
+	  
+	  //삭제버튼 클릭시 삭제
+	  $("#btndel").click(function(){
+		  
+		  var len=$(".alldel:checked").length;
+		  //alert(len);
+		  
+		  if(len==0){
+			  alert("최소 1개이상의 글을 선택해 주세여");
+		  }else{
+			  
+			  var a=confirm(len+"개의 글을 삭제하려면 [확인]을 눌러주세요");
+			  
+			  //체크된 곳의 value값(num)얻기
+			  var n="";
+			  $(".alldel:checked").each(function(idx){
+				  n+=$(this).val()+",";
+			  });
+			  
+			  //마지막 컴마 제거
+			  n=n.substring(0,n.length-1);
+			  console.log(n);
+			  
+			  //삭제파일로 전송
+			  location.href="smartboard/alldelete.jsp?nums="+n;
+		  }
+	  })
+	  
+})
+
+</script>
+    
+
+
+
+
 </head>
 
 <%
@@ -107,8 +157,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         <h6>
             <b>총<%=totalCount%>개의 글이 있습니다</b>
         </h6>
+       
         <table class="table table-bordered">
-            <caption align="top"><b>스마트게시판</b></caption>
+            <caption align="top"><b>스마트게시판 목록</b></caption>
             <tr class="table-light">
                 <th width="30">번호</th>
                 <th width="150">제목</th>
@@ -140,7 +191,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             <tr>
                 <td align="center">
                 <input type="checkbox" value="<%=dto.getNum()%>" class="alldel">&nbsp;&nbsp;
-                <%= no--%></td>
+                <%=no--%></td>
                 <td>
                 <a href="index.jsp?main=smartboard/contentview.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>">
                 <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 150px; display: block;"><%= dto.getSubject() %></a>
@@ -154,9 +205,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             
             <tr>
             	<td colspan="5">
-            		<input type="checkbox" class="alldelcheck">&nbsp;전체선택
+            		<input type="checkbox" class="alldelcheck">
+            		&nbsp;전체선택
             		<span style="float: right;">
-            			<button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i>&nbsp;삭제</button>
+            			<button type="button" class="btn btn-danger btn-sm"
+            			id="btndel"><i class="bi bi-x-circle"></i>&nbsp;삭제</button>
             			
             			<button type="button" class="btn btn-info btn-sm"
             			onclick="location.href='index.jsp?main=smartboard/smartform.jsp'"><i class="bi bi-pencil-fill"></i>&nbsp;글쓰기</button>
@@ -167,7 +220,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             </tr>
         
         </table>
-        
+       
         
 		<!-- 페이지 번호 출력 -->
 		<ul class="pagination justify-content-center">

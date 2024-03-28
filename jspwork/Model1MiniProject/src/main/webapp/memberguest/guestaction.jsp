@@ -42,7 +42,7 @@
 		dto.setContent(content);
 
 		if (photoname == null) {
-			photoname = "../image/miniproject_img/pkmn_wallpaper_1.jpg";
+			photoname = "pkmn_wallpaper_1.jpg";
 		}
 		dto.setPhotoname(photoname);
 
