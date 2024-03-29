@@ -6,9 +6,6 @@
 <jsp:setProperty property="*" name="dto"/>
 <%
 
-	
-
    dao.insertSmartAnswer(dto);
 
-	
 %>

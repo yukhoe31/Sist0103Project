@@ -80,8 +80,69 @@ public class SmartAnswerDao {
 		
 	}
 	
-	//댓글삭제
-	public void deleteSmartAnswer(String idx)
+	//수정시 나타낼 데이타
+	public SmartAnswerDto getAnswerData(String idx)
+	{
+		SmartAnswerDto dto=new SmartAnswerDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from smartanswer where idx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				
+				dto.setIdx(rs.getString("idx"));
+				dto.setNum(rs.getString("num"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+								
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
+	
+	//수정
+	public void updateAnswer(SmartAnswerDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update smartanswer set nickname=?,content=? where idx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getNickname());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getIdx());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	
+	//삭제
+	public void deleteAnswer(String idx)
 	{
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
@@ -90,7 +151,9 @@ public class SmartAnswerDao {
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
+			
 			pstmt.setString(1, idx);
+			
 			pstmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -98,63 +161,8 @@ public class SmartAnswerDao {
 		}finally {
 			db.dbClose(pstmt, conn);
 		}
-		
 	}
 	
-	//댓글 수정
-		public String getSmartContent(String idx)
-		{
-			String content="";
-
-			Connection conn=db.getConnection();
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-
-			String sql="select content from smartanswer where idx=?";
-
-			try {
-				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, idx);
-				rs=pstmt.executeQuery();
-
-				if(rs.next())
-					content=rs.getString("content");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				db.dbClose(rs, pstmt, conn);
-			}
-
-
-			return content;
-		}
-
-		//댓글 수정
-		public void updateGuest(SmartAnswerDto dto) {
-
-			Connection conn = db.getConnection();
-			PreparedStatement pstmt  = null;
-
-			String sql = "update smartanswer set nickname=?, content=? where idx=?";
-
-
-			try {
-				pstmt = conn.prepareStatement(sql);
-
-				pstmt.setString(1, dto.getNickname());
-				pstmt.setString(2, dto.getContent());
-				pstmt.setString(3, dto.getIdx());
-
-				pstmt.execute();
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				db.dbClose(pstmt, conn);
-			}
-		}
 	 
 	
 	
