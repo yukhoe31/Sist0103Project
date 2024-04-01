@@ -111,7 +111,23 @@ String loginok=(String)session.getAttribute("loginok");
 								<li><a href="#">Medium Image</a></li>
 							</ul></li>
 
-						<li><a href="#">Contact</a></li>
+						<li class="parent"><a href="#">Pokemon Shop</a>
+							<ul class="sub-menu">
+								
+								<%
+									if(loginok !=null && myid.equals("admin")){
+										%>
+										<li><a href="index.jsp?main=shop/addform.jsp" ><i class="icon-wrench"></i>상품등록</a></li>
+										
+										<% 				
+									}
+
+								%>
+
+								<li><a  href="index.jsp?main=shop/shoplist.jsp" ><i class="icon-wrench"></i>상품목록</a></li>
+								
+							</ul>
+							</li>
 
 					</ul>
 				</nav>

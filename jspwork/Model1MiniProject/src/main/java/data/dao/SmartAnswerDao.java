@@ -14,6 +14,7 @@ import mysql.db.DbConnect;
 public class SmartAnswerDao {
 	DbConnect db=new DbConnect();
 	
+	//insert
 	public void insertSmartAnswer(SmartAnswerDto dto)
 	{
 		Connection conn=db.getConnection();
