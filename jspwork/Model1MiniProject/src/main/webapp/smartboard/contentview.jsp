@@ -245,7 +245,7 @@ span.icon{
          <!-- 댓글 -->
          <tr>
            <td>
-               <b class="acount">댓글<span>0</span></b>
+               <b class="acount" id="alist">댓글<span>0</span></b>
                
                <div class="alist">
                   댓글목록
@@ -268,7 +268,7 @@ span.icon{
               <button type="button" class="btn btn-info btn-sm" 
               onclick="location.href='index.jsp?main=smartboard/smartform.jsp'"><i class="bi bi-pencil-fill"></i>글쓰기</button>
               <button type="button" class="btn btn-success btn-sm" 
-              onclick="location.href='index.jsp?main=smartboard/boardlist.jsp'"><i class="bi bi-card-list"></i>목록</button>
+              onclick="location.href='index.jsp?main=smartboard/boardlist.jsp?currentPage=<%=currentPage%>'"><i class="bi bi-card-list"></i>목록</button>
               <button type="button" class="btn btn-warning btn-sm" 
               onclick="location.href='index.jsp?main=smartboard/updateform.jsp?num=<%=num%>&currentPage=<%=currentPage%>'"><i class="bi bi-pencil-square"></i>수정</button>
               <button type="button" class="btn btn-danger btn-sm" 
