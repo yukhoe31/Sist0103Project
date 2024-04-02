@@ -7,7 +7,7 @@ public class CartDto {
 	private String idx;
 	private String shopnum;
 	private String num;
-	private int price;
+	private int cnt;
 	private Timestamp cartday;
 	
 	
@@ -29,17 +29,18 @@ public class CartDto {
 	public void setNum(String num) {
 		this.num = num;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+
 	public Timestamp getCartday() {
 		return cartday;
 	}
 	public void setCartday(Timestamp cartday) {
 		this.cartday = cartday;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	
 	
