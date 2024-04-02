@@ -24,34 +24,28 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <style type="text/css">
-.carticon {
-	font-size: 30px;
-	
-}
-
-div.cart {
-	float:right;
-	cursor: pointer;
-}
-
-.cartcount{
-	width: 30px;
-	height: 30px;
-	float: right;
-	background-color: red;
-	font-size: 20pt;
-	
-	color: gray;
-	border-radius: 100px;
-	z-index: 10;
-	left: -10px;
-	top: 10px;
-	position: relative;
-	
-
-}
-
-
+  .carticon{
+      font-size: 30px;
+   }
+   div.cart{
+     float: right;
+     cursor: pointer;
+   }
+   .cartcount{
+   
+      width: 30px;
+      height: 30px;
+      float: right;
+      background-color: red;
+      color: white;
+      border-radius: 100px;
+      z-index: 10;
+      left: -10px;
+      top: 10px;
+      position: relative;
+      text-align: center;
+      line-height: 30px;
+   }
 </style>
 
 
@@ -111,7 +105,10 @@ div.cart {
 	%>
 	<div class="cart">
 		<i class="bi bi-cart-fill carticon"></i>
-		<div class="cartcount"><b style=""><%=list.size() %></b></div>
+	    <div class="cartcount"><%=list.size() %></b></div>
 	</div>
+	
+	
+	
 </body>
 </html>
