@@ -35,11 +35,12 @@ a:hover {
 	color: gray;
 }
 
-body * {
-	font-family: 'Diphylleia';
-	font-size: 11pt;
+body *{
+    font-family: 'Diphylleia';
+    font-size: 11pt;
 }
-
+ 
+   
 i.amod {
 	margin-left: 20px;
 	color: green;

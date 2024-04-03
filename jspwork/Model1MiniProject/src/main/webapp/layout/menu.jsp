@@ -62,72 +62,86 @@ String loginok=(String)session.getAttribute("loginok");
 						<li class="current-menu-item"><a href="<%=root%>">Home</a></li>
 						<li class="parent"><a href="#">게시판</a>
 							<ul class="sub-menu">
-								<li><a href="index.jsp?main=memberguest/guestlist.jsp"><i class="icon-wrench"></i> 고객게시판</a></li>
-								<li><a href="#"></i> 이미지게시판</a></li>
-								<li><a href="index.jsp?main=smartboard/boardlist.jsp"><i class="icon-gift"></i> 스마트게시판</a></li>
+								<li><a href="index.jsp?main=memberguest/guestlist.jsp">
+								<i class="bi bi-list-ul"></i> 고객게시판</a></li>
+								<li><a href="index.jsp?main=smartboard/boardlist.jsp"><i class="bi bi-card-image"></i> 스마트게시판</a></li>
 							</ul></li>
 
 						<li class="parent"><a href="#">회원</a>
 							<ul class="sub-menu">
 
 								<%
-									if(loginok==null ){%>
+								if (loginok == null) {
+								%>
 
 								<li><a href="index.jsp?main=member/addform.jsp"><i
 										class="icon-wrench"></i> 회원가입</a></li>
 
-								<%}
-								
+								<%
+								}
 								%>
 
 
 								<%
-									if(loginok!=null && myid.equals("admin")){%>
+								if (loginok != null && myid.equals("admin")) {
+								%>
 
 								<li><a href="index.jsp?main=member/memberlist.jsp"><i
 										class="icon-credit-card"></i> 회원목록</a></li>
 
-								<%}
-								
+								<%
+								}
 								%>
 
 								<%
-									if(loginok!=null ){%>
+								if (loginok != null) {
+								%>
 
 								<li><a href="index.jsp?main=member/mypage.jsp"><i
 										class="icon-gift"></i> 마이페이지</a></li>
 
-								<%}
-								
+								<%
+								}
 								%>
 
-								<li><a href="index.jsp?main=login/loginmain.jsp"><i
-										class="icon-gift"></i> 로그인</a></li>
+								<li><a href="index.jsp?main=login/loginmain.jsp">
+								<i class="bi bi-person-circle"></i>로그인</a></li>
 							</ul></li>
 
 						<li class="parent"><a href="#">방명록</a>
 							<ul class="sub-menu">
-								<li><a href="index.jsp?main=memberguest/guestform.jsp">회원방명록</a></li>
-								<li><a href="#">Medium Image</a></li>
+
+								<%
+								if (loginok != null) {
+								%>
+								<li><a href="index.jsp?main=memberguest/guestform.jsp"><i class="bi bi-chat-right-quote"></i>  회원방명록</a></li>
+
+								<%
+								}
+								%>
+
+								<li><a href="#"><i class="bi bi-chat-right-heart-fill"></i> 포켓몬 자랑</a></li>
 							</ul></li>
 
 						<li class="parent"><a href="#">Pokemon Shop</a>
 							<ul class="sub-menu">
-								
-								<%
-									if(loginok !=null && myid.equals("admin")){
-										%>
-										<li><a href="index.jsp?main=shop/addform.jsp" ><i class="icon-wrench"></i>상품등록</a></li>
-										
-										<% 				
-									}
 
+								<%
+								if (loginok != null && myid.equals("admin")) {
+								%>
+								<li><a href="index.jsp?main=shop/addform.jsp">
+								<i class="bi bi-bag-plus-fill"></i> 상품등록</a></li>
+
+								<%
+								}
 								%>
 
-								<li><a  href="index.jsp?main=shop/shoplist.jsp" ><i class="icon-wrench"></i>상품목록</a></li>
-								
-							</ul>
-							</li>
+								<li><a href="index.jsp?main=shop/shoplist.jsp">
+								<i class="bi bi-list-check"></i> 상품목록</a></li>
+								<li><a href="index.jsp?main=shop/mycart.jsp">
+								<i class="bi bi-cart-fill"></i> 장바구니</a></li>
+
+							</ul></li>
 
 					</ul>
 				</nav>

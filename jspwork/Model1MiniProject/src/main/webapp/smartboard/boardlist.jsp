@@ -235,8 +235,10 @@ for(SmartDto dto: list){
 			<% }} %>
 
 			<tr>
-				<td colspan="5"><input type="checkbox" class="alldelcheck">
-					&nbsp;전체선택 <span style="float: right;">
+				<td colspan="5">
+				<input type="checkbox" class="alldelcheck">
+					&nbsp;전체선택
+					 <span style="float: right;">
 						<button type="button" class="btn btn-danger btn-sm" id="btndel">
 							<i class="bi bi-x-circle"></i>&nbsp;삭제
 						</button>

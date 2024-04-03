@@ -48,7 +48,15 @@
    }
 </style>
 
+<script type="text/javascript">
 
+	$(function() {
+		$("div.cart").click(function() {
+			location.href="index.jsp?main=shop/mycart.jsp";
+		
+		})
+	})
+</script>
 
 
 <title>Insert title here</title>
@@ -101,11 +109,20 @@
 	//카트개수
 	List<HashMap<String,String>> list=sdao.getCartList(myid);
 	//int cartSize = sdao.getCartList(myid).size();
-	
+
 	%>
-	<div class="cart">
-		<i class="bi bi-cart-fill carticon"></i>
-	    <div class="cartcount"><%=list.size() %></b></div>
+	
+
+		<%
+		
+		if(loginok != null){%>
+<div class="cart"><i class="bi bi-cart-fill carticon"></i>
+		<div class="cartcount"><%=list.size() %></b></div>
+
+		<%}
+		
+		%>
+	    
 	</div>
 	
 	
