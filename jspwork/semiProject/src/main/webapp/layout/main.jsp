@@ -16,7 +16,7 @@
 	.img_list{
 		width: 100vw;
         height: 100vh;
-        margin-top: 300px;
+       
         padding: 0;
         list-style: none;
         overflow: hidden;
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
         // 다음 이미지 보이기
         $('.img_list li').eq(count).css('left', '100%').show().animate({left: '0'}, 'slow');
-    }, 3000); // 2초마다 슬라이드 전환
+    }, 5000); // 2초마다 슬라이드 전환
 });
 </script>
 </head>

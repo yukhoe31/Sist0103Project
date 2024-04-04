@@ -15,8 +15,9 @@
 <style type="text/css">
 #primary_nav_wrap
 {
-	margin-top: 15px;
+	margin-top: -100px;
 	text-align: center; /* 가운데 정렬을 위한 설정 */
+	
 }
 
 #primary_nav_wrap ul
@@ -101,8 +102,9 @@
 	
 <nav id="primary_nav_wrap">
 <ul>
-  <li class="current-menu-item"><a href="#">Home</a></li>
-  <li><a href="#">Menu 1</a>
+  <li class="current-menu-item"><a href="#">홈</a></li>
+  
+  <li><a href="#">벚꽃테마</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
       <li><a href="#">Sub Menu 2</a></li>
@@ -123,14 +125,14 @@
       <li><a href="#">Sub Menu 5</a></li>
     </ul>
   </li>
-  <li><a href="#">Menu 2</a>
+  <li><a href="#">교토 소개</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
       <li><a href="#">Sub Menu 2</a></li>
       <li><a href="#">Sub Menu 3</a></li>
     </ul>
   </li>
-  <li><a href="#">Menu 3</a>
+  <li><a href="#">지역별 교토 탐색</a>
     <ul>
       <li class="dir"><a href="#">Sub Menu 1</a></li>
       <li class="dir"><a href="#">Sub Menu 2 THIS IS SO LONG IT MIGHT CAUSE AN ISSEUE BUT MAYBE NOT?</a>
@@ -147,10 +149,10 @@
       <li><a href="#">Sub Menu 5</a></li>
     </ul>
   </li>
-  <li><a href="#">Menu 4</a></li>
-  <li><a href="#">Menu 5</a></li>
-  <li><a href="#">Menu 6</a></li>
-  <li><a href="#">Contact Us</a></li>
+  <li><a href="#">먹거리</a></li>
+  <li><a href="#">숙박시설</a></li>
+  <li><a href="#">커뮤니티</a></li>
+ <!--  <li><a href="#">Contact Us</a></li> -->
 </ul>
 </nav>
 </body>

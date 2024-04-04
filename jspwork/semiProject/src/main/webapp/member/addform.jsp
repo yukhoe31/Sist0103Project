@@ -76,7 +76,7 @@
 
 </head>
 <body>
-<div style="margin: 0px 100px; width: 350px;">
+<div style="margin: 0px 420px; width: 350px;">
 <form action="member/addaction.jsp" method="post" onsubmit="return check(this)">
 	<table class="table table-bordered" style="width: 500px;">
 	 	<caption align="top"><b>회원가입</b></caption>
@@ -101,7 +101,7 @@
 				<input type="password" name="pass" class="form-control"
 				required="required" style="width: 120px;" placeholder="비밀번호">
 				<input type="password" name="pass2" class="form-control"
-				required="required" style="width: 120px; margin-left: 5px;"  placeholder="비밀번호 확인">
+				required="required" style="width: 150px; margin-left: 5px;"  placeholder="비밀번호 확인">
 			   </div>
 			</td>
 		</tr>

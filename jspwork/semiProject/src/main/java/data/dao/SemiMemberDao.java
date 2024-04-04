@@ -13,8 +13,6 @@ public class SemiMemberDao {
 
 	DbConnect db = new DbConnect();
 
-
-	//아이디체크
 	
 	//아이디체크
 		public int isIdCheck(String id) {
@@ -121,6 +119,70 @@ public class SemiMemberDao {
 
 
 	}
+	
+	//로그인시 아이디와 비번체크
+		public boolean isidPass(String id,String pass)
+		{
+			boolean b=false;
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from semimember where id=? and pass=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pass);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+				{
+					b=true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			return b;
+		}
+		
+		//아이디에 대한 이름반환 
+		//id보내서 name받기
+		public String getName(String id)
+		{
+			String name="";
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from semimember where id=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+				{
+					name=rs.getString("name");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			
+			return name;
+		}
+		
+		
 	
 
 }
