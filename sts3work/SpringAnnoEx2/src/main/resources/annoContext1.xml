@@ -16,7 +16,5 @@
 	-->
 	
 	<!-- 패키지 등록, 패키지가 여러개일 경우에는 ,로 나열하거나 *로 사용가능 -->
-	<context:component-scan base-package="spring.day0430.*"/>
-	
-	
+	<context:component-scan base-package="spring.day0430.*,spring.last.anno"/>
 </beans>
