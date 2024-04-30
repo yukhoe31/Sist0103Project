@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="info" class="spring.di.ex5.SawonInfo"> 
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="행정부"/>
+		<constructor-arg value="350"/>
+		<constructor-arg value="대리"/>
+		
+	</bean>
+	
+	<bean id="emp1" class="spring.di.ex5.Emp"> 
+		<property name="empname" value="몬스터주식회사"/>
+		<property name="emploc">
+			<value>서울시 강남구</value>
+		</property>
+	</bean>
+	
+</beans>
