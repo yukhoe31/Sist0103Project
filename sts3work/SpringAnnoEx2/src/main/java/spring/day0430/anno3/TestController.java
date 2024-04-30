@@ -5,22 +5,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TestController {
-	
+
 	@Autowired
 	TestDao testDao;
 	
-	public void insert(String name) {
+	public void insert(String name)
+	{
 		testDao.insert(name);
 	}
 	
-	public void delete(String num) {
+	public void delete(String num)
+	{
 		testDao.delete(num);
 	}
 	
-	public void select(String name) {
+	public void select(String name)
+	{
 		testDao.select(name);
-		
 	}
-	
-
 }

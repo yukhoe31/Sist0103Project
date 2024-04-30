@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="spring.day0430.anno">
+	<logger name="spring.day0430.anno1">
 		<level value="info" />
 	</logger>
 	

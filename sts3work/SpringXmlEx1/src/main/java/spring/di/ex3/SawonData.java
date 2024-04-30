@@ -8,13 +8,10 @@ public class SawonData {
 	
 	public SawonData() {
 		// TODO Auto-generated constructor stub
-			
 	}
 	
 	public SawonData(String name) {
-		
-		sawonname = name;
-				
+		sawonname=name;
 	}
 
 	public String getSawonname() {

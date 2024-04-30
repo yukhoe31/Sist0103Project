@@ -1,22 +1,22 @@
 package spring.di.ex2;
 
 public class MyInfo {
-	
+
 	String name;
 	int age;
 	String addr;
 	
-	//疙矫利 积己磊
+	//疙矫利积己磊
 	public MyInfo(String name,int age,String addr) {
-		this.name = name;
-		this.age = age;
-		this.addr = addr;
-				
+		this.name=name;
+		this.age=age;
+		this.addr=addr;
 	}
 	
+	@Override
 	public String toString() {
-		return "MyInfo [name="+name+",age="+age+", addr="+addr+"]";
-		
+		// TODO Auto-generated method stub
+		return "MyInfo [name="+name+", age="+age+", addr="+addr+"]";
 	}
-
+	
 }

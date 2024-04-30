@@ -6,7 +6,7 @@ public class Message2 implements MessageInter {
 	public void sayHello(String name) {
 		// TODO Auto-generated method stub
 
-		System.out.println("¹Ý°©´Ù, " + name +"¾ß!!!!!");
+		System.out.println("¹Ý°©´Ù~~"+name+"~~~");
 	}
 
 }

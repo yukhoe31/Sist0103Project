@@ -34,14 +34,14 @@ public class Sungjuk {
 	
 	public void writeSungjuk()
 	{
-		System.out.println("ê¸°ë§ê³ ì‚¬");
-		System.out.println("í•™ìƒëª…: "+stu.getName());
-		System.out.println("ë‚˜ì´: "+stu.getAge());
-		System.out.println("êµ­ì–´ì ìˆ˜: "+kor);
-		System.out.println("ì˜ì–´ì ìˆ˜: "+eng);
-		System.out.println("ìˆ˜í•™ì ìˆ˜: "+mat);
+		System.out.println("±â¸»°í»ç");
+		System.out.println("ÇĞ»ı¸í: "+stu.getName());
+		System.out.println("³ªÀÌ: "+stu.getAge());
+		System.out.println("±¹¾îÁ¡¼ö: "+kor);
+		System.out.println("¿µ¾îÁ¡¼ö: "+eng);
+		System.out.println("¼öÇĞÁ¡¼ö: "+mat);
 		
-		System.out.println("ë‚˜ì˜ ì·¨ë¯¸ë“¤");
+		System.out.println("³ªÀÇ Ãë¹Ìµé");
 		for(String h:stu.getHobby())
 			System.out.println("\t"+h);
 	}
