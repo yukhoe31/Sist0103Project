@@ -12,11 +12,33 @@ public class SawonInfo {
 		// TODO Auto-generated constructor stub
 		this.sawonname = sawonname;
 		this.level = level;
-		
-		
-		
+
 	}
 	
+
+
+	public String getSawonname() {
+		return sawonname;
+	}
+
+
+
+	public void setSawonname(String sawonname) {
+		this.sawonname = sawonname;
+	}
+
+
+
+	public String getLevel() {
+		return level;
+	}
+
+
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
 
 
 	//setter

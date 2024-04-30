@@ -18,6 +18,7 @@
 		<property name="emploc">
 			<value>서울시 강남구</value>
 		</property>
+		<property name="info" ref="info"/>
 	</bean>
 	
 </beans>
