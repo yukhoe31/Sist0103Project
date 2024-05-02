@@ -12,17 +12,21 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
+	<!-- 매핑 역할 -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/res/**" location="/resources/" />
 	<resources mapping="/image/**" location="/WEB-INF/image/" />
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<!-- 여기에 data를 추가했으므로 webapp>data폴더 만들고 그 안에 nice.jsp,happy.jsp,hello.jsp만들어 -->
+	<!-- 여기에 view를 지우고 data를 작성했으므로 webapp>data폴더 만들고 그 안에 nice.jsp,happy.jsp,hello.jsp만들어 -->
+	<!-- MVC 에서 V(View)의 경로: /WEB-INF/data/ -->
+	<!-- 뷰 역할 -->
 		<beans:property name="prefix" value="/WEB-INF/data/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 패키지 역할 -->
 	<context:component-scan base-package="spring.mvc.quiz" />
 	
 	
