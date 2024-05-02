@@ -13,11 +13,13 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-
+	<resources mapping="/res/**" location="/resources/" />
+	<resources mapping="/image/**" location="/WEB-INF/image/" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+	<!-- 여기에 data를 추가했으므로 webapp>data폴더 만들고 그 안에 nice.jsp,happy.jsp,hello.jsp만들어 -->
+		<beans:property name="prefix" value="/WEB-INF/data/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
