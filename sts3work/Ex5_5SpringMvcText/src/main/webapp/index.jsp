@@ -14,8 +14,8 @@
 <body>
   
  <c:redirect url="myform"/> 
-  
-
+  <%--index(리다이렉트)==>매핑: info/myform⇒WEB-INF/info/infoform.jsp--%>
+ 
 
 </body>
 </html>
