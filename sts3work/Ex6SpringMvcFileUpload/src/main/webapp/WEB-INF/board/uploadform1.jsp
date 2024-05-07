@@ -27,8 +27,8 @@
 				<tr>
 					<th>업로드</th>
 					<td>
-						<input type="text" name="title" class="form-control"
-						style="width: 150px;">
+						<input type="file" name="photo" class="form-control"
+						style="width: 250px;">
 					</td>					
 				</tr>
 				

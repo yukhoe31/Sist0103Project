@@ -14,6 +14,20 @@
 </head>
 <body>
 
+<div>
+	<h2>제목: ${title }</h2>
+	<c:if test="${fileName == 'no' }">
+		<b style="color: red;'">업로드한 파일없음!!</b>
+	</c:if>
+	<c:if test= "${fileName!='no' }">
+		<img src="../photo/${fileName }" style="max-width: 200px;">
+	</c:if>
+	
+	<h2>업로드한 이미지명: ${fileName }</h2>
+	<h2>업로드할 실제경로: ${path }</h2>
+			
+
+</div>
 
 </body>
 </html>

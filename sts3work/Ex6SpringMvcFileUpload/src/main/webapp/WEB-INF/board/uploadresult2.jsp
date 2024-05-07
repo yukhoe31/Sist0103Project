@@ -13,7 +13,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h2>제목: ${title }</h2>
+<h2>업로드한 이미지들</h2>
 
 </body>
 </html>

@@ -13,7 +13,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="upload2" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered" style="width: 400px;">
+			<caption align="top"><b>스프링 업로드(파일1개)</b></caption>		
+				<tr>
+					<th>제목</th>
+					<td>
+						<input type="text" name="title" class="form-control"
+						style="width: 150px;">
+					</td>					
+				</tr>
+				
+				<tr>
+					<th>업로드</th>
+					<td>
+						<input type="file" name="photo" class="form-control"
+						style="width: 250px;">
+					</td>					
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="btn btn-info">
+						업로드1
+						</button>
+					</td>					
+				</tr>
+		</table>
+	</form>
 
 </body>
 </html>
