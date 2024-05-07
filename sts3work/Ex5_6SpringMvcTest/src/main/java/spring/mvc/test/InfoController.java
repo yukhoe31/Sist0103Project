@@ -22,7 +22,4 @@ public class InfoController {
 		return "info/infowrite";
 	}
 	
-	
-	
-	
 }
