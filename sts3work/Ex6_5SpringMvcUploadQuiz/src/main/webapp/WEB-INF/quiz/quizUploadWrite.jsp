@@ -20,7 +20,7 @@
 	<h5>상품명: ${name }</h5>
 	<h5>상품 이미지들</h5>
 	<c:forEach var="im" items="${files }">
-		<img alt="" src="../image/${im }"
+		<img alt="" src="image/${im }"
 			style="max-width: 200px; border: 2px solid gray;">
 	</c:forEach>
 	<h5>가격: ${price }원</h5>
