@@ -14,7 +14,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<!-- encoding -->
+	 <!-- encoding -->
 
     <filter>
       <filter-name>encodingFilter</filter-name>
@@ -27,7 +27,7 @@
     <filter-mapping>
       <filter-name>encodingFilter</filter-name>
       <url-pattern>/*</url-pattern>
-    </filter-mapping>s
+    </filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>

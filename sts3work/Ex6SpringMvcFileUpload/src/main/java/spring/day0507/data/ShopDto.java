@@ -1,13 +1,11 @@
 package spring.day0507.data;
 
 public class ShopDto {
-	
+
 	private String sang;
 	private String color;
 	private String price;
 	private String image;
-	
-	
 	public String getSang() {
 		return sang;
 	}
@@ -32,5 +30,6 @@ public class ShopDto {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
+	
+	
 }
