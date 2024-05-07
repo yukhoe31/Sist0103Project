@@ -19,14 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileUploadController {
 	
-	@GetMapping("quiz/myshop")
+	@GetMapping("/myshop")
 	public String uform2()
 	{
 		return "quiz/quizUploadForm";
 	}
 	
 	
-	@PostMapping("quiz/shopwrite")
+	@PostMapping("shopwrite")
 	public ModelAndView read2(
 			@RequestParam String name,
 			@RequestParam ArrayList<MultipartFile> image,

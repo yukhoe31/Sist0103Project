@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="quiz/shopwrite" method="post" enctype="multipart/form-data">
+<form action="shopwrite" method="post" enctype="multipart/form-data">
      <table class="table table-bordered" style="width: 400px;">
         <caption align="top"><b>스프링 업로드(파일여러개)</b></caption>
           <tr>
