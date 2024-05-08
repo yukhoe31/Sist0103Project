@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/samsung")
@@ -45,4 +46,25 @@ public class CarController {
 		carInter.insertCar(dto);
 		return "redirect:list";
 	}
+	
+	@GetMapping("/updateform")
+	public String updateForm(@RequestParam("num") String num, Model model) {
+	    SpringCarDto dto = carInter.getData(num);
+	    model.addAttribute("dto", dto);
+	    return "car/updateform";
+	}
+	
+	@PostMapping("/update")
+	public String update(@ModelAttribute SpringCarDto dto)
+	{
+		carInter.updateCar(dto);
+		return "redirect:list";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("num") String num) {
+	    carInter.deleteCar(num);
+	    return "redirect:list";
+	}
+
 }

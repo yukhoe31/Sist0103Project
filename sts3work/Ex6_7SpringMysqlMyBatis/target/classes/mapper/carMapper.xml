@@ -13,4 +13,20 @@
    <insert id="insertOfMyCar" parameterType="scdto">
      insert into springcar (carname,carprice,carcolor,carguip) values (#{carname},#{carprice},#{carcolor},#{carguip})
    </insert>
+   <!-- num에 대한 dto조회 -->
+   <select id="selectOneOfCar" parameterType="String" resultType="scdto">
+     select * from springcar where num = #{num}
+   </select>
+   <!-- 수정 -->
+   <update id="updateOfCar" parameterType="scdto">
+    update springcar set carname = #{carname},carprice=#{carprice}, 
+    carcolor=#{carcolor}, carguip=#{carguip} where num=#{num}
+    
+   </update>
+   
+    <!-- 삭제 -->
+   <delete id="deleteOfCar" parameterType="scdto">
+    delete from springcar where num=#{num}
+    
+   </delete>
  </mapper>

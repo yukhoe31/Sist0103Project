@@ -29,5 +29,22 @@ public class SpringCarDao implements SpringCarDaoInter {
 		// TODO Auto-generated method stub
 		return session.selectList("getAllOfMyCar");
 	}
-
+	
+	@Override
+	public SpringCarDto getData(String num) {
+		
+		return session.selectOne("selectOneOfCar",num);
+	}
+	
+	@Override
+	public void updateCar(SpringCarDto dto){
+		
+		session.update("updateOfCar", dto);
+	}
+	
+	@Override
+	public void deleteCar(String num){
+		
+		session.delete("deleteOfCar", num);
+	}
 }
