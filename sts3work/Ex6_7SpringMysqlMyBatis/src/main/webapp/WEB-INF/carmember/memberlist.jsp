@@ -20,40 +20,37 @@
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
 		<button type="button" class="btn btn-info"
-			onclick="location.href='writeform'" style="margin-left: 600px;">자동차정보입력</button>
+			onclick="location.href='writememberform'" style="margin-left: 600px;">회원정보입력</button>
 		<br>
 		<br>
 
 		<c:if test="${totalCount==0 }">
-			<h5 class="alert alert-info">저장된 차의 정보가 없습니다</h5>
+			<h5 class="alert alert-info">저장된 회원정보가 없습니다</h5>
 		</c:if>
 		<c:if test="${totalCount>0 }">
-			<h5 class="alert alert-info">총 ${totalCount }개의 자동차정보가 있습니다</h5>
+			<h5 class="alert alert-info">총 ${totalCount }개의 회원정보가 있습니다</h5>
 
 			<hr>
 			<table class="table table-bordered">
 				<tr class="table-success">
 					<th width="80">번호</th>
-					<th width="280">자동차명</th>
-					<th width="120">차량색상</th>
-					<th width="120">차량가격</th>
-					<th width="180">구입일</th>
+					<th width="180">이름</th>
+					<th width="120">전화번호</th>
+					<th width="120">주소</th>
+					<th width="180">가입일</th>
 					<th width="180">편집</th>
 				</tr>
 
-				<c:forEach var="dto" items="${list }" varStatus="i">
+				<c:forEach var="dto" items="${memberlist }" varStatus="i">
 					<tr>
 						<td>${i.count }</td>
-						<td>${dto.carname }</td>
-						<td>
-							<div
-								style="width: 20px; height: 20px; background-color: ${dto.carcolor}"></div>
-						</td>
-						<td>${dto.carprice }</td>
-						<td>${dto.carguip }</td>
+						<td>${dto.name }</td>
+						<td>${dto.hp }</td>
+						<td>${dto.addr }</td>
+						<td>${dto.gaipday }</td>
 						<td>
 							<button type="button" class="btn btn-outline-info btn-sm"
-								onclick="location.href='updateform?num=${dto.num}'">수정</button>
+								onclick="location.href='memberupdateform?num=${dto.num}'">수정</button>
 							<!-- Add SweetAlert confirmation before deletion -->
 							<button type="button" class="btn btn-outline-info btn-sm"
 								onclick="confirmDelete(${dto.num})">삭제</button>
@@ -79,7 +76,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // If user confirms, redirect to delete servlet with the car number
-                window.location.href = 'delete?num=' + num;
+                window.location.href = 'deletemember?num=' + num;
             }
         });
     }
