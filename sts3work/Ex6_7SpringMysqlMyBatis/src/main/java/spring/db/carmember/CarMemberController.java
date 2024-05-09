@@ -51,7 +51,7 @@ public class CarMemberController {
 	public String updateForm(@RequestParam("num") String num, Model model) {
 	    CarMemberDto dto = memberInter.getMemberData(num);
 	    model.addAttribute("dto", dto);
-	    return "carmember/updatememberform";
+	    return "carmember/memberupdateform";
 	}
 	
 	@PostMapping("/updatemember")

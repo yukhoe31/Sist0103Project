@@ -14,7 +14,11 @@
 <body>
   <%-- <c:redirect url="samsung/list"/> --%>
   
+<div style="margin: 100px 200px;">
   <button class="btn btn-info" onclick="location.href='samsung/list'">자동차 정보 확인</button>
+  <br><br>
   <button class="btn btn-info" onclick="location.href='carmember/memberlist'">회원 정보 확인</button>
+</div>
+
 </body>
 </html>

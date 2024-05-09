@@ -19,10 +19,14 @@
 </head>
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
-		<button type="button" class="btn btn-info"
-			onclick="location.href='writememberform'" style="margin-left: 600px;">회원정보입력</button>
-		<br>
-		<br>
+		<div>
+			<button type="button" class="btn btn-info"
+				onclick="location.href='../'">처음화면으로</button>
+
+			<button type="button" class="btn btn-info"
+				onclick="location.href='writememberform'">회원정보입력</button>
+		</div>
+		<br> <br>
 
 		<c:if test="${totalCount==0 }">
 			<h5 class="alert alert-info">저장된 회원정보가 없습니다</h5>
@@ -50,7 +54,7 @@
 						<td>${dto.gaipday }</td>
 						<td>
 							<button type="button" class="btn btn-outline-info btn-sm"
-								onclick="location.href='memberupdateform?num=${dto.num}'">수정</button>
+								onclick="location.href='updatememberform?num=${dto.num}'">수정</button>
 							<!-- Add SweetAlert confirmation before deletion -->
 							<button type="button" class="btn btn-outline-info btn-sm"
 								onclick="confirmDelete(${dto.num})">삭제</button>

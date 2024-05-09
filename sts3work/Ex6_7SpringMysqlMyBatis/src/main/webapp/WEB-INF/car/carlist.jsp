@@ -19,10 +19,15 @@
 </head>
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
-		<button type="button" class="btn btn-info"
-			onclick="location.href='writeform'" style="margin-left: 600px;">자동차정보입력</button>
-		<br>
-		<br>
+		<div>
+			<button type="button" class="btn btn-info"
+				onclick="location.href='../'">처음화면으로</button>
+
+			<button type="button" class="btn btn-info"
+				onclick="location.href='writeform'">자동차정보입력</button>
+
+		</div>
+		<br> <br>
 
 		<c:if test="${totalCount==0 }">
 			<h5 class="alert alert-info">저장된 차의 정보가 없습니다</h5>

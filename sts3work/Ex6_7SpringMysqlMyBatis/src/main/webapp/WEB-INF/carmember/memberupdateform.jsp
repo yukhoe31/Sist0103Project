@@ -13,28 +13,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="writemember" method="post">
+<form action="updatemember" method="post">
    <input type="hidden" name="num" value="${dto.num }">
      <table class="table table-bordered" style="width: 400px;">
        <tr>
          <th class="table-light">이름</th>
          <td>
            <input type="text" name="name" style="width: 120px;" required="required"
-           class="form-control">
+           class="form-control" value="${dto.name }">
          </td>
        </tr>
        <tr>
          <th class="table-light">전화번호</th>
          <td>
            <input type="text" name="hp" style="width: 150px;" required="required"
-           class="form-control">
+           class="form-control" value="${dto.hp}">
          </td>
        </tr>
        <tr>
          <th class="table-light">주소</th>
          <td>
            <input type="text" name="addr" style="width: 150px;" required="required"
-           class="form-control">
+           class="form-control" value="${dto.addr }">
          </td>
        </tr>
     
@@ -42,7 +42,7 @@
          <th class="table-light">가입일</th>
          <td>
            <input type="date" name="gaipday" style="width: 200px;" required="required"
-           class="form-control">
+           class="form-control" value="${dto.gaipday }">
          </td>
        </tr>
        
