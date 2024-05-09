@@ -14,18 +14,18 @@
    
    <!-- insert -->
    <insert id="insertOfMyCarMember" parameterType="cmdto">
-     insert into carmember (name,hp,addr,gaipday) values (#{name},#{hp},#{addr},#{gaipday})
+     insert into carmember (name,hp,addr,gaipday) values (#{name},#{hp},#{addr},now())
    </insert>
    
    <!-- num에 대한 dto조회 -->
+   <!-- input타입: String, output타입: dto -->
    <select id="selectOneOfCarMember" parameterType="String" resultType="cmdto">
      select * from carmember where num = #{num}
    </select>
    
    <!-- 수정 -->
    <update id="updateOfCarMember" parameterType="cmdto">
-    update carmember set name = #{name},hp=#{hp}, 
-    addr=#{addr}, gaipday=#{gaipday} where num=#{num}    
+    update carmember set name = #{name},hp=#{hp},addr=#{addr} where num=#{num}    
    </update>
    
     <!-- 삭제 -->

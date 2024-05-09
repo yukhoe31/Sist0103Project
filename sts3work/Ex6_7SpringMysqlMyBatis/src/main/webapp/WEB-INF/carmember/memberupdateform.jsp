@@ -37,15 +37,7 @@
            class="form-control" value="${dto.addr }">
          </td>
        </tr>
-    
-       <tr>
-         <th class="table-light">가입일</th>
-         <td>
-           <input type="date" name="gaipday" style="width: 200px;" required="required"
-           class="form-control" value="${dto.gaipday }">
-         </td>
-       </tr>
-       
+
        <tr>
          <td colspan="2" align="center">
            <button type="submit" class="btn btn-outline-success">DB저장</button>
