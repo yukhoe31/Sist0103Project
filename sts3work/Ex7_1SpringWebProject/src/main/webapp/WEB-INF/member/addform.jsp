@@ -39,7 +39,7 @@
 </head>
 <body>
 <div style="margin: 100px 100px; width: 500px;">
-   <form action="" method="post">
+   <form action="insert" method="post">
      <table class="table table-bordered">
         <caption align="top"><b>회원가입</b></caption>
         <tr>
@@ -51,7 +51,6 @@
         </tr>
         <tr>
           <th>아이디</th>
-          
           <td>
           <div class="d-inline-flex">
             <input type="text" name="id" required="required"

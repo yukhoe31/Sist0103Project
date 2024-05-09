@@ -15,6 +15,8 @@
     <div style="margin: 100px 100px;">
        <button type="button" class="btn btn-info"
        onclick="location.href='member/list'">회원명단</button>
+       <button type="button" class="btn btn-info"
+     onclick="location.href='member/writeform'">회원가입</button>
     </div>
     
 </body>

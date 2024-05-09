@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="MemberDao">
-   <select id="idCheckOfMember" resultType="int" parameterType="String">
-     select count(*) from smember where id=#{id}
-   </select>
- </mapper>
+<mapper namespace="MemberDao">
+	<select id="idCheckOfMember" resultType="int"
+		parameterType="String">
+		select count(*) from smember where id=#{id}
+	</select>
+
+	<insert id="insertOfMyMember" parameterType="mdto">
+		insert into smember (name,id,pass,hp,gaipday) values (#{name},#{id},#{pass},#{hp}, now())
+	</insert>
+	<!--전체회원수 얻기 -->
+	<select id="totalCountOfMember" resultType="int">
+		select count(*) from smember
+	</select>
+	
+	<!--전체회원 정보 가져오기 -->
+	<select id="getAllOfMyMember" resultType="mdto">
+		select * from smember order by num desc
+	</select>
+
+</mapper>
