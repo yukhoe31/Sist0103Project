@@ -13,7 +13,29 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3 class="alert alert-info">Ex1번 예저</h3>
+	<br>
+	<button type="button" id="btn1" class="btn btn-info">list1 Json 데이터 출력하기</button>
+	<div id="out1"></div>
 
+	<script type="text/javascript">
+		$("#btn1").click(function() {
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"list1",
+				success:function(res){
+					$("#out1").empty();
+					$("#out1").append("이름: "+res.name + "<br>");
+					$("#out1").append("핸드폰: " +res.hp + "<br>");
+					$("#out1").append("주소: "+res.addr + "<br>");
 
+				}
+			})
+			
+		})	
+	
+	</script>
 </body>
 </html>

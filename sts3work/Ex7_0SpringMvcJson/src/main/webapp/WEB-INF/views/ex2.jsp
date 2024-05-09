@@ -13,7 +13,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
+	<h3 class="alert alert-danger">Ex2번 예제</h3>
+	<br>
+	<button type="button" id="btn1" class="btn btn-info">foodlist2 Json 데이터 출력하기</button>
+	<div id="out1"></div>
+	
+	<script type="text/javascript">
+		$("#btn1").click(function(){
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"foodlist2",
+				success:function(data){
+					
+					var s = "";
+					$.each(data, function(i, elt) {
+						
+						s += "<figure>";
+						s += "<img src='upload/"+elt.photo+"' width=100>";
+						s += "<figcaption><b>";
+						s += elt.foodname;
+						s += "</b></figcaption>";
+						s += "</figure>";
+						
+					});
+					
+					$("#out1").html(s);
+						
+				}
+			})
+		})
+	
+	</script>
+	
 </body>
 </html>
