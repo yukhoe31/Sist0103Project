@@ -51,6 +51,7 @@
         </tr>
         <tr>
           <th>아이디</th>
+          
           <td>
           <div class="d-inline-flex">
             <input type="text" name="id" required="required"

@@ -1,5 +1,7 @@
 package spring.db.member;
 
+import java.sql.Timestamp;
+
 public class MemberDto {
 
 	private String num;
@@ -7,7 +9,7 @@ public class MemberDto {
 	private String id;
 	private String pass;
 	private String hp;
-	private String gaipday;
+	private Timestamp gaipday;
 	
 	public String getNum() {
 		return num;
@@ -39,12 +41,13 @@ public class MemberDto {
 	public void setHp(String hp) {
 		this.hp = hp;
 	}
-	public String getGaipday() {
+	public Timestamp getGaipday() {
 		return gaipday;
 	}
-	public void setGaipday(String gaipday) {
+	public void setGaipday(Timestamp gaipday) {
 		this.gaipday = gaipday;
 	}
+	
 	
 	
 }

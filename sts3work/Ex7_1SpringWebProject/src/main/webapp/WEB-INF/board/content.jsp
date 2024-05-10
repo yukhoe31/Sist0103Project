@@ -11,14 +11,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
+
+
+
 <body>
-    <div style="margin: 100px 100px;">
-       <button type="button" class="btn btn-info"
-       onclick="location.href='member/list'">회원명단</button>
-       <br><br>
-       <button type="button" class="btn btn-info"
-       onclick="location.href='board/list'">파일업로드게시판</button>
-    </div>
-    
+
 </body>
 </html>

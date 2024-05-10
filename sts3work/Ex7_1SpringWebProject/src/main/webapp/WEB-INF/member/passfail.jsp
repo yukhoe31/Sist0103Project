@@ -10,12 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
-
+</head>
 <body>
-
 <script type="text/javascript">
-alert("비밀번호가 맞지 않습니다.")
-history.back();
+  alert("비밀번호가 맞지않습니다");
+  history.back();
 </script>
 </body>
 </html>
