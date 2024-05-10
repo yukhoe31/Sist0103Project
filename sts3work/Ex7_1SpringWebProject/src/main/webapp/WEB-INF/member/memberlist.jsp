@@ -12,16 +12,17 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
 	rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div style="margin: 50px 100px; width: 800px;">
 		<div>
-		<button type="button" class="btn btn-info"
-			onclick="location.href='writeform'">회원가입</button>
+			<button type="button" class="btn btn-info"
+				onclick="location.href='writeform'">회원가입</button>
 
-	
+
 			<button type="button" class="btn btn-info"
 				onclick="location.href='../'">처음화면으로</button>
 
@@ -36,24 +37,24 @@
 			<hr>
 			<table class="table table-bordered">
 				<tr class="table-success">
-					<th width="80">번호</th>
-					<th width="180">이름</th>
-					<th width="120">아이디</th>
-					<th width="120">전화번호</th>
-					<th width="180">가입일</th>
-					<th width="180">편집</th>
+					<th width="80" class="text-center">번호</th>
+					<th width="120" class="text-center">이름</th>
+					<th width="120" class="text-center">아이디</th>
+					<th width="200" class="text-center">전화번호</th>
+					<th width="120" class="text-center">가입일</th>
+					<th width="150" class="text-center">편집</th>
 				</tr>
 
 				<c:forEach var="dto" items="${list }" varStatus="i">
 					<tr>
-						<td>${i.count }</td>
-						<td>${dto.name }</td>
-						<td>${dto.id }</td>
-						<td>${dto.hp }</td>
-						<td>${dto.gaipday }</td>
-						<td>
+						<td class="text-center">${i.count }</td>
+						<td class="text-center">${dto.name }</td>
+						<td class="text-center">${dto.id }</td>
+						<td class="text-center">${dto.hp }</td>
+						<td class="text-center">${dto.gaipday }</td>
+						<td class="text-center">
 							<button type="button" class="btn btn-outline-info btn-sm"
-								onclick="location.href='updatememberform?num=${dto.num}'">수정</button>
+								onclick="location.href='updateform?num=${dto.num}'">수정</button>
 							<!-- Add SweetAlert confirmation before deletion -->
 							<button type="button" class="btn btn-outline-info btn-sm"
 								onclick="confirmDelete(${dto.num})">삭제</button>

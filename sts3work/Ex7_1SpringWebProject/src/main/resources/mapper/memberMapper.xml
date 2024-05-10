@@ -19,5 +19,26 @@
 	<select id="getAllOfMyMember" resultType="mdto">
 		select * from smember order by num desc
 	</select>
+	
+	<!-- 수정 : 을 위해서 한명의 데이터 가져오기-->
+	<select id="selectOneOfMember" parameterType="String" resultType="mdto">
+		select * from smember where num=#{num}	
+	</select>
+		
+	<!-- 수정 : pass를 체크한다. -->
+	<select id="passCheckOfMember" parameterType="HashMap" resultType="int">
+		select count(*) from smember where num=#{num} and pass=#{pass}	
+	</select>
+
+	<!-- 수정 : 진짜 수정 -->
+	<update id="updateOfMember" parameterType="mdto">
+		update smember set name=#{name}, hp=#{hp} where num=#{num}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteOfMember" parameterType="mdto">
+		delete from smember where num=#{num}
+	</delete>
+	
 
 </mapper>
