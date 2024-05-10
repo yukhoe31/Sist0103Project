@@ -19,8 +19,10 @@
 </head>
 <body>
 <div style="margin: 100px 100px; width: 800px;">
+<button type="button" class="btn btn-outline-info"
+     onclick="location.href='../'">처음화면</button>
    <button type="button" class="btn btn-outline-info" 
-   onclick="location.href='addform'" style="margin-left: 700px;">글쓰기</button>
+   onclick="location.href='addform'">글쓰기</button>
    
    <br><br>
    <table class="table table-bordered">

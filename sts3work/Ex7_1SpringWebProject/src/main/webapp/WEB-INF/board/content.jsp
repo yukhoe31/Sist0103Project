@@ -49,7 +49,7 @@
 						test="${dto.photo!='no' }">
 						<c:forTokens var="im" items="${dto.photo }" delims=",">
 							<img alt="" src="../photo/${im }" class="img-thumbnail"
-								style="width: 100px;"> &nbsp;&nbsp;
+								style="width: 200px;"> &nbsp;&nbsp;
              </c:forTokens>
 					</c:if></td>
 			</tr>

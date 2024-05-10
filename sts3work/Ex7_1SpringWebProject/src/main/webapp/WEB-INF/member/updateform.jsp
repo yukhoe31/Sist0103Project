@@ -56,9 +56,7 @@
             style="width: 130px;" class="form-control" value="${dto.name }">
           </td>
         </tr>
-        
-        
-        
+
         
         <tr>
           <th>핸드폰</th>
@@ -80,7 +78,7 @@
           <td colspan="2" align="center">
             <button type="submit" class="btn btn-success">회원수정</button>
             <button type="button" class="btn btn-success"
-            onclick="location.href=''">회원목록</button>
+            onclick="location.href='../member/list'">회원목록</button>
           </td>
         </tr>
      </table>
