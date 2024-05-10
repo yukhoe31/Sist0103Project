@@ -15,4 +15,16 @@
    <select id="selectAllOfBoard" resultType="bdto">
      select * from sboard order by num desc
    </select>
+   <select id="selectPagingListOhMember" parameterType="HashMap"
+   resultType="bdto">
+     select * from sboard order by num desc limit #{start},#{perpage}
+   </select>
+   
+   
+   <select id="selectOneOfBoard" parameterType="int" resultType="bdto">
+      select * from sboard where num=#{num}
+   </select>
+   <update id="updateReadCountOfBoard" parameterType="int">
+      update sboard set readcount=readcount+1 where num=#{num}
+   </update>
  </mapper>

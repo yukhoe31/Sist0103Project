@@ -1,5 +1,6 @@
 package spring.db.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -34,6 +35,29 @@ public class BoardDao implements BoardDaoInter {
 	public List<BoardDto> getAllList() {
 		// TODO Auto-generated method stub
 		return session.selectList("selectAllOfBoard");
+	}
+
+	@Override
+	public BoardDto getData(int num) {
+		// TODO Auto-generated method stub
+		return session.selectOne("selectOneOfBoard", num);
+	}
+
+	@Override
+	public void updateReadcount(int num) {
+		// TODO Auto-generated method stub
+		session.update("updateReadCountOfBoard", num);
+	}
+
+	@Override
+	public List<BoardDto> getList(int start, int perpage) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		
+		map.put("start", start);
+		map.put("perpage", perpage);
+		
+		return session.selectList("selectPagingListOhMember", map);
 	}
 
 }

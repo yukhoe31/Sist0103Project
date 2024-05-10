@@ -14,6 +14,7 @@
 <body>
 <div style="margin: 100px 100px; width: 500px;">
    <form action="insert" method="post" enctype="multipart/form-data">
+   <input type="hidden" name="currentPage" value="${currentPage }">
      <table class="table table-bordered">
         <caption align="top"><b>글쓰기</b></caption>
         <tr>
