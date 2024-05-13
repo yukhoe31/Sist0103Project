@@ -81,7 +81,7 @@
           <td colspan="2" align="center">
             <button type="submit" class="btn btn-success">회원가입</button>
             <button type="button" class="btn btn-success"
-            onclick="location.href='../member/list'">회원목록</button>
+            onclick="location.href=''">회원목록</button>
           </td>
         </tr>
      </table>

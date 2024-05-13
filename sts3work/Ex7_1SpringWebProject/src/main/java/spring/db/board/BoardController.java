@@ -160,4 +160,106 @@ public class BoardController {
 	}
 	
 	
+	@GetMapping("/updateform")
+	public ModelAndView uform(@RequestParam int num,
+			@RequestParam String currentPage)
+	{
+		ModelAndView model=new ModelAndView();
+		
+		BoardDto dto=dao.getData(num);
+		model.addObject("dto", dto);
+		model.addObject("currentPage", currentPage);
+		
+		model.setViewName("board/updateform");
+		return model;
+	}
+	
+	
+	//update
+		@PostMapping("/update")
+		public String update(@ModelAttribute BoardDto dto,
+				@RequestParam ArrayList<MultipartFile> upload,
+				HttpSession session,
+				@RequestParam String currentPage)
+		{
+			//이미지가 업로드될 폴더
+			String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+			System.out.println(path);
+			
+			//이미지 업로드 안했을경우 null or "no"
+			String photo="";
+			
+			//사진안했을경우는 null,사진선택을 하면 ,로나열
+			if(upload.get(0).getOriginalFilename().equals(""))
+				photo=null;
+			else {
+				
+				for(MultipartFile f:upload)
+				{
+					String fName=f.getOriginalFilename();
+					photo+=fName+",";
+					
+					//업로드
+					try {
+						f.transferTo(new File(path+"\\"+fName));
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				//photo에서 마지막 컴마제거
+				photo=photo.substring(0, photo.length()-1);
+			}
+			
+			//dto의 photo에 넣어주기
+			dto.setPhoto(photo);
+			
+			//update
+			dao.updateBoard(dto);
+			
+			//목록이 아닌 내용보기로 가려면
+			int num=dao.getMaxNum();
+			
+			return "redirect:content?num="+num+"&currentPage="+currentPage;
+		}
+		
+		
+		
+		@GetMapping("/delete")
+		public String delete(@RequestParam int num,
+				@RequestParam String currentPage,
+				HttpSession session)
+		{
+			String photo=dao.getData(num).getPhoto();
+			if(!photo.equals("no")) {
+				
+				String []fName=photo.split(",");
+				
+				//실제업로드경로
+				String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+				
+				for(String f:fName)
+				{
+					File file=new File(path+"\\"+f);
+					file.delete();
+				}
+			}
+			
+			//db삭제
+			dao.deleteBoard(num);
+			
+			return "redirect:list?currentPage="+currentPage;
+		}
+		
+		@GetMapping("/list2")
+		public String list2()
+		{
+			return "/board/ajaxlist";
+		}
+		
+		
 }

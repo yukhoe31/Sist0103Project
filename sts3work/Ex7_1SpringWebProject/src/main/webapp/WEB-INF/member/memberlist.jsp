@@ -14,9 +14,8 @@
 <body>
   <div style="margin: 50px 100px; width: 800px;">
      <button type="button" class="btn btn-outline-info btn-sm"
-     onclick="location.href='../'">처음화면</button>
-      <button type="button" class="btn btn-outline-info btn-sm"
-     onclick="location.href='writeform'">회원가입</button>
+     onclick="location.href='writeform'" style="margin-left: 700px;">회원가입</button>
+     
      
 <table class="table table-bordered" >
 	<caption align="top">회원 전체 명단</caption>
