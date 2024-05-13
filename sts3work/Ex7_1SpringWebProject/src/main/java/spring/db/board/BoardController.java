@@ -178,6 +178,7 @@ public class BoardController {
 	//update
 		@PostMapping("/update")
 		public String update(@ModelAttribute BoardDto dto,
+				@RequestParam int num,
 				@RequestParam ArrayList<MultipartFile> upload,
 				HttpSession session,
 				@RequestParam String currentPage)
@@ -215,15 +216,14 @@ public class BoardController {
 				photo=photo.substring(0, photo.length()-1);
 			}
 			
+		
 			//dto의 photo에 넣어주기
 			dto.setPhoto(photo);
 			
 			//update
 			dao.updateBoard(dto);
 			
-			//목록이 아닌 내용보기로 가려면
-			int num=dao.getMaxNum();
-			
+
 			return "redirect:content?num="+num+"&currentPage="+currentPage;
 		}
 		
