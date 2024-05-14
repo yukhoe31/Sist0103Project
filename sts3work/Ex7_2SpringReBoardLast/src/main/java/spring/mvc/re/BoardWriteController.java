@@ -97,7 +97,9 @@ public class BoardWriteController {
 		dto.setPhoto(photo);
 		dao.insertBoard(dto);
 		
-		int num = dao.getMaxNum();
+		
+		//인서트후 목록으로 가지말고 내용보기로 가려면?
+		int num=dao.getMaxNum();
 		
 		return "redirect:content?num="+num+"&currentPage="+currentPage;
 	}

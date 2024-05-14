@@ -11,18 +11,16 @@ public class AnswerDao implements AnswerDaoInter {
 
 	@Autowired
 	private SqlSession session;
-	
-@Override
-public void insertAnswer(AnswerDto dto) {
-	// TODO Auto-generated method stub
-	session.insert("insertOfAnswer",dto);
-	
-}
-	
+
+	@Override
+	public void insertAnswer(AnswerDto dto) {
+		// TODO Auto-generated method stub
+		session.insert("insertOfAnswer", dto);
+	}
+
 	@Override
 	public List<AnswerDto> getAnswerList(int num) {
 		// TODO Auto-generated method stub
 		return session.selectList("selectNumOfAnswer", num);
 	}
-	
 }

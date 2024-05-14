@@ -18,7 +18,7 @@ public class BoardDeleteController {
 
 	@Autowired
 	BoardDaoInter dao;
-
+	
 	@GetMapping("/board/deletepassform")
 	public ModelAndView upassform(@RequestParam String num,
 			@RequestParam String currentPage)
@@ -26,37 +26,44 @@ public class BoardDeleteController {
 		ModelAndView mview=new ModelAndView();
 		mview.addObject("num", num);
 		mview.addObject("currentPage", currentPage);
-
+		
 		mview.setViewName("board/deletepassform");
 		return mview;
 	}
-
+	
+	
 	@PostMapping("/board/delete")
 	public String delete(@RequestParam int num,
 			@RequestParam String currentPage,
 			@RequestParam int pass,
-			HttpSession session) 
+			HttpSession session)
 	{
-		int check = dao.getCheckPass(num, pass);
-		if(check ==0) {
+		int check=dao.getCheckPass(num, pass);
+		if(check==0) {
 			return "board/passfail";
 		}else {
-			String photo =dao.getOneData(num).getPhoto();
-
+			
+			String photo=dao.getOneData(num).getPhoto();
+			
 			if(!photo.equals("no")) {
-				String [] fName = photo.split(",");
-
-				String path = session.getServletContext().getRealPath("/WEB-INF/photo");
-
-				for(String f:fName) {
-					File file = new File(path+"\\" +f);
+				
+				String [] fName=photo.split(",");
+				
+				String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+				
+				for(String f:fName)
+				{
+					File file=new File(path+"\\"+f);
 					file.delete();
 				}
 			}
+			
+			dao.deleteBoard(num);
+			
+			return "redirect:list?currentPage="+currentPage;
 		}
-		dao.deleteBoard(num);
-
-		return "redirect:list?currentPage="+currentPage;
+		
+		
 	}
-
+	
 }

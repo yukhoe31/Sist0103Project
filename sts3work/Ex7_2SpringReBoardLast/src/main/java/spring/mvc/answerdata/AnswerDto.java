@@ -3,7 +3,7 @@ package spring.mvc.answerdata;
 import java.sql.Timestamp;
 
 public class AnswerDto {
-	
+
 	private int idx;
 	private int num;
 	private String nickname;
@@ -48,5 +48,7 @@ public class AnswerDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
-
+	
+	
+	
 }

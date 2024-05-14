@@ -8,8 +8,16 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+  #answer{
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 0.8em;
+  }
+</style>
 </head>
 <body>
 <div style="margin: 100px 100px; width: 600px;">
@@ -39,28 +47,39 @@
         </td>
       </tr>
       
+      
       <tr>
-      	<td>
-      		<div id="answer">댓글목록출력예정</div>
-      		<form action="ainsert" method="post">
-      			<input type="hidden" name="num" value="${dto.num }">
-      			<input type="hidden" name="currentPage" value="${dto.currentPage }">
-      			<div>
-      				<b>닉네임: </b>
-      				<input type="text" name="nickname" class="form-control"
-      				style="width: 100px;" required="required"> 
-      				<b>비밀번호:</b>
-      				<input type="password" name="pass" class="form-control"
-      				style="width: 100px;" required="required"> 
-      				<br><br>
-      				<input type="text" name="content" class="form-control"
-      				style="width: 500px;" required="required" placeholder="댓글 내용을 입력해주세요"> 
-      				<button type="submit">저장하기</button>
-      				
-      			</div>
-      			
-      		</form>
-      	</td>
+        <td>
+           <div id="answer">
+           <b>댓글 ${acount }</b><br><br>
+           <c:forEach var="a" items="${alist }">
+               ${a.nickname }: ${a.content }
+               &nbsp;&nbsp;
+               <span style="color: gray; font-size: 0.8em;">
+               <fmt:formatDate value="${a.writeday }"/></span>
+               &nbsp;
+               <i class="bi bi-pencil-square"></i>
+               <i class="bi bi-trash"></i><br>
+           </c:forEach>
+           </div>
+           <form action="ainsert" method="post">
+              <input type="hidden" name="num" value="${dto.num }">
+              <input type="hidden" name="currentPage" value="${currentPage }">
+              <div class="d-inline-flex">
+                <b>닉네임: </b>
+                 <input type="text" name="nickname" class="form-control"
+                 style="width: 100px;" required="required">
+                 <b>비밀번호: </b>
+                 <input type="password" name="pass" class="form-control"
+                 style="width: 100px;" required="required"></div>
+                 <br><br>
+                 <div class="d-inline-flex">
+                 <input type="text" name="content" class="form-control"
+                 style="width: 500px;" required="required" placeholder="댓글내용을 입력해주세요">
+                 <button type="submit" class="btn btn-outline-info">확인</button>
+              </div>
+           </form>
+        </td>
       </tr>
       
       
