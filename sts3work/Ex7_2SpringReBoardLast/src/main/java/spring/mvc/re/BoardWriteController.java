@@ -41,7 +41,7 @@ public class BoardWriteController {
 		String restep=map.get("restep");
 		String relevel=map.get("relevel");
 		
-		System.out.println(currentPage+","+num);
+		System.out.println(currentPage+","+num);//null,null
 		
 		//입력폼에 hidden으로 넣어줘야함..답글일때를 대비
 		
@@ -61,7 +61,8 @@ public class BoardWriteController {
 	@PostMapping("/board/insert")
 	public String insert(@ModelAttribute BoardDto dto,
 			@RequestParam ArrayList<MultipartFile> upload,
-			HttpSession session)
+			HttpSession session,
+			@RequestParam int currentPage)
 	{
 		String path=session.getServletContext().getRealPath("/WEB-INF/photo");
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
@@ -96,6 +97,8 @@ public class BoardWriteController {
 		dto.setPhoto(photo);
 		dao.insertBoard(dto);
 		
-		return "redirect:list";
+		int num = dao.getMaxNum();
+		
+		return "redirect:content?num="+num+"&currentPage="+currentPage;
 	}
 }

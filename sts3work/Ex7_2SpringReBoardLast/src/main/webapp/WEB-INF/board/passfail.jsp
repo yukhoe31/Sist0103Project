@@ -11,10 +11,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
-
-
-
 <body>
-
+  <script type="text/javascript">
+    alert("비밀번호가 맞지않습니다");
+    history.back();
+  </script>
 </body>
 </html>

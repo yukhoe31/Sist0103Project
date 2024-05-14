@@ -40,13 +40,38 @@
       </tr>
       
       <tr>
+      	<td>
+      		<div id="answer">댓글목록출력예정</div>
+      		<form action="ainsert" method="post">
+      			<input type="hidden" name="num" value="${dto.num }">
+      			<input type="hidden" name="currentPage" value="${dto.currentPage }">
+      			<div>
+      				<b>닉네임: </b>
+      				<input type="text" name="nickname" class="form-control"
+      				style="width: 100px;" required="required"> 
+      				<b>비밀번호:</b>
+      				<input type="password" name="pass" class="form-control"
+      				style="width: 100px;" required="required"> 
+      				<br><br>
+      				<input type="text" name="content" class="form-control"
+      				style="width: 500px;" required="required" placeholder="댓글 내용을 입력해주세요"> 
+      				<button type="submit">저장하기</button>
+      				
+      			</div>
+      			
+      		</form>
+      	</td>
+      </tr>
+      
+      
+      <tr>
         <td align="right">
           <button type="button" class="btn btn-outline-success"
           onclick="location.href='writeform'">글쓰기</button>
           <button type="button" class="btn btn-outline-success"
           onclick="location.href='writeform?num=${dto.num}&regroup=${dto.regroup }&restep=${dto.restep }&relevel=${dto.relevel }&currentPage=${currentPage }'">답글</button>
           <button type="button" class="btn btn-outline-success"
-          onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage }'">수정</button>
+          onclick="location.href='updatepassform?num=${dto.num}&currentPage=${currentPage }'">수정</button>
            <button type="button" class="btn btn-outline-success"
           onclick="location.href='deletepassform?num=${dto.num}&currentPage=${currentPage }'">삭제</button>
            <button type="button" class="btn btn-outline-success"
