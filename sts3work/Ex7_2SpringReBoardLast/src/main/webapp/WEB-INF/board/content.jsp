@@ -18,6 +18,40 @@
     font-size: 0.8em;
   }
 </style>
+<script type="text/javascript">
+  $(function(){
+	  
+	  $("i.adel").click(function(){
+		 var idx= $(this).attr("idx");
+		 //alert(idx);
+		 //비번입력
+		 var pass=prompt("비밀번호를 입력해 주세요");
+		 //alert(pass);
+		 
+		 if(pass==null) //취소시 함수 종료
+			 return;
+		 
+		 $.ajax({
+			 
+			 type:"get",
+			 dataType:"json",
+			 url:"adelete",
+			 data:{"idx":idx,"pass":pass},
+			 success:function(res){
+				 
+				 if(res.check==0){
+					 alert("비밀번호가 맞지않습니다");
+				 }else{
+					 alert("댓글 삭제합니다");
+					 location.reload();
+				 }
+			 }
+		 })
+		 
+	  })
+  });
+
+</script>
 </head>
 <body>
 <div style="margin: 100px 100px; width: 600px;">
@@ -59,7 +93,7 @@
                <fmt:formatDate value="${a.writeday }"/></span>
                &nbsp;
                <i class="bi bi-pencil-square"></i>
-               <i class="bi bi-trash"></i><br>
+               <i class="adel bi bi-trash" idx="${a.idx }"></i><br>
            </c:forEach>
            </div>
            <form action="ainsert" method="post">

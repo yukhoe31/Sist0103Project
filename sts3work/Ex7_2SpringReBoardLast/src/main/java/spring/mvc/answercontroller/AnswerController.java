@@ -26,7 +26,4 @@ public class AnswerController {
 		return "redirect:content?num="+dto.getNum()+"&currentPage="+currentPage;
 	}
 	
-	
-	
-	
 }
