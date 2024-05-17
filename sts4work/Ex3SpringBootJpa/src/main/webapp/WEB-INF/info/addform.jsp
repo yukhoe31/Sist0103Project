@@ -21,34 +21,44 @@
 			</caption>
 			
 			<tr>
-				<th>상품명</th>
+				<th>학생명</th>
 				<td>
-					<input type="text" name="sangname" class="form-control"
+					<input type="text" name="stuname" class="form-control"
 					style="width: 150px;" required="required">
 				</td>
 			</tr>
 			
 			<tr>
-				<th>상품가격</th>
+				<th>연락처</th>
 				<td>
-					<input type="text" name="sangprice" class="form-control"
+					<input type="text" name="stuhp" class="form-control"
 					style="width: 150px;" required="required">
 				</td>
 			</tr>
 			
 			<tr>
-				<th>색상</th>
+				<th>학생주소</th>
 				<td>
-					<input type="color" name="sangcolor" class="form-control"
+					<input type="text" name="stuaddr" class="form-control"
 					style="width: 150px;" required="required">
 				</td>
 			</tr>
 			
 			<tr>
-				<th>입고일</th>
+				<th>사진</th>
 				<td>
-					<input type="date" name="sangipgo" class="form-control"
-					style="width: 150px;" required="required">
+					<select  name="stuphoto">
+						<option value="1.jpg" selected="selected">이미지1</option>
+						<option value="2.jpg">이미지2</option>
+						<option value="3.jpg">이미지3</option>
+						<option value="4.jpg">이미지4</option>
+						<option value="5.jpg">이미지5</option>
+						<option value="6.jpg">이미지6</option>
+						<option value="7.jpg">이미지7</option>
+						<option value="8.jpg">이미지8</option>
+						<option value="9.jpg">이미지9</option>
+						<option value="10.jpg">이미지10</option>
+					</select>
 				</td>
 			</tr>
 			
