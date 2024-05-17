@@ -18,7 +18,7 @@ public class MyShopDao {
 		
 	}
 	
-	//전체출력
+	//전체 출력
 	public List<MyShopDto> getAllSangpums(){
 		
 		return daoInter.findAll();

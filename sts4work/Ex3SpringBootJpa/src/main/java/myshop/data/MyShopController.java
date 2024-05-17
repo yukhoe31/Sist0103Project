@@ -50,7 +50,7 @@ public class MyShopController {
 		return "redirect:list";
 	}
 	
-	//수정폼
+	//수정폼:updateform
 	@GetMapping("/shop/updateform")
 	public ModelAndView uform(Long num) {
 		
@@ -66,7 +66,7 @@ public class MyShopController {
 	}
 	
 	
-	//update
+	//수정:update
 	@PostMapping("/shop/update")
 	public String update(@ModelAttribute MyShopDto dto) {
 		
@@ -76,7 +76,7 @@ public class MyShopController {
 	}
 	
 	
-	//delete
+	//삭제:delete
 	@GetMapping("/shop/delete")
 	public String delete(Long num) {
 		

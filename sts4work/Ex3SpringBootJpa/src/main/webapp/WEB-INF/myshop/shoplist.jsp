@@ -63,7 +63,7 @@ function confirmDelete(url) {
 				<th width="180">가격</th>
 				<th width="200">입고일</th>
 				<th width="180">등록일</th>
-				<th width="280">편집</th>
+				<th width="200">편집</th>
 			</tr>
 
 			<c:forEach var="dto" items="${list }" varStatus="i">
