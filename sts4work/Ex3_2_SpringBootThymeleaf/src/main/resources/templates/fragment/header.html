@@ -9,20 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>ThymeLeaf를 이용한 컨트롤러값 출력</h3>
-<hr/>
-<h4 th:text="${message}"></h4>
-<h4>날짜:
-  <sapn th:text="${#calendars.format(today,'yyyy-MM-dd HH:mm')}"></sapn>
-</h4>
-<h5>[[${dto}]]</h5>
-<h5>[(${dto})]</h5>
-
-<pre>
-  <b>dto안의 변수값 출력</b>
-  [[${dto.num}]]
-  [[${dto.sangpum}]]
-  [[${dto.color}]]
-</pre>
+   <div>
+       <header th:fragment="header">
+          <a th:href="@{/}">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{/list}">Shop</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{/login1}">Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a th:href="@{/login2}">User</a>&nbsp;&nbsp;&nbsp;&nbsp;
+       </header>
+   </div>
 </body>
 </html>
