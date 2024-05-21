@@ -17,7 +17,10 @@ import mycar.repository.MyCarCommentDao;
 @RequiredArgsConstructor //final또는 @NonNull멤버변수만 자동주입
 public class MyCarCommentController {
 
+
 	private final MyCarCommentDao commentDao;
+	//멤버변수 추가
+	
 	
 	@GetMapping("/addcomment")
 	public void addComment(@RequestParam Long num,@RequestParam String comment)

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import mycar.data.MyCarDto;
+import mycar.repository.MyCarCommentDao;
 import mycar.repository.MyCarDao;
 
 @Controller
@@ -22,7 +23,9 @@ import mycar.repository.MyCarDao;
 public class MyCarController {
 
 	private final MyCarDao dao;
-	
+
+	//멤버변수추가
+	private final MyCarCommentDao commentDao;
 	
 	@GetMapping("/")
 	public String start()
@@ -34,6 +37,15 @@ public class MyCarController {
 	{
 		
 		List<MyCarDto> list=dao.getAllCars();
+		
+		
+		for(MyCarDto dto:list) {
+			//댓글개수저장
+			int acount = commentDao.getMyCarCommentList(dto.getNum()).size();
+			dto.setCommentcount(acount);
+		
+		}
+		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("totalcount", list.size());

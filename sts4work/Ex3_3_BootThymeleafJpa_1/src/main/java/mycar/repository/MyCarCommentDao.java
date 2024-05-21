@@ -24,4 +24,6 @@ public class MyCarCommentDao {
 	{
 		return commentDaoInter.getMyCarCommentList(num);
 	}
+	
+	
 }
