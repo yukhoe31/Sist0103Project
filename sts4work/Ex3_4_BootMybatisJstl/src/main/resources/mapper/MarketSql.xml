@@ -12,5 +12,13 @@
    <select id="getAllDatas" resultType="mdto">
       select * from market order by sang asc
    </select>
+   
+   <select id="getData" parameterType="String" resultType="mdto">
+   		select * from market where num = #{num}
+   </select>
+   
+   <update id="updateMarket" parameterType="mdto">
+      update market set sang = #{sang}, dan = #{dan}, photoname = #{photoname} where num = #{num}
+   </update>
 
 </mapper>

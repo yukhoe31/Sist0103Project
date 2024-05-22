@@ -54,6 +54,7 @@ public class MarketController {
 		return mview;
 	}
 
+	
 	@GetMapping("/market/addform")
 	public String form() {
 		return "market/addform";
@@ -91,6 +92,51 @@ public class MarketController {
 
 	}
 
+
+	//수정버튼 누르면 수정폼 나오게
+	@GetMapping("/market/updateform")
+	public ModelAndView uform(@RequestParam String num) {
+		
+		ModelAndView mview = new ModelAndView();
+		
+		MarketDto dto = mapper.getData(num);
+		
+		mview.addObject("dto",dto);
+		mview.setViewName("market/updateform");
+		
+		return mview;
+	}
+	
+
+	@PostMapping("/market/update")
+	public String update(@ModelAttribute MarketDto dto,
+	                     @RequestParam MultipartFile photo,
+	                     HttpServletRequest request) {
+
+	    String path = request.getServletContext().getRealPath("/photo");
+	    System.out.println(path);
+
+	    if (!photo.getOriginalFilename().isEmpty()) {
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+	        String photoname = sdf.format(new Date()) + photo.getOriginalFilename();
+	        dto.setPhotoname(photoname);
+
+	        try {
+	            photo.transferTo(new File(path + "\\" + photoname));
+	        } catch (IllegalStateException | IOException e) {
+	            e.printStackTrace();
+	        }
+	    } else {
+	        // Keep the existing photo name if no new photo is uploaded
+	        MarketDto existingDto = mapper.getData(dto.getNum());
+	        dto.setPhotoname(existingDto.getPhotoname());
+	    }
+
+	    // Update the database with the new or existing photo name
+	    mapper.updateMarket(dto);
+
+	    return "redirect:list";
+	}
 
 
 }
