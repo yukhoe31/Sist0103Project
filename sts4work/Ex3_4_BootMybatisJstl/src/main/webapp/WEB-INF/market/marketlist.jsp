@@ -15,6 +15,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert2 -->
 
 <title>Insert title here</title>
 </head>
@@ -62,10 +63,12 @@
 						<td>${a.sang}</td>
 						<td><fmt:formatNumber value="${a.dan}"/> </td>
 						<td><fmt:formatDate value="${a.ipgoday}" pattern="yyyy-MM-dd HH:mm"/>  </td>
-						<td><button type="button" class="btn btn-outline-primary"
+						<td>
+							<button type="button" class="btn btn-outline-primary"
 								onclick="location.href='updateform?num=${a.num}'">수정</button>
 							<button type="button" class="btn btn-outline-danger"
-								onclick="location.href='delete?num=${a.num}'">삭제</button></td>
+								onclick="confirmDelete(${a.num})">삭제</button>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -74,8 +77,23 @@
 
 	</c:if>
 
-
-
+<script>
+function confirmDelete(num) {
+    Swal.fire({
+        title: '정말로 삭제하시겠습니까?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '예, 삭제합니다!',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = 'delete?num=' + num;
+        }
+    })
+}
+</script>
 
 </body>
 </html>

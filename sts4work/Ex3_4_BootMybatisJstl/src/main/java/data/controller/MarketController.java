@@ -137,6 +137,15 @@ public class MarketController {
 
 	    return "redirect:list";
 	}
+	
+	//삭제:delete
+	@GetMapping("/market/delete")
+	public String delete(@RequestParam String num) {
+		
+		mapper.deleteMarket(num);
+		
+		return "redirect:list";
+	}
 
 
 }

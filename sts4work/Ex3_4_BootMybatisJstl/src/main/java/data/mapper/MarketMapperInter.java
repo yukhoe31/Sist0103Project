@@ -14,4 +14,5 @@ public interface MarketMapperInter {
 	public List<MarketDto> getAllDatas();
 	public MarketDto getData(String num);
 	public void updateMarket(MarketDto dto);
+	public void deleteMarket(String num);
 }

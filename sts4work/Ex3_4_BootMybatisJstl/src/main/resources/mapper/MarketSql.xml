@@ -21,4 +21,7 @@
       update market set sang = #{sang}, dan = #{dan}, photoname = #{photoname} where num = #{num}
    </update>
 
+   <delete id="deleteMarket" parameterType="String" >
+   	  delete from market where num = #{num}
+   </delete>
 </mapper>
