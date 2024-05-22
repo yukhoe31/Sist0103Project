@@ -53,10 +53,10 @@
 					<tr>
 						<td align="center">
 						
-						<c:if test="${a.photoname == no}">
+						<c:if test="${a.photoname == 'no'}">
 							<img src="/photo/noimage.jpg" alt="이미지" width="100">
 						</c:if>
-						<c:if test="${a.photoname != no}">
+						<c:if test="${a.photoname != 'no'}">
 							<img src="/photo/${a.photoname}" alt="이미지" width="100">
 						</c:if>
 						</td>
@@ -83,8 +83,8 @@ function confirmDelete(num) {
         title: '정말로 삭제하시겠습니까?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
+        confirmButtonColor: 'red',
+        cancelButtonColor: 'green',
         confirmButtonText: '예, 삭제합니다!',
         cancelButtonText: '취소'
     }).then((result) => {

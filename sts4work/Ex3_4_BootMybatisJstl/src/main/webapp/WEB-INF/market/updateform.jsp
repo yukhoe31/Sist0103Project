@@ -24,7 +24,7 @@
 				<th width="100" class="table-light">상품명</th>
 				<td>
 					<input type="text" name="sang" class="form-control"
-					style="width: 130px;" required="required" value="${dto.sang }">
+					style="width: 150px;" required="required" value="${dto.sang }">
 				</td>
 			</tr>
 			

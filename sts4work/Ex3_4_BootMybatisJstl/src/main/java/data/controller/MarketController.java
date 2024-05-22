@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import data.dto.MarketDto;
 import data.mapper.MarketMapperInter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -54,7 +55,7 @@ public class MarketController {
 		return mview;
 	}
 
-	
+
 	@GetMapping("/market/addform")
 	public String form() {
 		return "market/addform";
@@ -64,12 +65,12 @@ public class MarketController {
 	public String insert(@ModelAttribute MarketDto dto,
 			@RequestParam MultipartFile photo,
 			HttpServletRequest request) {
-
+		
 		String path = request.getServletContext().getRealPath("/photo");
 		System.out.println(path);
 
 		if(photo.getOriginalFilename().equals("")) {
-			dto.setPhotoname(null);
+			dto.setPhotoname("no");
 		}else {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -96,54 +97,79 @@ public class MarketController {
 	//수정버튼 누르면 수정폼 나오게
 	@GetMapping("/market/updateform")
 	public ModelAndView uform(@RequestParam String num) {
-		
+
 		ModelAndView mview = new ModelAndView();
-		
+
 		MarketDto dto = mapper.getData(num);
-		
+
 		mview.addObject("dto",dto);
 		mview.setViewName("market/updateform");
-		
+
 		return mview;
 	}
-	
+
 
 	@PostMapping("/market/update")
 	public String update(@ModelAttribute MarketDto dto,
-	                     @RequestParam MultipartFile photo,
-	                     HttpServletRequest request) {
+			@RequestParam MultipartFile photo,
+			HttpServletRequest request) {
 
-	    String path = request.getServletContext().getRealPath("/photo");
-	    System.out.println(path);
+		String path = request.getServletContext().getRealPath("/photo");
+		System.out.println(path);
 
-	    if (!photo.getOriginalFilename().isEmpty()) {
-	        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-	        String photoname = sdf.format(new Date()) + photo.getOriginalFilename();
-	        dto.setPhotoname(photoname);
+		if(photo.getOriginalFilename().equals("")) {
+			dto.setPhotoname("no");
+		}else {
+			
+			//수정 전에 이전 사진 지우기
+			String pre_photo = mapper.getData(dto.getNum()).getPhotoname();
+			File file = new File(path + "\\" + pre_photo);
+			
+			if(file.exists()) {
+				file.delete();
+			}
 
-	        try {
-	            photo.transferTo(new File(path + "\\" + photoname));
-	        } catch (IllegalStateException | IOException e) {
-	            e.printStackTrace();
-	        }
-	    } else {
-	        // Keep the existing photo name if no new photo is uploaded
-	        MarketDto existingDto = mapper.getData(dto.getNum());
-	        dto.setPhotoname(existingDto.getPhotoname());
-	    }
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String photoname = sdf.format(new Date())+photo.getOriginalFilename();
+			dto.setPhotoname(photoname);
 
-	    // Update the database with the new or existing photo name
-	    mapper.updateMarket(dto);
+			try {
+				photo.transferTo(new File(path+"\\"+photoname));
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-	    return "redirect:list";
+		}
+
+		// db에 update
+		mapper.updateMarket(dto);
+
+		return "redirect:list";
 	}
-	
+
 	//삭제:delete
 	@GetMapping("/market/delete")
-	public String delete(@RequestParam String num) {
+	public String delete(@RequestParam String num, HttpSession session) {
 		
+		//삭제시 photo 폴더 내의 사진도 지우기
+		String photo = mapper.getData(num).getPhotoname();
+		
+		if(!photo.equals(null)) {
+			
+			String path = session.getServletContext().getRealPath("/photo");
+			
+			File file = new File(path +"\\" +photo);
+		
+			if(file.exists()) {
+				file.delete();
+			}
+		
+		}
+
 		mapper.deleteMarket(num);
-		
+
 		return "redirect:list";
 	}
 
