@@ -90,4 +90,12 @@ public class MyShopController {
 
 	}
 	
+	
+	@GetMapping("/detail")
+	public String detail(@RequestParam("num") int num, Model model) {
+	    ShopDto dto = shopService.getData(num);
+	    model.addAttribute("dto", dto);
+	    return "myshop/shopdetail";
+	}
+
 }

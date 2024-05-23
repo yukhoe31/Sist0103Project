@@ -29,6 +29,7 @@
             <thead>
                 <tr class="table-success">
                     <th width="90px;">번호</th>
+                    <th width="90px;">번호</th>
                     <th width="200px;">이미지</th>
                     <th width="200px;">상품명</th>
                     <th width="150px;">가격</th>
@@ -39,8 +40,9 @@
             <tbody>
                 <tr th:each="dto, iter : ${list}">
                     <td>[[${iter.index + 1}]]</td>
+                    <th >[[${dto.num}]]</th>
                     <td>
-                        <a>
+                        <a th:href="@{/detail(num=${dto.num})}">
                             <img th:src="@{/photo/{photo}(photo=${dto.photo})}" style="width: 100px;" border="1" hspace="10">
                         </a>
                     </td>

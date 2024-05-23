@@ -28,4 +28,9 @@ public class MyShopService {
 		return shopMapper.getAllSangpums();
 		
 	}
+	
+	public ShopDto getData(int num){
+		
+		return shopMapper.getData(num);
+	}
 }

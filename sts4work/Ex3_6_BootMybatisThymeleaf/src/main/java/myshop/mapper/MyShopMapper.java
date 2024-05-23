@@ -14,5 +14,5 @@ public interface MyShopMapper {
 	public void insertShop(ShopDto dto);
 	@Select("select * from myshop order by num asc")
 	public List<ShopDto> getAllSangpums();
-	
+	public ShopDto getData(int num);
 }
