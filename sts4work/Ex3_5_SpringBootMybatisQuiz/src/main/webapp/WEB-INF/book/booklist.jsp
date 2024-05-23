@@ -49,17 +49,17 @@
                     <tr>
                         <td align="center">
                             <c:if test="${book.bookimage == 'no'}">
-                                <img src="/photo/noimage.jpg" alt="이미지" width="100">
+                                <img src="/bookphoto/noimage.jpg" alt="이미지" width="100">
                             </c:if>
                             <c:if test="${book.bookimage != 'no'}">
-                                <img src="/photo/${book.bookimage}" alt="이미지" width="100">
+                                <img src="/bookphoto/${book.bookimage}" alt="이미지" width="100">
                             </c:if>
                         </td>
                         <td>${book.bookname}</td>
                         <td>${book.writer}</td>
                         <td>${book.bookcompany}</td>
                         <td>${book.bookprice}</td>
-                        <td>${book.ipgday}</td>
+                        <td>${book.ipgoday}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                 onclick="location.href='updateform?num=${book.num}'">수정</button>
