@@ -1,6 +1,6 @@
 #tomcat port
 server:
-  port: 9001
+  port: 9003
 #thymeleaf
 spring:
   thymeleaf:
@@ -13,6 +13,6 @@ spring:
     password: a1234
 #mybatis
 mybatis:
-  type-aliases-package: myshop.dto
+  type-aliases-package: product.dto
   mapper-locations:
   - /mapper/**/*.xml

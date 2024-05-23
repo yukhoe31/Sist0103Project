@@ -17,30 +17,31 @@
 </head>
 <body>
 <div style="margin: 50px 100px;">
-    <h2>[[${dto.sangpum}]] 상세보기</h2>
+    <h2>[[${dto.pro_name}]] 상세보기</h2>
     <hr>
     <h2>원본이미지</h2>
-    <img th:src="@{|/photo/${dto.photo}|}">
+    <img th:src="@{|/productimage/${dto.pro_image}|}">
     <hr>
     
     <div th:object=${dto}>
-        <img th:src="@{|/photo/${dto.photo}|}" style="width: 60px;">
-        <h4>상품명: [[*{sangpum}]]</h4>
-        <div class="box" th:style="'background-color:'+*{color}">
-            <!-- 색상: [[*{color}]] -->
+     
+        <h4>상품명: [[*{pro_name}]]</h4>
+        <h4>색상: [[*{pro_color}]]</h4>
+        <div class="box" th:style="'background-color:'+*{pro_color}">
+           
         </div>
-        <h4>가격: [[*{price}]]</h4>
-        <h4>날짜:  <span th:text="${#calendars.format(dto.writeday,'yyyy-MM-dd HH:mm')}"></span></h4>
+        <h4>가격: [[*{pro_price}]]</h4>
+        <h4>날짜:  <span th:text="${#calendars.format(dto.pro_create_date,'yyyy-MM-dd HH:mm')}"></span></h4>
         
     </div>
     
     <br>
     <button type="button" class="btn btn-outline-success"
-    onclick="location.href='addform'">상품추가</button>
+    onclick="location.href='/product/form'">상품추가</button>
     <button type="button" class="btn btn-outline-success"
-    onclick="location.href='/'">목록</button>
+    onclick="location.href='/product/list'">목록</button>
     <button type="button" class="btn btn-outline-success"
-    th:onclick="|location.href='@{/delete(num=${dto.num})}'|">삭제</button>
+    th:onclick="|location.href='@{/product/delete(pro_num=${dto.pro_num})}'|">삭제</button>
 </div>
 </body>
 </html>

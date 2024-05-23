@@ -13,29 +13,31 @@
 <h4>
    <b>총 [[${totalCount}]]개의 상품이 있습니다</b>
    <button type="button" class="btn btn-outline-success" style="margin-left: 200px;"
-   onclick="location.href='addform'">상품추가</button>
+   onclick="location.href='form'">상품추가</button>
 </h4>
 <hr>
-<table class="table table-bordered" style="width: 600px;">
-   <tr class="table-success">
-     <th width="50px;">번호</th>
-     <th width="200px;">상품명</th>
-     <th width="150px;">가격</th>
-     <th width="150px;">날짜</th>
+<table class="table table-bordered" style="width: 800px;">
+   <tr class="table-warning">
+     <th width="80;">번호</th>
+     <th width="250;">상품명</th>
+     <th width="150;">이미지</th>
+     <th width="100;">가격</th>
+     <th width="150;">날짜</th>
    </tr>
    <tr th:each="dto,iter:${list}">
      <td>[[${iter.count}]]</td>
+     <td>[[${dto.pro_name}]]</td>
      <td>
-       <a th:href="@{/detail(num=${dto.num})}" style="color: black; cursor: pointer;">
-         <img th:src="@{|/photo/${dto.photo}|}" style="width: 50px;" border="1" hspace="10">
-          [[${dto.sangpum}]]
+       <a th:href="@{/product/detail(pro_num=${dto.pro_num})}" style="color: black; cursor: pointer;">
+         <img th:src="@{|/productimage/${dto.pro_image}|}" style="width: 50px;" border="1" hspace="10">
+          
        </a>
      </td>
      <td align="right">
-        <span th:text="${#numbers.formatInteger(dto.price,0,'COMMA')}"></span>
+        <span th:text="${#numbers.formatInteger(dto.pro_price,0,'COMMA')}"></span>
      </td>
      <td align="center">
-       <span th:text="${#calendars.format(dto.writeday,'yyyy-MM-dd')}"></span>
+       <span th:text="${#calendars.format(dto.pro_create_date,'yyyy-MM-dd HH:mm')}"></span>
      </td>
    </tr>
 </table>

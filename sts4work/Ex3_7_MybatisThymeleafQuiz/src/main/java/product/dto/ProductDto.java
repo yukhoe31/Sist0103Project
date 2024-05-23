@@ -1,4 +1,4 @@
-package myshop.dto;
+package product.dto;
 
 import java.sql.Timestamp;
 
@@ -9,20 +9,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Alias("ShopDto")
-public class ShopDto {
+@Alias("ProductDto")
+public class ProductDto {
 
-	private int num;
-	private String sangpum;
-	private int price;
-	private String photo;
-	private String color;
-	private Timestamp writeday;
-	
-	
-	
+	private int pro_num;
+	private String pro_name;
+	private int pro_price;
+	private String pro_color;
+	private String pro_image;
+	private Timestamp pro_create_date;
+
 }

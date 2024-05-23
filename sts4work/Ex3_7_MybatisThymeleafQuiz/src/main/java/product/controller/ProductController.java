@@ -1,4 +1,4 @@
-package myshop.controller;
+package product.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,45 +14,45 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import myshop.dto.ShopDto;
-import myshop.service.MyShopService;
+import product.dto.ProductDto;
+import product.service.ProductService;
+
 
 @Controller
 @RequiredArgsConstructor
-public class MyShopController {
-
-	private final MyShopService shopService;
+public class ProductController {
 	
-	@GetMapping("/")
+	private final ProductService proService;
+	
+	@GetMapping("/product/list")
 	public String list(Model model)
 	{
-		int totalCount=shopService.getTotalCount();
-		List<ShopDto> list=shopService.getAllSangpums();
+		int totalCount=proService.getTotalCount();
+		List<ProductDto> list=proService.getAllProducts();
 		
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("list", list);
 		
 		
-		return "myshop/shoplist";
+		return "product/productlist";
 	}
 	
 	
-	@GetMapping("/addform")
+	@GetMapping("product/form")
 	public String form()
 	{
-		return "myshop/shopform";
+		return "product/addform";
 	}
 	
-	
-	@PostMapping("/insert")
-	public String insert(@ModelAttribute ShopDto dto,
+	@PostMapping("product/insert")
+	public String insert(@ModelAttribute ProductDto dto,
 			@RequestParam MultipartFile upload,
 			HttpSession session)
 	{
-		String realPath=session.getServletContext().getRealPath("/photo");
+		String realPath=session.getServletContext().getRealPath("/productimage");
 		
 		String photoname=upload.getOriginalFilename();
-		dto.setPhoto(photoname);
+		dto.setPro_image(photoname);
 		
 		try {
 			upload.transferTo(new File(realPath+"\\"+photoname));
@@ -65,33 +65,35 @@ public class MyShopController {
 		}
 		
 		//db insert
-		shopService.insertShop(dto);
+		proService.insertProduct(dto);
 		
-		return "redirect:/";
+		return "redirect:/product/list";
 	}
 	
-	@GetMapping("/detail")
-	public String detail(@RequestParam int num,Model model)
+	
+	@GetMapping("product/detail")
+	public String detail(@RequestParam int pro_num,Model model)
 	{
-		ShopDto dto=shopService.getData(num);
+		ProductDto dto=proService.getData(pro_num);
 		model.addAttribute("dto", dto);
-		return "myshop/shopdetail";
+		return "product/productdetail";
 	}
 	
-	@GetMapping("/delete")
-	public String delete(@RequestParam int num,HttpSession session)
+	@GetMapping("product/delete")
+	public String delete(@RequestParam int pro_num,HttpSession session)
 	{
-		String oldFileName=shopService.getData(num).getPhoto();
-		String realPath=session.getServletContext().getRealPath("/photo");
+		String oldFileName=proService.getData(pro_num).getPro_image();
+		String realPath=session.getServletContext().getRealPath("/productimage");
 		
 		File file=new File(realPath+"\\"+oldFileName);
 		if(file.exists())
 			file.delete();
 		
 		//db delete
-		shopService.deleteShop(num);
+		proService.deleteProduct(pro_num);
 		
-		return "redirect:/";
+		return "redirect:/product/list";
 	}
 	
+
 }

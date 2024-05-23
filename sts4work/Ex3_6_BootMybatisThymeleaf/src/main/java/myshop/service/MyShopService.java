@@ -12,25 +12,29 @@ import myshop.mapper.MyShopMapper;
 @AllArgsConstructor
 public class MyShopService {
 
-	private MyShopMapper shopMapper;
 	
-	public int getTotalCount() {
-		
+	private final MyShopMapper shopMapper;
+	
+	public int getTotalCount()
+	{
 		return shopMapper.getTotalCount();
 	}
-	public void insertShop(ShopDto dto) {
-		
+	public void insertShop(ShopDto dto) 
+	{
 		shopMapper.insertShop(dto);
 	}
-	
-	public List<ShopDto> getAllSangpums(){
-		
+	public List<ShopDto> getAllSangpums()
+	{
 		return shopMapper.getAllSangpums();
-		
 	}
 	
-	public ShopDto getData(int num){
-		
+	public ShopDto getData(int num)
+	{
 		return shopMapper.getData(num);
+	}
+	
+	public void deleteShop(int num)
+	{
+		shopMapper.deleteShop(num);
 	}
 }
