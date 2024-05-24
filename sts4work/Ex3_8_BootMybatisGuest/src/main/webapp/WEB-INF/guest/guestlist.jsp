@@ -97,7 +97,7 @@
 	   
 	   $("button.delete").click(function(){
            var num = $(this).data("num");  // Get the ID of the post to delete
-           var password = prompt(num+"비밀번호를 입력하세요:");
+           var password = prompt(num+"번 댓글의 비밀번호를 입력하세요:");
 
            if(password == null || password.trim() == ""){
                alert("비밀번호를 입력해주세요.");

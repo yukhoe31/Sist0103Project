@@ -16,6 +16,8 @@ public class GuestListController {
 	@Autowired
 	private GuestService gService;
 	
+	//이렇게하면 그냥 localhost:9001만 적어도 알아서
+	//http://localhost:9001/guest/list 로 매핑된다.
 	@GetMapping("/")
 	public String start() {
 		
