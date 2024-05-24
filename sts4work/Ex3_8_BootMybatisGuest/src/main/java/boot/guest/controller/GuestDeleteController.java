@@ -26,6 +26,8 @@ public class GuestDeleteController {
     @ResponseBody
     public Map<String, Object> deletePost(@RequestParam int num, @RequestParam String pass) {
         Map<String, Object> result = new HashMap<>();
+        
+        //삭제성공여부 : success
         boolean success = gService.deleteGuest(num, pass);
 
         if (success) {

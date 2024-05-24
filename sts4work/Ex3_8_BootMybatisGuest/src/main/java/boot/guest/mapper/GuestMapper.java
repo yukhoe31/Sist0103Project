@@ -15,9 +15,9 @@ public interface GuestMapper {
 	public int getTotalCount();
 	public void insertGuest(GuestDto dto);
 	public List<GuestDto> getAllDatas();
-	@Select("SELECT pass FROM guest WHERE num = #{num}")
+	@Select("select pass from guest where num = #{num}")
     String getPasswordById(@Param("num") int num);
-    @Delete("DELETE FROM guest WHERE num = #{num}")
+    @Delete("delete from guest where num = #{num}")
     void deleteGuest(@Param("num") int num);
 }
 	
