@@ -1,10 +1,13 @@
 package boot.guest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import boot.guest.dto.GuestDto;
 import boot.guest.service.GuestService;
 
 @Controller
@@ -24,10 +27,14 @@ public class GuestListController {
 
 		int totalCount = gService.getTotalCount();
 		
+		List<GuestDto> list = gService.getAllDatas();
+		
 		model.addAttribute("totalCount",totalCount);
-		
-		
+		model.addAttribute("list",list);
 		
 		return "guest/guestlist";
 	}
+	
+	
+	
 }
