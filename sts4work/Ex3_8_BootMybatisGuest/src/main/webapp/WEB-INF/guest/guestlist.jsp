@@ -94,6 +94,29 @@
 		   })
 		   
 	   })
+	   
+	   $("button.delete").click(function(){
+           var num = $(this).data("num");  // Get the ID of the post to delete
+           var password = prompt(num+"비밀번호를 입력하세요:");
+
+           if(password == null || password.trim() == ""){
+               alert("비밀번호를 입력해주세요.");
+               return;
+           }
+
+           $.ajax({
+               type: 'post',
+               url: 'delete',
+               data: { num: num, pass: password },
+               dataType: 'json',
+               success: function(res) {
+                   alert(res.msg);
+                   if (res.success) {
+                       location.reload();
+                   }
+               }
+           });
+       });
 
    })
 
@@ -160,7 +183,7 @@
 						
 						<hr>
 						<button type="button" class="btn btn-info" >수정</button>
-						<button type="button" class="btn btn-info" >삭제</button>
+						<button type="button" class="btn btn-info delete"  data-num="${a.num}" >삭제</button>
 					</td>
 				</tr>
 			</table>

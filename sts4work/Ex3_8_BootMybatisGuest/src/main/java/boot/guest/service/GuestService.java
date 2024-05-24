@@ -28,6 +28,16 @@ public class GuestService {
 		
 		return mapper.getAllDatas();
 	}
+
+    public boolean deleteGuest(int num, String pass) {
+        String storedPass = mapper.getPasswordById(num);
+        if (storedPass != null && storedPass.equals(pass)) {
+        	mapper.deleteGuest(num);
+            return true;
+        }
+
+        return false;
+    }
 	
 	
 }
