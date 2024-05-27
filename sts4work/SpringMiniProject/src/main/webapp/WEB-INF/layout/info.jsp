@@ -15,7 +15,7 @@
 </head>
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
-   <i class="bi bi-envelope-arrow-down-fill"></i> &nbsp;sistlove@gmail.com<br>
+   <i class="bi bi-envelope-arrow-down-fill"></i> &nbsp;pokemon@gmfreak.com<br>
    <i class="bi bi-headset"></i>&nbsp;02-123-4567<br>
    <i class="bi bi-house-add-fill"></i>&nbsp;서울시 강남구 역삼동 한독빌딩<br>
 </body>

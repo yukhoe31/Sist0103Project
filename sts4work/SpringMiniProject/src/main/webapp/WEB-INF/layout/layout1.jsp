@@ -34,12 +34,12 @@
    div.layout div.info{
       position: absolute;
       top: 300px;
-      left: 100px;
+      left: 80px;
       height: 350px;
-      width: 200px;
-      border: 5px solid purple;
+      width: 300px;
+      border: 5px solid gray;
       border-radius: 30px;
-      padding: 30px 20px;
+      padding: 50px 20px;
    }
    
    div.layout div.main{

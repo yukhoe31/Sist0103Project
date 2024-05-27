@@ -16,7 +16,7 @@
 <body>
   <c:set var="root" value="<%=request.getContextPath() %>"/>
   <a href="/">
-	  <img alt="" src="${root }/image/title2.png">
+	  <img alt="" src="${root }/image/title2.jpg" style="height: 100px;">
 	  
   </a>
 </body>
