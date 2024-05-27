@@ -46,14 +46,14 @@ public class IpgoController {
 		mview.addObject("list", list);
 		
 		//mview.setViewName("ipgo/ipgolist");  jsp
-		mview.setViewName("/ipgo/ipgolist");  //tiles 
+		mview.setViewName("/sub2/ipgo/ipgolist");  //tiles 
 		return mview;
 	}
 	
 	@GetMapping("/ipgo/writeform")
 	public String form()
 	{
-		return "/ipgo/ipgoform";
+		return "/sub2/ipgo/ipgoform";
 	}
 	
 	@PostMapping("/ipgo/insert")

@@ -18,6 +18,14 @@
      
    </definition>
    
+   <!-- layout3 -->
+   <definition name="layout3" template="/WEB-INF/layout/layout3.jsp">
+     <put-attribute name="title3" value="/WEB-INF/layout/title3.jsp"/>
+     <put-attribute name="menu3" value="/WEB-INF/layout/menu3.jsp"/>
+     <put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+     <put-attribute name="info" value="/WEB-INF/layout/info.jsp"/>
+   </definition>
+   
    <!-- wild card -->
    <definition name="/*/*" extends="layout1">
      <put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
@@ -28,5 +36,10 @@
       <put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
    </definition>
    
+      
+   <!-- wild card: layout3 -->
+   <definition name="/sub2/*/*" extends="layout3">
+     <put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
+   </definition>
    
 </tiles-definitions>
