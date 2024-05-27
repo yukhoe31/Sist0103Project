@@ -3,10 +3,10 @@ server:
   port: 9000
 #jsp
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/
-      suffix: .jsp
+  #mvc:
+    #view:
+     # prefix: /WEB-INF/
+     # suffix: .jsp
   devtools:
     livereload:
       enabled: true
@@ -21,3 +21,4 @@ mybatis:
   type-aliases-package: boot.data.*
   mapper-locations:
   - /mapper/**/*.xml
+
