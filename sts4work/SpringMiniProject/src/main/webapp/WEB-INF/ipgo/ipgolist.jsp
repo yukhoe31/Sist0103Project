@@ -54,7 +54,7 @@
       </tr>
       <tr>
         <td>
-          <b>입고일: <fmt:formatDate value="${dto.ipgoday }" pattern="yyyy년 MM월 DD일"/></b>
+          <b>입고일: <fmt:formatDate value="${dto.ipgoday }" pattern="yyyy년 MM월 dd일 HH:mm"/></b>
         </td>
       </tr>
       
