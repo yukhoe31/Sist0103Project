@@ -25,7 +25,7 @@
       line-height: 60px;
       margin-right: 10px;
       font-size: 18px;
-      background-color: #ffdab9;
+      background-color: #fff0ba;
       cursor: pointer;
       border-radius: 20px;
       box-shadow: 5px 5px 5px gray;
@@ -49,7 +49,7 @@
        <a href="${root }/ipgo/list">상품목록</a>
      </li>
      <li>
-       <a href="${root }/member/list">회원목록</a>
+       <a href="${root }/member/myinfo">회원정보</a>
      </li>
      <li>
        <a href="${root }/member/form">회원가입</a>

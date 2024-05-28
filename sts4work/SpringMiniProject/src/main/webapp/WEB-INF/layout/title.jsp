@@ -12,6 +12,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+
+<style type="text/css">
+	div.login{
+		position: absolute;
+		left: 800px;
+		top: 40px;
+		width: 350px;
+	
+	}
+</style>
+
 </head>
 <body>
   <c:set var="root" value="<%=request.getContextPath() %>"/>
@@ -19,5 +30,14 @@
 	  <img alt="" src="${root }/image/title.png" style="height: 100px;">
 	  <b>SpringBoot+Mybatis+Tiles3</b>
   </a>
+  
+  <div class="login">
+  	<button type="button" class="btn btn-success" style="width: 100px;"
+  	onclick="location.href= '${root}/login/form.jsp'">Login</button>
+  
+  </div>
+  
+  
+  
 </body>
 </html>

@@ -12,20 +12,21 @@
 </head>
 <body>
 <div style="margin: 50px 100px; width: 500px;">
-<form action="insert" method="post" enctype="multipart/form-data">
+<form action="update" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="num" value="${dto.num }">
   <table class="table table-bordered">
      <tr>
        <th class="table-light">상품명</th>
          <td>
            <input type="text" name="sangpum" class="form-control"
-           style="width: 150px;" required="required" >
+           style="width: 150px;" required="required" value="${dto.sangpum }">
          </td>
      </tr>
      <tr>
        <th class="table-light">상품가격</th>
          <td>
            <input type="text" name="price" class="form-control"
-           style="width: 200px;" required="required">
+           style="width: 200px;" required="required" value="${dto.price }">
          </td>
      </tr>
      <tr>
@@ -38,8 +39,8 @@
      
      <tr>
        <td colspan="2" align="center">
-         <button type="submit" class="btn btn-success">저장</button>
-         <button type="button" class="btn btn-success"
+         <button type="submit" class="btn btn-warning">수정</button>
+         <button type="button" class="btn btn-warning"
          onclick="location.href='list'">목록</button>
        </td>
      </tr>

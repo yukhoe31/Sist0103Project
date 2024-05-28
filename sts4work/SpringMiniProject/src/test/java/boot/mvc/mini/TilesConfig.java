@@ -18,7 +18,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  
 
 @Configuration
-
 public class TilesConfig {        
 
          @Bean
