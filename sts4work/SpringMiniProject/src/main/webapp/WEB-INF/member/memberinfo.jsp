@@ -11,17 +11,56 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+  $(function(){
+	  $(".btnnewphoto").click(function(){
+		  $("#newphoto").trigger("click");
+	  });
+	  
+	  $("#newphoto").change(function(){
+		  
+		  var num=$(this).attr("num");
+		  //alert(num);
+		  
+		  var form=new FormData();
+		  
+		  form.append("photo",$("#newphoto")[0].files[0]);
+		 	form.append("num",num); 
+		  
+		  console.dir(form); 
+		  
+		  
+		  $.ajax({
+			  type:"post",
+			  dataType:"json",
+			  url:"updatephoto",
+			  processData:false,
+			  contentType:false,
+			  data:form,
+			  success:function(){
+				  location.reload();
+			  }
+			  
+		  })
+		  
+	  });
+  })
+
+</script>
+
 </head>
 <body>
 <div style="margin: 50px 100px; width: 700px;">
 <table class="table table-bordered">
    <c:forEach var="dto" items="${list }">
+   
+   <c:if test="${sessionScope.loginok!=null and sessionScope.myid==dto.id }">
      <tr>
        <td style="width: 250px;" align="center" rowspan="5">
          <img alt="" src="../memberphoto/${dto.photo }" width="200" height="220" border="1">
          <br><br>
          <input type="file" id="newphoto" num="${dto.num }" style="display: none;">
-         <button type="button" class="btn btn-info">사진수정</button>
+         <button type="button" class="btn btn-info btnnewphoto">사진수정</button>
        </td>
        <td>회원명: ${dto.name }</td>
        <td rowspan="5" align="center" style="width: 200px;" valign="middle">
@@ -42,7 +81,7 @@
      <tr>
        <td>주소: ${dto.addr }</td>
      </tr>
-     
+    </c:if> 
    </c:forEach>
 </table>
 </div>

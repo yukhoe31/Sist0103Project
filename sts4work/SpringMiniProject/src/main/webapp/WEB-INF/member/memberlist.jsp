@@ -11,6 +11,48 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+   $(function(){
+	   //전체선택하면 박스선택해제
+	   $("#allcheck").click(function(){
+		   
+		  var chk= $(this).is(":checked");
+		  
+		  //전체체크값을 모든체크에 일괄전달
+		  $(".del").prop("checked",chk);
+	   });
+	   
+	   $("#btnmemberdel").click(function(){
+		   var cnt=$(".del:checked").length;
+		   //alert(cnt);
+		   
+		   
+		   if(cnt==0){
+			   alert("먼저 삭제할 회원을 선택해주세요");
+			   return;
+		   }
+		   
+		   $(".del:checked").each(function(i,elt){
+			   var num=$(this).attr("num");
+			   console.log(num);  //선택한 num만 나오나 반드시 확인!!!
+			   
+			   //선택한것모두 삭제
+			   $.ajax({
+				   type:"get",
+				   url:"delete",
+				   dataType:"html",
+				   data:{"num":num},
+				   success:function(){
+					   alert("삭제되었습니다");
+					   location.reload();
+				   }
+			   })
+		   })
+	   })
+	   
+   });
+
+</script>
 </head>
 <body>
 <h3 class="alert alert-info">총 ${mcount }명의 회원이 있습니다</h3>

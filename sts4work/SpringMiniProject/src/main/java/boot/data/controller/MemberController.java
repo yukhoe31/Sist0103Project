@@ -51,11 +51,6 @@ public class MemberController {
 		return "/member/memberform";
 	}
 	
-	@GetMapping("/member/form2")
-	public String form2()
-	{
-		return "/member/loginform2";
-	}
 	
 	//id체크
 	@GetMapping("/member/idcheck")
@@ -95,6 +90,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		
 		service.insertMember(dto);
 		return "redirect:list";
 	}
@@ -106,6 +102,37 @@ public class MemberController {
 		List<MemberDto> list=service.getAllMembers();
 		model.addAttribute("list", list);
 		return "/member/memberinfo";
+	}
+	
+	//회원목록 삭제
+	@GetMapping("/member/delete")
+	@ResponseBody
+	public void deleteMember(String num)
+	{
+		service.deleteMember(num);
+	}
+	
+	@PostMapping("/member/updatephoto")
+	@ResponseBody
+	public void photoUpload(String num, MultipartFile photo,
+			HttpSession session) {
+		
+		String path = session.getServletContext().getRealPath("/memberphoto");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = sdf.format(new Date()) + photo.getOriginalFilename();
+		
+		try {
+			photo.transferTo(new File(path +"\\"+fileName));
+			
+			service.updatePhoto(num, fileName); //db업데이튼
+		
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 }

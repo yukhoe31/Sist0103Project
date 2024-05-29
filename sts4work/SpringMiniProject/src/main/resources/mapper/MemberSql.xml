@@ -20,4 +20,17 @@
    <select id="getDataById" parameterType="String" resultType="MemberDto">
       select * from member where id=#{id}
    </select>
+   
+   <delete id="deleteMember">
+   	  delete from member where num=#{num}
+   </delete>
+   
+   <select id="getDataByNum" parameterType="String" resultType="MemberDto">
+   	  select * from member where num=#{num}
+   </select>
+   
+   <update id="updatePhoto" parameterType="Map">
+   	  update member set photo=#{photo} where num=#{num}
+   </update>
+   
 </mapper>

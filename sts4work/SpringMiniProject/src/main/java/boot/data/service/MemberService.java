@@ -31,7 +31,7 @@ public class MemberService implements MemberServiceInter {
 	@Override
 	public int getSearchId(String id) {
 		// TODO Auto-generated method stub
-		return mapperInter.getSerchId(id);
+		return mapperInter.getSearchId(id);
 	}
 
 	@Override
@@ -56,5 +56,32 @@ public class MemberService implements MemberServiceInter {
 		// TODO Auto-generated method stub
 		return mapperInter.getDataById(id);
 	}
+	
+	@Override
+	public void deleteMember(String num) {
+		// TODO Auto-generated method stub
+		mapperInter.deleteMember(num);
+	}
+	
+	@Override
+	public MemberDto getDataByNum(String num) {
+		// TODO Auto-generated method stub
+		return mapperInter.getDataById(num);
+	}
+	
+	@Override
+	public void updatePhoto(String num, String photo) {
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<>();
+		
+		map.put("num", num);
+		map.put("photo", photo);
+		mapperInter.updatePhoto(map);
+		
+	}
+	
+	
+	
+	
 
 }
