@@ -14,6 +14,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script type="text/javascript">
+	
+
+</script>
 
 </body>
 </html>

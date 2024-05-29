@@ -15,8 +15,45 @@
 </head>
 <body>
 
-	<h1>로그인폼</h1>
 
+<div class="loginform" style="margin: 50px 100px;">
+	<form action="loginprocess" method="post">
+		<table class="table table-bordered" style="width:400px;">
+			<caption align="top"><b>회원로그인</b></caption>
+			
+			<tr>
+				<th style="width: 120px; background-color: #ddd;">아이디</th>
+				<td>
+					<input type="text" name="id" class="form-control"
+					required="required" autofocus="autofocus"
+					style="width: 150px;" placeholder="아이디"
+					value="${sessionScope.saveok == null?"":sessionScope.myid }">
+				</td>
+			</tr>
+			<tr>
+				<th style="width: 120px; background-color: #ddd;">비밀번호</th>
+				<td>
+					<input type="password" name="pass" class="form-control"
+					required="required" 
+					style="width: 150px;" placeholder="비밀번호">
+				</td>
+			</tr>
+		
+			<tr>
+				<td colspan="2" align="center">
+					<input type="checkbox" name="cbsave"
+					${sessionScope.saveok == null? "":"checked" }>아이디저장
+					&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-info"
+					style="width: 130px;">회원로그인</button>
+				</td>
+			</tr>
+		
+		</table>
+
+	</form>
+
+</div>
 
 
 </body>

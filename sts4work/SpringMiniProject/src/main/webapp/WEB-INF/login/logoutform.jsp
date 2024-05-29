@@ -13,7 +13,19 @@
 
 <title>Insert title here</title>
 </head>
+<c:set var="root" value="<%=request.getContextPath() %>"/>
+
 <body>
+
+<div style="margin-left: 50px 100px;">
+	<img alt="" src="${root }/image/welcome.jpg" width="200" align="left" hspace="20">
+	<br><br>
+	<b>${sessionScope.myid }님 로그인중</b><br><br><br>
+	<button type="button" class="btn btn-danger"
+	style="width: 100px;" onclick="location.href='logoutprocess'">로그아웃</button>
+
+</div>
+
 
 </body>
 </html>

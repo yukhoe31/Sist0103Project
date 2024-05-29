@@ -18,5 +18,19 @@
    <i class="bi bi-envelope-arrow-down-fill"></i> &nbsp;pokemon@gmfreak.com<br>
    <i class="bi bi-headset"></i>&nbsp;02-123-4567<br>
    <i class="bi bi-house-add-fill"></i>&nbsp;서울시 강남구 역삼동 한독빌딩<br>
+
+	<!-- 로그아웃 상태는 기본이미지 로그인상태는 로그인한이미지 나오게 -->
+	
+	<c:if test="${sessionScope.loginok == null }">
+		<img alt="" src="${root }/image/monsterball.png" width="130" height="130"
+		style="border-radius: 100px;">
+		
+	</c:if>
+	
+	<c:if test="${sessionScope.loginok != null }">
+		<img alt="" src="${root }/memberphoto/${sessionScope.loginphoto}" width="130" height="130"
+		style="border-radius: 100px;">
+		
+	</c:if>
 </body>
 </html>

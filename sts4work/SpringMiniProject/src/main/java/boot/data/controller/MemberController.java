@@ -51,6 +51,11 @@ public class MemberController {
 		return "/member/memberform";
 	}
 	
+	@GetMapping("/member/form2")
+	public String form2()
+	{
+		return "/member/loginform2";
+	}
 	
 	//id체크
 	@GetMapping("/member/idcheck")
