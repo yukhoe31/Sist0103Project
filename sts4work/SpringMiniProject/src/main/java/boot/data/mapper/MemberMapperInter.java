@@ -21,4 +21,6 @@ public interface MemberMapperInter {
 	public MemberDto getDataByNum(String num);
 	public void updatePhoto(Map<String, String> map);
 	public void updateMember(MemberDto dto);
+	
+	
 }

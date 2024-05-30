@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -23,6 +23,7 @@
 <table class="table table-bordered" style="width: 1000px;">
    <tr class="table-success">
      <th width="60">번호</th>
+     <th width="60">회원명</th>
      <th width="460">제목</th>
      <th width="160">작성자</th>
      <th width="80">조회</th>
@@ -36,6 +37,20 @@
         </td>
       </tr>
    </c:if>
+   
+   <c:forEach var="post" items="${list}" varStatus="i">
+      <tr>
+         <td>${i.count }</td>
+         <td>${post.myid }</td>
+         <td>${post.subject}</a></td>
+         <td>${post.myid}</td>
+         <td>${post.readcount}</td>
+         <td><fmt:formatDate value="${post.writeday}" pattern="yyyy-MM-dd"/></td>
+      </tr>
+   </c:forEach>
+   
+   
+   
 </table>
 </body>
 </html>

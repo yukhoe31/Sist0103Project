@@ -17,7 +17,8 @@
 <body>
    <i class="bi bi-envelope-arrow-down-fill"></i> &nbsp;pokemon@gmfreak.com<br>
    <i class="bi bi-headset"></i>&nbsp;02-123-4567<br>
-   <i class="bi bi-house-add-fill"></i>&nbsp;서울시 강남구 역삼동 한독빌딩<br>
+   <i class="bi bi-house-add-fill"></i>&nbsp;	
+일본 도쿄도 치요다구 칸다 니시키 쵸 2-2-1 KANDA SQUARE<br>
 
 	<!-- 로그아웃 상태는 기본이미지 로그인상태는 로그인한이미지 나오게 -->
 	

@@ -54,7 +54,7 @@ div.login {
 
 
 
-	<!-- ajax로그인 모달폼 -->
+	
 <c:if test="${sessionScope.loginok==null }">
 	<div class="container mt-3">
 
@@ -64,7 +64,9 @@ div.login {
 	
 	
 	</div>
-		</c:if>
+</c:if>
+		
+<!-- ajax로그인 모달폼 -->
 	<!-- The Modal -->
 	<div class="modal" id="myModal">
 		<div class="modal-dialog modal-sm">

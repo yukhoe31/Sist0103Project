@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+
+	<c:set var="root" value="<%=request.getContextPath() %>" />
+	<link rel="icon" type="image/x-icon"
+		href="${root}/image/monsterball.ico">
 <style type="text/css">
    div.layout div{
       border: 0px solid black;
