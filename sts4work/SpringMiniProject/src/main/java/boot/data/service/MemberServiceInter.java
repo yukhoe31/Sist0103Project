@@ -18,4 +18,5 @@ public interface MemberServiceInter {
 	public void deleteMember(String num);
 	public MemberDto getDataByNum(String num);
 	public void updatePhoto(String num, String photo);
+	public void updateMember(MemberDto dto);
 }

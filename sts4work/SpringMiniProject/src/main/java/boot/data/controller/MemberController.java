@@ -74,13 +74,16 @@ public class MemberController {
 	{
 		String path=session.getServletContext().getRealPath("/memberphoto");
 		
+		String myid=(String)session.getAttribute("myid");
+		String loginok=(String)session.getAttribute("loginok");
+		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		String fileName=sdf.format(new Date())+myphoto.getOriginalFilename();
 		dto.setPhoto(fileName);
 		
 		try {
 			myphoto.transferTo(new File(path+"\\"+fileName));
-			
+			service.insertMember(dto);
 			
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -90,9 +93,11 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		if(loginok==null || myid!=null)
+			return "/member/gaipsuccess";
+		else
+		    return "redirect:list";
 		
-		service.insertMember(dto);
-		return "redirect:list";
 	}
 	
 	//회원정보로 가기
@@ -114,25 +119,57 @@ public class MemberController {
 	
 	@PostMapping("/member/updatephoto")
 	@ResponseBody
-	public void photoUpload(String num, MultipartFile photo,
-			HttpSession session) {
+	public void photoUpload(String num,MultipartFile photo,HttpSession session)
+	{
+		String path=session.getServletContext().getRealPath("/memberphoto");
 		
-		String path = session.getServletContext().getRealPath("/memberphoto");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String fileName = sdf.format(new Date()) + photo.getOriginalFilename();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName=sdf.format(new Date())+photo.getOriginalFilename();
 		
 		try {
-			photo.transferTo(new File(path +"\\"+fileName));
+			photo.transferTo(new File(path+"\\"+fileName));
 			
-			service.updatePhoto(num, fileName); //db업데이튼
-		
-		} catch (IllegalStateException | IOException e) {
+			service.updatePhoto(num, fileName); //db업데이트
+			
+			//세션의 사진변경
+			session.setAttribute("loginphoto", fileName);
+			
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	//수정폼에 출력할 데이타 반환
+	@GetMapping("/member/updateform")
+	@ResponseBody
+	public MemberDto getData(String num)
+	{
+		return service.getDataByNum(num);
+	}
+	
+	//수정
+	@PostMapping("/member/update")
+	@ResponseBody
+	public void update(MemberDto dto)
+	{
+		service.updateMember(dto);
+	}
+	
+	//탈퇴
+	@GetMapping("/member/deleteme")
+	@ResponseBody
+	public void deleteme(String num, HttpSession session) {
 		
+		service.deleteMember(num);
+		
+		session.removeAttribute("loginok");
 		
 	}
+	
+	
 	
 }

@@ -66,7 +66,7 @@ public class MemberService implements MemberServiceInter {
 	@Override
 	public MemberDto getDataByNum(String num) {
 		// TODO Auto-generated method stub
-		return mapperInter.getDataById(num);
+		return mapperInter.getDataByNum(num);
 	}
 	
 	@Override
@@ -81,7 +81,11 @@ public class MemberService implements MemberServiceInter {
 	}
 	
 	
-	
+	@Override
+	public void updateMember(MemberDto dto) {
+		// TODO Auto-generated method stub
+		mapperInter.updateMember(dto);
+	}
 	
 
 }

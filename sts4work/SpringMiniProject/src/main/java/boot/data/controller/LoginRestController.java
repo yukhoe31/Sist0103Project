@@ -14,42 +14,40 @@ import boot.data.service.MemberService;
 
 @RestController
 public class LoginRestController {
-	
+
 	@Autowired
 	MemberService service;
 	
 	@GetMapping("/member/login")
-	public Map<String, String> loginprocess(String id, 
-			String pass,
-			HttpSession session){
+	public Map<String, String> loginprocess(String id,String pass,HttpSession session)
+	{
+		Map<String, String> map=new HashMap<>();
 		
-		Map<String, String> map = new HashMap<>();
+		int result=service.loginIdPassCheck(id, pass);
 		
-		int result = service.loginIdPassCheck(id,pass);
-		
-		if(result == 1) {
+		if(result==1)
+		{
 			session.setMaxInactiveInterval(60*60*4);
 			
-			//로그인한 아이디로 정보얻어 세션 저장
-			MemberDto mdto = service.getDataById(id);
+			//로그인한 아이디로 정보얻어 세션에 저장
+			MemberDto mdto=service.getDataById(id);
 			
 			session.setAttribute("loginok", "yes");
-			session.setAttribute("myid", mdto);
-			session.setAttribute(pass, mdto.getName());
+			session.setAttribute("myid", id);
+			session.setAttribute("loginname", mdto.getName());
 			session.setAttribute("loginphoto", mdto.getPhoto());
 		}
 		
-		map.put("result", result == 1?"success":"fail");
+		map.put("result", result==1?"success":"fail");
 		
 		return map;
 	}
 	
 	@GetMapping("/member/logout")
-	public void logoutprocess(HttpSession session) {
-		
+	public void logoutprocess(HttpSession session)
+	{
 		//로그아웃시 제거할 세션
 		session.removeAttribute("loginok");
 		session.removeAttribute("myid");
 	}
-	
 }

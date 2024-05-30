@@ -55,14 +55,16 @@ div.login {
 
 
 	<!-- ajax로그인 모달폼 -->
-
+<c:if test="${sessionScope.loginok==null }">
 	<div class="container mt-3">
 
 
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 			data-bs-target="#myModal" id="btnlogin">Ajax Login</button>
+	
+	
 	</div>
-
+		</c:if>
 	<!-- The Modal -->
 	<div class="modal" id="myModal">
 		<div class="modal-dialog modal-sm">
