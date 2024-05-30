@@ -99,7 +99,7 @@
 		  var num=$(this).attr("num");
 		  //alert(num);
 		  
-		  var a = confirm("정말 탄퇴하시겠습니까?");	
+		  var a = confirm("정말 탈퇴하시겠습니까?");	
 		  
 		  if(a){
 			  $.ajax({
@@ -160,10 +160,18 @@
        <td>주소: ${dto.addr }</td>
      </tr>
     </c:if> 
+    
+    
+      
+
+   
    </c:forEach>
 </table>
 </div>
+   <c:if test="${sessionScope.loginok == null}">
 
+    	<b style="font-size: 30px;color: green;'">먼저 로그인을 하시기 바랍니다.</b>
+   </c:if> 
 
 <!-- The Modal -->
 <div class="modal" id="myUpdateModal">
