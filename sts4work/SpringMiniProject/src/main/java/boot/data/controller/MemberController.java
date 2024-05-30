@@ -93,9 +93,11 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		/*
 		if(loginok==null || myid!=null)
-			return "/member/gaipsuccess";
+		return "/member/gaipsuccess";
 		else
+		*/
 		    return "redirect:list";
 		
 	}
