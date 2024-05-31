@@ -1,5 +1,6 @@
 package boot.data.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import boot.data.dto.MemBoardDto;

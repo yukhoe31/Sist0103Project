@@ -34,7 +34,7 @@ div.login {
 </head>
 <body>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-	<a href="/"> <img alt="" src="${root }/image/title3.png"
+	<a href="/"> <img alt="" src="${root }/image/logo1.png"
 		style="height: 100px;"> 
 	</a>
 
