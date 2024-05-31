@@ -64,45 +64,92 @@ font-size: 0.9em;
 	
 	//댓글리스트
 	function list() {
-		
-		num = $("#num").val(); //전역변수
-		loginok = "${sessionScope.loginok}";
-		myid = "${sessionScope.myid}";
-		
-		$.ajax({
-			type: "get",
-			dataType: "json",
-			url: "alist",
-			data: {"num": num},
-			success: function(data){
-				
-				$("span.acount").text(data.length);//댓글랫수
-				
-				var s="";
-				$.each(data,function(i,dto){
-					
-					s += "<b>" +dto.name+ "</b>: " +dto.content;
-					s += "<span class='day'>" + dto.writeday +"</span>";
-					
-					if(loginok == 'yes' && myid ==dto.myid){
-						
-						s += "<i class='bi bi-pencil-square'></i>";
-						s += "&nbsp;"
-						
-						s += "<i class='bi bi-trash-fill'></i>";
-					}
-					
-					
-					s += "<br>";
-				})
-				
-				$("div.alist").html(s);
+    num = $("#num").val(); //전역변수
+    loginok = "${sessionScope.loginok}";
+    myid = "${sessionScope.myid}";
+    
+    $.ajax({
+        type: "get",
+        dataType: "json",
+        url: "alist",
+        data: {"num": num},
+        success: function(data){
+            $("span.acount").text(data.length);//댓글수
+            
+            var s="";
+            $.each(data,function(i,dto){
+                
+                s += "<b>" +dto.name+ "</b>: " +dto.content;
+                s += "<span class='day'>" + dto.writeday +"</span>";
+                
+                if(loginok == 'yes' && myid == dto.myid){
+                    s += "<i class='bi bi-pencil-square' data-idx='" + dto.idx + "'></i>";
+                    s += "&nbsp;"
+                    s += "<i class='bi bi-trash-fill' data-idx='" + dto.idx + "'></i>";
+                }
+                
+                s += "<br>";
+            });
+            
+            $("div.alist").html(s);
 
-				
-			}
-		});
+            // Add event listeners for the edit and delete buttons
+            $(".bi-pencil-square").click(function() {
+                var idx = $(this).data("idx");
+                editAnswer(idx);
+            });
+            
+            $(".bi-trash-fill").click(function() {
+                var idx = $(this).data("idx");
+                deleteAnswer(idx);
+            });
+        }
+    });
+}
+
+	function editAnswer(idx) {
+	    // Fetch the current content of the comment
+	    $.ajax({
+	        type: "get",
+	        dataType: "json",
+	        url: "getComment",
+	        data: {"idx": idx},
+	        success: function(data) {
+	            var currentContent = data.content;
+	            var newContent = prompt("Enter new content for the comment:", currentContent);
+
+	            if (newContent && newContent !== currentContent) {
+	                $.ajax({
+	                    type: "post",
+	                    dataType: "html",
+	                    url: "aupdate",
+	                    data: {"idx": idx, "content": newContent},
+	                    success: function(res) {
+	                        alert("수정되었습니다.");
+	                        list(); // Refresh the comment list
+	                    }
+	                });
+	            }
+	        }
+	    });
 	}
-	
+
+
+function deleteAnswer(idx) {
+    if (confirm("정말로 삭제하시겠습니까?")) {
+        $.ajax({
+            type: "post",
+            dataType: "html",
+            url: "adelete",
+            data: {"idx": idx},
+            success: function(res) {
+                alert("삭제되었습니다.");
+                list(); // Refresh the comment list
+            }
+        });
+    }
+}
+
 
 </script>
 

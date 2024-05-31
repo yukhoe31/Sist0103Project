@@ -12,4 +12,6 @@ public interface AnsMboardServiceInter {
 	public AnswerMboardDto getAnswer(String idx);
 	public void updateAnswer(AnswerMboardDto dto);
 	public void deleteAnswer(String idx);
+	
+	public AnswerMboardDto getAnswerById(String idx);
 }

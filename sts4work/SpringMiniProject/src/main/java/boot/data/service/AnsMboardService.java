@@ -31,6 +31,11 @@ public class AnsMboardService implements AnsMboardServiceInter {
 		// TODO Auto-generated method stub
 		return mapper.getAnswer(idx);
 	}
+	
+	@Override
+    public AnswerMboardDto getAnswerById(String idx) {
+        return mapper.getAnswer(idx);
+    }
 
 	@Override
 	public void updateAnswer(AnswerMboardDto dto) {

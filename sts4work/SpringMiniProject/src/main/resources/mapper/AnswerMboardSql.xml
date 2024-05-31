@@ -13,12 +13,18 @@
 		select * from answermboard where idx=#{idx}
 	</select>
 	
+	<select id="getAnswerById" parameterType="String" resultType="AnswerMboardDto">
+		select * from answermboard where idx=#{idx}
+	</select>
+	
 	<update id="updateAnswer" parameterType="AnswerMboardDto">
 		update answermboard set content=#{content} where idx=#{idx}
 	</update>	
 	
 	<delete id="deleteAnswer" parameterType="String">
-		delete form answerboard where idx=#{idx}
+		delete from answermboard where idx=#{idx}
 	</delete>
+	
+	
 
 </mapper>
