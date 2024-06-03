@@ -48,10 +48,10 @@ public class AnswerBoardRestController {
         return service.getAllAnswer(num);
     }
 
-    // 댓글 조회 by idx
-    @GetMapping("/board/getComment")
-    public AnswerMboardDto getComment(@RequestParam String idx) {
-        return service.getAnswerById(idx);
+    // 수정 : 댓글 조회 by idx
+    @GetMapping("/board/adata")
+    public AnswerMboardDto adata(String idx) {
+        return service.getAnswer(idx);
     }
 
     // 수정
@@ -72,7 +72,7 @@ public class AnswerBoardRestController {
     }
 
     // 삭제
-    @PostMapping("/board/adelete")
+    @GetMapping("/board/adelete")
     public void delete(@RequestParam String idx) {
         service.deleteAnswer(idx);
     }

@@ -21,7 +21,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class TilesConfig {        
 
          @Bean
-
          public TilesConfigurer tilesConfigurer() {
 
                System.out.println("/WEB-INF/tiles.xml");
@@ -43,7 +42,6 @@ public class TilesConfig {
  
 
          @Bean
-
          public TilesViewResolver tilesViewResolver() {
 
             TilesViewResolver viewResolver = new TilesViewResolver();
@@ -61,7 +59,6 @@ public class TilesConfig {
          
 
          @Bean
-
          public UrlBasedViewResolver viewResolver() {
 
             final UrlBasedViewResolver resolver = new UrlBasedViewResolver();

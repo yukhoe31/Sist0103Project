@@ -9,11 +9,9 @@
 	
 	</select>
 	
-	<select id="getAnswer" parameterType="String" resultType="AnswerMboardDto">
-		select * from answermboard where idx=#{idx}
-	</select>
+
 	
-	<select id="getAnswerById" parameterType="String" resultType="AnswerMboardDto">
+	<select id="getAnswer" parameterType="String" resultType="AnswerMboardDto">
 		select * from answermboard where idx=#{idx}
 	</select>
 	

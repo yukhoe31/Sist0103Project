@@ -50,6 +50,11 @@
                    <i class="bi bi-image"  style="color: gray;"></i>
                </c:if>
                
+               <c:if test="${a.acount >0 }">
+               		<a style="color:red;" href="content?num=${a.num }&currentPage=${currentPage}">[${a.acount}]</a>
+               
+               </c:if>
+               
             </td>
             <td>${a.name }</td>
             <td>${a.readcount }</td>

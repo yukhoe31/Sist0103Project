@@ -3,23 +3,23 @@ package boot.data.dto;
 import java.sql.Timestamp;
 
 import org.apache.ibatis.type.Alias;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
 @Data
-@Alias("MemBoardDto")
-public class MemBoardDto {
+@Alias("ReBoardDto")
+public class ReBoardDto {
 
-	private String num;
-	private String myid;
+	private int num;
+	private String id;
 	private String name;
 	private String subject;
+	private String photo;
 	private String content;
-	private String uploadfile;
-	private MultipartFile upload;
 	private int readcount;
-	private int acount;
+	private int likes;
+	private int regroup;
+	private int restep;
+	private int relevel;
 	private Timestamp writeday;
-	
 }

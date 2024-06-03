@@ -23,6 +23,7 @@ import boot.data.dto.IpgoDto;
 import boot.data.mapper.IpgoMapperInter;
 
 
+
 @Controller
 public class IpgoController {
 
@@ -148,4 +149,13 @@ public class IpgoController {
 		mapper.updateIpgo(dto);
 		return "redirect:list";
 	}
+	
+	@GetMapping("/ipgo/detail")
+	public String detail(@RequestParam String num,Model model)
+	{
+		IpgoDto dto=mapper.getData(num);
+		model.addAttribute("dto", dto);
+		return "/sub2/ipgo/ipgodetail.jsp?num="+num;
+	}
+
 }

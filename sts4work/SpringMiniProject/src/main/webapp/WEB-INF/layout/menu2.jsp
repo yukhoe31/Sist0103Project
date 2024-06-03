@@ -42,18 +42,39 @@
      <li>
        <a href="${root }/">Home</a>
      </li>
+     
+     <!-- 로그인한 사람중에서 admin만 회원정보 볼수 있음 -->
+     <c:if test="${sessionScope.loginok!=null and sessionScope.myid=='admin'}">   
      <li>
        <a href="${root }/ipgo/writeform">상품등록</a>
      </li>
+     </c:if>
+     
      <li>
        <a href="${root }/ipgo/list">상품목록</a>
      </li>
+     
+     <!-- 로그인한 사람만 회원정보 볼수 있음 -->
+     <c:if test="${sessionScope.loginok!=null }">
      <li>
        <a href="${root }/member/myinfo">회원정보</a>
      </li>
+     </c:if>
+     
+     <!-- 로그인 안한 사람만 회원가입 볼수 있음 -->
+     <c:if test="${sessionScope.loginok==null }">
      <li>
        <a href="${root }/member/form">회원가입</a>
      </li>
+     </c:if>
+     
+     <!-- 로그인한 사람중에서 admin만 회원정보 볼수 있음 -->
+     <c:if test="${sessionScope.loginok!=null and sessionScope.myid=='admin'}">
+     <li>
+       <a href="${root }/member/list">회원목록</a>
+     </li>
+     </c:if>
+     
      <li>
        <a href="${root }/board/list">게시판</a>
      </li>
