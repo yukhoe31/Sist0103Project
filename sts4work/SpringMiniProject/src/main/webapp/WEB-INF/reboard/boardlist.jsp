@@ -15,5 +15,10 @@
 </head>
 <body>
 
+<div>
+	<button type="button" class="btn btn-outline-secondary"
+	onclick="location.href='form'">게시글 작성하러 가기</button>
+</div>
+
 </body>
 </html>
