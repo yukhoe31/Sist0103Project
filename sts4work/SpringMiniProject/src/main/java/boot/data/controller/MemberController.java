@@ -53,18 +53,25 @@ public class MemberController {
 	
 	
 	//id체크
+	//Map으로 하는 이유 :ajax => key value로 저장할때
 	@GetMapping("/member/idcheck")
 	@ResponseBody
-	public Map<String, Integer> idcheckprocess(@RequestParam String id)
-	{
-		Map<String, Integer> map=new HashMap<>();
-		
-		//id 체크 메서드 호출
-		int n=service.getSearchId(id);
-		
-		map.put("count", n);  //1  or 0
-		return map;
+	public Map<String, Integer> idcheckprocess(@RequestParam String id) {
+	    Map<String, Integer> map = new HashMap<>();
+	    
+	    // 로그 추가
+	    System.out.println("Received ID for check: " + id);
+	    
+	    // id 체크 메서드 호출
+	    int n = service.getSearchId(id);
+	    
+	    // 로그 추가
+	    System.out.println("ID check result for " + id + ": " + n);
+	    
+	    map.put("count", n);  // 1 or 0
+	    return map;
 	}
+
 	
 	//insert
 	@PostMapping("/member/insert")
@@ -93,11 +100,9 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		/*
-		if(loginok==null || myid!=null)
-		return "/member/gaipsuccess";
-		else
-		*/
+		/*if(loginok==null || myid!=null)
+			return "/member/gaipsuccess";
+		else*/
 		    return "redirect:list";
 		
 	}
@@ -161,17 +166,16 @@ public class MemberController {
 		service.updateMember(dto);
 	}
 	
+	
 	//탈퇴
 	@GetMapping("/member/deleteme")
 	@ResponseBody
-	public void deleteme(String num, HttpSession session) {
-		
+	public void deleteme(String num,HttpSession session)
+	{
 		service.deleteMember(num);
 		
 		session.removeAttribute("loginok");
+		session.removeAttribute("myid");
 		
 	}
-	
-	
-	
 }

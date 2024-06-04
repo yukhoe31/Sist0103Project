@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -176,4 +179,16 @@ public class ReBoardController {
 		return mview;
 	}
 	
+	//좋아요
+	@GetMapping("/reboard/likes")
+	@ResponseBody
+	public Map<String, Integer> likes(int num)
+	{
+		boardService.likesUpdate(num); 
+		int likes=boardService.getData(num).getLikes();
+		
+		Map<String, Integer> map=new HashMap<>();
+		map.put("likes", likes);
+		return map;
+	}
 }

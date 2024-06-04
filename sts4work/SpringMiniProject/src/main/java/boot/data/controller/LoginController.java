@@ -62,6 +62,7 @@ public class LoginController {
 			MemberDto mdto=service.getDataById(id);
 			
 			session.setAttribute("loginphoto", mdto.getPhoto());
+			session.setAttribute("loginname", mdto.getName());
 			
 			return "redirect:main";
 			

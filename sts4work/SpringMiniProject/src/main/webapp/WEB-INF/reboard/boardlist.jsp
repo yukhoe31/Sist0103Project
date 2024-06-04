@@ -37,7 +37,7 @@
             <tr class="table-success">
               <th width="50">번호</th>
               <th width="350">제목</th>
-              <th width="150">아이디</th>
+              <th width="150">작성자</th>
               <th width="180">작성일</th>
               <th width="50">조회</th>
               <th width="50">좋아요</th>
@@ -75,7 +75,7 @@
                       </a>
                    </td>
                    
-                   <td>${dto.id }</td>
+                   <td>${dto.name }</td>
                    <td><fmt:formatDate value="${dto.writeday }" pattern="yyyy-MM-dd"/></td>
                    <td>${dto.readcount }</td>
                    <td>${dto.likes }</td>

@@ -41,14 +41,14 @@
 	//중복체크 버튼클릭시 아이디 체크
 	$("#btnidcheck").click(function(){
 		
-		//var id=$("#loginid").val();
-		//alert(id);
+		var id=$("#id").val();
+		alert(id);
 		
 		$.ajax({
 			type:"get",
 			dataType:"json",
 			url:"idcheck",
-			data:{"id":$("#loginid").val()},
+			data:{"id":$("#id").val()},
 			success:function(res){
 				if(res.count==0){
 					//alert("가입가능");
@@ -57,11 +57,12 @@
 				}else{
 					//alert("이미 가입된아이디 다시 입력");
 					$("span.idsuccess").text("fail");
-					$("#loginid").val("");
+					$("#id").val("");
 				}
 			}
 		})
 	});
+	
 	
 	//아이디 입력시 idsuccess값 지우기
 	$("#loginid").keydown(function(){
@@ -121,8 +122,8 @@
                <img id="showimg">
              </td>
              <td>
-               <div class="d-inline-flex">
-                  <input type="text" placeholder="아이디입력" name="id" id="loginid"
+                <div class="d-inline-flex">
+                  <input type="text" placeholder="아이디입력" name="id" id="id"
                   class="form-control" style="width: 120px;" required="required">
                   &nbsp;
                   <button type="button" class="btn btn-danger btn-sm"

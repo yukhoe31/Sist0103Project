@@ -37,7 +37,7 @@
        <br><br>
        <div class="d-inline-flex">
        <div class="likes">
-          <i class="bi bi-heart"></i>좋아요 <b>${dto.likes }</b>
+          <i class="bi bi-heart-fill"></i>좋아요 <b>${dto.likes }</b>
        </div>
        &nbsp;&nbsp;
        <i class="bi bi-chat-text"></i>&nbsp;<b class="banswer">0</b></div>
@@ -69,6 +69,39 @@
     </td>
   </tr>
 </table>
+
+<script type="text/javascript">
+
+    $("div.likes").click(function(){
+    	
+    	var heart=$(this).find("i").attr("class");
+    	//alert(heart);
+    	
+    	if(heart=='bi bi-heart-fill')
+    		$(this).find("i").attr("class","bi bi-heart-fill").css("color","red");
+    	
+    	
+    	
+    	//좋아요 증가
+    	var num=${dto.num};
+    	//alert(num);
+    	
+    	$.ajax({
+    		type:"get",
+    		dataType:"json",
+    		url:"likes",
+    		data:{"num":num},
+    		success:function(res){
+    			
+    			$("div.likes").find("b").text(res.likes);
+    		}
+    	})
+    	
+    })
+</script>
+
+
+
 </div>
 </body>
 </html>
