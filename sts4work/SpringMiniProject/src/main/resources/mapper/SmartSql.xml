@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boot.data.mapper.SmartMapperInter">
+   
+   <select id="getTotalCount" resultType="int">
+     select count(*) from smartshop
+   </select>
+   
+   <insert id="insertSmart" parameterType="SmartDto">
+     insert into smartshop (price,sangpum,color,content,ipgoday) values (#{sangpum},#{price},#{photoname},now())
+   </insert>
+   <select id="getAllDatas" resultType="SmartDto">
+     select * from smartshop order by num
+   </select>
+   
+   <select id="getData" parameterType="int" resultType="SmartDto">
+   	 select * from smartshop where num=#{num}
+   </select>
+   
+   <update id="updateSmart" parameterType="SmartDto">
+     update smartshop set sangpum=#{sangpum},price=#{price},content=#{content} where num=#{num}
+   </update>
+   
+   <delete id="deleteSmart" parameterType="String">
+   	 delete from smartshop where num=#{num}
+   </delete>
+   
+</mapper>

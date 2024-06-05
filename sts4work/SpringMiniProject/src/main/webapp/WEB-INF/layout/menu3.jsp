@@ -84,6 +84,9 @@
        <a href="${root }/reboard/list">답변형 게시판</a>
      </li>
      
+     <li>
+       <a href="${root }/smart/list">스마트 게시판</a>
+     </li>
      
      
      
